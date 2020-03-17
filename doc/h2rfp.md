@@ -84,3 +84,13 @@ Damit ein Verbindungsverlust erkannt werden kann, gibt es lokale Ereignisse.
         }
     }
 ```
+
+## Übertragung
+Die Kommunikation besteht aus Paketen, welche zwischen Server und Client ausgetauscht werden:
+```
+    "!" + Funktion + ";" + ID + ";" + datenlänge + ";" + JSON
+```
+**Funktion**: Definiert die Art der Anforderung an die Gegenseite. Im Falle einer Antwort muss dieses Feld leer bleiben.  
+**ID**: Identifiziert das Paket, um Prozess später fortzuführen (Siehe ```exec``` bei Anwendung). 0 falls irrelevant.  
+**datenlänge**: Länge des folgenden JSON-Strings  
+**JSON**: JSON-Notation der übertragenen Daten
