@@ -69,6 +69,7 @@ Eine Verbindung wird mit einem Promise beendet.
 Damit ein Verbindungsverlust erkannt werden kann, gibt es lokale Ereignisse. 
 
 ```onDisconnect```: Dieses Ereigniss wird bei einem Verbindungsverlust ausgelöst.
+
 ```onReconnect```: Dieses Ereigniss wird beim erneuten Verbinden ausgelöst.
 
 ```JavaScript
