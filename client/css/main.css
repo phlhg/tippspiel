@@ -1,22 +1,112 @@
 * { padding: 0; margin: 0; font-family: inherit; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
-html, body { color: #fff; background: #00315e; background: linear-gradient(to bottom left,#00315e,#061c36); font-family: 'Montserrat', sans-serif; padding: 0; margin: 0; width: 100%; height: 100%; }
-body { overflow: hidden;}
+html, body { color: #fff; background: #00315e; background: linear-gradient(45deg,#061c36, #00315e); font-family: 'Montserrat', sans-serif; padding: 0; margin: 0; width: 100%; height: 100%; }
+body, html { overflow-x: hidden;}
 
+/* Transitions */
+.tipp-section-wrapper > section,
+.game-tile .live-indicator,
+.game-tile .live-view,
+nav,
+header,
+.tipp-section-wrapper,
+nav a img, 
+.tipp-splash,
 .tipp-splash > .meta,
 .tipp-splash > .center {
     transition: all 400ms ease-in-out;
 }
 
-.tipp-section-wrapper { position: relative; display: block; top: 0; left: 0; height: 100%; width: 100%; max-width: 800px;; margin: 0 auto; }
-.tipp-section-wrapper > section { position: absolute; display: block; top: 0; left: 0; width: 100%; height: 100%; }
-
-.tipp-splash > .center { position: absolute; display: inline-block; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(1,1); opacity: 1;}
-.loading .tipp-splash > .center { transform: translate(-50%,-50%) scale(0.5,0.5); opacity: 0;} 
-.tipp-splash > .center > img { display: block; width: 20vw; max-width: 100px; margin: 0 auto; animation: star 2s ease 1s infinite normal;}
+/* Splashscreen */
+.tipp-splash { position: fixed; display: block; z-index: 200; top: 0; left: 0; width: 100%; height: 100%;  visibility: hidden; }
+.loading .tipp-splash { visibility: visible; }
+.tipp-splash > .center { position: absolute; display: inline-block; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0.5,0.5); opacity: 0;}
+.loading .tipp-splash > .center { transform: translate(-50%,-50%) scale(1,1); opacity: 1;} 
+.tipp-splash > .center > img { display: block; width: 20vw; max-width: 100px; margin: 0 auto; animation: star 2s ease 0s infinite normal;}
 .tipp-splash > .center > .title { display: block; width: 100%; font-size: 25px; font-weight: bold; text-align: center; margin: 20px 0 0 0;}
 .tipp-splash > .center > .title > span { font-weight: normal; }
-.tipp-splash > .meta { position: absolute; display: block; bottom: 0; left: 0; width: 100%; font-size: 12px; padding: 10px; text-align: center; opacity: 1; transition-delay: 1s; }
-.loading .tipp-splash > .meta { opacity: 0; transition-delay: 0;  }
+.tipp-splash > .meta { position: absolute; display: block; bottom: 0; left: 0; width: 100%; font-size: 12px; padding: 10px; text-align: center; opacity: 0; transition-delay: 0; }
+.loading .tipp-splash > .meta { opacity: 1; transition-delay: 1s;  }
+
+/* Header */
+header { position: fixed; display: block; background: linear-gradient(to bottom,rgba(0,0,0,0.5),rgba(0,0,0,0)); z-index: 5; top: 0; left: 0; width: 100%; height: 60px; opacity: 1; transform: translateY(0); transition-delay: 200ms; }
+.loading header { opacity: 0; transform: translateY(-100%); }
+header .inner { position: relative; display: block; width: 100%; height: 100%; max-width: 800px; margin: 0 auto; padding: 0 50px 0 60px; }
+header .logo { position: absolute; display: block; top: 0; left: 0; width: 60px; height: 60px; } 
+header .logo > img { position: absolute; top: 15px; left: 20px; width: 30px; }
+header .settings { position: absolute; display: block; top: 0; right: 0; width: 50px; height: 60px; } 
+header .settings > img { position: absolute; top: 20px; right: 20px; width: 20px; }
+header .heading { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 60px; font-size: 22px;}
+
+/* Navigation */
+nav { position: fixed; display: block; z-index: 5; bottom: 0; left: 0; width: 100%; height: 50px; background: linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0)); opacity: 1; transform: translateY(0); transition-delay: 200ms;  }
+.loading nav { opacity: 0; transform: translateY(100%); }
+.tipp-nav-inner { position: relative; display: flex; flex-direction: row; align-content: stretch; width: 100%; height: 100%; max-width: 800px; margin: 0 auto; }
+nav a { position: relative; display: block; width: 100%; height: 100%; }
+nav a img { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0.6; }
+nav a:hover img { opacity: 1 !important; }
+
+/* Sections */
+.tipp-section-wrapper { position: relative; display: block; top: 0; left: 50vw; width: 100%; max-width: 800px; transform: translateX(-50%); opacity: 1; transition-delay: 800ms; }
+.loading .tipp-section-wrapper { opacity: 0; }
+.tipp-section-wrapper > section { position: absolute; display: block; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden; margin: 0 auto; padding: 60px 5px 50px 5px; opacity: 0; visibility: hidden; }
+.tipp-section-wrapper > section.active { opacity: 1; visibility: visible; transition-delay: 400ms;  height: unset; }
+
+section h3 { font-size: 30px; }
+section > .text { position: relative; display: block; padding: 0 15px; }
+section a.button { position: relative; display: inline-block; padding: 10px 15px; margin: 10px 0; background: rgba(0,0,0,0.15); border-radius: 4px; font-size: 14px; color: #fff; text-decoration: none;}
+
+/* Error Page */
+section.tipp-error-page { height: 100vh; padding-left: 20px; padding-right: 20px; }
+section.tipp-error-page.active { height: 100vh; }
+section.tipp-error-page > .inner { position: relative; display: block; text-align: center; left: 0; top: 50%; transform: translateY(-50%); }
+section.tipp-error-page > .inner > h3 { font-size: 40px; }
+section.tipp-error-page > .inner > p { font-size: 14px; }
+
+/* Game Tile */
+.game-tile { position: relative; display: block; padding: 15px 15px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; }
+.game-tile .live-view { position: relative; display: block; background: #000; width: calc(100% + 30px); margin: 10px 0 -15px -15px; padding-bottom: 0; border-radius: 4px; overflow: hidden; }
+.game-tile .live-view > iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+.game-tile.live .live-view { padding-bottom: calc(100% * (9 / 16)); }
+.game-tile .live-indicator { position: absolute; display: inline-block; top: 15px; right: 15px; font-size: 12px; padding: 0 15px 0 0; text-transform: uppercase; opacity: 0; visibility: hidden; }
+.game-tile .live-indicator:after { position: absolute; display: block; content: ''; top: 2px; right: 0; width: 10px; height: 10px; border-radius: 50%; background: #f00; animation: live 2s linear infinite normal;}
+.game-tile.live .live-indicator { opacity: 1; visibility: visible; }
+
+.game-tile .title { position: relative; display: block; font-size: 20px; line-height: 25px; }
+.game-tile .meta { position: relative; display: block; font-size: 12px; line-height: 20px; opacity: 0.8;}
+
+@keyframes live {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Tipp Inline Flag */
+.tflag { position: relative; display: inline-block; margin-top: 1px; width: 1em; height: 1em; background: #222; background-image: url(/img/flag/flags.png); background-size: 6em 4em;  border-radius: 50%; vertical-align: text-top; }
+
+.tflag[data-t='aut'] { background-position: 6em 4em; }
+.tflag[data-t='bel'] { background-position: 5em 4em; }
+.tflag[data-t='cro'] { background-position: 4em 4em; }
+.tflag[data-t='cze'] { background-position: 3em 4em; }
+.tflag[data-t='den'] { background-position: 2em 4em; }
+.tflag[data-t='eng'] { background-position: 1em 4em; }
+.tflag[data-t='esp'] { background-position: 6em 3em; }
+.tflag[data-t='fin'] { background-position: 5em 3em; }
+.tflag[data-t='fra'] { background-position: 4em 3em; }
+.tflag[data-t='ger'] { background-position: 3em 3em; }
+.tflag[data-t='hun'] { background-position: 2em 3em; }
+.tflag[data-t='ita'] { background-position: 1em 3em; }
+.tflag[data-t='mkd'] { background-position: 6em 2em; }
+.tflag[data-t='ned'] { background-position: 5em 2em; }
+.tflag[data-t='pol'] { background-position: 4em 2em; }
+.tflag[data-t='por'] { background-position: 3em 2em; }
+.tflag[data-t='rus'] { background-position: 2em 2em; }
+.tflag[data-t='sco'] { background-position: 1em 2em; }
+.tflag[data-t='sui'] { background-position: 6em 1em; }
+.tflag[data-t='svk'] { background-position: 5em 1em; }
+.tflag[data-t='swe'] { background-position: 4em 1em; }
+.tflag[data-t='tur'] { background-position: 3em 1em; }
+.tflag[data-t='ukr'] { background-position: 2em 1em; }
+.tflag[data-t='wal'] { background-position: 1em 1em; }
 
 @keyframes star {
     0% { transform: rotateY(0deg); }

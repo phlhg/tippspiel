@@ -31,36 +31,39 @@
         <link rel="shortcut icon" type="image/png" href="/img/favicon.png" />
         <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
         <link rel="apple-touch-icon" href="/img/favicon.png" />
-        <!-- FONTS -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" >  
         <!-- STYLESHEETS -->
         <link rel="stylesheet" href="/css/main.css" />
+        <!-- FONTS -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" />  
         <!-- SCRIPTS -->
-        <script src="/css/main.js"></script>
+        <script src="/js/main.js"></script>
     </head>
     <body>
-        <div class="tipp-section-wrapper">
-            <section id="sec-splashscreen">
-                <div class="tipp-splash">
-                    <div class="center">
-                        <img src="/img/icon-transparent.png"/>
-                        <span class="title">Tippspiel <span>21</span></span>
-                    </div>
-                    <span class="meta">by TobiCreations and PHLHG</span>
-                </div>
-            </section>
-            <sectionm id="sec-home">
-
-            </section>
+        <div class="tipp-splash">
+            <div class="center">
+                <img src="/img/icon-transparent.png"/>
+                <span class="title">Tippspiel <span>21</span></span>
+            </div>
+            <span class="meta">by TobiCreations and PHLHG</span>
         </div>
+        <header>
+            <div class="inner">
+                <a href="/" class="logo"><img src="/img/icon-transparent.png" /></a>
+                <span class="heading"><strong>Tippspiel</strong> 21</span>
+                <a href="/settings/" class="settings"><img src="/img/graphics/settings.svg" /></a>
+            </div>
+        </header>
+        <div class="tipp-section-wrapper"></div>
+        <nav>
+            <div class="tipp-nav-inner">
+                <a href="/"><img src="/img/graphics/home.svg"/></a>
+                <a href="/stats/"><img src="/img/graphics/stats.svg"/></a>
+                <a href="/notifications/"><img src="/img/graphics/notifications.svg"/></a>
+                <a href="/profile/"><img src="/img/graphics/profile.svg"/></a>
+            </div>
+        </nav>
         <script>
             (function(){ document.body.classList.add("loading"); })()
-
-            document.addEventListener("DOMContentLoaded",function(){
-                setTimeout(function(){
-                    document.body.classList.remove("loading");
-                },1000);
-            });
         </script>
     </body>
 </html>
