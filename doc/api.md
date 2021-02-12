@@ -25,8 +25,8 @@ Weist der aktuellen Verbindung einen Benutzer zu
 
 ### Request
 
-```
-{ token: String }
+```js
+socket.exec("login",{ token: String })
 ```
 
 `token`: Hash of the user
@@ -37,7 +37,25 @@ Weist der aktuellen Verbindung einen Benutzer zu
 { state, error, data: {} }
 ```
 
+## Suggestions
 
+Liefert Vorschläge für Client-Eingaben von Spielern, Teams und Austragungsorten
+
+### Request
+
+```js
+socket.exec("suggest_players", { game: Int })
+socket.exec("suggest_teams",{})
+socket.exec("suggest_locations",{})
+```
+
+### Response
+
+Liste von Vorschlägen
+
+```js
+{ state, error, data: [ String, ... ] }
+```
 
 
 
