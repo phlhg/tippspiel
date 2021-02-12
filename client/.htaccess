@@ -8,8 +8,8 @@ RewriteEngine on
 RewriteBase /
 
 # Redirect to https://
-# RewriteCond %{HTTPS} off 
-# RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,QSA,R=301]
+RewriteCond %{HTTPS} off 
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,QSA,R=301]
 
 # Give direct access to existing files
 RewriteCond %{REQUEST_FILENAME} !-f

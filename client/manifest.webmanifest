@@ -1,0 +1,26 @@
+{
+  "name": "Tippspiel 21",
+  "short_name": "Tippspiel",
+  "start_url": "/",
+  "background_color": "#00315e",
+  "description": "by TobiCreations & PHLHG",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/img/favicon.png",
+      "sizes": "400x400",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/favicon200.png",
+      "sizes": "200x200",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/favicon100.png",
+      "sizes": "100x100",
+      "type": "image/png"
+    }
+  ]
+}

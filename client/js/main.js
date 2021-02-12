@@ -23,7 +23,7 @@ class App {
 
     /** Adds global event listeners */
     setEvents(){
-        setTimeout(function(){ document.body.classList.remove("loading"); },2000);
+        setTimeout(function(){ document.body.classList.remove("loading"); },1000);
 
         Array.from(document.querySelectorAll("a[href]")).filter(a => {
             return a.getAttribute("href").indexOf("http") != 0 && a.getAttribute("href").indexOf("//") != 0
@@ -164,6 +164,8 @@ class HomeController extends Controller {
         game1.data.t2Name = "ESP";
         game1._updateDom();
 
+        game1.dom.wrapper.classList.add("live")
+
         this.dom.root.appendChild(game2.getHtml());
         game2.data.t1Name = "GER";
         game2.data.t2Name = "FRA";
@@ -197,26 +199,6 @@ function Game(){
     this.data.tipps = 0;
     this._setupDom();
     this._updateDom();
-
-    this.dom.wrapper.classList.add("live")
-
-    this.test();
-
-    /*setInterval(function(){
-        if(this.dom.wrapper.classList.contains("live")){
-            this.dom.wrapper.classList.remove("live")
-        } else {
-            this.dom.wrapper.classList.add("live")
-        }
-    }.bind(this),5000);*/
-}
-
-Game.prototype.test = function(){
-    setTimeout(function(){
-        this.data.tipps++;
-        this._updateDom();
-        this.test();
-    }.bind(this),10000*Math.random());
 }
 
 Game.prototype._setupDom = function(){
