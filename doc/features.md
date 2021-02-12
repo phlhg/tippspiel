@@ -10,8 +10,6 @@
 
 ```token```: Zur Authentifikation des Nutzers
 
-```origin```: Nutzer, welcher den Nutzer eingeladen hat
-
 ```permissions```: Berechtigungen für den Benutzer basierend auf Freigaben als Boolean
 
 ```
@@ -21,16 +19,6 @@
     gameAnnounce: false
     gameResult: true
 ```
-
-## Invitation
-
-Einladungen werden durch jeden Nutzer generiert werden. Die Einladung verfällt nach einer definierbaren Zeitspanne. Neuanmeldungen sind nur mit einem gültigen Code möglich. 
-
-```code```: Zur Authentifizierung
-
-```time```: Zeitstempel des Erstellen
-
-```origin```: Nutzer id des Erstellers
 
 ## Group
 
@@ -44,7 +32,7 @@ Gruppen ermöglichen eine Separation von mehrern Nutzern. Dabei werden diesen Nu
 
 ```token```: Zur Autorisierung beim Beitreten
 
-```points```: Durchschnittliche Anzahl Punkte pro Mitglied
+```points```: (Nicht physisch vorhanden) Durchschnittliche Anzahl Punkte pro Mitglied
 
 ## Event
 
@@ -58,11 +46,12 @@ Ein Anlass ist den Spielen übergeordnet und fasst diese Zusammen. Es können Ti
 
 ```winner```: Name des Gesamtgewinners
 
-```topscorer```: Name des Torschützenkönigs 
+```topscorer```: Name des Torschützenkönigs
 
-```deadline```: Deadline für Tippabgaben
+```deadline```: Deadline für Tippabgaben (int)
 
 ```status```: Status des Events
+
 ```
 0 UPCOMING
 1 RUNNING
@@ -99,7 +88,8 @@ Ein Anlass ist den Spielen übergeordnet und fasst diese Zusammen. Es können Ti
 3 ENDED
 ```
 
-```resultType```: Maximal erreichter Spielabschnitt
+```decisionState```: Maximal erreichter Spielabschnitt
+
 ```
 0 NORMAL
 1 OVERTIME
@@ -112,27 +102,21 @@ Ein Anlass ist den Spielen übergeordnet und fasst diese Zusammen. Es können Ti
 
 ```team1.points```: Punkte des 1. Teams
 
-```team1.pointsExt```: Punkte des 1. Teams nach Spielverlängerung
+```team1.pointsExt```: Punkte des 1. Teams nach Spielverlängerung (inkl. normaler Spielzeit)
 
-```team1.pointsPenalty```: Punkte des 1. Teams nach Penalty
+```team1.pointsPenalty```: Punkte des 1. Teams nach Penalty (exkl. vorheriger Spielzeit)
+
+```team1.scorer```: Liste von Id von Torschützen (mit Duplikaten)
 
 ```team2.name```: Name des 2. Teams
 
 ```team2.points```: Punkte des 2. Teams
 
-```team2.pointsExt```: Punkte des 2. Teams nach Spielverlängerung
+```team2.pointsExt```: Punkte des 2. Teams nach Spielverlängerung (inkl. normaler Spielzeit)
 
-```team2.pointsPenalty```: Punkte des 2. Teams nach Penalty
+```team2.pointsPenalty```: Punkte des 2. Teams nach Penalty (exkl. vorheriger Spielzeit)
 
-```scores```: Liste von Minute, Torschütze, Team, Spielverlängerung der einzelnen Tore
-
-```
-[
-    [minute, name, team, extension],
-    [20, "Max", 1, false],
-    ...
-]
-``` 
+```team2.scorer```: Liste von Id von Torschützen (mit Duplikaten)
 
 ## GameTipp
 
@@ -149,6 +133,8 @@ Ein Anlass ist den Spielen übergeordnet und fasst diese Zusammen. Es können Ti
 ```team2.points```: Getippte Anzahl Punkte des 2. Teams
 
 ```team2.pointsext```: Getippte Anzahl Punkte des 2. Teams nach Spielverlängerung
+
+```scorer```: Ein Torschütze
 
 ```points```: Anzahl Punkte für den Tipp
 
