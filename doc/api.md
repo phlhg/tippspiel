@@ -19,17 +19,35 @@ SERVER_ERROR: 2 -> Programmfluss beenden
 ### error: Enumeration von genaueren Fehlermeldungen
 Siehe [Enumeration](../client/js/lang.js)
 
-## Login
+## SignIn
 
 Weist der aktuellen Verbindung einen Benutzer zu
 
 ### Request
 
 ```js
-socket.exec("login",{ token: String })
+socket.exec("signin",{ token: String })
 ```
 
 `token`: Hash of the user
+
+### Response
+
+```
+{ state, error, data: {} }
+```
+
+## SignUp
+
+Erstellt einen neuen Benutzer
+
+### Request
+
+```js
+socket.exec("signup",{ name: String, email: String })
+```
+`name`: Name des Nutzers
+`email`: E-Mail des Nutzers
 
 ### Response
 
