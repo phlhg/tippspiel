@@ -1,24 +1,34 @@
-# Features
+# Synchronisation
+
+Beschreibt das Format in welchem Daten zwischen Client und Server synchronisiert werden.
 
 (Zeitpunkte und Intervalle werden mit Unix-Timestamps angegeben)
 
 ## User
 
-```name```: Jeder Nutzer hat einen lesbaren (kein hash) Namen
-
-```id```: Zur eindeutigen Identifkation des Nutzers
-
-```token```: Zur Authentifikation des Nutzers
-
-```permissions```: Berechtigungen für den Benutzer basierend auf Freigaben als Boolean
-
+```js
+User {
+    name: String,
+    id: Int,
+    token: String,
+    permisson: {
+        invitation: Boolean
+        eventAnnounce: Boolean
+        eventResult: Boolean
+        gameAnnounce: Boolean
+        gameResult: Boolean
+    }
+}
 ```
-    invitation: true
-    eventAnnounce: false
-    eventResult: false
-    gameAnnounce: false
-    gameResult: true
-```
+
+`name`: Jeder Nutzer hat einen lesbaren (kein hash) Namen
+
+`id`: Zur eindeutigen Identifkation des Nutzers
+
+`token`: Zur Authentifikation des Nutzers
+
+`permissions`: Berechtigungen für den Benutzer basierend auf Freigaben
+
 
 ## Group
 

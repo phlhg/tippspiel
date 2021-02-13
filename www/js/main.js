@@ -170,6 +170,7 @@ class Controller {
     _unload(){
         this.dom.root.classList.remove("active")
         if(this.active){ setTimeout(() => { this.unload() }, 400); }
+        this.active = false;
     }
 
     unload(){
