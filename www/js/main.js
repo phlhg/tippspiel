@@ -87,6 +87,11 @@ class Router {
         },400);
     }
 
+    forward(path){
+        window.history.replaceState({}, '', path);
+        return this.find(path);
+    }
+
     load(path){
         window.history.pushState({}, '', path);
         return this.find(path);
@@ -201,7 +206,7 @@ class ProfileController extends Controller {
     }
 
     load(){
-        this.router.load("/signup/");
+        this.router.forward("/signup/");
     }
 
 }
