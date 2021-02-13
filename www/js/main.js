@@ -21,6 +21,7 @@ class App {
     setRoutes(){
         this.router.setErrorHandler(ErrorController);
         this.router.add("/",HomeController);
+        this.router.add("/game/{id}/{name}/",GameController)
         this.router.add("/profile/",ProfileController);
         this.router.add("/signin/",SignInController);
         this.router.add("/signup/",SignUpController);
@@ -255,10 +256,27 @@ class HomeController extends Controller {
     }
 
     load(){
-        this.models.games.get([1,2]).forEach(game => {
+        this.models.games.getAll([1,2]).forEach(game => {
             let view = new GameTileView(game)
             this.dom.root.appendChild(view.getHtml());
         });
+    }
+
+    unload(){
+        this.dom.root.innerHTML = "";
+    }
+
+}
+
+class GameController extends Controller {
+
+    constructor(...args){
+        super(...args);
+    }
+
+    load(){
+        let view = new GameTileView(this.models.games.get(this.params.id))
+        this.dom.root.appendChild(view.getHtml());
     }
 
     unload(){
@@ -359,11 +377,15 @@ class GameList {
         });
     }
 
-    get(ids){
+    getAll(ids){
         return ids.map(id => {
             if(this.list.hasOwnProperty(id))
                 return this.list[id];
         })
+    }
+
+    get(id){
+        return this.list[id];
     }
 
 }
