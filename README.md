@@ -1,8 +1,8 @@
-# Tippspiel
+# Tippspiel Client
 
 Bet on sports with friends.
 
-## <a href="client/">Client</a>
+## More
 
-
-## <a href="server/">Server</a>
+[Tippspiel Server](https://github.com/LeTobi/Tippspiel)
+[H2FFP (Socket Communication)](https://github.com/LeTobi/Tippspiel)
