@@ -10,6 +10,7 @@ Attribute mit `*` werden synchronisiert.
 User {
     id: int,
     name: String(100),
+    email: String(100),
     token: String(100),
     gameTipps: [ GameTipps, ... ]
     eventTipps: [ EventTipps, ... ]
