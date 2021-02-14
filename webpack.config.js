@@ -8,6 +8,7 @@ module.exports = {
       filename: 'main.js',
       path: path.resolve(__dirname, 'www/js'),
     },
+    devtool: 'source-map',
     optimization: {
       minimize: true,
       minimizer: [
@@ -15,7 +16,6 @@ module.exports = {
           parallel: true,
           extractComments: false,
           terserOptions: {
-            sourceMap: true,
             format: { comments: false, }
           }
         })
