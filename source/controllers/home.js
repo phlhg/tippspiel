@@ -1,5 +1,5 @@
 import Controller from './controller';
-import GameTile from '../views/components/gametile'
+import GameListView from '../views/gamelist'
 
 export default class Home extends Controller {
 
@@ -7,15 +7,18 @@ export default class Home extends Controller {
         super(...args);
     }
 
+    init(){
+        this.setView(GameListView);
+    }
+
     load(){
         this.models.games.getAll([1,2]).forEach(game => {
-            let g = new GameTile(game)
-            this.view.root.appendChild(g.getHtml());
+            this.view.addGame(game)
         });
     }
 
     unload(){
-        this.view.root.innerHTML = "";
+        this.view.clear();
     }
 
 }

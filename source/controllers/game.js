@@ -1,5 +1,5 @@
 import Controller from './controller';
-import GameTile from '../views/components/gametile'
+import GameListView from '../views/gamelist'
 
 export default class Game extends Controller {
 
@@ -7,13 +7,16 @@ export default class Game extends Controller {
         super(...args);
     }
 
+    init(){
+        this.setView(GameListView)
+    }
+
     load(){
-        let g = new GameTile(this.models.games.get(this.params.id))
-        this.view.root.appendChild(g.getHtml());
+        this.view.addGame(this.models.games.get(this.params.id))
     }
 
     unload(){
-        this.view.root.innerHTML = "";
+        this.view.clear();
     }
 
 }

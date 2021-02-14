@@ -1,43 +1,41 @@
+import View from "../views/view";
+
 export default class Controller {
     
     constructor(route){
-        this.active = false;
+
+        this.params = {};
+        this.view = new View();
+
         this.route = route;
         this.router = this.route.router;
         this.app = this.router.app;
-
-        this.params = {};
         this.models = this.app.models;
-        this.view = {}
-        this.view.root = this.route.root;
 
         this.init();
     }
 
-    init(){
-        console.log("Initialized")
+    setView(v){
+        this.view.remove();
+        this.view = new v();
     }
 
+    init(){ }
+
     _load(params){
-        this.active = true;
         this.params = params ?? {};
         this.load();
-        this.view.root.classList.add("active");
+        this.view._show();
         this.app.setEvents(this.view.root);
     }
 
-    load(){
-        console.log("Loaded with ",this.params)
-    }
+    load(){ }
 
     _unload(){
-        this.view.root.classList.remove("active")
-        if(this.active){ setTimeout(() => { this.unload() }, 400); }
-        this.active = false;
+        this.view._hide();
+        setTimeout(() => { this.unload() }, 400);
     }
 
-    unload(){
-        console.log("Unloaded");
-    }
+    unload(){ }
 
 }

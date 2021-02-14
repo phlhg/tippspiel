@@ -22,16 +22,18 @@ export default class Router {
         this.error.unload()
         setTimeout(() => {
             let route = this.routes.find(r => r.matches(path));
-            console.log("Navigating to "+path);
             if(route == undefined){
+                console.warn(`%c[Router]%cDid not find "${path}" - Serving error page`,"font-weight: bold")
                 this.error.load(); 
             } else {
+                console.log(`%c[Router]%cLoading "${path}"`,"font-weight: bold");
                 route.take(path);
             }
         },400);
     }
 
     forward(path){
+        console.log(`%c[Router]%cForwarding to "${path}"`,"font-weight: bold");
         window.history.replaceState({}, '', path);
         return this.find(path);
     }
