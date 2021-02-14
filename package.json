@@ -1,0 +1,26 @@
+{
+  "name": "tippspiel",
+  "version": "1.0.0",
+  "description": "Bet on sports with friends.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phlhg/tippspiel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phlhg/tippspiel/issues"
+  },
+  "homepage": "https://github.com/phlhg/tippspiel#readme",
+  "devDependencies": {
+    "terser-webpack-plugin": "^5.1.1",
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0"
+  }
+}
