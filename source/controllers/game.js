@@ -8,12 +8,12 @@ export default class Game extends Controller {
     }
 
     load(){
-        let view = new GameTile(this.models.games.get(this.params.id))
-        this.dom.root.appendChild(view.getHtml());
+        let g = new GameTile(this.models.games.get(this.params.id))
+        this.view.root.appendChild(g.getHtml());
     }
 
     unload(){
-        this.dom.root.innerHTML = "";
+        this.view.root.innerHTML = "";
     }
 
 }

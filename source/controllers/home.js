@@ -9,13 +9,13 @@ export default class Home extends Controller {
 
     load(){
         this.models.games.getAll([1,2]).forEach(game => {
-            let view = new GameTile(game)
-            this.dom.root.appendChild(view.getHtml());
+            let g = new GameTile(game)
+            this.view.root.appendChild(g.getHtml());
         });
     }
 
     unload(){
-        this.dom.root.innerHTML = "";
+        this.view.root.innerHTML = "";
     }
 
 }

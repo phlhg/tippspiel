@@ -8,8 +8,8 @@ export default class Controller {
 
         this.params = {};
         this.models = this.app.models;
-        this.dom = {}
-        this.dom.root = this.route.root;
+        this.view = {}
+        this.view.root = this.route.root;
 
         this.init();
     }
@@ -22,8 +22,8 @@ export default class Controller {
         this.active = true;
         this.params = params ?? {};
         this.load();
-        this.dom.root.classList.add("active");
-        this.app.setEvents(this.dom.root);
+        this.view.root.classList.add("active");
+        this.app.setEvents(this.view.root);
     }
 
     load(){
@@ -31,7 +31,7 @@ export default class Controller {
     }
 
     _unload(){
-        this.dom.root.classList.remove("active")
+        this.view.root.classList.remove("active")
         if(this.active){ setTimeout(() => { this.unload() }, 400); }
         this.active = false;
     }

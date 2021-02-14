@@ -7,8 +7,8 @@ export default class SignIn extends Controller {
     }
 
     init(){
-        this.dom.root.classList.add("tipp-login-page");
-        this.dom.root.innerHTML = `<div class="inner">
+        this.view.root.classList.add("tipp-login-page");
+        this.view.root.innerHTML = `<div class="inner">
             <h3>Anmelden</h3>
             <p>Gib deinen Zugangscode <i>aus der E-Mail</i>, die wir dir gesendet haben, ein.</p>
             <form>

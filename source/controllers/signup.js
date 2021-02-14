@@ -7,8 +7,8 @@ export default class SignUp extends Controller {
     }
 
     init(){
-        this.dom.root.classList.add("tipp-login-page");
-        this.dom.root.innerHTML = `<div class="inner">
+        this.view.root.classList.add("tipp-login-page");
+        this.view.root.innerHTML = `<div class="inner">
             <h3>Registrieren</h3>
             <p>Gib deinen Namen und deine E-Mail ein und erhalte von uns einen Zugangscode.</p>
             <form>
