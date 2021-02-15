@@ -1,5 +1,6 @@
 import Router from './routing/router'
 import GameManager from './models/games/manager'
+import UserManager from './models/users/manager';
 
 export default class App {
 
@@ -7,6 +8,7 @@ export default class App {
         this.router = new Router(this);
         this.models = {}
         this.models.games = new GameManager(this);
+        this.models.users = new UserManager(this);
         this.setGlobalEvents()
     }
 
