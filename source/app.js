@@ -1,12 +1,12 @@
-import Router from './routing/router.js'
-import GameList from './models/games/list.js'
+import Router from './routing/router'
+import GameManager from './models/games/manager'
 
 export default class App {
 
     constructor(){
         this.router = new Router(this);
         this.models = {}
-        this.models.games = new GameList();
+        this.models.games = new GameManager(this);
         this.setGlobalEvents()
     }
 

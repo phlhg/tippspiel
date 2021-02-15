@@ -1,14 +1,22 @@
+import Manager from '../manager'
 import Game from './game.js'
 
-export default class GameList {
+/** 
+ * Class managing local games 
+ * @extends Manager
+ * */
+export default class GameManager extends Manager {
 
+    /** Creates a game manager */
     constructor(){
-        this.list = {};
+        super();
+
+        /** @todo Added elements for development - Remove in production */
         this.list[1] = new Game({
             id: 1,
             start: 0,
-            status: Game.UPCOMING,
-            progress: Game.NORMAL,
+            status: Game.STATUS.UPCOMING,
+            phase: Game.PHASE.NORMAL,
             location: "Bern, Stade de Suisse",
             tippsCount: 2,
             team1: {
@@ -29,8 +37,8 @@ export default class GameList {
         this.list[2] = new Game({
             id: 2,
             start: 0,
-            status: Game.UPCOMING,
-            progress: Game.NORMAL,
+            status: Game.STATUS.UPCOMING,
+            phase: Game.PHASE.NORMAL,
             location: "Zürich, Letzigrund",
             tippsCount: 0,
             team1: {
@@ -48,17 +56,15 @@ export default class GameList {
                 scorers: []
             }
         });
+
     }
 
-    getAll(ids){
-        return ids.map(id => {
-            if(this.list.hasOwnProperty(id))
-                return this.list[id];
-        })
-    }
-
-    get(id){
-        return this.list[id];
+    /**
+     * Loads missing elements from server
+     * @param {number[]} ids - List of ids
+     */
+    load(ids){
+        let missing = this.missing(ids);
     }
 
 }
