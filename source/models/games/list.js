@@ -1,4 +1,4 @@
-import Game from './entry.js'
+import Game from './game.js'
 
 export default class GameList {
 

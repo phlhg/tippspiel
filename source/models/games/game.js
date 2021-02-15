@@ -1,6 +1,10 @@
-class Game {
+import Debugger from "../../debugger";
+import Model from "../model";
+
+class Game extends Model {
 
     constructor(data){
+        super();
         this.id = -1;
         this.start = new Date(0);
         this.status = Game.UPCOMING;

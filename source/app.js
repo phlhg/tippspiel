@@ -1,5 +1,5 @@
 import Router from './routing/router.js'
-import GameList from './models/game/list.js'
+import GameList from './models/games/list.js'
 
 export default class App {
 
