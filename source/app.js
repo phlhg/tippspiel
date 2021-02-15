@@ -1,10 +1,12 @@
 import Router from './routing/router'
 import GameManager from './models/games/manager'
 import UserManager from './models/users/manager';
+import Client from './client';
 
 export default class App {
 
     constructor(){
+        this.client = new Client(this);
         this.router = new Router(this);
         this.models = {}
         this.models.games = new GameManager(this);
