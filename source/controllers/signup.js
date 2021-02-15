@@ -9,6 +9,11 @@ export default class SignUp extends Controller {
 
     init(){
         this.setView(SignUpView);
+        this.view.on("submit",(data) => {
+            console.log(data);
+            this.view.info("Registieren ist zurzeit nicht möglich");
+            return false;
+        })
     }
 
 }
