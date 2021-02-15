@@ -1,6 +1,6 @@
 import View from './view'
 
-export default class SignIn extends View {
+export default class SignUp extends View {
 
     constructor(...args){
         super(...args)

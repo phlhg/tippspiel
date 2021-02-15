@@ -6,6 +6,7 @@ export default class View {
         this.active = false;
         this._events = {};
         this.root = document.createElement("section");
+        this.root.setAttribute("data-view",this.constructor.name);
         document.querySelector(".tipp-section-wrapper").appendChild(this.root);
         this.init();
     }
