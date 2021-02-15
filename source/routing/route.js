@@ -3,11 +3,6 @@ export default class Route {
     constructor(router, pattern, controller){
         this.router = router;
         this.pattern = this._bakePattern(pattern)
-
-        this.root = document.createElement("section");
-        this.root.setAttribute("data-route",pattern);
-        this.router.root.appendChild(this.root);
-
         this.controller = new controller(this);
     }
 

@@ -5,7 +5,6 @@ export default class Router {
 
     constructor(app){
         this.app = app
-        this.root = document.querySelector(".tipp-section-wrapper");
         this.error = null;
         this.routes = [];
     }
