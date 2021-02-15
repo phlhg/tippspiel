@@ -1,4 +1,5 @@
 import Route from './route.js'
+import Debugger from '../debugger'
 
 export default class Router {
 
@@ -23,17 +24,17 @@ export default class Router {
         setTimeout(() => {
             let route = this.routes.find(r => r.matches(path));
             if(route == undefined){
-                console.warn(`%c[Router]%cDid not find "${path}" - Serving error page`,"font-weight: bold")
+                Debugger.warn(this,`Did not find "${path}" - Serving error page`)()
                 this.error.load(); 
             } else {
-                console.log(`%c[Router]%cLoading "${path}"`,"font-weight: bold");
+                Debugger.log(this,`Loading "${path}"`)()
                 route.take(path);
             }
         },400);
     }
 
     forward(path){
-        console.log(`%c[Router]%cForwarding to "${path}"`,"font-weight: bold");
+        Debugger.log(this,`Forwarding to "${path}"`)();
         window.history.replaceState({}, '', path);
         return this.find(path);
     }

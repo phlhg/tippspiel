@@ -16,7 +16,9 @@ module.exports = {
           parallel: true,
           extractComments: false,
           terserOptions: {
-            format: { comments: false, }
+            format: { comments: false, },
+            keep_classnames: true,
+            keep_fnames: true
           }
         })
       ]

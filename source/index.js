@@ -5,6 +5,9 @@ import SignUpController from './controllers/signup'
 import SignInController from './controllers/signin'
 import HomeController from './controllers/home'
 import GameController from './controllers/game'
+import Debugger from './debugger'
+
+Debugger.active = true;
 
 window.addEventListener("DOMContentLoaded",function(){
     window.APP = new App();
