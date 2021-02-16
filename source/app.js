@@ -8,27 +8,32 @@ export default class App {
 
     constructor(){
         this.socket = new H2RFP_Socket('wss://wetterfrosch.internet-box.ch',15320);
-        this.socket.onDisconnect = () => { console.log("Disconnected"); }
+        this.socket.onConnect = () => { Debugger.log(this, "Connected to server")() }
+        this.socket.onDisconnect = () => { Debugger.log(this, "Disconnected from server") }
+
         this.client = new Client(this);
         this.router = new Router(this);
+
         this.models = {}
         this.models.games = new GameManager(this);
         this.models.users = new UserManager(this);
+
         this.setGlobalEvents()
     }
 
     async run(){
 
-        setTimeout(() => { 
-            this.router.find(window.location.pathname);
-            document.body.classList.remove("loading"); 
-        },1000);
-
-        await this.socket.open().then(() => {
-            Debugger.warn(this, "Connected to server")();
+       this.socket.open().then(() => {
+            this.client.restoreSession();
         }).catch((e) => {
             Debugger.warn(this, "Could not connect to server:",e)();
+        }).finally(() => {
+            setTimeout(() => { 
+                this.router.find(window.location.pathname);
+                document.body.classList.remove("loading"); 
+            },1000);
         })
+
     }
 
     setRoute(...args){
