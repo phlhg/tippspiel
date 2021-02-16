@@ -1,4 +1,5 @@
 import Controller from './controller';
+import ProfileView from '../views/profile'
 
 export default class Profile extends Controller {
 
@@ -6,8 +7,13 @@ export default class Profile extends Controller {
         super(...args);
     }
 
+    init(){
+        this.setView(ProfileView)
+    }
+
     load(){
-        this.router.forward("/signup/");
+        if(!this.app.client.active){ return this.app.client.prompt() };
+        this.view.setClient(this.app.client);
     }
 
 }

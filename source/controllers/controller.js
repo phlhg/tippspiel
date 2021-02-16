@@ -24,9 +24,10 @@ export default class Controller {
 
     _load(params){
         this.params = params ?? {};
-        this.load();
-        this.view._show();
-        this.app.setEvents(this.view.root);
+        if(this.load() !== false){
+            this.view._show();
+            this.app.setEvents(this.view.root);
+        }
     }
 
     load(){ }
