@@ -1,11 +1,13 @@
 LANG = {
     de: {
+        name: "Deutsch",
         errors: {
-            0: "Alles ist in Ordnung",
-            1: "Der Server verlangt eine Authentifizierung",
-            2: "{email} wird bereits verwendet",
-            3: "{name} nimmt bereits am Tippspiel teil",
-            4: "Du konntest nicht identifiziert werden."
+            '-1': "Es besteht keine Verbindung zum Server",
+            0: "Kein Fehler - Alles ist in Ordnung",
+            1: "Für dies ist eine Anmeldung erforderlich",
+            2: "Diese E-Mail wird bereits verwendet",
+            3: "Dieser Name wird bereits verwendet",
+            4: "Du konntest nicht identifiziert werden",
         }
     }
 }
