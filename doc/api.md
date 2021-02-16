@@ -3,20 +3,28 @@
 Definiert die Interaktion zwischen Browser und Datenserver.
 Der Austausch basiert auf dem H2 Event Protokoll mit einer Websocket verbindung.
 
-## Error Handling
+## Response & Error Handling
 
-```
-{ result: ENUM, error: ENUM, data: {} }
+```js
+Response { 
+    result: ENUM, 
+    error: ENUM, 
+    data: Object 
+}
 ```
 
-### Resultat
+`result` Enumeration des Resultats der Anfrage
+
+```js
+RESULT.SUCCESS: 0 // Programmfluss fortführen
+RESULT.USER_ERROR: 1 // Der Nutzer hat eine ungültige Eingabe gemacht - Programmfluss fortführen
+RESULT.CLIENT_ERROR: 2 // Das Client-Programm hat eine ungültige Anfrage gesendet - Programmfluss beenden
+RESULT.SERVER_ERROR: 3 // Auf dem Server ist beim Bearbeiten ein Problem aufgetreten - Programmfluss beenden
 ```
-SUCCESS: 0 -> Programmfluss fortführen
-USER_ERROR: 1 -> Der Nutzer hat eine ungültige Eingabe gemacht - Programmfluss fortführen
-CLIENT_ERROR: 2 -> Das Client-Programm hat eine ungültige Anfrage gesendet - Programmfluss beenden
-SERVER_ERROR: 3 -> Auf dem Server ist beim Bearbeiten ein Problem aufgetreten - Programmfluss beenden
-```
-error: [Enumeration](../www/js/lang.js) von genaueren Fehlermeldungen
+
+`error` [Enumeration](../www/js/lang.js) von genaueren Fehlermeldungen
+
+`data` Daten, welche an den Client gesendet werden - Zusätzliche Fehler-Informationen, falls `RESULT.CLIENT_ERROR` oder `RESULT.SERVER_ERROR`.
 
 ## Funktional
 
