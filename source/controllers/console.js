@@ -20,7 +20,11 @@ export default class Console extends Controller {
             var r = await this.app.socket.exec("console",{ cmd: data.value })
             console.log(r);
             if(r.state != State.SUCCESS){
-                this.view.addError(Lang.getError(r.error,r.data));
+                if(r.error != 0){
+                    this.view.addError(Lang.getError(r.error,r.data));
+                } else {
+                    this.view.addError(r.data.info);
+                }
                 return true;
             } else {
                 this.view.addOutput(r.data.text);
