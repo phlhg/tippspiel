@@ -12,10 +12,11 @@ Der Austausch basiert auf dem H2 Event Protokoll mit einer Websocket verbindung.
 ### Resultat
 ```
 SUCCESS: 0 -> Programmfluss fortführen
-CLIENT_ERROR: 1 -> Clienteingabe wiederholen
-SERVER_ERROR: 2 -> Programmfluss beenden
+USER_ERROR: 1 -> Der Nutzer hat eine ungültige Eingabe gemacht - Programmfluss fortführen
+CLIENT_ERROR: 2 -> Das Client-Programm hat eine ungültige Anfrage gesendet - Programmfluss beenden
+SERVER_ERROR: 3 -> Auf dem Server ist beim Bearbeiten ein Problem aufgetreten - Programmfluss beenden
 ```
-error: [Enumeration](../client/js/lang.js) von genaueren Fehlermeldungen
+error: [Enumeration](../www/js/lang.js) von genaueren Fehlermeldungen
 
 ## Funktional
 
