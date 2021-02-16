@@ -105,6 +105,25 @@ Liste von Vorschlägen
 { state, error, data: [ String, ... ] }
 ```
 
+### Console
+
+```js
+socket.exec("console",{cmd: String});
+```
+
+`cmd` Auszuführender Befehl
+Unterstützt:
+* access get
+* access set
+* access emplace
+* access erase
+* access list
+* print [Tablename | `all`]
+
+```js
+{state, error, data:{text: String} }
+```
+
 ## Filter
 
 ### Latest Games
