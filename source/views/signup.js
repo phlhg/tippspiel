@@ -27,16 +27,20 @@ export default class SignUp extends View {
         this.event.submit = (data) => {};
         this.form.addEventListener("submit",e => {
             e.preventDefault();
-            if(this.event("submit",Object.fromEntries(new FormData(e.target).entries()))){
-                this.form.reset();
-            }
+            this.event("submit",Object.fromEntries(new FormData(e.target).entries())).then(r => {
+                if(r){ this.form.reset(); }
+            })
         })
     }
 
     hide(){
-        this.form.reset();
+        this.clear();
         this.info("");
         this.error("");
+    }
+
+    clear(){
+        this.form.reset();
     }
 
     info(message){

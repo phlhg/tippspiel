@@ -3,6 +3,7 @@ function Debugger(){}
 Debugger.active = false;
 
 Debugger._getName = function(callee){
+    if(typeof callee == "string") return callee;
     let parent = Object.getPrototypeOf(callee.constructor) ?? {};
     return (parent.name ?? "" != "" ? parent.name + "/" : "" ) + callee.constructor.name;
 }

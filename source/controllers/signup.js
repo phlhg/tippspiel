@@ -1,5 +1,6 @@
 import Controller from './controller';
 import SignUpView from '../views/signup'
+import State from '../comm/state';
 
 export default class SignUp extends Controller {
 
@@ -9,10 +10,15 @@ export default class SignUp extends Controller {
 
     init(){
         this.setView(SignUpView);
-        this.view.on("submit",(data) => {
-            console.log(data);
-            this.view.info("Registieren ist zurzeit nicht möglich");
-            return false;
+        this.view.on("submit",async (data) => {
+            var r = await this.app.client.singIn(data.name, data.token)
+            if(r.state != State.SUCCESS){
+                this.view.error(Lang.getError(r.error,r.data));
+                return false;
+            } else {
+                this.router.load("/");
+                return true;
+            }
         })
     }
 

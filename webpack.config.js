@@ -17,6 +17,7 @@ module.exports = {
           extractComments: false,
           terserOptions: {
             format: { comments: false, },
+            toplevel: true,
             keep_classnames: true,
             keep_fnames: true
           }

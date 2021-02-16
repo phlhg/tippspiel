@@ -7,12 +7,13 @@ export default class SignIn extends View {
     }
 
     init(){
+        this._pattern = new RegExp('^(?:(?:https?:\/\/)?new.phlhg.ch\/token\/)?([0-9]{0,9};[A-Za-z0-9]{10})(?:\/)?','i');
         this.root.classList.add("tipp-login-page");
         this.root.innerHTML = `<div class="inner">
             <h3>Anmelden</h3>
             <p>Gib deinen Zugangscode oder den Link <i>aus der E-Mail</i>, die wir dir gesendet haben, ein.</p>
             <form>
-                <input required="" name="token" title="Code aus 9 Zahlen oder ein Anmelde-Link" type="text" pattern="^([0-9]{9})|(?:(?:https?:\/\/)?tipp.phlhg.ch\/token\/([0-9]{9})\/)$" placeholder="Zugangscode: z.B. 042069420" />
+                <input required="" name="token" title="Code aus 9 Zahlen oder ein Anmelde-Link" type="text" pattern="${this._pattern.source}" placeholder="Zugangscode: z.B. 0;1a2b3c4d5e" />
                 <span class="info"></span>
                 <span class="error"></span>
                 <input type="submit" value="Anmelden"/>
@@ -27,17 +28,28 @@ export default class SignIn extends View {
             e.preventDefault();
             this.info("");
             this.error("");
-            if(this.event("submit",Object.fromEntries(new FormData(e.target).entries()))){
-                this.form.reset();
+            let data = Object.fromEntries(new FormData(e.target).entries());
+            let match = data.token.match(this._pattern);
+            if(match === null || match.length < 2){ 
+                this.info("Bitte gib einen Zugangslink oder Zugangscode ein");
+            } else {
+                data.token = match[1];
+                this.event("submit",data).then(r => {
+                    if(r){ this.form.reset(); }
+                })
             }
         })
 
     }
 
     hide(){
-        this.form.reset();
+        this.clear();
         this.info("");
         this.error("");
+    }
+
+    clear(){
+        this.form.reset();
     }
 
     info(message){
@@ -47,5 +59,7 @@ export default class SignIn extends View {
     error(message){
         this.domerror.innerText = message;
     }
+
+
 
 }

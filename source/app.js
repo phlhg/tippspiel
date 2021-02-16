@@ -2,10 +2,13 @@ import Router from './routing/router'
 import GameManager from './models/games/manager'
 import UserManager from './models/users/manager';
 import Client from './client';
+import Debugger from './debugger';
 
 export default class App {
 
     constructor(){
+        this.socket = new H2RFP_Socket('wss://wetterfrosch.internet-box.ch',15320);
+        this.socket.onDisconnect = () => { console.log("Disconnected"); }
         this.client = new Client(this);
         this.router = new Router(this);
         this.models = {}
@@ -14,8 +17,18 @@ export default class App {
         this.setGlobalEvents()
     }
 
-    run(){
-        this.router.find(window.location.pathname);
+    async run(){
+
+        setTimeout(() => { 
+            this.router.find(window.location.pathname);
+            document.body.classList.remove("loading"); 
+        },1000);
+
+        await this.socket.open().then(() => {
+            Debugger.warn(this, "Connected to server")();
+        }).catch((e) => {
+            Debugger.warn(this, "Could not connect to server:",e)();
+        })
     }
 
     setRoute(...args){
@@ -28,7 +41,6 @@ export default class App {
 
     /** Adds global event listeners */
     setGlobalEvents(){
-        setTimeout(function(){ document.body.classList.remove("loading"); },1000);
 
         this.setEvents(document.body);
 
