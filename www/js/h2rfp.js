@@ -233,7 +233,7 @@ class H2RFP_Socket
             }
             if (this.state==H2RFP_SocketState_CLOSED && this.parser.state != H2RFP_ParserState_ERROR)
             {
-                this.socket = new WebSocket(this.address + ":" + this.port);
+                this.socket = new WebSocket("ws://" + this.address + ":" + this.port);
                 this.socket.onopen = this.private_onopen.bind(this);
                 this.socket.onmessage = this.private_onmessage.bind(this);
                 this.socket.onclose = this.private_onclose.bind(this);
@@ -282,9 +282,11 @@ class H2RFP_Socket
             {
                 if (this.openPromise!=undefined)
                     this.openPromise.reject("connection failed");
-                this.openPromise = undefined;
-                if (this.closePromise!=undefined)
+                else if (this.closePromise!=undefined)
                     this.closePromise.resolve();
+                else
+                    this.onDisconnect.call();
+                this.openPromise = undefined;
                 this.closePromise = undefined;
                 this.requestPromises.forEach((e,i,a)=>{e[1].reject("connection failed")});
                 this.requestPromises = [];
@@ -334,7 +336,6 @@ class H2RFP_Socket
         this.target = H2RFP_SocketState_CLOSED; // do not retry
         this.state = H2RFP_SocketState_CLOSED;
         this.private_react();
-        this.onDisconnect.call();
     }
 
     private_onerror()
