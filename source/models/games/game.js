@@ -20,16 +20,16 @@ class Game extends Model {
         this.tippsCount = 0;
 
         this.team1 = {}
-        this.team1.name = "TM1";
+        this.team1.name = "Team 1";
+        this.team1.short = "TM1"
         this.team1.points = 0;
-        this.team1.pointsExt = 0;
         this.team1.pointsPenalty = 0;
         this.team1.scorers = [];
 
         this.team2 = {}
-        this.team2.name = "TM2";
+        this.team2.name = "Team 1";
+        this.team2.short = "TM2";
         this.team2.points = 0;
-        this.team2.pointsExt = 0;
         this.team2.pointsPenalty = 0;
         this.team2.scorers = [];
 
@@ -48,14 +48,14 @@ class Game extends Model {
         this.tippsCount = data.tippsCount ?? this.tippsCount;
 
         this.team1.name = data.team1?.name ?? this.team1.name;
+        this.team1.short = data.team1?.short ?? this.team1.short;
         this.team1.points = data.team1?.points ?? this.team1.points;
-        this.team1.pointsExt = data.team1?.pointsExt ?? this.team1.pointsExt;
         this.team1.pointsPenalty = data.team1?.pointsPenalty ?? this.team1.pointsPenalty;
         this.team1.scorers = data.team1?.scorers ?? this.team1.scorers;
 
         this.team2.name = data.team2?.name ?? this.team2.name;
+        this.team2.short = data.team2?.short ?? this.team2.short;
         this.team2.points = data.team2?.points ?? this.team2.points;
-        this.team2.pointsExt = data.team2?.pointsExt ?? this.team2.pointsExt;
         this.team2.pointsPenalty = data.team2?.pointsPenalty ?? this.team2.pointsPenalty;
         this.team2.scorers = data.team2?.scorers ?? this.team2.scorers;
     }

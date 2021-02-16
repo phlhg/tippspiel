@@ -1,5 +1,5 @@
-import Controller from './controller';
-import GameListView from '../views/gamelist'
+import Controller from './controller'
+import GameView from '../views/game'
 
 export default class Game extends Controller {
 
@@ -8,11 +8,13 @@ export default class Game extends Controller {
     }
 
     init(){
-        this.setView(GameListView)
+        this.setView(GameView)
     }
 
     load(){
-        this.view.addGame(this.models.games.get(this.params.id))
+        let game = this.models.games.get(this.params.id);
+        if(game == null) return this.router.forward("/");
+        this.view.setGame(game);
     }
 
     unload(){

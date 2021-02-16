@@ -9,7 +9,7 @@ export default class GameTile extends Component {
     }
 
     init(){
-        this.view.root.setAttribute("href",`/game/${this.data.id}/${this.data.team1.name.toLowerCase()}-${this.data.team2.name.toLowerCase()}/`)
+        this.view.root.setAttribute("href",`/game/${this.data.id}/${this.data.team1.short.toLowerCase()}-${this.data.team2.short.toLowerCase()}/`)
         this.view.root.classList.add("game-tile");
         this.view.root.innerHTML = `<span class="live-indicator">live</span><span class="title"><span class="tflag"></span> <span class="t"></span> <span class="tflag"></span></span><span class="meta"></span><div class="live-view"><iframe allowfullscreen></iframe></div>`;
         this.view.title = this.view.root.querySelector(".title > .t")
@@ -21,9 +21,9 @@ export default class GameTile extends Component {
     }
 
     update(){
-        this.view.title.innerText = `${this.data.team1.name} ${this.data.team1.points}:${this.data.team2.points} ${this.data.team2.name}`;
-        this.view.flag1.setAttribute("data-t",this.data.team1.name.toLowerCase());
-        this.view.flag2.setAttribute("data-t",this.data.team2.name.toLowerCase());
+        this.view.title.innerText = `${this.data.team1.short} ${this.data.team1.points}:${this.data.team2.points} ${this.data.team2.short}`;
+        this.view.flag1.setAttribute("data-t",this.data.team1.short.toLowerCase());
+        this.view.flag2.setAttribute("data-t",this.data.team2.short.toLowerCase());
         this.view.meta.innerText = `${("0"+this.data.start.getDate()).slice(-2)}.${("0"+(this.data.start.getMonth()+1)).slice(-2)} ${("0"+this.data.start.getHours()).slice(-2)}:${("0"+this.data.start.getMinutes()).slice(-2)} | ${this.data.tippsCount} Tipps`;
     }
 

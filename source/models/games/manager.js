@@ -20,16 +20,16 @@ export default class GameManager extends Manager {
             location: "Bern, Stade de Suisse",
             tippsCount: 2,
             team1: {
-                name: "SUI",
+                name: "Schweiz",
+                short: "SUI",
                 points: 0,
-                pointsExt: 0,
                 pointsPenalty: 0,
                 scorers: []
             },
             team2: {
-                name: "ESP",
+                name: "Spanien",
+                short: "ESP",
                 points: 0,
-                pointsExt: 0,
                 pointsPenalty: 0,
                 scorers: []
             }
@@ -42,16 +42,39 @@ export default class GameManager extends Manager {
             location: "Zürich, Letzigrund",
             tippsCount: 0,
             team1: {
-                name: "GER",
+                name: "Deutschland",
+                short: "GER",
                 points: 0,
-                pointsExt: 0,
                 pointsPenalty: 0,
                 scorers: []
             },
             team2: {
-                name: "FRA",
+                name: "Frankreich",
+                short: "FRA",
                 points: 0,
-                pointsExt: 0,
+                pointsPenalty: 0,
+                scorers: []
+            }
+        });
+
+        this.list[3] = new Game({
+            id: 3,
+            start: 0,
+            status: Game.STATUS.UPCOMING,
+            phase: Game.PHASE.NORMAL,
+            location: "Zürich, Letzigrund",
+            tippsCount: 0,
+            team1: {
+                name: "Italien",
+                short: "ITA",
+                points: 0,
+                pointsPenalty: 0,
+                scorers: []
+            },
+            team2: {
+                name: "Portugal",
+                short: "POR",
+                points: 0,
                 pointsPenalty: 0,
                 scorers: []
             }
