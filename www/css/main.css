@@ -52,6 +52,7 @@ nav a:hover img { opacity: 1 !important; }
 .tipp-section-wrapper { position: relative; display: block; top: 0; left: 50vw; width: 100%; max-width: 800px; transform: translateX(-50%); opacity: 1; transition-delay: 800ms; transition: opacity 400ms ease-in-out;  }
 .loading .tipp-section-wrapper { opacity: 0; }
 .tipp-section-wrapper > section { position: absolute; display: block; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden; margin: 0 auto; padding: 60px 5px 50px 5px; opacity: 0; visibility: hidden; }
+.tipp-section-wrapper > section.fullscreen { height: 100vh !important; padding-left: 0; padding-right: 0; }
 .tipp-section-wrapper > section.active { opacity: 1; visibility: visible; transition-delay: 400ms;  height: unset; }
 
 section h3 { font-size: 30px; }
@@ -125,6 +126,15 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
     rgba(0, 32, 71, 0.0) 200%
     );
 }
+
+/* Console */
+.tipp-console { overflow: hidden; position: relative; display: flex; flex-direction: column; justify-content: flex-end; width: 100%; height: 100%; background: #000; padding: 20px 20px 50px 20px; text-align: left; overflow-y: scroll; }
+.tipp-console > input { position: absolute; display: block; bottom: 0; left: 0; width: 100%; height: 40px; color: #fff; background: #080808; font-size: 14px;  padding: 10px 20px 10px 35px; line-height: 20px; outline: none; border: 0; }
+.tipp-console > span { align-self: flex-end; position: relative; display: block; width: 100%; line-height: 25px; font-size: 14px; padding-left: 15px; }
+.tipp-console > span:before { color: #fff; content: '>'; position: absolute; left: 0; top: 0; }
+.tipp-console > span.cmd { font-weight: bold; }
+.tipp-console > span.error { color: #c00; }
+
 /* Tipp Inline Flag */
 .tflag { position: relative; display: inline-block; margin-top: 1px; width: 1em; height: 1em; background: #222; background-image: url(/img/flag/flags.png); background-size: 6em 4em;  border-radius: 50%; vertical-align: text-top; }
 
