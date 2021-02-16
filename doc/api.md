@@ -7,24 +7,24 @@ Der Austausch basiert auf dem H2 Event Protokoll mit einer Websocket verbindung.
 
 ```js
 Response { 
-    result: ENUM, 
+    state: ENUM, 
     error: ENUM, 
     data: Object 
 }
 ```
 
-`result` Enumeration des Resultats der Anfrage
+`state` Enumeration des Status der Anfrage
 
 ```js
-RESULT.SUCCESS: 0 // Programmfluss fortführen
-RESULT.USER_ERROR: 1 // Der Nutzer hat eine ungültige Eingabe gemacht - Programmfluss fortführen
-RESULT.CLIENT_ERROR: 2 // Das Client-Programm hat eine ungültige Anfrage gesendet - Programmfluss beenden
-RESULT.SERVER_ERROR: 3 // Auf dem Server ist beim Bearbeiten ein Problem aufgetreten - Programmfluss beenden
+State.SUCCESS: 0 // Programmfluss fortführen
+State.USER_ERROR: 1 // Der Nutzer hat eine ungültige Eingabe gemacht - Programmfluss fortführen
+State.CLIENT_ERROR: 2 // Das Client-Programm hat eine ungültige Anfrage gesendet - Programmfluss beenden
+State.SERVER_ERROR: 3 // Auf dem Server ist beim Bearbeiten ein Problem aufgetreten - Programmfluss beenden
 ```
 
 `error` [Enumeration](../www/js/lang.js) von genaueren Fehlermeldungen
 
-`data` Daten, welche an den Client gesendet werden - Zusätzliche Fehler-Informationen, falls `RESULT.CLIENT_ERROR` oder `RESULT.SERVER_ERROR`.
+`data` Daten, welche an den Client gesendet werden - Zusätzliche Fehler-Informationen, falls `State.CLIENT_ERROR` oder `State.SERVER_ERROR`.
 
 ## Funktional
 
