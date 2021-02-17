@@ -150,7 +150,6 @@ class View {
             split.shift();
             return p + " " + this.suggestion(options[p],split)
         } else {
-            console.log(p);
             return split[0];
         }
     }
