@@ -175,7 +175,7 @@ class View {
         var p = document.createElement("p");
         p.appendChild(t);
         var r = p.innerHTML;
-        r = r.replace(/("[\w\d ]+")/,'<i>$1</i>')
+        r = r.replace(/("[^"]+")/,'<i>$1</i>')
         r = r.replace(/((?:https?:\/\/)(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))/ig,'<a target="_blank" href="$1">$1</a>')
         return r;
     }
