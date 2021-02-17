@@ -152,13 +152,22 @@ socket.exec("ranking", {})
 
 ## Anfrage
 
-### User
-
 Liste von Nutzern
 
 ```js
-socket.exec("users", { ids: [Int, Int, ...]})
+socket.exec("get_data", { table: String, ids: [Int, Int, ...]})
 ```
+`table`: Die Art von Objekten die Angefordert werden.
+* users
+* groups
+* players
+* teams
+* events
+* games
+* etipps
+* gtipps
+
+`ids`: Diese Objekte werden angefordert
 
 ```js
 { state, error, data: { Int: User, Int: User, ...} }

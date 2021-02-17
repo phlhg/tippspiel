@@ -1,32 +1,23 @@
 # Datenbank
 
-Beschreibt die Strukturen der Datenbank
-
-Attribute mit `*` werden synchronisiert.
-
 ## User
-
-```js
-User {
-    id: int,
-    name: String(100),
-    email: String(100),
-    token: String(100),
-    gameTipps: [ GameTipps, ... ]
-    eventTipps: [ EventTipps, ... ]
-    group: [ Group, ... ]
-    points: int,
-    permisson: {
-        invitation: Boolean
-        eventAnnounce: Boolean
-        eventResult: Boolean
-        gameAnnounce: Boolean
-        gameResult: Boolean
-    }
-}
 ```
-
-[id,points]
+type User
+    int registerdate
+    int lastlogin
+    char 50 email
+    char 100 name
+    char 100 token
+    GameTipp [] gameTipps
+    EventTipp [] eventTipps
+    Group [] groups
+    int points
+    bool perm_eventAnnounce
+    bool perm_eventReport
+    bool perm_gameAnnounce
+    bool perm_gameReport
+    bool perm_console
+```
 
 `id` Index zur eindeutigen Identifkation des Nutzers
 
@@ -39,16 +30,13 @@ User {
 `permissions` Berechtigungen des Nutzer basierend auf Freigaben
 
 ## Group
-
 Gruppen ermöglichen eine Separation von mehrern Nutzern. Dabei werden diesen Nutzern nur Resultate der eigenen Gruppe angezeigt.
 
-```js
-Group {
-    id: int,
-    name: String(100),
-    token: String(100),
-    members: [ User, ... ]
-}
+```
+type Group
+    char 100 name
+    char 100 token
+    User [] users
 ```
 
 `id` Zur Identifizierung der Gruppe
@@ -59,16 +47,13 @@ Group {
 
 `member` Liste von Nutzern
 
+
 ## Player
-
 Ein Fussballspieler, aber kein Nutzer. (Ausser er spielt an der Meisterschaft)
-
-```js
-Player {
-    id: int,
-    name: String(100),
-    team: Team
-}
+```
+type Player
+    char 100 name
+    Team team
 ```
 
 `id` Zur Identifizierung des Spielers
@@ -77,20 +62,14 @@ Player {
 
 `team` Zugehörigkeit des Spielers
 
-
 ## Team
-
 Ein Team, welches an der Meisterschaft teilnimmt
-
-```js
-Team {
-    id: int,
-    name: String(100),
-    short: String(10),
-    games: [ Game , ... ]
-    players: [ Player , ... ]
-    team: Team
-}
+```
+type Team
+    char 100 name
+    char 10 short
+    Game [] games
+    Player [] players
 ```
 
 `id` Zur Identifizierung des Teams
@@ -103,37 +82,31 @@ Team {
 
 `players` Spieler, welche dem Team angehören
 
+
 ## Location
-
 Austragungsort
-
-```js
-Location {
-    id: int,
-    name: String(100)
-}
+```
+type Location
+    char 100 name
 ```
 
 `id` Zur Identifizierung des Austragungsort
 
 `name` Name des Austragungsort
 
+
 ## Event
-
 Ein Anlass ist den Spielen übergeordnet und fasst diese Zusammen. Es können Tipps auf einen gesamten Anlass abgegeben werden.
-
-```js
-Event {
-    id: int,
-    name: String(100),
-    description: String(256),
-    deadline: Date,
-    status: ENUM,
-    games: [ Game, ... ],
-    tipps: [ EventTipp, ... ]
-    winner: Team
-    topscorer: Player
-}
+```
+type Event
+    char 100 name
+    char 256 description
+    int deadline
+    int eventStatus
+    Game [] games
+    EventTipp [] tipps
+    Team winner
+    Player topscorer
 ```
 
 `id` Zur Identifizierung des Events
@@ -160,16 +133,13 @@ Event {
 `topscorer` Name des Torschützenkönigs
 
 ## EventTipp
-
-```js
-EventTipp {
-    id: int,
-    event: Event,
-    user: User,
-    winner: Team,
-    topscorer: Player,
-    reward: int
-}
+```
+type EventTipp
+    Event event
+    User user
+    Team winner
+    Player topscorer
+    int reward
 ```
 
 `id` Zur Identifizierung des Tipps
@@ -185,21 +155,18 @@ EventTipp {
 `reward` Anzahl Punkte für den Tipp
 
 ## Game
-
-```js
-Game {
-    id: int,
-    start: Date,
-    location: Location,
-    stream: String(255),
-    event: Event
-    status: ENUM,
-    progress: ENUM,
-    teams: [ Team, Team ]
-    scores: [ int, int ]
-    scoresPenalty: [ int, int ]
-    scorer: [ Player, ... ],
-}
+```
+type Game
+    int start
+    Location location
+    char 256 stream
+    Event event
+    int gameStatus
+    int phase
+    Team 2 teams
+    int 2 scores
+    int 2 penalty
+    Player 2 scorer
 ```
 
 `id` Zur Identifizierung des Spiels
@@ -219,7 +186,7 @@ Game {
 3 Game.ENDED
 ```
 
-`progress` Maximal erreichter Spielabschnitt
+`phase` Maximal erreichter Spielabschnitt
 
 ```js
 0 Game.NORMAL
@@ -235,19 +202,15 @@ Game {
 
 `scorers` Spieler, welche ein Tor während der Spiels geschossen haben
 
-
 ## GameTipp
-
-```js
-GameTipp {
-    id: int,
-    game: Game,
-    user: User,
-    bet: [ int, int ]
-    betWinner: Team,
-    betPlayer: Player,
-    reward: int,
-}
+```
+type GameTipp
+    Game game
+    User user
+    int 2 bet
+    Team betWinner
+    Player betPlayer
+    int reward
 ```
 
 `id` Zur Identifizierung des Tipps
