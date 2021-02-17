@@ -1,16 +1,9 @@
-import State from './comm/state'
 import Debugger from './debugger';
 
 /** Class representing the client */
 export default class Client {
 
-    constructor(app){
-
-        /** @type {App} Reference to the app object */
-        this.app = app;
-
-        /** @type {H2RFP_Socket} Reference to the socket */
-        this.socket = this.app.socket;
+    constructor(){
 
         /** @type {boolean} Indicates if the client is signed in or not */
         this.active = false;
@@ -51,7 +44,7 @@ export default class Client {
         this.isknown = (localStorage.getItem("tipp-dev-iskown") !== null)
         if(localStorage.getItem("tipp-dev-token") !== null){
            this.singIn(localStorage.getItem("tipp-dev-token")).then(r => {
-                if(r.state != State.SUCCESS){
+                if(r.state != ResponseState.SUCCESS){
                     Debugger.warn(this, `Could not restore session (State: ${r.state}, Error: ${Lang.getError(r.error,r.data)}) `)()
                 } else {
                     Debugger.log(this, "Session was restored")()
@@ -65,9 +58,9 @@ export default class Client {
      */
     prompt(){
         if(this.isknown){
-            this.app.router.forward("/signin/")
+            App.router.forward("/signin/")
         } else {
-            this.app.router.forward("/signup/")
+            App.router.forward("/signup/")
         }
         return false;
     }
@@ -79,16 +72,16 @@ export default class Client {
      * @return {object} Response object
      */
     async singIn(token){
-        if(this.socket.state != H2RFP_SocketState_OPEN) return { state: State.CLIENT_ERROR, error: -1, data: {} };
-        var msg = await this.socket.exec("signin",{ token: token, retry: false });
-        if(msg.state != State.SUCCESS){ return msg; }
+        if(App.socket.state != SocketState.OPEN) return { state: ResponseState.CLIENT_ERROR, error: -1, data: {} };
+        var msg = await App.socket.exec("signin",{ token: token, retry: false });
+        if(msg.state != ResponseState.SUCCESS){ return msg; }
         this.active = true;
         this.token = token;
         localStorage.setItem("tipp-dev-iskown","true")
         localStorage.setItem("tipp-dev-token",this.token)
         if(!await this.getMe()){
             this.singOut()
-            return { state: State.SERVER_ERROR, error: 0, data: {} }
+            return { state: ResponseState.SERVER_ERROR, error: 0, data: {} }
         }
         return msg;
     }
@@ -97,10 +90,10 @@ export default class Client {
      * Retireves data about the client from the server
      */
     async getMe(){
-        if(this.socket.state != H2RFP_SocketState_OPEN) return false;
+        if(App.socket.state != SocketState.OPEN) return false;
         if(!this.active) return false;
-        var r = await this.socket.exec("me",{})
-        if(r.state != State.SUCCESS){ return false; }
+        var r = await App.socket.exec("me",{})
+        if(r.state != ResponseState.SUCCESS){ return false; }
         this.id = r.data.id;
         this.name = r.data.name;
         this.permission = {}
@@ -121,12 +114,12 @@ export default class Client {
      * @return {object} Response object
      */
     async singUp(name, email){
-        if(this.socket.state != H2RFP_SocketState_OPEN) return { state: State.CLIENT_ERROR, error: -1, data: {} };
-        var msg = await this.socket.exec("signup",{ name: name, email: email })
-        if(msg.state != State.SUCCESS){ return msg; }
+        if(App.socket.state != SocketState.OPEN) return { state: ResponseState.CLIENT_ERROR, error: -1, data: {} };
+        var r = await this.socket.exec("signup",{ name: name, email: email })
+        if(r.state != ResponseState.SUCCESS){ return r; }
         this.isknown = true;
         localStorage.setItem("tipp-dev-iskown","true")
-        return msg;
+        return r;
     }
 
 

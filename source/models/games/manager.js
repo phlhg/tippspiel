@@ -1,3 +1,4 @@
+import { GamePhase, GameStatus } from './enums';
 import Manager from '../manager'
 import Game from './game.js'
 
@@ -15,8 +16,8 @@ export default class GameManager extends Manager {
         this.list[1] = new Game({
             id: 1,
             start: 0,
-            status: Game.STATUS.UPCOMING,
-            phase: Game.PHASE.NORMAL,
+            status: GameStatus.UPCOMING,
+            phase: GamePhase.NORMAL,
             location: "Bern, Stade de Suisse",
             tippsCount: 2,
             team1: {
@@ -37,8 +38,8 @@ export default class GameManager extends Manager {
         this.list[2] = new Game({
             id: 2,
             start: 0,
-            status: Game.STATUS.UPCOMING,
-            phase: Game.PHASE.NORMAL,
+            status: GameStatus.UPCOMING,
+            phase: GamePhase.NORMAL,
             location: "Zürich, Letzigrund",
             tippsCount: 0,
             team1: {
@@ -60,8 +61,8 @@ export default class GameManager extends Manager {
         this.list[3] = new Game({
             id: 3,
             start: 0,
-            status: Game.STATUS.UPCOMING,
-            phase: Game.PHASE.NORMAL,
+            status: GameStatus.UPCOMING,
+            phase: GamePhase.NORMAL,
             location: "Zürich, Letzigrund",
             tippsCount: 0,
             team1: {

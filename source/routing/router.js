@@ -7,21 +7,24 @@ export default class Router {
         this.app = app
         this.error = null;
         this.routes = [];
+        this.handler = []
     }
 
     add(pattern, controller){
-        this.routes.push(new Route(this, pattern, controller));
+        this.routes.push(new Route(pattern, controller));
+        return this.routes[this.routes.length-1]
     }
 
     setErrorHandler(controller){
-        this.error = new Route(this, 'errorHandler', controller);
+        this.error = new Route('errorHandler', controller);
+        return this.error;
     }
 
     find(path){
         this.routes.forEach(r => r.unload())
         this.error.unload()
+        let route = this.routes.find(r => r.matches(path));
         setTimeout(() => {
-            let route = this.routes.find(r => r.matches(path));
             if(route == undefined){
                 Debugger.warn(this,`Did not find "${path}" - Serving error page`)()
                 this.error.load(); 

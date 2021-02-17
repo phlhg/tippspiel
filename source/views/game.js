@@ -1,5 +1,5 @@
 import View from './view'
-import GameModel from '../models/games/game'
+import { GamePhase } from '../models/games/enums'
 
 export default class Game extends View {
 
@@ -68,7 +68,7 @@ export default class Game extends View {
 
         this.score.normal.innerText = this.game.team1.points + ":" + this.game.team2.points;
 
-        if(this.game.phase == GameModel.PHASE.PENALTY){
+        if(this.game.phase == GamePhase.PENALTY){
             this.score.penalty.classList.add("active");
             this.score.penalty.innerText = this.game.team1.points + ":" + this.game.team2.points;
         } else {

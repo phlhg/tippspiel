@@ -1,16 +1,23 @@
 export default class Route {
 
-    constructor(router, pattern, controller){
-        this.router = router;
-        this.pattern = this._bakePattern(pattern)
-        this.controller = new controller(this);
+    constructor(pattern, controller){
+        this.raw = pattern;
+        this.pattern = null;
+        this.params = {}
+        this.controller = controller;
+        this.bakePattern()
     }
 
-    _bakePattern(p){
-        p = p.replace(/\//ig,"\\/");
-        p = p.replace(/\{(\w+)\}/ig,'(?<$1>[^/]+)')
+    bakePattern(){
+        var p = this.raw;
+        p = p.replace(/\//ig,"\\/")
+        p = p.replace(/\{(\w+)\}/ig,(m,name) => {
+            if(name in this.params)
+                return `(?<${name}>${this.params[name]})`
+            return `(?<${name}>[^/]+)`
+        })
         p = '^'+p+'$'
-        return new RegExp(p,'i');
+        this.pattern = new RegExp(p,'i');
     }
 
     matches(path){
@@ -31,6 +38,23 @@ export default class Route {
 
     unload(){
         this.controller._unload();
+    }
+
+    where(params){
+        var pre = { 'NUMBER': '\\d+', 'TEXT': '[^\/]+' } // Predefined regexp
+        for(var [key, value] of Object.entries(params)){
+            if(value in pre){
+                this.params[key] = pre[value];
+            } else {
+                this.params[key] = value;
+            } 
+        }
+        this.bakePattern();
+        return this;
+    }
+
+    alias(pattern){
+        return App.router.add(pattern, this.controller);
     }
 
 }

@@ -4,19 +4,19 @@ import UserManager from './models/users/manager';
 import Client from './client';
 import Debugger from './debugger';
 
-export default class App {
+export default class Application {
 
     constructor(){
         this.socket = new H2RFP_Socket('wss://wetterfrosch.internet-box.ch',15320);
         this.socket.onConnect = () => { Debugger.log(this, "Connected to server")() }
         this.socket.onDisconnect = () => { Debugger.log(this, "Disconnected from server") }
 
-        this.client = new Client(this);
-        this.router = new Router(this);
+        this.client = new Client();
+        this.router = new Router();
 
         this.models = {}
-        this.models.games = new GameManager(this);
-        this.models.users = new UserManager(this);
+        this.models.games = new GameManager();
+        this.models.users = new UserManager();
 
         this.setGlobalEvents()
     }
@@ -34,14 +34,6 @@ export default class App {
             },1000);
         })
 
-    }
-
-    setRoute(...args){
-        this.router.add(...args);
-    }
-
-    setErrorHandler(...args){
-        this.router.setErrorHandler(...args);
     }
 
     /** Adds global event listeners */

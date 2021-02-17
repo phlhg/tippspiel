@@ -1,6 +1,6 @@
 import Controller from './controller';
 import SignInView from '../views/signin'
-import State from '../comm/state';
+import State from '../../www/js/enum';
 
 export default class SignIn extends Controller {
 
@@ -11,12 +11,12 @@ export default class SignIn extends Controller {
     init(){
         this.setView(SignInView);
         this.view.on("submit",async (data) => {
-            var r = await this.app.client.singIn(data.token)
-            if(r.state != State.SUCCESS){
+            var r = await App.client.singIn(data.token)
+            if(r.state != ResponseState.SUCCESS){
                 this.view.error(Lang.getError(r.error,r.data));
                 return false;
             } else {
-                this.router.load("/");
+                App.router.load("/");
                 return true;
             }
         })

@@ -1,6 +1,6 @@
 import Debugger from "./debugger";
 
-export default class Lang {
+export default class Language {
 
     getError(id,data){
         data = data ?? {}

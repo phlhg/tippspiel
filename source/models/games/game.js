@@ -1,10 +1,11 @@
+import { GamePhase, GameStatus } from "./enums";
 import Model from "../model";
 
 /**
  * Class representing a Game
  * @extends Model
  */
-class Game extends Model {
+export default class Game extends Model {
 
     /**
      * Create a game
@@ -14,8 +15,8 @@ class Game extends Model {
         super("game",data.id);
 
         this.start = new Date(0);
-        this.status = Game.STATUS.UPCOMING;
-        this.phase = Game.PHASE.NORMAL;
+        this.status = GameStatus.UPCOMING;
+        this.phase = GamePhase.NORMAL;
         this.location = "";
         this.tippsCount = 0;
 
@@ -61,33 +62,3 @@ class Game extends Model {
     }
 
 }
-
-/** 
- * Enum for the state of the game 
- * @readonly
- * @enum
- * */
-Game.STATUS = {}
-/** The game is upcoming */
-Game.STATUS.UPCOMING = 0;
-/** The game is running */
-Game.STATUS.RUNNING = 1;
-/** The game is assumed finished - Waiting for results */
-Game.STATUS.PENDING = 2;
-/** The game has ended - Results are available */
-Game.STATUS.ENDED = 3;
-
-/** 
- * Enum for the phase of the game 
- * @readonly
- * @enum
- * */
-Game.PHASE = {}
-/** The game is in the normal phase */
-Game.PHASE.NORMAL = 0;
-/** The game is in the overtime phase */
-Game.PHASE.OVERTIME = 1;
-/** The game is in the penalty phase */
-Game.PHASE.PENALTY = 2;
-
-export default Game;

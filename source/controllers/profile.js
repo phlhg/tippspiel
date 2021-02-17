@@ -12,8 +12,8 @@ export default class Profile extends Controller {
     }
 
     load(){
-        if(!this.app.client.active){ return this.app.client.prompt() };
-        this.view.setClient(this.app.client);
+        if(!App.client.active){ return App.client.prompt() };
+        this.view.setClient(App.client);
     }
 
 }

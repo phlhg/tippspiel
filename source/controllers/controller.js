@@ -2,16 +2,9 @@ import View from "../views/view";
 
 export default class Controller {
     
-    constructor(route){
-
+    constructor(){
         this.params = {};
         this.view = new View();
-
-        this.route = route;
-        this.router = this.route.router;
-        this.app = this.router.app;
-        this.models = this.app.models;
-
         this.init();
     }
 
@@ -26,7 +19,7 @@ export default class Controller {
         this.params = params ?? {};
         if(this.load() !== false){
             this.view._show();
-            this.app.setEvents(this.view.root);
+            App.setEvents(this.view.root);
         }
     }
 

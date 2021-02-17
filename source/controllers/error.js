@@ -11,7 +11,7 @@ export default class Error extends Controller {
         this.setView(ErrorView);
         this.view.button.onclick = e => {
             e.preventDefault();
-            this.router.load("/");
+            App.router.load("/");
         }
     }
 

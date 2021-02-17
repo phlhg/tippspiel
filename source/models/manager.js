@@ -17,7 +17,7 @@ export default class Manager {
      * @abstract
      * */
     load(ids){
-        Debugger.error(this, "Abstract function Manager.load(ids) was called")()
+        Debugger.error(this, `Abstract function Manager.load([${ids.slice(0,5).join(",")}]) was called`)()
     }
 
     /**

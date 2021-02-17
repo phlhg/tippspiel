@@ -1,6 +1,5 @@
 import Controller from './controller';
 import SignUpView from '../views/signup'
-import State from '../comm/state';
 
 export default class SignUp extends Controller {
 
@@ -11,13 +10,12 @@ export default class SignUp extends Controller {
     init(){
         this.setView(SignUpView);
         this.view.on("submit",async (data) => {
-            var r = await this.app.client.singUp(data.name, data.email)
-            console.log(r);
-            if(r.state != State.SUCCESS){
+            var r = await App.client.singUp(data.name, data.email)
+            if(r.state != ResponseState.SUCCESS){
                 this.view.error(Lang.getError(r.error,r.data));
                 return false;
             } else {
-                this.router.load("/");
+                App.router.load("/");
                 return true;
             }
         })
