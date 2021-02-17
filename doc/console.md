@@ -4,7 +4,7 @@
 
 **Get** Zeigt ein Objekt an
 ```
-access get [object]
+access get {object}
 ```
 
 **Set** Setzt ein Objekt auf einen passenden Wert
@@ -14,21 +14,21 @@ access set {object} {value}
 
 **Emplace** Fügt einer Liste einen Eintrag hinzu
 ```
-access emplace {object} {value}
+access emplace {list}
 ```
 
 **Erase** Löscht ein Element einer Liste
 ```
-access set {object}
+access set {list}
 ```
 
 **List** Listet elemente eines Listen-Objektes auf
 ```
-access set {object}
+access list {list}
 ```
 **Print** Gibt eine Tabelle als .csv auf dem Server aus.
 ```
-access set {object}
+print {object}
 ```
 
 ## Objekte
