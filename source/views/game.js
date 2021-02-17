@@ -19,8 +19,8 @@ export default class Game extends View {
                 <span class="penalty">Penaltyschiessen<span>4:6</span></span>
             </div>
             <div class="meta"><span class="time">01.01. 20:00</span> | <span class="location">Letzigrund Zürich</span></div>
-            <div class="flag1" style="background-image: url('/img/flag/sui.png')"></div>   
-            <div class="flag2" style="background-image: url('/img/flag/esp.png')"></div>   
+            <img class="flag1" src="/img/flag/sui.png"/>   
+            <img class="flag2" src="/img/flag/esp.png"/>  
         </div>`
 
         this.team1 = {}
@@ -63,8 +63,8 @@ export default class Game extends View {
         this.team1.flag.setAttribute("data-t",this.game.team1.short.toLowerCase())
         this.team2.flag.setAttribute("data-t",this.game.team2.short.toLowerCase())
 
-        this.team1.bg.style.backgroundImage = 'url(/img/flag/' + this.game.team1.short.toLowerCase() + '.png)';
-        this.team2.bg.style.backgroundImage = 'url(/img/flag/' + this.game.team2.short.toLowerCase() + '.png)';
+        this.team1.bg.src = '/img/flag/' + this.game.team1.short.toLowerCase() + '.png';
+        this.team2.bg.src = '/img/flag/' + this.game.team2.short.toLowerCase() + '.png';
 
         this.score.normal.innerText = this.game.team1.points + ":" + this.game.team2.points;
 

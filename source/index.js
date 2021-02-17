@@ -5,7 +5,6 @@ import SignUpController from './controllers/signup'
 import SignInController from './controllers/signin'
 import HomeController from './controllers/home'
 import GameController from './controllers/game'
-import ConsoleController from './controllers/console'
 import Debugger from './debugger'
 import Lang from './lang'
 
@@ -21,6 +20,5 @@ window.addEventListener("DOMContentLoaded", function(){
     APP.setRoute("/profile/",ProfileController);
     APP.setRoute("/signin/",SignInController);
     APP.setRoute("/signup/",SignUpController);
-    APP.setRoute("/console/",ConsoleController);
     APP.run();
 });

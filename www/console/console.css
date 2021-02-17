@@ -1,0 +1,13 @@
+* { padding: 0; margin: 0; font-family: inherit; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+html, body { color: #fff; background: #000; font-family: 'Montserrat', sans-serif; padding: 0; margin: 0; width: 100%; height: 100%; }
+body, html { overflow-x: hidden;}
+
+.console { position: absolute; display: block; top: 0; left: 0; width: 100%; height: 100%; background: #000; padding: 0 0 40px 0; overflow: hidden; overflow-y: scroll; }
+.console { font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace; }
+.console > .inner { position: relative; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; }
+.console > .inner > span { align-self: flex-end; position: relative; display: block; width: 100%; line-height: 25px; font-size: 14px; padding-left: 15px; }
+.console > .inner > span:before { color: #fff; content: '>'; position: absolute; left: 0; top: 0; }
+.console > .inner > span.cmd { font-weight: bold; }
+.console > .inner > span.cmd::before { content: '$';}
+.console > .inner > span.error { color: #c00; }
+.console > input { position: absolute; display: block; bottom: 0; left: 0; width: 100%; height: 40px; color: #fff; background: #080808; font-size: 14px;  padding: 10px 20px 10px 35px; line-height: 20px; outline: none; border: 0; }
