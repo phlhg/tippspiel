@@ -14,21 +14,29 @@ class Controller {
 
         this.socket = new H2RFP_Socket('wss://wetterfrosch.internet-box.ch',15320);
 
+        this.socket.onConnect = () => {
+            this.view.addInfo("Mit der Server verbunden")
+        }
+
+        this.socket.onDisconnect = () => {
+            this.view.addError("Verbindug mit Server unterbrochen")
+            this.socket.open();
+        }
+
         this.view.addCommand("connect")
         this.view.addOutput("Versuche zu verbinden...")
 
         this.socket.open().then(() => {
-            this.view.addOutput("Erfolgreich verbunden")
             this.view.addCommand("signin")
             if(this.token == ""){
                 this.view.addOutput("Bitte gib deinen Zugangscode ein:")
                 this.view.events.submit = data => { this.login(data.value); }
             } else {
-                this.view.addOutput("Zugangscode wurde aus letzter Sitzung bezogen");
+                this.view.addInfo("Zugangscode wurde aus letzter Sitzung bezogen");
                 this.login(this.token);
             }
         }).catch(() => {
-            this.view.addError("Konnte nicht verbinden")
+            this.view.addError("Verbindung mit Server konnte nicht hergestellt werden")
         })
 
     }
@@ -63,7 +71,9 @@ class Controller {
             }
         }
 
-        this.view.addOutput("Erfolgreich angemeldet - Befehle können nun ausgeführt werden");
+        this.view.addInfo("Erfolgreich angemeldet")
+        this.view.addOutput("Für Befehle siehe: https://github.com/phlhg/tippspiel/blob/develop/doc/api.md#console")
+        this.view.addOutput("Die Konsole unterstützt Command-History (KeyUp & KeyDown) & TypeSuggestions (Tab)")
 
         return true;
     }
@@ -154,24 +164,38 @@ class View {
         }
     }
 
-    addCommand(text){
-        var s = document.createElement("span");
-        s.innerText = text;
-        s.classList.add("cmd");
-        this.console.appendChild(s);
-    }
-
     addOutput(text){
         var s = document.createElement("span");
-        s.innerText = text;
-        this.console.appendChild(s);
+        s.innerHTML = this.bake(text);
+        return this.console.appendChild(s);
+    }
+
+    bake(text){
+        var t = document.createTextNode(text);
+        var p = document.createElement("p");
+        p.appendChild(t);
+        var r = p.innerHTML;
+        r = r.replace(/("[\w\d ]+")/,'<i>$1</i>')
+        r = r.replace(/((?:https?:\/\/)(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))/ig,'<a target="_blank" href="$1">$1</a>')
+        return r;
+    }
+
+    addCommand(text){
+        var e = this.addOutput(text)
+        e.classList.add("cmd");
+        return e;
     }
 
     addError(text){
-        var s = document.createElement("span");
-        s.innerText = text;
-        s.classList.add("error");
-        this.console.appendChild(s);
+        var e = this.addOutput(text)
+        e.classList.add("error");
+        return e;
+    }
+
+    addInfo(text){
+        var e = this.addOutput(text)
+        e.classList.add("info");
+        return e;
     }
 
 }

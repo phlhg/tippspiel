@@ -8,6 +8,8 @@ body, html { overflow-x: hidden;}
 .console > .inner > span { align-self: flex-end; position: relative; display: block; width: 100%; line-height: 25px; font-size: 14px; padding-left: 15px; }
 .console > .inner > span:before { color: #fff; content: '>'; position: absolute; left: 0; top: 0; }
 .console > .inner > span.cmd { font-weight: bold; }
-.console > .inner > span.cmd::before { content: '$';}
-.console > .inner > span.error { color: #c00; }
+.console > .inner > span.cmd::before { content: '$'; }
+.console > .inner > span.error { color: #a83636; }
+.console > .inner > span.info { color: #66adff; }
+.console > .inner > span a { color: inherit; }
 .console > input { position: absolute; display: block; bottom: 0; left: 0; width: 100%; height: 40px; color: #fff; background: #080808; font-size: 14px;  padding: 10px 20px 10px 35px; line-height: 20px; outline: none; border: 0; }
