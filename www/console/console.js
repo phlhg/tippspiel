@@ -72,7 +72,7 @@ class Controller {
         }
 
         this.view.addInfo("Erfolgreich angemeldet")
-        this.view.addOutput("Für Befehle siehe: https://github.com/phlhg/tippspiel/blob/develop/doc/api.md#console")
+        this.view.addOutput("Für Befehle siehe: https://github.com/phlhg/tippspiel/blob/develop/doc/console.md")
         this.view.addOutput("Die Konsole unterstützt Command-History (KeyUp & KeyDown) & TypeSuggestions (Tab)")
 
         return true;
