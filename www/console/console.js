@@ -42,8 +42,8 @@ class Controller {
     }
 
     async login(token){
-        var msg = await this.socket.exec("signin",{ token: token, retry: false });
-        if(msg.state != 0){ 
+        var r = await this.socket.exec("signin",{ token: token, retry: false });
+        if(r.state != 0){ 
             if(r.error != 0){
                 this.view.addError(__LANG.de.errors[r.error] ? __LANG.de.errors[r.error] : __LANG.de.errors[0]);
             } else {
