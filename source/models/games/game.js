@@ -19,6 +19,7 @@ export default class Game extends Element {
 
         this.team1 = {}
         this.team1.id = -1;
+        this.team1.name = "T1"
         this.team1.short = "[T1S]"
         this.team1.score = 0;
         this.team1.penalty = 0;
@@ -26,6 +27,7 @@ export default class Game extends Element {
 
         this.team2 = {}
         this.team2.id = -1;
+        this.team2.name = "T2"
         this.team2.short = "[T2S]";
         this.team2.score = 0;
         this.team2.penalty = 0;
@@ -48,12 +50,14 @@ export default class Game extends Element {
         this.location = data.location ?? this.location;
 
         this.team1.id = data.team1 ?? this.team1.id;
+        this.team1.name = data.short1 ? Lang.get("teams/"+data.short1.toLowerCase()) : this.team1.name;
         this.team1.short = data.short1 ?? this.team1.short;
         this.team1.score = data.score1 ?? this.team1.score;
         this.team1.penalty = data.penaltyScore1 ?? this.team1.penalty;
         this.team1.scorers = data.scorers ?? this.team1.scorers;
 
         this.team2.id = data.team2 ?? this.team2.id;
+        this.team2.name = data.short2 ? Lang.get("teams/"+data.short2.toLowerCase()) : this.team2.name;
         this.team2.short = data.short2 ?? this.team2.short;
         this.team2.score = data.score2 ?? this.team2.score;
         this.team2.penalty = data.penaltyScore2 ?? this.team2.penalty;
