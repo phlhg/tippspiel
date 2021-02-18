@@ -7,8 +7,8 @@ export default class GameList extends View {
         super(...args)
     }
 
-    addGame(data){
-        let g = new GameTile(data);
+    addGame(id,data){
+        let g = new GameTile(id,data);
         this.root.appendChild(g.getHtml())
     }
 

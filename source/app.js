@@ -1,6 +1,6 @@
 import Router from './routing/router'
-import GameManager from './models/games/manager'
-import UserManager from './models/users/manager';
+import GamesModel from './models/games/model'
+import UsersModel from './models/users/model';
 import Client from './client';
 import Debugger from './debugger';
 
@@ -15,15 +15,15 @@ export default class Application {
         this.router = new Router();
 
         this.models = {}
-        this.models.games = new GameManager();
-        this.models.users = new UserManager();
+        this.models.games = new GamesModel();
+        this.models.users = new UsersModel();
 
         this.setGlobalEvents()
     }
 
     async run(){
 
-       this.socket.open().then(() => {
+        this.socket.open().then(() => {
             this.client.restoreSession();
         }).catch((e) => {
             Debugger.warn(this, "Could not connect to server:",e)();

@@ -1,11 +1,11 @@
-import Manager from '../manager'
+import Manager from '../model'
 import User from './user.js'
 
-/** Class managing local games */
-export default class UserManager extends Manager {
+/** Users Model */
+export default class Users extends Manager {
 
     constructor(){
-        super()
+        super(User)
 
         /** @todo Added example user for development - Remove in production */
         this.list[1] = new User({

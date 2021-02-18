@@ -1,11 +1,8 @@
 import { GamePhase, GameStatus } from "./enums";
-import Model from "../model";
+import Element from "../element";
 
-/**
- * Class representing a Game
- * @extends Model
- */
-export default class Game extends Model {
+/** Class representing a Game */
+export default class Game extends Element {
 
     /**
      * Create a game
@@ -44,7 +41,7 @@ export default class Game extends Model {
     set(data){
         this.start = data.start ? new Date(data.start) : this.start;
         this.status = data.status ?? this.status;
-        this.progress = data.progress ?? this.progress;
+        this.phase = data.phase ?? this.phase;
         this.location = data.location ?? this.location;
         this.tippsCount = data.tippsCount ?? this.tippsCount;
 

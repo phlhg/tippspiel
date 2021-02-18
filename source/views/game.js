@@ -19,8 +19,8 @@ export default class Game extends View {
                 <span class="penalty">Penaltyschiessen<span>4:6</span></span>
             </div>
             <div class="meta"><span class="time">01.01. 20:00</span> | <span class="location">Letzigrund Zürich</span></div>
-            <img class="flag1" src="/img/flag/sui.png"/>   
-            <img class="flag2" src="/img/flag/esp.png"/>  
+            <img class="flag1" src="/img/flag/sui.png"/>
+            <img class="flag2" src="/img/flag/esp.png"/>
         </div>`
 
         this.team1 = {}
@@ -48,7 +48,6 @@ export default class Game extends View {
         this.game = game;
         window.removeEventListener("datachange",this._func)
         this._func = function(e){
-            console.log("LOL");
             if(e.detail.type == "game" && e.detail.id == this.game.id)
                 this.update()
         }.bind(this)
@@ -70,7 +69,7 @@ export default class Game extends View {
 
         if(this.game.phase == GamePhase.PENALTY){
             this.score.penalty.classList.add("active");
-            this.score.penalty.innerText = this.game.team1.points + ":" + this.game.team2.points;
+            this.score.penalty.querySelector("span").innerText = this.game.team1.pointsPenalty + ":" + this.game.team2.pointsPenalty;
         } else {
             this.score.penalty.classList.remove("active");
         }

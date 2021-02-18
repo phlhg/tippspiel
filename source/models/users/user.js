@@ -1,10 +1,7 @@
-import Model from '../model'
+import Element from '../element'
 
-/** 
- * Class representing a user
- * @extends Models
- * */
-export default class User extends Model {
+/** Class representing a user */
+export default class User extends Element {
 
     /**
      * Create a user

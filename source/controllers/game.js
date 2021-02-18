@@ -12,9 +12,11 @@ export default class Game extends Controller {
     }
 
     load(){
-        let game = App.models.games.get(this.params.id);
-        if(game == null) return App.router.forward("/");
-        this.view.setGame(game);
+        App.models.games.get(this.params.id).then(data => {
+            this.view.setGame(data);
+        }).catch(() => {
+            if(game == null) return App.router.forward("/");
+        });
     }
 
     unload(){

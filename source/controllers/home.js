@@ -12,9 +12,9 @@ export default class Home extends Controller {
     }
 
     load(){
-        App.models.games.getAll([1,2,3]).forEach(game => {
-            this.view.addGame(game)
-        });
+        for(var [id, game] of Object.entries(App.models.games.getAll([1,2,3,4,5,6,7,8,9,10]))){
+            this.view.addGame(id,game)
+        };
     }
 
     unload(){

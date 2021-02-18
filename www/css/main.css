@@ -2,9 +2,11 @@
 html, body { color: #fff; background: #00315e; background: linear-gradient(45deg,#061c36, #00315e); font-family: 'Montserrat', sans-serif; padding: 0; margin: 0; width: 100%; height: 100%; }
 body, html { overflow-x: hidden;}
 
-a { color: inherit; }
+a { color: inherit; cursor: pointer; }
 
 /* Transitions */
+.tflag,
+.game-tile,
 section form input,
 section form span.info, section form span.error,
 .tipp-section-wrapper > section,
@@ -84,7 +86,9 @@ section.tipp-login-page > .inner > h3 { font-size: 40px; margin-bottom: 5px; }
 section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 
 /* Game Tile */
-.game-tile { position: relative; display: block; padding: 15px 15px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; text-decoration: none; }
+.game-tile { position: relative; display: block; padding: 15px 15px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; }
+.game-tile.loading { color: transparent; }
+.game-tile.loading .tflag { opacity: 0; }
 .game-tile .live-view { position: relative; display: block; background: #000; width: calc(100% + 30px); margin: 10px 0 -15px -15px; padding-bottom: 0; border-radius: 4px; overflow: hidden; }
 .game-tile .live-view > iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 .game-tile.live .live-view { padding-bottom: calc(100% * (9 / 16)); }
@@ -111,11 +115,11 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .tipp-game-header > .flag2 { top: 50%; left: calc(50% - var(--blur)); }
 .tipp-game-header > .score { z-index: +2; position: relative; display: block; }
 .tipp-game-header > .score > span { position: relative; display: block; text-align: center; }
-.tipp-game-header > .score > span.normal { font-size: 80px; line-height: 80px; letter-spacing: 10px; font-weight: bold; margin: 20px 0; }
-.tipp-game-header > .score > span.penalty { font-size: 12px; margin-top: 10px; display: none; }
+.tipp-game-header > .score > span.normal { font-size: 80px; line-height: 80px; letter-spacing: 10px; font-weight: bold; margin: 20px 0 10px 0; }
+.tipp-game-header > .score > span.penalty { font-size: 12px; margin-bottom: 20px; display: none; font-style: italic; }
 .tipp-game-header > .score > span.penalty.active { display: block; }
-.tipp-game-header > .score > span.penalty span { font-size: 30px; line-height: 30px; display: block; text-align: center; font-weight: bold; margin-top: 8px; }
-.tipp-game-header > .meta { z-index: +2; position: relative; display: block; text-align: center; font-size: 12px; line-height: 12px; margin-top: 10px; }
+.tipp-game-header > .score > span.penalty span { font-size: 30px; line-height: 30px; letter-spacing: 10px; display: block; text-align: center; font-weight: bold; margin-top: 8px; font-style: normal; }
+.tipp-game-header > .meta { z-index: +2; position: relative; display: block; text-align: center; font-size: 12px; line-height: 12px; margin-top: 20px; }
 .tipp-game-header:after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
     background: radial-gradient(ellipse at center top, 
     rgba(0, 32, 71, 1.00) 0%,
@@ -128,32 +132,32 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 }
 
 /* Tipp Inline Flag */
-.tflag { position: relative; display: inline-block; margin-top: 1px; width: 1em; height: 1em; background: #222; background-image: url(/img/flag/flags.png); background-size: 6em 4em;  border-radius: 50%; vertical-align: text-top; }
+.tflag { position: relative; display: inline-block; margin-top: 1px; width: 1em; height: 1em; background: #222; background-size: cover; background-position: center; border-radius: 50%; vertical-align: text-top; }
 
-.tflag[data-t='aut'] { background-position: 6em 4em; }
-.tflag[data-t='bel'] { background-position: 5em 4em; }
-.tflag[data-t='cro'] { background-position: 4em 4em; }
-.tflag[data-t='cze'] { background-position: 3em 4em; }
-.tflag[data-t='den'] { background-position: 2em 4em; }
-.tflag[data-t='eng'] { background-position: 1em 4em; }
-.tflag[data-t='esp'] { background-position: 6em 3em; }
-.tflag[data-t='fin'] { background-position: 5em 3em; }
-.tflag[data-t='fra'] { background-position: 4em 3em; }
-.tflag[data-t='ger'] { background-position: 3em 3em; }
-.tflag[data-t='hun'] { background-position: 2em 3em; }
-.tflag[data-t='ita'] { background-position: 1em 3em; }
-.tflag[data-t='mkd'] { background-position: 6em 2em; }
-.tflag[data-t='ned'] { background-position: 5em 2em; }
-.tflag[data-t='pol'] { background-position: 4em 2em; }
-.tflag[data-t='por'] { background-position: 3em 2em; }
-.tflag[data-t='rus'] { background-position: 2em 2em; }
-.tflag[data-t='sco'] { background-position: 1em 2em; }
-.tflag[data-t='sui'] { background-position: 6em 1em; }
-.tflag[data-t='svk'] { background-position: 5em 1em; }
-.tflag[data-t='swe'] { background-position: 4em 1em; }
-.tflag[data-t='tur'] { background-position: 3em 1em; }
-.tflag[data-t='ukr'] { background-position: 2em 1em; }
-.tflag[data-t='wal'] { background-position: 1em 1em; }
+.tflag[data-t='aut'] { background-image: url(/img/flag/aut.png); }
+.tflag[data-t='bel'] { background-image: url(/img/flag/bel.png); }
+.tflag[data-t='cro'] { background-image: url(/img/flag/cro.png); }
+.tflag[data-t='cze'] { background-image: url(/img/flag/cze.png); }
+.tflag[data-t='den'] { background-image: url(/img/flag/den.png); }
+.tflag[data-t='eng'] { background-image: url(/img/flag/eng.png); }
+.tflag[data-t='esp'] { background-image: url(/img/flag/esp.png); }
+.tflag[data-t='fin'] { background-image: url(/img/flag/fin.png); }
+.tflag[data-t='fra'] { background-image: url(/img/flag/fra.png); }
+.tflag[data-t='ger'] { background-image: url(/img/flag/ger.png); }
+.tflag[data-t='hun'] { background-image: url(/img/flag/hun.png); }
+.tflag[data-t='ita'] { background-image: url(/img/flag/ita.png); }
+.tflag[data-t='mkd'] { background-image: url(/img/flag/mkd.png); }
+.tflag[data-t='ned'] { background-image: url(/img/flag/ned.png); }
+.tflag[data-t='pol'] { background-image: url(/img/flag/pol.png); }
+.tflag[data-t='por'] { background-image: url(/img/flag/por.png); }
+.tflag[data-t='rus'] { background-image: url(/img/flag/rus.png); }
+.tflag[data-t='sco'] { background-image: url(/img/flag/sco.png); }
+.tflag[data-t='sui'] { background-image: url(/img/flag/sui.png); }
+.tflag[data-t='svk'] { background-image: url(/img/flag/svk.png); }
+.tflag[data-t='swe'] { background-image: url(/img/flag/swe.png); }
+.tflag[data-t='tur'] { background-image: url(/img/flag/tur.png); }
+.tflag[data-t='ukr'] { background-image: url(/img/flag/ukr.png); }
+.tflag[data-t='wal'] { background-image: url(/img/flag/wal.png); }
 
 @keyframes star {
     0% { transform: rotateY(0deg); }
