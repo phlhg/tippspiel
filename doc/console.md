@@ -28,7 +28,15 @@ access list {list}
 ```
 **Print** Gibt eine Tabelle als .csv auf dem Server aus.
 ```
-print {object}
+print {table}
+```
+
+**cache** zugriff auf den Synchronisations-cache
+```
+cache stats                // zugriffsstatistik
+cache newstats             // statistik zurücksetzen
+cache find {table} {index} // einträge suchen
+cache clear                // cache leeren
 ```
 
 ## Objekte
