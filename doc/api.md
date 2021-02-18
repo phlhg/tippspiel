@@ -151,14 +151,14 @@ Liste von Nutzern
 socket.exec("get_data", { table: String, ids: [Int, Int, ...]})
 ```
 `table`: Die Art von Objekten die Angefordert werden.
-* users
-* groups
-* players
-* teams
-* events
-* games
-* etipps
-* gtipps
+* User
+* Group
+* Player
+* Team
+* Event
+* Game
+* EventTipp
+* GameTipp
 
 `ids`: Diese Objekte werden angefordert
 
