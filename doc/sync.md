@@ -20,7 +20,7 @@ User {
 Group {
     id: int,
     name: String(100),
-    members: [ User, ... ]
+    users: [ User, ... ]
 }
 ```
 
@@ -81,15 +81,18 @@ EventTipp {
 Game {
     id: int,
     start: Date,
-    location: Location,
+    location: String,
     stream: String(255),
     event: Event
     status: ENUM,
     phase: ENUM,
-    teams: [ Team, Team ]
-    scores: [ int, int ]
-    scoresPenalty: [ int, int ]
-    scorer: [ Player, ... ],
+    team1: Team,
+    team2: Team
+    score1: int,
+    score2: int,
+    scorePenalty1: int,
+    scorePenalty2: int,
+    scorers: [ Player, ... ],
 }
 ```
 
@@ -100,7 +103,8 @@ GameTipp {
     id: int,
     game: Game,
     user: User,
-    bet: [ int, int ],
+    bet1: int,
+    bet2: int,
     betWinner: Team,
     betPlayer: Player,
     reward: int,
