@@ -214,7 +214,7 @@ class View {
     }
 
     tab(){
-        var m = this.suggestion(this.commands,this.input.value.split(" ")).slice(0,-1)
+        var m = this.suggestion(this.commands,this.input.value.split(" "))
         if(m != ""){ this.input.value = m; }
     }
 
