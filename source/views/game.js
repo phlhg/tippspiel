@@ -56,8 +56,8 @@ export default class Game extends View {
     }
 
     update(){
-        this.team1.name.innerText = this.game.team1.short;
-        this.team2.name.innerText = this.game.team2.short;
+        this.team1.name.innerText = this.game.team1.name;
+        this.team2.name.innerText = this.game.team2.name;
 
         this.team1.flag.setAttribute("data-t",this.game.team1.short.toLowerCase())
         this.team2.flag.setAttribute("data-t",this.game.team2.short.toLowerCase())
