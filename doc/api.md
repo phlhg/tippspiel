@@ -111,14 +111,7 @@ Liste von Vorschlägen
 socket.exec("console",{cmd: String});
 ```
 
-`cmd` Auszuführender Befehl
-Unterstützt:
-* access get
-* access set
-* access emplace
-* access erase
-* access list
-* print [Tablename | `all`]
+`cmd` Auszuführender Befehl: [Siehe Befehle](./console.md)
 
 ```js
 {state, error, data:{text: String} }
