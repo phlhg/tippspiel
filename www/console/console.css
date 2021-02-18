@@ -6,10 +6,11 @@ body, html { overflow-x: hidden;}
 .console { font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace; }
 .console > .inner { position: relative; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; }
 .console > .inner > span { align-self: flex-end; position: relative; display: block; width: 100%; line-height: 25px; font-size: 14px; padding-left: 15px; }
-.console > .inner > span:before { color: #fff; content: '>'; position: absolute; left: 0; top: 0; }
-.console > .inner > span.cmd { font-weight: bold; }
+.console > .inner > span:before { color: #FDFFFC; content: '>'; position: absolute; left: 0; top: 0; }
+.console > .inner > span.cmd { font-weight: bold; color: #fff; }
 .console > .inner > span.cmd::before { content: '$'; }
-.console > .inner > span.error { color: #a83636; }
-.console > .inner > span.info { color: #66adff; }
+.console > .inner > span.error { color: #ce0000; }
+.console > .inner > span.info { color: #268FFD; }
 .console > .inner > span a { color: inherit; }
-.console > input { position: absolute; display: block; bottom: 0; left: 0; width: 100%; height: 40px; color: #fff; background: #080808; font-size: 14px;  padding: 10px 20px 10px 35px; line-height: 20px; outline: none; border: 0; }
+.console > form { position: absolute; display: block; bottom: 0; left: 0; width: 100%; height: 40px; }
+.console > form > input { position: relative; display: block; top: 0; left: 0; width: 100%; height: 100%; color: #fff; background: #080808; font-size: 14px;  padding: 10px 20px 10px 35px; line-height: 20px; outline: none; border: 0; }

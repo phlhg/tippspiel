@@ -1,7 +1,33 @@
-document.addEventListener("DOMContentLoaded",() => {
-    
-    window.controller = new Controller();
+touchstart = [0,0]
 
+window.ontouchstart = e => {
+    touchstart = [e.touches[0].pageX, e.touches[0].pageY]
+}
+
+window.ontouchend = e => {
+    var dx = e.changedTouches[0].pageX - touchstart[0];
+    var dy = e.changedTouches[0].pageY - touchstart[1];
+    if(Math.pow(Math.pow(dx,2) + Math.pow(dy,2),0.5) > 100){
+        if(Math.abs(dx) > Math.abs(dy)){
+            //Left Right
+            if(dx > 0){
+                window.dispatchEvent(new Event("swipeRight"))
+            } else {
+                window.dispatchEvent(new Event("swipeLeft"))
+            }
+        } else {
+            //Up Down
+            if(dy > 0){
+                window.dispatchEvent(new Event("swipeDown"))
+            } else {
+                window.dispatchEvent(new Event("swipeUp"))
+            }
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded",() => {
+    window.controller = new Controller();
 });
 
 class Controller {
@@ -20,7 +46,7 @@ class Controller {
 
         this.socket.onDisconnect = () => {
             this.view.addError("Verbindug mit Server unterbrochen")
-            this.socket.open();
+            setTimeout(this.socket.open,5000);
         }
 
         this.view.addCommand("connect")
@@ -89,6 +115,7 @@ class View {
 
         this.root = document.querySelector(".console");
         this.console = this.root.querySelector(".inner")
+        this.form = this.root.querySelector("form")
         this.input = this.root.querySelector("input")
 
         this.history = [];
@@ -121,41 +148,79 @@ class View {
 
         this.index = -1;
 
+        this.form.onsubmit = e => {
+            e.preventDefault()
+            this.submit();
+        }
+
         this.input.addEventListener("keydown",e => {
-            if(e.code == 'Enter' && this.input.value.replace(/ /gi,"") != ""){
+            if(e.code == 'Enter'){
                 e.preventDefault()
-                this.history = this.history.slice(Math.max(this.index,0));
-                this.history.unshift(this.input.value);
-                this.index = -1;
-                this.events.submit({value: this.input.value})
-                this.input.value = "";
+                this.submit()
             } else if(e.code == 'ArrowUp') {
                 e.preventDefault()
-                if(this.index + 1 < this.history.length){
-                    this.index++;
-                    this.input.value = this.history[this.index];
-                }
+                this.historyUp()
             } else if(e.code == 'ArrowDown') {
                 e.preventDefault()
-                if(this.index > 0){
-                    this.index--;
-                    this.input.value = this.history[this.index];
-                } else if(this.index == 0){
-                    this.index--;
-                    this.input.value = "";
-                }
+                this.historyDown()
             } else if(e.code == 'Tab'){
                 e.preventDefault()
-                var m = this.suggestion(this.commands,this.input.value.split(" "))
-                if(m != ""){ this.input.value = m; }
+                this.tab();
             }
         });
 
+        window.addEventListener("swipeUp",e => {
+            this.historyUp()
+        })
+
+        window.addEventListener("swipeDown",e => {
+            this.historyDown()
+        })
+
+        window.addEventListener("swipeRight",e => {
+            this.tab()
+        })
+        
+
+    }
+
+
+
+    submit(){
+        if(this.input.value.replace(/ /gi,"") != ""){
+            this.history = this.history.slice(Math.max(this.index,0));
+            this.history.unshift(this.input.value);
+            this.index = -1;
+            this.events.submit({value: this.input.value})
+            this.input.value = "";
+        }
+    }
+
+    historyUp(){
+        if(this.index + 1 < this.history.length){
+            this.index++;
+            this.input.value = this.history[this.index];
+        }
+    }
+
+    historyDown(){
+        if(this.index > 0){
+            this.index--;
+            this.input.value = this.history[this.index];
+        } else if(this.index == 0){
+            this.index--;
+            this.input.value = "";
+        }
+    }
+
+    tab(){
+        var m = this.suggestion(this.commands,this.input.value.split(" ")).slice(0,-1)
+        if(m != ""){ this.input.value = m; }
     }
 
     suggestion(options, split){
         if(Object.keys(options).length < 1 || split.length < 1 ){ return ""; }
-        var p = Object.keys(options).filter(k => k.indexOf(split[0]) == 0);
+        var p = Object.keys(options).filter(k => k.toLowerCase().indexOf(split[0].toLowerCase()) == 0);
         if(p.length == 1){
             split.shift();
             return p + " " + this.suggestion(options[p],split)
@@ -176,6 +241,7 @@ class View {
         p.appendChild(t);
         var r = p.innerHTML;
         r = r.replace(/("[^"]+")/,'<i>$1</i>')
+        r = r.replace("\n","<br/>")
         r = r.replace(/((?:https?:\/\/)(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))/ig,'<a target="_blank" href="$1">$1</a>')
         return r;
     }
