@@ -8,6 +8,11 @@ export default class Model {
 
         /** @property {object} list - List of locally available elements*/
         this.list = {};
+        
+        /** @property {object} promises Currently open promises for each element */
+        this.promises = {};
+
+        /** @property {object} element Name of the elements stored in the model */
         this.element = element.name;
 
     }
@@ -20,7 +25,6 @@ export default class Model {
      * */
     async load(ids){
         Debugger.error(this, `Abstract function Manager.load([${ids.slice(0,5).join(",")}]) was called`)()
-        return true;
     }
 
     /**
@@ -29,21 +33,41 @@ export default class Model {
      * @return {number[]} List of missing ids
      */
     missing(ids){
-        return ids.filter(id => !this.list.hasOwnProperty(id))
+        return ids.filter(id => (!this.list.hasOwnProperty(id) && !this.promises.hasOwnProperty(id)))
     }
 
     /**
      * Gets a list of elements by ids
      * @param {number[]} ids List of ids
-     * @return {Game[]} List of Games matching the ids - If an Id was not found the position is null.
+     * @return {Promise[]} List of Promises for the games - Resolve if the element was found, otherwise reject
      */
     getAll(ids){
         var promise = this.load(ids)
-        return Object.fromEntries(ids.map(id => {
-            if(this.list.hasOwnProperty(id)){
-                return [id, new Promise(resolve => { resolve(this.list[id]) })]
+        return ids.map(id => {
+            if(this.list.hasOwnProperty(id)){ // Entry exists
+                return new Promise(resolve => { resolve(this.list[id]) })
             } else {
-                return [id, this.makePromise(id,promise)]
+                if(!this.promises.hasOwnProperty(id)) // No Request was made yet
+                    this.promises[id] = this.makePromise(id,promise)
+                return this.promises[id];
+            }
+        });
+    }
+
+    /**
+     * Gets a object of elements by ids
+     * @param {number[]} ids List of ids
+     * @return {Promise{}} Object of Promises for the games, corresponding the id - Resolve if the element was found, otherwise reject
+     */
+    getObject(ids){
+        var promise = this.load(ids)
+        return Object.fromEntries(ids.map(id => {
+            if(this.list.hasOwnProperty(id)){ // Entry exists
+                return [id,new Promise(resolve => { resolve(this.list[id]) })]
+            } else {
+                if(!this.promises.hasOwnProperty(id)) // No Request was made yet
+                    this.promises[id] = this.makePromise(id,promise)
+                return [id,this.promises[id]];
             }
         }));
     }
@@ -51,20 +75,26 @@ export default class Model {
     /** 
      * Gets an element by id 
      * @param {number} id Id of the element
-     * @return {Game} The game matching the id - Null if the id was not found.
+     * @return {Promise} A promise for the game - Resolves if element was found, otherwise rejects
      * */
     get(id){
         var promise = this.load([id])
-        if(this.list.hasOwnProperty(id)){
+        if(this.list.hasOwnProperty(id)){ // Entry exists
             return new Promise(resolve => { resolve(this.list[id]) })
         } else {
-            return this.makePromise(id,promise);
+            if(this.promises.hasOwnProperty(id)){ // Already requested
+                return this.promises[id];
+            } else {
+                this.promises[id] = this.makePromise(id,promise)
+                return this.promises[id];
+            }
         }
     }
 
     makePromise(id,promise){
         return new Promise((resolve, reject) => {
             promise.then(() => {
+                delete this.promises[id];
                 if(this.list.hasOwnProperty(id) && this.list[id] != null){
                     resolve(this.list[id]);
                 } else { 

@@ -56,8 +56,8 @@ export default class Game extends View {
     }
 
     update(){
-        this.team1.name.innerText = this.game.team1.name;
-        this.team2.name.innerText = this.game.team2.name;
+        this.team1.name.innerText = this.game.team1.short;
+        this.team2.name.innerText = this.game.team2.short;
 
         this.team1.flag.setAttribute("data-t",this.game.team1.short.toLowerCase())
         this.team2.flag.setAttribute("data-t",this.game.team2.short.toLowerCase())
@@ -65,11 +65,11 @@ export default class Game extends View {
         this.team1.bg.src = '/img/flag/' + this.game.team1.short.toLowerCase() + '.png';
         this.team2.bg.src = '/img/flag/' + this.game.team2.short.toLowerCase() + '.png';
 
-        this.score.normal.innerText = this.game.team1.points + ":" + this.game.team2.points;
+        this.score.normal.innerText = this.game.team1.score + ":" + this.game.team2.score;
 
         if(this.game.phase == GamePhase.PENALTY){
             this.score.penalty.classList.add("active");
-            this.score.penalty.querySelector("span").innerText = this.game.team1.pointsPenalty + ":" + this.game.team2.pointsPenalty;
+            this.score.penalty.querySelector("span").innerText = this.game.team1.penalty + ":" + this.game.team2.penalty;
         } else {
             this.score.penalty.classList.remove("active");
         }

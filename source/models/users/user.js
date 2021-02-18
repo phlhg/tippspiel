@@ -8,7 +8,7 @@ export default class User extends Element {
      * @param {object} data - Properties of the user
      */
     constructor(data){
-        super("user",data.id)
+        super(data.id)
 
         /** @property {string} name - Name of the user */
         this.name = ""

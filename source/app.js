@@ -1,6 +1,7 @@
 import Router from './routing/router'
 import GamesModel from './models/games/model'
 import UsersModel from './models/users/model';
+import TeamsModel from './models/teams/model';
 import Client from './client';
 import Debugger from './debugger';
 
@@ -15,6 +16,7 @@ export default class Application {
         this.router = new Router();
 
         this.models = {}
+        this.models.teams = new TeamsModel();
         this.models.games = new GamesModel();
         this.models.users = new UsersModel();
 

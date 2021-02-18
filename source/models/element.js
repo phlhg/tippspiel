@@ -6,10 +6,7 @@ export default class Element {
      * @param {string} type - Type of the element
      * @param {int} id - Id of the element
      */
-    constructor(type, id){
-        /** @property {string} type - Type of the element */
-        this.type = type;
-        /** @property {int} id - Id of the element */
+    constructor(id){
         this.id = id;
     }
 
@@ -26,7 +23,7 @@ export default class Element {
     update(data){
         this.set(data);
         window.dispatchEvent(new CustomEvent("datachange",{
-            detail: { type: this.type, id: this.id }
+            detail: { type: this.constructor.name.toLowerCase(), id: this.id }
         }))
     }
 
