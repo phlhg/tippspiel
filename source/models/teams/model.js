@@ -11,7 +11,7 @@ export default class Teams extends Manager {
     async load(ids){
         ids = this.missing(ids);
         if(ids.length > 0 && App.socket.state == SocketState.OPEN){
-            var r = await App.socket.exec("get_data", { table: "teams", ids: ids })
+            var r = await App.socket.exec("get_data", { table: "Team", ids: ids })
             if(r.state != ResponseState.SUCCESS){
                 if(r.error != 0){
                     Debugger.warn(this,Lang.getError(r.error,r.data))()
