@@ -4,10 +4,6 @@ import Element from "../element";
 /** Class representing a Game */
 export default class Game extends Element {
 
-    /**
-     * Create a game
-     * @param {object} data - Properties of the game
-     */
     constructor(data){
         super(data.id);
 
@@ -40,7 +36,7 @@ export default class Game extends Element {
 
     /**
      * Set properties of the game
-     * @param {object} data - Properties of the game to update
+     * @param {object} data - Properties of to update
      */
     set(data){
         this.event = data.event ?? this.event;
@@ -71,7 +67,15 @@ export default class Game extends Element {
      * @return {Promise[]} Returns an array with a promise for both teams
      */
     getTeams(){
-        return App.models.teams.getAll([this.team1.id,this.team2.id])
+        return App.model.teams.getAll([this.team1.id,this.team2.id])
+    }
+
+    /**
+     * Gets all tipps made for the game
+     * @return {Promise[]} Returns an promise for each tipp
+     */
+    getTipps(){
+        return App.model.gameTipps.getAll(this.tipps)
     }
 
 }

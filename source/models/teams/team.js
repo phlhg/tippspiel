@@ -3,10 +3,6 @@ import Element from '../element'
 /** Class representing a team */
 export default class Team extends Element {
 
-    /**
-     * Create a team
-     * @param {object} data - Properties of the team
-     */
     constructor(data){
         super(data.id)
 
@@ -23,13 +19,13 @@ export default class Team extends Element {
     }
 
     /**
-     * Sets properties of the user
-     * @param {object} data - Properties of the user to update
+     * Sets properties of the Team
+     * @param {object} data - Properties of to update
      */
     set(data){
         this.name = data.short ?? this.short
-        this.games = Array.from(data.games ?? this.games)
-        this.players = Array.from(data.players ?? this.players)
+        this.games = Array.from(data.games ?? this.games).map(i => parseInt(i))
+        this.players = Array.from(data.players ?? this.players).map(i => parseInt(i))
     }
 
 }

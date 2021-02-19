@@ -12,7 +12,7 @@ export default class Home extends Controller {
     }
 
     load(){
-        for(var [id, game] of Object.entries(App.models.games.getObject([1,2,3]))){
+        for(var [id, game] of Object.entries(App.model.games.getObject([1,2,3]))){
             this.view.addGame(id,game)
         }
     }
