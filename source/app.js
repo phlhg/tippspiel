@@ -41,6 +41,8 @@ export default class Application {
     /** Adds global event listeners */
     setGlobalEvents(){
 
+        document.querySelector("header .heading strong").innerText = Lang.get("name");
+
         this.setEvents(document.body);
 
         window.addEventListener("popstate", e => {

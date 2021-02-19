@@ -9,16 +9,16 @@ export default class SignUp extends View {
     init(){
         this.root.classList.add("tipp-login-page");
         this.root.innerHTML = `<div class="inner">
-            <h3>Registrieren</h3>
-            <p>Gib deinen Namen und deine E-Mail ein und erhalte von uns einen Zugangscode.</p>
+            <h3>${Lang.get("section/signUp/title")}</h3>
+            <p>${Lang.get("section/signUp/desc")}</p>
             <form>
-                <input name="name" type="name" required="" placeholder="Name: z.B. Max Mustermann" />
-                <input name="email" type="email" required="" placeholder="E-Mail: z.B. max.mustermann@beispiel.ch" />
+                <input name="name" type="name" required="" placeholder="${Lang.get("section/signUp/placeholder/name")}" />
+                <input name="email" type="email" required="" placeholder="${Lang.get("section/signUp/placeholder/email")}" />
                 <span class="info"></span>
                 <span class="error"></span>
-                <input type="submit" value="Registrieren"/>
+                <input type="submit" value="${Lang.get("section/signUp/action")}"/>
             </form>
-            <span class="meta">Falls du schon einen Account hast, <a href="/signin/">melde dich an</a></span>
+            <span class="meta">${Lang.get("section/signUp/signInInstead",{ a: `<a href="/signin/">${Lang.get("section/signUp/signInLink")}</a>` })}</span>
         </div>`;
         this.form = this.root.querySelector("form");
         this.dominfo = this.root.querySelector(".info");
