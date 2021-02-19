@@ -55,6 +55,27 @@ __LANG = {
                 "title": "Hoppla...",
                 "desc": "Da het leider epis ned richtig funktioniert",
                 "btn": "Zrugg zu Start"
+            },
+            signUp: {
+                title: "Registriere",
+                desc: "Bitte gib din Name und dini E-Mail ih - Mer sendet dir denn en Zugangscode",
+                placeholder : {
+                    name: "Name: z.B. Max Mustermann",
+                    email: "E-Mail: z.B. max.mustermann@beispiel.ch"
+                },
+                action: "Registriere",
+                signInInstead: "Falls du scho en Account hesch, {a}",
+                signInLink: "meld dich ah"
+            },
+            signIn: {
+                title: "Ahmelde",
+                desc: "Gib din Zugangscode oder de Link <i>us de E-Mail</i>, wo mer dir gschickt hend, ih.",
+                placeholder : {
+                    code: "Zugangscode: z.B. 0-1a2b3c4d5e",
+                },
+                action: "Ahmelde",
+                signUpInstead: "Falls du no kein Account hesch, {a}",
+                signUpLink: "registrier dich"
             }
         }
     },
