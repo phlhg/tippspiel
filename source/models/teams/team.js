@@ -13,9 +13,6 @@ export default class Team extends Element {
         /** @property {string} name - Name of the team */
         this.name = ""
 
-        /** @property {string} points - Short-name of the team */
-        this.short = ""
-
         /** @property {int[]} games - List of ids of games, the team takes part */
         this.games = []
 
@@ -30,10 +27,9 @@ export default class Team extends Element {
      * @param {object} data - Properties of the user to update
      */
     set(data){
-        this.name = data.name ?? this.name
-        this.short = data.short ?? this.short
-        this.games = data.games ?? this.games
-        this.players = data.players ?? this.players
+        this.name = data.short ?? this.short
+        this.games = Array.from(data.games ?? this.games)
+        this.players = Array.from(data.players ?? this.players)
     }
 
 }

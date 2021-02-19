@@ -54,16 +54,16 @@ export default class Game extends Element {
         this.team1.short = data.short1 ?? this.team1.short;
         this.team1.score = data.score1 ?? this.team1.score;
         this.team1.penalty = data.penaltyScore1 ?? this.team1.penalty;
-        this.team1.scorers = data.scorers ?? this.team1.scorers;
+        this.team1.scorers = Array.from(data.scorers ?? this.team1.scorers);
 
         this.team2.id = data.team2 ?? this.team2.id;
         this.team2.name = data.short2 ? Lang.get("teams/"+data.short2.toLowerCase()) : this.team2.name;
         this.team2.short = data.short2 ?? this.team2.short;
         this.team2.score = data.score2 ?? this.team2.score;
         this.team2.penalty = data.penaltyScore2 ?? this.team2.penalty;
-        this.team2.scorers = data.scorers ?? this.team2.scorers;
+        this.team2.scorers = Array.from(data.scorers ?? this.team2.scorers);
 
-        this.tipps = data.tipps ?? this.tipps;
+        this.tipps = Array.from(data.tipps ?? this.tipps);
     }
 
     /** 

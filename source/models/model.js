@@ -4,7 +4,7 @@ import Debugger from "../debugger";
 export default class Model {
 
     /** Creates a default manager */
-    constructor(element){
+    constructor(type){
 
         /** @property {object} list - List of locally available elements*/
         this.list = {};
@@ -12,19 +12,39 @@ export default class Model {
         /** @property {object} promises Currently open promises for each element */
         this.promises = {};
 
-        /** @property {object} element Name of the elements stored in the model */
-        this.element = element.name;
+        /** @property {object} element Type elements stored in the model */
+        this.type = type;
 
     }
 
     /** 
-     * Loads elements missing elements from server
+     * Loads missing elements from server
      * @param {number[]} ids - List of ids
-     * @abstract
      * @async
      * */
     async load(ids){
-        Debugger.error(this, `Abstract function Manager.load([${ids.slice(0,5).join(",")}]) was called`)()
+        ids = this.missing(ids);
+        if(ids.length > 0 && App.socket.state == SocketState.OPEN){
+            Debugger.log(this,`Requested data for ${this.type.name}[${ids.join(",")}]`)()
+            var r = await App.socket.exec("get_data", { table: this.type.name, ids: ids })
+            if(r.state != ResponseState.SUCCESS){
+                if(r.error != 0){
+                    Debugger.warn(this,Lang.getError(r.error,r.data))()
+                } else {
+                    Debugger.warn(this,r.data.info)()
+                }
+            } else {
+                var data = Array.from(r.data);
+                var delivered = data.filter(g => g != "" && g.hasOwnProperty("id")).map(g => parseInt(g.id));
+                var missing = ids.filter(id => !delivered.includes(id))
+                if(missing > 0){ Debugger.error(this,`Data for ${this.type.name}[${missing.join(",")}] was not delivered`)(); }
+                r.data.forEach(e => {
+                    if(e != ""){
+                        this.list[e.id] = new this.type(e)
+                    }
+                })
+            }
+        }
     }
 
     /**
@@ -98,7 +118,6 @@ export default class Model {
                 if(this.list.hasOwnProperty(id) && this.list[id] != null){
                     resolve(this.list[id]);
                 } else { 
-                    Debugger.error(this, `${this.element}(${id}) was promised, but is not available`)()
                     reject()
                 }
             });
