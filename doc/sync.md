@@ -105,8 +105,8 @@ GameTipp {
     user: User,
     bet1: int,
     bet2: int,
-    betWinner: Team,
-    betPlayer: Player,
+    winner: Team,
+    topscorer: Player,
     reward: int,
 }
 ```
