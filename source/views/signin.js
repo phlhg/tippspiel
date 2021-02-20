@@ -7,18 +7,18 @@ export default class SignIn extends View {
     }
 
     init(){
-        this._pattern = new RegExp('^(?:(?:https?:\/\/)?new.phlhg.ch\/token\/)?([0-9]{0,9};[A-Za-z0-9]{10})(?:\/)?','i');
+        this._pattern = new RegExp('^(?:(?:https?:\/\/)?new.phlhg.ch\/token\/)?([0-9]{0,9}-[A-Za-z0-9]{5,20})(?:\/)?','i');
         this.root.classList.add("tipp-login-page");
         this.root.innerHTML = `<div class="inner">
-            <h3>Anmelden</h3>
-            <p>Gib deinen Zugangscode oder den Link <i>aus der E-Mail</i>, die wir dir gesendet haben, ein.</p>
+            <h3>${Lang.get("section/signIn/title")}</h3>
+            <p>${Lang.get("section/signIn/desc")}</p>
             <form>
-                <input required="" name="token" title="Code aus 9 Zahlen oder ein Anmelde-Link" type="text" pattern="${this._pattern.source}" placeholder="Zugangscode: z.B. 0;1a2b3c4d5e" />
+                <input required="" name="token" type="text" pattern="${this._pattern.source}" placeholder="${Lang.get("section/signIn/placeholder/code")}" />
                 <span class="info"></span>
                 <span class="error"></span>
-                <input type="submit" value="Anmelden"/>
+                <input type="submit" value="${Lang.get("section/signIn/action")}"/>
             </form>
-            <span class="meta">Falls du noch keinen Account hast, <a href="/signup/">registriere dich</a></span>
+            <span class="meta">${Lang.get("section/signIn/signUpInstead", { a: `<a href="/signup/">${Lang.get("section/signIn/signUpLink")}</a>` })}</span>
         </div>`
         this.form = this.root.querySelector("form");
         this.dominfo = this.root.querySelector(".info");

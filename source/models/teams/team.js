@@ -3,18 +3,11 @@ import Element from '../element'
 /** Class representing a team */
 export default class Team extends Element {
 
-    /**
-     * Create a team
-     * @param {object} data - Properties of the team
-     */
     constructor(data){
         super(data.id)
 
         /** @property {string} name - Name of the team */
         this.name = ""
-
-        /** @property {string} points - Short-name of the team */
-        this.short = ""
 
         /** @property {int[]} games - List of ids of games, the team takes part */
         this.games = []
@@ -26,14 +19,13 @@ export default class Team extends Element {
     }
 
     /**
-     * Sets properties of the user
-     * @param {object} data - Properties of the user to update
+     * Sets properties of the Team
+     * @param {object} data - Properties of to update
      */
     set(data){
-        this.name = data.name ?? this.name
-        this.short = data.short ?? this.short
-        this.games = data.games ?? this.games
-        this.players = data.players ?? this.players
+        this.name = data.short ?? this.short
+        this.games = Array.from(data.games ?? this.games).map(i => parseInt(i))
+        this.players = Array.from(data.players ?? this.players).map(i => parseInt(i))
     }
 
 }

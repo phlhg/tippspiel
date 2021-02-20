@@ -46,7 +46,7 @@ class Controller {
 
         this.socket.onDisconnect = () => {
             this.view.addError("Verbindug mit Server unterbrochen")
-            setTimeout(this.socket.open,5000);
+            setTimeout(() => { this.socket.open().then(() => this.login(this.token)) },5000);
         }
 
         this.view.addCommand("connect")
@@ -118,7 +118,7 @@ class View {
         this.form = this.root.querySelector("form")
         this.input = this.root.querySelector("input")
 
-        this.history = [];
+        this.history = JSON.parse(localStorage.getItem("tipp-console-history") ?? "[]");
 
         var db = {
             "User": {},
@@ -143,6 +143,12 @@ class View {
             "print": {
                 "all": {},
                 ...db
+            },
+            "cache": {
+                "clear": {},
+            },
+            "guard": {
+                "watch": {}
             }
         }
 
@@ -184,12 +190,12 @@ class View {
 
     }
 
-
-
     submit(){
-        if(this.input.value.replace(/ /gi,"") != ""){
-            this.history = this.history.slice(Math.max(this.index,0));
-            this.history.unshift(this.input.value);
+        if(this.input.value.replace(/ /gi,"") != "" && controller.socket.state == 2){
+            if(this.input.value != this.history[0]){
+                this.history.unshift(this.input.value);
+                localStorage.setItem("tipp-console-history",JSON.stringify(this.history.slice(0,100)))
+            }
             this.index = -1;
             this.events.submit({value: this.input.value})
             this.input.value = "";
@@ -240,8 +246,8 @@ class View {
         var p = document.createElement("p");
         p.appendChild(t);
         var r = p.innerHTML;
-        r = r.replace(/("[^"]+")/,'<i>$1</i>')
-        r = r.replace("\n","<br/>")
+        r = r.replace(/("[^"]+")/ig,'<i>$1</i>')
+        r = r.replace(/\n/g,"<br/>")
         r = r.replace(/((?:https?:\/\/)(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))/ig,'<a target="_blank" href="$1">$1</a>')
         return r;
     }

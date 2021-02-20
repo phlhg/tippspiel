@@ -1,5 +1,6 @@
 import View from './view'
 import { GamePhase } from '../models/games/enums'
+import TippDate from '../helper/date'
 
 export default class Game extends View {
 
@@ -74,7 +75,7 @@ export default class Game extends View {
             this.score.penalty.classList.remove("active");
         }
 
-        this.meta.time.innerText = `${("0"+this.game.start.getDate()).slice(-2)}.${("0"+(this.game.start.getMonth()+1)).slice(-2)} ${("0"+this.game.start.getHours()).slice(-2)}:${("0"+this.game.start.getMinutes()).slice(-2)}`;
+        this.meta.time.innerText = TippDate.toString(this.game.start);
         this.meta.location.innerText = this.game.location;
     }
 

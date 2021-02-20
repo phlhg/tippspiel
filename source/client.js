@@ -115,7 +115,7 @@ export default class Client {
      */
     async singUp(name, email){
         if(App.socket.state != SocketState.OPEN) return { state: ResponseState.CLIENT_ERROR, error: -1, data: {} };
-        var r = await this.socket.exec("signup",{ name: name, email: email })
+        var r = await App.socket.exec("signup",{ name: name, email: email })
         if(r.state != ResponseState.SUCCESS){ return r; }
         this.isknown = true;
         localStorage.setItem("tipp-dev-iskown","true")

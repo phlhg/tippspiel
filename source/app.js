@@ -1,9 +1,15 @@
 import Router from './routing/router'
-import GamesModel from './models/games/model'
-import UsersModel from './models/users/model';
-import TeamsModel from './models/teams/model';
 import Client from './client';
 import Debugger from './debugger';
+
+import Events from './models/events/model'
+import EventTipps from './models/eventtipps/model'
+import Games from './models/games/model'
+import GameTipps from './models/gametipps/model'
+import Groups from './models/groups/model'
+import Players from './models/players/model'
+import Teams from './models/teams/model'
+import Users from './models/users/model'
 
 export default class Application {
 
@@ -15,10 +21,15 @@ export default class Application {
         this.client = new Client();
         this.router = new Router();
 
-        this.models = {}
-        this.models.teams = new TeamsModel();
-        this.models.games = new GamesModel();
-        this.models.users = new UsersModel();
+        this.model = {}
+        this.model.events = new Events()
+        this.model.eventTipps = new EventTipps()
+        this.model.games = new Games()
+        this.model.gameTipps = new GameTipps()
+        this.model.groups = new Groups()
+        this.model.players = new Players()
+        this.model.teams = new Teams()
+        this.model.users = new Users()
 
         this.setGlobalEvents()
     }
@@ -40,6 +51,8 @@ export default class Application {
 
     /** Adds global event listeners */
     setGlobalEvents(){
+
+        document.querySelector("header .heading strong").innerText = Lang.get("name");
 
         this.setEvents(document.body);
 
