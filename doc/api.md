@@ -89,6 +89,52 @@ socket.exec("me",{})
 }
 ```
 
+### MakeTipp
+
+```js
+socket.exec("makeTipp",{
+    game: id,
+    bet1: Int, // -1 = not used
+    bet2: Int, // -1 = not used
+    winner: id, // 0 = not used
+    topscorer: id // 0 = not used
+});
+```
+
+```js
+{state, error, data:{ }}
+```
+
+### reportGame
+
+```js
+socket.exec("reportGame",{
+    score1: Int,
+    score2: Int,
+    scorePenalty1: Int,
+    scorePenalty2: Int,
+    scorers: [ID, ID, ...],
+});
+```
+
+```js
+{state, error, data:{ }}
+```
+
+### Console
+
+```js
+socket.exec("console",{cmd: String});
+```
+
+`cmd` Auszuführender Befehl: [Siehe Befehle](./console.md)
+
+```js
+{state, error, data:{text: String} }
+```
+
+## Filter
+
 ### Suggestions
 
 Liefert Vorschläge für Client-Eingaben von Spielern, Teams und Austragungsorten
@@ -105,19 +151,6 @@ Liste von Vorschlägen
 { state, error, data: [ String, ... ] }
 ```
 
-### Console
-
-```js
-socket.exec("console",{cmd: String});
-```
-
-`cmd` Auszuführender Befehl: [Siehe Befehle](./console.md)
-
-```js
-{state, error, data:{text: String} }
-```
-
-## Filter
 
 ### Latest Games
 
@@ -166,5 +199,28 @@ socket.exec("get_data", { table: String, ids: [Int, Int, ...]})
 { state, error, data: { Int: User, Int: User, ...} }
 ```
 
-## Updates
+## Server-initiated Events
 
+### Updates
+
+Teilt mit, welche Einträge im client veraltet sind.
+
+```js
+// data: {User:[ID, ID, ...], Group:[ID, ID, ...], ...}
+socket.listen("Update", (data, respond) => {
+    ...
+    respond();
+});
+
+```
+
+### Ping
+
+Erhält die Verbindung am Leben
+
+```js
+socket.listen("Ping", (data,respond) => {
+    respond();
+});
+
+Der Client Antwortet mit einem leeren Objekt, um den Empfang zu bestätigen!

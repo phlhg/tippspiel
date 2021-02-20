@@ -159,6 +159,7 @@ type EventTipp
 type Game
     int start
     Location location
+    char 100 name
     char 256 stream
     Event event
     int gameStatus
@@ -166,7 +167,10 @@ type Game
     Team 2 teams
     int 2 scores
     int 2 penalty
-    Player 2 scorer
+    Player [] scorers
+    GameTipp [] tipps
+    Game previousStage
+    Game nextStage
 ```
 
 `id` Zur Identifizierung des Spiels
@@ -175,9 +179,15 @@ type Game
 
 `location` Austragungsort des Spiels
 
+`name` Name des Spiels falls die Teams noch nicht entschieden sind
+
 `stream` Link zum einer Live-Übertragung
 
 `status` Momentaner Status des Spiels
+
+`previousStage` Ein vorangehendes Spiel; Der Sieger des Vorangehenden Spiels nimmt an diesem Spiel Teil.
+
+`nextStage` Der Sieger dieses Spiels nimmt am nächsten Spiel teil.
 
 ```js
 0 Game.UPCOMING
@@ -190,8 +200,7 @@ type Game
 
 ```js
 0 Game.NORMAL
-1 Game.OVERTIME
-2 Game.PENALTY
+1 Game.PENALTY
 ```
 
 `teams` Teilnehmer des Spiels (2)

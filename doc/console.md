@@ -33,10 +33,11 @@ print {table}
 
 **cache** zugriff auf den Synchronisations-cache
 ```
-cache stats                // zugriffsstatistik
-cache newstats             // statistik zurücksetzen
-cache find {table} {index} // einträge suchen
-cache clear                // cache leeren
+cache stats                        // zugriffsstatistik
+cache newstats                     // statistik zurücksetzen
+cache find {table} {index}         // einträge suchen
+cache clear                        // cache leeren
+cache update {table} {index} [urgency: optional] // eintrag aktualisieren
 ```
 
 ## Objekte
