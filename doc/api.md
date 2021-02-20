@@ -109,6 +109,7 @@ socket.exec("makeTipp",{
 
 ```js
 socket.exec("reportGame",{
+    game: ID,
     score1: Int,
     score2: Int,
     scorePenalty1: Int,
@@ -157,11 +158,14 @@ Liste von Vorschlägen
 Neuste Spiele
 
 ```js
-socket.exec("latest_games")
+socket.exec("hotGames")
 ```
 
 ```js
-{ state, error, data: [ Game, Game, ... ] }
+{ state, error, data: {
+    upcoming: [ID, ID, ...],
+    over: [ID, ID, ...]
+} }
 ```
 
 ### Ranking
