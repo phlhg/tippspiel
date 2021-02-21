@@ -10,6 +10,7 @@ __LANG = {
             2: "Die E-Mail wird scho gnutzt",
             3: "De Name wird scho gnutzt",
             4: "De Zuegangscode isch unbekannt",
+            5: "De Name chasch nöd bringe"
         },
         teams: {
             "aut": "Österich",
@@ -111,6 +112,7 @@ __LANG = {
             2: "Diese E-Mail wird bereits verwendet",
             3: "Dieser Name wird bereits verwendet",
             4: "Dieser Zugangscode ist unbekannt",
+            5: "Dieser Name ist ungültig"
         },
         teams: {
             "aut": "Österreich",
@@ -211,6 +213,7 @@ __LANG = {
             2: "This E-Mail is already in use",
             3: "This name is already in use",
             4: "This accesscode is unkown",
+            5: "This name is invalid"
         },
         teams: {
             "aut": "Austria",
