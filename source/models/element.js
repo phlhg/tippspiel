@@ -7,7 +7,7 @@ export default class Element {
      * @param {int} id - Id of the element
      */
     constructor(id){
-        this.id = id;
+        this.id = parseInt(id);
     }
 
     /**
