@@ -24,7 +24,7 @@ TippDate.toString = function(date){
         } else {
             return Lang.get("date/general",{
                 day: ("0"+date.getDate()).slice(-2), 
-                month:("0"+date.getMonth()).slice(-2), 
+                month:("0"+(date.getMonth()+1)).slice(-2), 
                 year: (""+date.getYear()).slice(-2),
                 h: ("0"+date.getHours()).slice(-2), 
                 m: ("0"+date.getMinutes()).slice(-2)
@@ -57,7 +57,7 @@ TippDate.toString = function(date){
         } else {
             return Lang.get("date/general",{
                 day: ("0"+date.getDate()).slice(-2), 
-                month:("0"+date.getMonth()).slice(-2), 
+                month:("0"+(date.getMonth()+1)).slice(-2), 
                 year: (""+date.getYear()).slice(-2),
                 h: ("0"+date.getHours()).slice(-2), 
                 m: ("0"+date.getMinutes()).slice(-2)
