@@ -37,6 +37,7 @@ export default class Application {
     async run(){
 
         this.socket.open().then(() => {
+            this.socket.listen("Ping", (data,respond) => { respond() });
             this.client.restoreSession();
         }).catch((e) => {
             Debugger.warn(this, "Could not connect to server:",e)();
@@ -66,12 +67,12 @@ export default class Application {
     }
 
     setEvents(root){
-        Array.from(root.querySelectorAll("a[href]")).filter(a => {
-            return a.getAttribute("href").indexOf("http") != 0 && a.getAttribute("href").indexOf("//") != 0
-        }).forEach(a => {
+        Array.from(root.querySelectorAll("a")).forEach(a => {
             a.onclick = e => {
-                e.preventDefault();
-                this.router.load(a.getAttribute("href"));
+                if(a.hasAttribute("href") && a.getAttribute("href").indexOf("http") != 0 && a.getAttribute("href").indexOf("//") != 0){
+                    e.preventDefault();
+                    this.router.load(a.getAttribute("href"));
+                }
             }
         })
     }
