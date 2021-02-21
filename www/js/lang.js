@@ -50,11 +50,26 @@ __LANG = {
             future_day: "{d} {h}:{m}",
             general: "{day}.{month}.{year} {h}:{m}",
         },
+        general: {
+            loading: "Lade..."
+        },
         section: {
-            error: {
-                "title": "Hoppla...",
-                "desc": "Da het leider epis ned richtig funktioniert",
-                "btn": "Zrugg zu Start"
+            errors: {
+                notfound: {
+                    title: "Hoppla...",
+                    desc: "Da het leider epis ned richtig funktioniert",
+                    btn: "Zrugg zu Start"
+                },
+                noconnection: {
+                    title: "Hoppla...",
+                    desc: "S het momentan kei Verbindig mit em Server"
+                }
+            },
+            game: {
+                tipp: {
+                    your: "Din Tipp",
+                    notyet: "Du hesch nonig tippt"
+                }
             },
             signUp: {
                 title: "Registriere",
@@ -76,6 +91,12 @@ __LANG = {
                 action: "Ahmelde",
                 signUpInstead: "Falls du no kein Account hesch, {a}",
                 signUpLink: "registrier dich"
+            },
+            settings: {
+                lang: {
+                    title: "Sprach",
+                    desc: "Änderet d'Sprach vom Tippspiel"
+                }
             }
         }
     },
@@ -130,11 +151,26 @@ __LANG = {
             future_day: "{d} {h}:{m}",
             general: "{day}.{month}.{year} {h}:{m}",
         },
+        general: {
+            loading: "Laden..."
+        },
         section: {
-            error: {
-                "title": "Hoppla...",
-                "desc": "Hier hat leider etwas nicht richtig funktioniert",
-                "btn": "Zurück zu Start"
+            errors: {
+                notfound: {
+                    title: "Hoppla...",
+                    desc: "Hier hat leider etwas nicht richtig funktioniert",
+                    btn: "Zurück zu Start"
+                },
+                noconnection: {
+                    title: "Hoppla...",
+                    desc: "Es besteht zurzeit keine Verbindung mit dem Server"
+                }
+            },
+            game: {
+                tipp: {
+                    your: "Dein Tipp",
+                    notyet: "Du hast noch nicht getippt"
+                }
             },
             signUp: {
                 title: "Registrieren",
@@ -156,6 +192,12 @@ __LANG = {
                 action: "Anmelden",
                 signUpInstead: "Falls du noch keinen Account hast, {a}",
                 signUpLink: "registriere dich"
+            },
+            settings: {
+                lang: {
+                    title: "Sprache",
+                    desc: "Ändert die Sprache des Tippspiels"
+                }
             }
         }
     }, 
@@ -209,11 +251,26 @@ __LANG = {
             future_day: "{d} {h}:{m}",
             general: "{day}/{month}/{year} {h}:{m}",
         },
+        general: {
+            loading: "Loading..."
+        },
         section: {
-            error: {
-                title: "Whoops...",
-                desc: "Something didn't work as expected here",
-                btn: "Back to Home"
+            errors: {
+                notfound: {
+                    title: "Whoops...",
+                    desc: "Something didn't work as expected here",
+                    btn: "Back to Home"
+                },
+                noconnection: {
+                    title: "Whoops...",
+                    desc: "There is currently no connection to the server"
+                }
+            },
+            game: {
+                tipp: {
+                    your: "Your Tipp",
+                    notyet: "You didn't tipped yet"
+                }
             },
             signUp: {
                 title: "Sign up",
@@ -235,6 +292,12 @@ __LANG = {
                 action: "Sign in",
                 signUpInstead: "If you don't have an account yet, {a}",
                 signUpLink: "sign up instead"
+            },
+            settings: {
+                lang: {
+                    title: "Language",
+                    desc: "Changes the language of Tippspiel"
+                }
             }
         }
     }
