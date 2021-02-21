@@ -53,6 +53,7 @@ class Controller {
         this.view.addOutput("Versuche zu verbinden...")
 
         this.socket.open().then(() => {
+            this.socket.listen("Ping", (data,respond) => { respond() });
             this.view.addCommand("signin")
             if(this.token == ""){
                 this.view.addOutput("Bitte gib deinen Zugangscode ein:")
