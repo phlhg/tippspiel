@@ -89,6 +89,17 @@ socket.exec("me",{})
 }
 ```
 
+### createPlayer
+
+```js
+socket.exec("createPlayer", { name: String, team: ID });
+```
+
+antwort:
+```js
+{ state, error, data:{id: ID} }
+```
+
 ### MakeTipp
 
 ```js
@@ -163,8 +174,8 @@ socket.exec("hotGames")
 
 ```js
 { state, error, data: {
-    upcoming: [ID, ID, ...],
-    over: [ID, ID, ...]
+    upcoming: [ID, ID, ...], // Zeitlich sortiert
+    over: [ID, ID, ...] // Zeitlich sortiert
 } }
 ```
 
