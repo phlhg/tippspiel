@@ -7,7 +7,7 @@ export default class Group extends Element {
         super(data.id)
 
         /** @property {string} name - Name of the group */
-        this.name = ""
+        this.name = "Anon"
 
         /** @property {number[]} users - Users of the group */
         this.users = []

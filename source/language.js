@@ -8,6 +8,8 @@ export default class Language {
         this.ref = {};
 
         this.available = Object.keys(__LANG);
+        // From: https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript
+        this.available.sort((a,b) => __LANG[a]._name.localeCompare(__LANG[b]._name))
 
         if(localStorage.getItem("tipp-lang") != null){
             if(!this.setLanguage(localStorage.getItem("tipp-lang"))){

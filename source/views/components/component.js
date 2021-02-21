@@ -1,20 +1,30 @@
 export default class Component {
 
-    constructor(type, id, element){
+    constructor(type, element){
         this._type = type;
-        this._id = id;
+        this._id = -1;
+        this.obj = null;
         this.view = {}
         this.view.root = document.createElement(element);
+    }
 
+    set(obj){
+
+        this.obj = obj;
+        
         this._func = function(e){
             if(e.detail?.type == this._type && e.detail?.id == this._id){ 
                 this.update(); 
             }
         }.bind(this);
+        
         window.addEventListener("datachange", this._func);
+
         this.view.root.addEventListener("removed",e => { 
             window.removeEventListener("datachange",this._func) 
         });
+
+        this.update();
     }
 
     init(){

@@ -3,8 +3,10 @@ import View from "../views/view";
 export default class Controller {
     
     constructor(){
-        this.params = {};
         this.view = new View();
+        this._active = false;
+        this._timeout = -1;
+        this.params = {};
         this.init();
     }
 
@@ -15,19 +17,25 @@ export default class Controller {
 
     init(){ }
 
-    _load(params){
-        this.params = params ?? {};
-        if(this.load() !== false){
-            this.view._show();
-            App.setEvents(this.view.root);
+    async _load(params){
+        if(!this._active){
+            this._active = true;
+            this.params = params ?? {};
+            if(await this.load() !== false){
+                this.view._show();
+                App.setEvents(this.view.root);
+            }
         }
     }
 
-    load(){ }
+    async load(){ }
 
     _unload(){
-        this.view._hide();
-        setTimeout(() => { this.unload() }, 400);
+        if(this._active){
+            this.view._hide()
+            setTimeout(() => { this.unload() }, 250);
+            this._active = false;
+        }
     }
 
     unload(){ }

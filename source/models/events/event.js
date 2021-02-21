@@ -26,10 +26,10 @@ export default class Event extends Element {
         this.tipps = [];
 
         /** @property {number} winner Team, which won the event */
-        this.winner = -1;
+        this.winner = 0;
 
         /** @property {number} topscorer Player, which scored the most goals at the event */
-        this.topscorer = -1;
+        this.topscorer = 0;
         
         this.set(data)
     }

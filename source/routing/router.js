@@ -24,21 +24,33 @@ export default class Router {
         this.routes.forEach(r => r.unload())
         this.error.unload()
         let route = this.routes.find(r => r.matches(path));
-        setTimeout(() => {
-            if(route == undefined){
-                Debugger.warn(this,`Did not find "${path}" - Serving error page`)()
-                this.error.load(); 
-            } else {
-                Debugger.log(this,`Loading "${path}"`)()
-                route.take(path);
-            }
-        },400);
+        if(route == undefined){
+            Debugger.warn(this,`Did not find "${path}" - Serving error page`)()
+            setTimeout(() => { this.error.load() }, 250);
+        } else {
+            Debugger.log(this,`Loading "${path}"`)()
+            setTimeout(() => { route.take(path) }, 250);
+        }
     }
 
     forward(path){
         Debugger.log(this,`Forwarding to "${path}"`)();
         window.history.replaceState({}, '', path);
         return this.find(path);
+    }
+
+    overwrite(path){
+        Debugger.log(this,`Overwriting to "${path}"`)();
+        return this.find(path);
+    }
+
+    back(fallback){
+        fallback = fallback ?? "/"
+        if(history.length > 0){
+            history.back()
+        } else {
+            this.load(fallback);
+        }
     }
 
     load(path){

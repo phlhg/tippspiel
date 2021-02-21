@@ -7,10 +7,13 @@ export default class Player extends Element {
         super(data.id)
 
         /** @property {string} name - Name of the Player */
-        this.name = ""
+        this.name = "Anon"
+
+        /** @property {string} normalized Normalized (without accents etc. of the player) name of the player - Usful for searching */
+        this.normalized = "anon"
 
         /** @property {number} team - Team of the Player */
-        this.team = -1
+        this.team = 0
 
         this.set(data)
     }
@@ -21,7 +24,13 @@ export default class Player extends Element {
      */
     set(data){
         this.name = data.name ?? this.name
+        // See: https://stackoverflow.com/a/51874002
+        this.normalized = data.hasOwnProperty("name") ? data.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : this.normalized
         this.team = parseInt(data.team ?? this.team)
+    }
+
+    getTeam(){
+        return App.model.teams.get(this.team);
     }
 
 }

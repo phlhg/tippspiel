@@ -3,14 +3,13 @@ import Component from './component'
 
 export default class GameTile extends Component {
     
-    constructor(id,promise){
-        super("game",id,"a");
-        this.data = {}
+    constructor(promise){
+        super("game","a");
         this.init();
-        promise.then(data => {
-            this.data = data
-            this.update();
+        promise.then(game => {
+            this.set(game)
         },e => {
+            console.log("LOL");
             this.remove();
         })
     }
@@ -30,12 +29,11 @@ export default class GameTile extends Component {
     }
 
     update(){
-        this.view.root.setAttribute("href",`/game/${this.data.id}/${this.data.team1.short.toLowerCase()}-${this.data.team2.short.toLowerCase()}/`)
-        this.view.title.innerText = `${this.data.team1.name}  ${this.data.team1.score}:${this.data.team2.score}  ${this.data.team2.name}`;
-        this.view.flag1.setAttribute("data-t",this.data.team1.short.toLowerCase());
-        this.view.flag2.setAttribute("data-t",this.data.team2.short.toLowerCase());
-        this.view.meta.innerText = `${TippDate.toString(this.data.start)} | ${this.data.tipps.length} Tipps`;
-        this.view.root.onclick = e => { e.preventDefault(); App.router.load(this.view.root.getAttribute("href")); }
+        this.view.root.setAttribute("href",`/game/${this.obj.id}/${this.obj.team1.short.toLowerCase()}-${this.obj.team2.short.toLowerCase()}/`)
+        this.view.title.innerText = `${this.obj.team1.name}  ${this.obj.team1.score}:${this.obj.team2.score}  ${this.obj.team2.name}`;
+        this.view.flag1.setAttribute("data-t",this.obj.team1.short.toLowerCase());
+        this.view.flag2.setAttribute("data-t",this.obj.team2.short.toLowerCase());
+        this.view.meta.innerText = `${TippDate.toString(this.obj.start)} | ${this.obj.tipps.length} Tipps`;
         this.view.root.classList.remove("loading")
     }
 

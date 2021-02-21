@@ -7,7 +7,7 @@ export default class User extends Element {
         super(data.id)
 
         /** @property {string} name - Name of the user */
-        this.name = ""
+        this.name = "Anon"
 
         /** @property {number} points - Points of the user */
         this.points = 0

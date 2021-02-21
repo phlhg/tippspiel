@@ -7,16 +7,16 @@ export default class EventTipp extends Element {
         super(data.id)
 
         /** @property {number} game Event, to which the tipp belongs */
-        this.event = -1
+        this.event = 0
 
         /** @property {number} user User, which made the tipp */
-        this.user = -1
+        this.user = 0
 
         /** @property {number} winner Tipped winning team */
-        this.winner = -1;
+        this.winner = 0;
 
         /** @property {number} topscorer Tipped top scoring player */
-        this.topscorer = -1;
+        this.topscorer = 0;
 
         /** @property {number} reward Received points for this tipp */
         this.reward = 0;

@@ -7,7 +7,7 @@ export default class Team extends Element {
         super(data.id)
 
         /** @property {string} name - Name of the team */
-        this.name = ""
+        this.name = "Anon"
 
         /** @property {int[]} games - List of ids of games, the team takes part */
         this.games = []
@@ -23,7 +23,7 @@ export default class Team extends Element {
      * @param {object} data - Properties of to update
      */
     set(data){
-        this.name = data.short ?? this.short
+        this.name = data.short ?? this.name
         this.games = Array.from(data.games ?? this.games).map(i => parseInt(i))
         this.players = Array.from(data.players ?? this.players).map(i => parseInt(i))
     }

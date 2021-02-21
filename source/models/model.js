@@ -30,14 +30,16 @@ export default class Model {
             if(r.state != ResponseState.SUCCESS){
                 if(r.error != 0){
                     Debugger.warn(this,Lang.getError(r.error,r.data))()
-                } else {
+                } else if(r.data.hasOwnProperty("info")) {
                     Debugger.warn(this,r.data.info)()
+                } else {
+                    Debugger.warn(this,`Unbekannter Fehler beim Laden von ${this.type.name}[${ids.join(",")}] :`, r)()
                 }
             } else {
                 var data = Array.from(r.data);
                 var delivered = data.filter(g => g != "" && g.hasOwnProperty("id")).map(g => parseInt(g.id));
                 var missing = ids.filter(id => !delivered.includes(id))
-                if(missing > 0){ Debugger.error(this,`Data for ${this.type.name}[${missing.join(",")}] was not delivered`)(); }
+                if(missing.length > 0){ Debugger.error(this,`Data for ${this.type.name}[${missing.join(",")}] was not delivered`)(); }
                 r.data.forEach(e => {
                     if(e != ""){
                         this.list[e.id] = new this.type(e)
@@ -53,7 +55,7 @@ export default class Model {
      * @return {number[]} List of missing ids
      */
     missing(ids){
-        return ids.filter(id => (!this.list.hasOwnProperty(id) && !this.promises.hasOwnProperty(id)))
+        return ids.map(id => parseInt(id)).filter(id => (!this.list.hasOwnProperty(id) && !this.promises.hasOwnProperty(id) && id > 0))
     }
 
     /**
@@ -67,6 +69,12 @@ export default class Model {
             if(this.list.hasOwnProperty(id)){ // Entry exists
                 return new Promise(resolve => { resolve(this.list[id]) })
             } else {
+                if(id == 0){ // Dummy
+                    Debugger.warn(this,`Dummy-${this.type.name} was created`)()
+                    this.list[id] = new this.type({id: 0})
+                    return new Promise(resolve => { resolve(this.list[id]) })
+                }
+
                 if(!this.promises.hasOwnProperty(id)) // No Request was made yet
                     this.promises[id] = this.makePromise(id,promise)
                 return this.promises[id];
@@ -85,6 +93,12 @@ export default class Model {
             if(this.list.hasOwnProperty(id)){ // Entry exists
                 return [id,new Promise(resolve => { resolve(this.list[id]) })]
             } else {
+                if(id == 0){ // Dummy
+                    Debugger.warn(this,`Dummy-${this.type.name} was created`)()
+                    this.list[id] = new this.type({id: 0})
+                    return [id,new Promise(resolve => { resolve(this.list[id]) })]
+                }
+                
                 if(!this.promises.hasOwnProperty(id)) // No Request was made yet
                     this.promises[id] = this.makePromise(id,promise)
                 return [id,this.promises[id]];
@@ -102,7 +116,11 @@ export default class Model {
         if(this.list.hasOwnProperty(id)){ // Entry exists
             return new Promise(resolve => { resolve(this.list[id]) })
         } else {
-            if(this.promises.hasOwnProperty(id)){ // Already requested
+            if(id == 0){ // Dummy
+                Debugger.warn(this,`Dummy-${this.type.name} was created`)()
+                this.list[id] = new this.type({id: 0})
+                return new Promise(resolve => { resolve(this.list[id]) })
+            } else if(this.promises.hasOwnProperty(id)){ // Already requested
                 return this.promises[id];
             } else {
                 this.promises[id] = this.makePromise(id,promise)

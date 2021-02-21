@@ -13,16 +13,24 @@ export default class SignIn extends View {
             <h3>${Lang.get("section/signIn/title")}</h3>
             <p>${Lang.get("section/signIn/desc")}</p>
             <form>
-                <input required="" name="token" type="text" pattern="${this._pattern.source}" placeholder="${Lang.get("section/signIn/placeholder/code")}" />
+                <input required="" value="" type="text" name="username" style="display:none" />
+                <input required="" name="token" type="password" pattern="${this._pattern.source}" placeholder="${Lang.get("section/signIn/placeholder/code")}" />
                 <span class="info"></span>
                 <span class="error"></span>
                 <input type="submit" value="${Lang.get("section/signIn/action")}"/>
             </form>
             <span class="meta">${Lang.get("section/signIn/signUpInstead", { a: `<a href="/signup/">${Lang.get("section/signIn/signUpLink")}</a>` })}</span>
         </div>`
+
         this.form = this.root.querySelector("form");
         this.dominfo = this.root.querySelector(".info");
         this.domerror = this.root.querySelector(".error");
+        
+        this.user = this.root.querySelector("input[name='username']")
+        this.token = this.root.querySelector("input[name='token']");
+        this.token.type = "text";
+
+        this.token.onchange = e => { this.user.value = this.token.value; }
 
         this.form.addEventListener("submit",e => {
             e.preventDefault();

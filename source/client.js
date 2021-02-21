@@ -58,9 +58,9 @@ export default class Client {
      */
     prompt(){
         if(this.isknown){
-            App.router.forward("/signin/")
+            App.router.overwrite("/signin/")
         } else {
-            App.router.forward("/signup/")
+            App.router.overwrite("/signup/")
         }
         return false;
     }
@@ -100,9 +100,9 @@ export default class Client {
         for(var p in r.data.permission){
             this.permission[p] = (r.data.permission[p] == 'true')
         }
-        this.groups = r.data.groups.length < 1 ? [] : r.data.groups;
-        this.gameTipps = r.data.gameTipps.length < 1 ? [] : r.data.gameTipps;
-        this.eventTipps = r.data.eventTipps.length < 1 ? [] : r.data.eventTipps;
+        this.groups = Array.from(r.data.groups).map(i => parseInt(i))
+        this.gameTipps = Array.from(r.data.gameTipps).map(i => parseInt(i))
+        this.eventTipps = Array.from(r.data.eventTipps).map(i => parseInt(i))
         return true;
     }
     

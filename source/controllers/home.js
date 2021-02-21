@@ -12,9 +12,10 @@ export default class Home extends Controller {
     }
 
     load(){
-        for(var [id, game] of Object.entries(App.model.games.getObject([1,2,3]))){
-            this.view.addGame(id,game)
-        }
+        if(App.socket.state != SocketState.OPEN){ return App.router.overwrite("/noconnection/"); }
+        App.model.games.getAll([1,2,3]).forEach(game => {
+            this.view.addGame(game)
+        })
     }
 
     unload(){

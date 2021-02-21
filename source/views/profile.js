@@ -13,7 +13,7 @@ export default class Profile extends View {
     setClient(client){
         this.root.innerHTML = `<div class="text">${client.name}<br/></div>`
         if(App.client.permission.console ?? false){
-            var b = document.createElement("a");
+            var b = document.createElement("span");
             b.innerText = "$ Console";
             b.classList.add("button");
             b.onclick = () => {
