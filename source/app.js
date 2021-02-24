@@ -38,6 +38,7 @@ export default class Application {
 
         this.socket.open().then(() => {
             this.socket.listen("Ping", (data,respond) => { respond() });
+            this.socket.listen("Update", this.updateModel.bind(this));
             this.client.restoreSession();
         }).catch((e) => {
             Debugger.warn(this, "Could not connect to server:",e)();
@@ -75,6 +76,14 @@ export default class Application {
                 }
             }
         })
+    }
+
+    updateModel(data){
+        
+        this.model.games.update(data.game ?? [])
+        this.model.gameTipps.update(data.gameTipp ?? [])
+        this.model.users.update(data.user ?? [])
+
     }
 
 }

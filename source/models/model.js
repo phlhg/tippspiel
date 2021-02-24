@@ -21,9 +21,13 @@ export default class Model {
      * Loads missing elements from server
      * @param {number[]} ids - List of ids
      * @async
-     * */
+     */
     async load(ids){
         ids = this.missing(ids);
+        await this._load(ids);
+    }
+
+    async _load(ids){
         if(ids.length > 0 && App.socket.state == SocketState.OPEN){
             Debugger.log(this,`Requested data for ${this.type.name}[${ids.join(",")}]`)()
             var r = await App.socket.exec("get_data", { table: this.type.name, ids: ids })
@@ -40,9 +44,11 @@ export default class Model {
                 var delivered = data.filter(g => g != "" && g.hasOwnProperty("id")).map(g => parseInt(g.id));
                 var missing = ids.filter(id => !delivered.includes(id))
                 if(missing.length > 0){ Debugger.error(this,`Data for ${this.type.name}[${missing.join(",")}] was not delivered`)(); }
-                r.data.forEach(e => {
-                    if(e != ""){
+                r.data.filter(e => e != "").forEach(e => {
+                    if(!this.list.hasOwnProperty(e.id)){
                         this.list[e.id] = new this.type(e)
+                    } else {
+                        this.list[e.id].update(e)
                     }
                 })
             }
@@ -110,7 +116,7 @@ export default class Model {
      * Gets an element by id 
      * @param {number} id Id of the element
      * @return {Promise} A promise for the game - Resolves if element was found, otherwise rejects
-     * */
+     */
     get(id){
         var promise = this.load([id])
         if(this.list.hasOwnProperty(id)){ // Entry exists
@@ -140,6 +146,11 @@ export default class Model {
                 }
             });
         })
+    }
+
+    async update(data){
+        var ids = data.map(id => parseInt(id)).filter(id => (this.list.hasOwnProperty(id)))
+        await this._load(ids);
     }
 
 }
