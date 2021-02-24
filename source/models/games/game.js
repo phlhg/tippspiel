@@ -86,6 +86,16 @@ export default class Game extends Element {
         return id.length > 0
     }
 
+    makeTipp(data){
+        return App.model.gameTipps.makeTipp({
+            id: this.id,
+            bet1: data.bet1,
+            bet2: data.bet2,
+            winner: data.winner,
+            topscorer: data.topscorer
+        })
+    }
+
     /**
      * Gets the tipp of the current clien for this game
      * @return {Promise} Resolves to a GameTipp if successfull, otherwise to false

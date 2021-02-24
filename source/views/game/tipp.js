@@ -8,36 +8,38 @@ export default class GameIndex extends View {
     }
 
     init(){
-        this.root.innerHTML = `<div class="game-header">
+        this.root.innerHTML = `<a class="game-header">
             <h2 class="top">
                 <span class="team1"><span class="tflag" data-t="sui" ></span> <span class="name">Schweiz</span></span>
                 <span class="team2"><span class="name">Spanien</span> <span class="tflag" data-t="esp" ></span></span>
             </h2>
             <img class="flag1" src="/img/flag/sui.png"/>
             <img class="flag2" src="/img/flag/esp.png"/>
-        </div>
+        </a>
         <form class="tipp-form">
             <h4>Resultat</h4>
             <div class="tipp-score">
-                <input class="t1" name="score1" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
+                <input required class="t1" name="score1" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
                 <span class="seperator">:</span>
-                <input class="t2" name="score2" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
+                <input required class="t2" name="score2" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
             </div>
             <h4>Gewinner <small> (bei möglichem Penaltyschiessen)</small></h4>
             <div class="tipp-winner">
                 <div class="tipp-radio-select">
                     <input type="radio" id="tippscoreteam1" name="winner" required value=""/>
                     <label for="tippscoreteam1"></label>
-                    <input type="radio" id="tippscoreteam2" name="winner" required value=""/>
+                    <input type="radio" id="tippscoreteam2" name="winner" value=""/>
                     <label for="tippscoreteam2"></label>
                 </div>
             </div>
             <h4>Torschütze</h4>
             <div class="tipp-search tipp-player">
                 <span class="tflag" data-t=""></span>
-                <input type="search" placeholder="Suche nach einem Spieler" name="player"/>
+                <input type="search" autocomplete="off" placeholder="Suche nach einem Spieler" name="player"/>
                 <div class="suggestions"></div>
             </div>
+            <span class="info"></span>
+            <span class="error"></span>
             <input type="submit" value="Tippen" style="margin: 10px 0 0 15px;"/>
         </form>
         `
@@ -54,6 +56,10 @@ export default class GameIndex extends View {
         this.header.team2.name = this.header.root.querySelector(".team2 .name")
         this.header.team2.flag = this.header.root.querySelector(".team2 .tflag")
         this.header.team2.bg = this.header.root.querySelector(".flag2")
+
+        this.form = this.root.querySelector("form")
+        this.dominfo = this.root.querySelector("form .info");
+        this.domerror = this.root.querySelector("form .error");
 
         this.score = {}
         this.score.team1 = this.root.querySelector("form .tipp-score .t1")
@@ -108,6 +114,44 @@ export default class GameIndex extends View {
         this.player.input.onblur = e => {
             this.setPlayer(this.player.id);
         }
+
+        this.form.addEventListener("submit",e => {
+            e.preventDefault();
+
+            var p = Math.max(parseInt(this.player.id),0);
+            var b1 = this.score.team1;
+            var b2 = this.score.team2;
+
+            var b1 = parseInt(this.score.team1.value)
+            var b2 = parseInt(this.score.team2.value)
+
+            if(isNaN(b1) || isNaN(b2)){
+                this.error("Bitte gib ein gültiges Resultat ein")
+                return;
+            }
+
+            var w = 0;
+
+            if(b1 > b2){
+                var w = this.game.team1.id;
+            } else if(b1 < b2){
+                var w = this.game.team2.id
+            } else {
+                var w = this.winner.team1.checked ? this.game.team1.id : (this.winner.team1.checked ? this.game.team2.id : 0);
+            }
+
+            if(w < 1){
+                this.error("Bitte gib einen Gewinner für das Penaltyschiessen an")
+                return;
+            }
+            
+            this.event("submit",{
+                b1: b1,
+                b2: b2,
+                winner: w,
+                topscorer: p
+            });
+        })
     }
 
     setGame(game){
@@ -167,6 +211,9 @@ export default class GameIndex extends View {
     }
 
     async update(){
+        
+        this.header.root.setAttribute("href",`/game/${this.game.id}/${this.game.team1.short.toLowerCase()}-${this.game.team2.short.toLowerCase()}/`)
+
         this.header.team1.name.innerText = this.game.team1.name;
         this.header.team2.name.innerText = this.game.team2.name;
 
@@ -183,6 +230,14 @@ export default class GameIndex extends View {
 
         this.player_suggestions = await Promise.all(await this.game.getSuggestedPlayers())
         this.player_suggestions.sort((a,b) => a.name.localeCompare(b.name))
+    }
+
+    info(message){
+        this.dominfo.innerText = message;
+    }
+
+    error(message){
+        this.domerror.innerText = message;
     }
 
     clear(){

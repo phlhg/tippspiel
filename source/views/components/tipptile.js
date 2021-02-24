@@ -28,7 +28,7 @@ export default class TippTile extends Component {
     async update(){
         var user = await this.obj.getUser()
         var winner = await this.obj.getWinner()
-        var player = await this.obj.getPlayer()
+        var player = this.topscorer > 0 ? await this.obj.getPlayer() : { name: "" }
 
         this.view.name.innerText = user.name;
         this.view.flag.setAttribute("data-t",winner.name.toLowerCase());
