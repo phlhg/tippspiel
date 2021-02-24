@@ -137,7 +137,7 @@ export default class GameIndex extends View {
             } else if(b1 < b2){
                 var w = this.game.team2.id
             } else {
-                var w = this.winner.team1.checked ? this.game.team1.id : (this.winner.team1.checked ? this.game.team2.id : 0);
+                var w = this.winner.team1.checked ? this.game.team1.id : (this.winner.team2.checked ? this.game.team2.id : 0);
             }
 
             if(w < 1){
