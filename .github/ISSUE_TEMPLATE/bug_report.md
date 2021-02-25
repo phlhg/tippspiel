@@ -1,10 +1,9 @@
 ---
-name: Bug report
-about: Create a report to help us improve
+name: Report a bug
+about: Create a report for a bug to help us improve
 title: "[BUG] "
 labels: bug
 assignees: phlhg
-
 ---
 
 **Describe the bug**
