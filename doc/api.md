@@ -100,6 +100,27 @@ antwort:
 { state, error, data:{id: ID} }
 ```
 
+### createGame
+
+```js
+socket.exec("createGame", {
+    id: [optional] ID, // falls das Spiel schon existiert und überschrieben werden soll
+    location: string,
+    name: string,
+    stream: string,
+    event: ID,
+    team1: ID, // 0 falls noch nicht bekannt
+    team2: ID, // 0 falls noch nicht bekannt
+    previous1: [optional] ID, // falls es sich um ein folgespiel handelt
+    previous2: [optional] ID, // falls es sich um ein folgespiel handelt
+    });
+```
+
+antwort:
+```js
+{ state, error, data:{id: ID} }
+```
+
 ### MakeTipp
 
 ```js
@@ -152,15 +173,15 @@ socket.exec("console",{cmd: String});
 Liefert Vorschläge für Client-Eingaben von Spielern, Teams und Austragungsorten
 
 ```js
+socket.exec("suggest_events");
 socket.exec("suggest_players", { game: Int })
-socket.exec("suggest_teams",{})
 socket.exec("suggest_locations",{})
 ```
 
 Liste von Vorschlägen
 
 ```js
-{ state, error, data: [ String, ... ] }
+{ state, error, data: [ ID | string, ... ] }
 ```
 
 

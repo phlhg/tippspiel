@@ -20,6 +20,7 @@ User {
 Group {
     id: int,
     name: String(100),
+    owner: User
     users: [ User, ... ]
 }
 ```
@@ -55,6 +56,7 @@ Event {
     description: String(256),
     deadline: Date,
     status: ENUM,
+    teams: [ Team, ...]
     games: [ Game, ... ],
     tipps: [ EventTipp, ... ]
     winner: Team

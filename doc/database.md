@@ -34,6 +34,7 @@ Gruppen ermöglichen eine Separation von mehrern Nutzern. Dabei werden diesen Nu
 
 ```
 type Group
+    User owner
     char 100 name
     char 100 token
     User [] users
@@ -68,7 +69,7 @@ Ein Team, welches an der Meisterschaft teilnimmt
 type Team
     char 100 name
     char 10 short
-    Game [] games
+    Event event
     Player [] players
 ```
 
@@ -103,6 +104,7 @@ type Event
     char 256 description
     int deadline
     int eventStatus
+    Team [] teams
     Game [] games
     EventTipp [] tipps
     Team winner
