@@ -17,13 +17,13 @@ export default class GameIndex extends View {
             <img class="flag2" src="/img/flag/esp.png"/>
         </a>
         <form class="tipp-form">
-            <h4>Resultat</h4>
+            <h4>${Lang.get("section/game/tipp/form/result")}</h4>
             <div class="tipp-score">
                 <input required class="t1" name="score1" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
                 <span class="seperator">:</span>
                 <input required class="t2" name="score2" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
             </div>
-            <h4>Gewinner <small> (bei möglichem Penaltyschiessen)</small></h4>
+            <h4>${Lang.get("section/game/tipp/form/winner")} <small> ${Lang.get("section/game/tipp/form/winner_notice")}</small></h4>
             <div class="tipp-winner">
                 <div class="tipp-radio-select">
                     <input type="radio" id="tippscoreteam1" name="winner" required value=""/>
@@ -32,15 +32,15 @@ export default class GameIndex extends View {
                     <label for="tippscoreteam2"></label>
                 </div>
             </div>
-            <h4>Torschütze</h4>
+            <h4>${Lang.get("section/game/tipp/form/topscorer")}</h4>
             <div class="tipp-search tipp-player">
                 <span class="tflag" data-t=""></span>
-                <input type="search" autocomplete="off" placeholder="Suche nach einem Spieler" name="player"/>
+                <input type="search" autocomplete="off" placeholder="${Lang.get("section/game/tipp/form/search")}" name="player"/>
                 <div class="suggestions"></div>
             </div>
             <span class="info"></span>
             <span class="error"></span>
-            <input type="submit" value="Tippen" style="margin: 10px 0 0 15px;"/>
+            <input type="submit" value="${Lang.get("section/game/tipp/form/submit")}" style="margin: 10px 0 0 15px;"/>
         </form>
         `
 

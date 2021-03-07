@@ -33,7 +33,7 @@ export default class GameTile extends Component {
         this.view.title.innerText = `${this.obj.team1.name}  ${this.obj.team1.score}:${this.obj.team2.score}  ${this.obj.team2.name}`;
         this.view.flag1.setAttribute("data-t",this.obj.team1.short.toLowerCase());
         this.view.flag2.setAttribute("data-t",this.obj.team2.short.toLowerCase());
-        this.view.meta.innerText = `${TippDate.toString(this.obj.start)} | ${this.obj.tipps.length} Tipps`;
+        this.view.meta.innerText = `${TippDate.toString(this.obj.start)} | ${this.obj.tipps.length > 1 ? Lang.get("section/game/tipps/multi",{n: this.obj.tipps.length}) : Lang.get("section/game/tipps/single") }`;
         this.view.root.classList.remove("loading")
     }
 

@@ -69,7 +69,19 @@ __LANG = {
             game: {
                 tipp: {
                     your: "Din Tipp",
-                    notyet: "Du hesch nonig tippt"
+                    notyet: "Du hesch nonig tippt",
+                    form: {
+                        result: "Resultat",
+                        winner: "Gwünner",
+                        winner_notice: "(bim ne Penaltyschüsse)",
+                        topscorer: "Torschütz",
+                        search: "Suech nach eme spiler",
+                        submit: "Tippe"
+                    }
+                },
+                tipps: {
+                    single: "1 Tipp",
+                    multi: "{n} Tipps"
                 }
             },
             signUp: {
@@ -180,7 +192,19 @@ __LANG = {
             game: {
                 tipp: {
                     your: "Dein Tipp",
-                    notyet: "Du hast noch nicht getippt"
+                    notyet: "Du hast noch nicht getippt",
+                    form: {
+                        result: "Resultat",
+                        winner: "Gewinner",
+                        winner_notice: "(bei möglichem Penaltyschiessen)",
+                        topscorer: "Torschütze",
+                        search: "Suche nach einem Spieler",
+                        submit: "Tippen"
+                    }
+                },
+                tipps: {
+                    single: "1 Tipp",
+                    multi: "{n} Tipps"
                 }
             },
             signUp: {
@@ -289,8 +313,20 @@ __LANG = {
             },
             game: {
                 tipp: {
-                    your: "Your Tipp",
-                    notyet: "You didn't tipped yet"
+                    your: "Your Tip",
+                    notyet: "You haven't tiped yet",
+                    form: {
+                        result: "Result",
+                        winner: "Winner",
+                        winner_notice: "(in case of a penalty shootout)",
+                        topscorer: "Topscorer",
+                        search: "Search for a player",
+                        submit: "Tipp now"
+                    }
+                },
+                tipps: {
+                    single: "1 Tip",
+                    multi: "{n} Tips"
                 }
             },
             signUp: {
@@ -326,7 +362,7 @@ __LANG = {
             },
             profile: {
                 tipps: {
-                    heading: "My Tipps"
+                    heading: "My Tips"
                 }
             }
         }
