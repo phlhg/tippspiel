@@ -1,11 +1,11 @@
 {
   "name": "Tippspiel 21",
   "short_name": "Tippspiel",
-  "start_url": "/",
   "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
   "background_color": "#00315e",
   "description": "by TobiCreations & PHLHG",
-  "display": "standalone",
   "orientation": "portrait-primary",
   "icons": [
     {
