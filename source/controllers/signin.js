@@ -10,16 +10,30 @@ export default class SignIn extends Controller {
 
     init(){
         this.setView(SignInView);
-        this.view.on("submit",async (data) => {
-            var r = await App.client.singIn(data.token)
-            if(r.state != ResponseState.SUCCESS){
-                this.view.error(Lang.getError(r.error,r.data));
-                return false;
-            } else {
-                App.router.load("/");
-                return true;
-            }
+        
+        this.view.on("submit",(data) => {
+            this.signIn(data.token);
         })
+
+    }
+
+    async signIn(token){
+        var r = await App.client.singIn(token)
+        if(r.state != ResponseState.SUCCESS){
+            this.view.error(Lang.getError(r.error,r.data));
+            return false;
+        } else {
+            App.router.load("/");
+            return true;
+        }
+    }
+
+    load(){
+        console.log(this.params);
+        if(this.params.hasOwnProperty("token")){
+            this.view.token.value = this.params["token"];
+            this.signIn(this.params["token"]);
+        }
     }
 
 }

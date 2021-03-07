@@ -35,7 +35,7 @@ window.addEventListener("DOMContentLoaded", function(){
 
     App.router.add("/profile/",new Profile)
 
-    App.router.add("/signin/",new SignIn)
+    App.router.add("/signin/",new SignIn).alias("/signin/{token}/");
     App.router.add("/signup/",new SignUp)
 
     App.router.add("/settings/", new Settings)
