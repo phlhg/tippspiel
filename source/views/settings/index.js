@@ -45,11 +45,11 @@ export default class Settings extends View {
 
     }
 
-    load(){
-        if(App.client.permission.console ?? false){
-            this.root.querySelector(".console-button").style.display = "none";
-        } else {
+    show(){
+        if(App.client.permission?.console == true){
             this.root.querySelector(".console-button").style.display = "block";
+        } else {
+            this.root.querySelector(".console-button").style.display = "none";
         }
     }
 
