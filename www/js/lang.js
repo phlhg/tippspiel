@@ -97,6 +97,15 @@ __LANG = {
                 lang: {
                     title: "Sprach",
                     desc: "Änderet d'Sprach vom Tippspiel"
+                },
+                report: {
+                    title: "Fehler / Idee",
+                    desc: "Meld Fehler oder schlahn en Idee vor"
+                }
+            },
+            profile: {
+                tipps: {
+                    heading: "Mini Tipps"
                 }
             }
         }
@@ -199,6 +208,15 @@ __LANG = {
                 lang: {
                     title: "Sprache",
                     desc: "Ändert die Sprache des Tippspiels"
+                },
+                report: {
+                    title: "Fehler / Ideen",
+                    desc: "Melde Fehler oder schlage eine Idee vor"
+                }
+            },
+            profile: {
+                tipps: {
+                    heading: "Meine Tipps"
                 }
             }
         }
@@ -300,6 +318,15 @@ __LANG = {
                 lang: {
                     title: "Language",
                     desc: "Changes the language of Tippspiel"
+                },
+                report: {
+                    title: "Errors / Ideas",
+                    desc: "Report bugs or propose a feature"
+                }
+            },
+            profile: {
+                tipps: {
+                    heading: "My Tipps"
                 }
             }
         }
