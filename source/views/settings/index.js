@@ -8,17 +8,24 @@ export default class Settings extends View {
 
     init(){
         this.root.innerHTML = `<div class="tipp-box">
+            <span class="icon"><span class="material-icons">translate</span></span>
             <span class="title">${Lang.get("section/settings/lang/title")}</span>
             <span class="meta">${Lang.get("section/settings/lang/desc")}</span>
             <select name="lang" style="margin-top: 10px"></select>
         </div>
         <a class="tipp-box" href="https://phlhg.ch/report/2/tippspiel/" target="_blank" >
+            <span class="icon"><span class="material-icons">feedback</span></span>
             <span class="title">${Lang.get("section/settings/report/title")}</span>
             <span class="meta">${Lang.get("section/settings/report/desc")}</span>
         </a>
+        <a class="tipp-box" href="https://phlhg.ch/about/contact/" target="_blank" >
+            <span class="icon"><span class="material-icons">lightbulb</span></span>
+            <span class="title">${Lang.get("section/settings/idea/title")}</span>
+            <span class="meta">${Lang.get("section/settings/idea/desc")}</span>
+        </a>
         <span class="tipp-box console-button">
-            <span class="title">Konsole</span>
-            <span class="meta">Direkt Zugriff für Administratoren</span>
+            <span class="icon"><span class="material-icons">code</span></span>
+            <span class="title">${Lang.get("section/settings/console/title")}</span>
         </span>
         `
 

@@ -111,8 +111,15 @@ __LANG = {
                     desc: "Änderet d'Sprach vom Tippspiel"
                 },
                 report: {
-                    title: "Fehler / Idee",
-                    desc: "Meld Fehler oder schlahn en Idee vor"
+                    title: "Fehler melde",
+                    desc: "Epis funktioniert ned? Melds eus!"
+                },
+                idea: {
+                    title: "Idee vorschlah",
+                    desc: "Hesch en Idee fürs Tippspiel? Zeig sie eus!"
+                },
+                console: {
+                    title: "Konsole"
                 }
             },
             profile: {
@@ -234,8 +241,15 @@ __LANG = {
                     desc: "Ändert die Sprache des Tippspiels"
                 },
                 report: {
-                    title: "Fehler / Ideen",
-                    desc: "Melde Fehler oder schlage eine Idee vor"
+                    title: "Fehler melden",
+                    desc: "Etwas funktioniert nicht? Melde es uns"
+                },
+                idea: {
+                    title: "Idee vorschlagen",
+                    desc: "Du hast eine Idee fürs Tippspiel? Zeige sie uns!"
+                },
+                console: {
+                    title: "Konsole"
                 }
             },
             profile: {
@@ -356,8 +370,15 @@ __LANG = {
                     desc: "Changes the language of Tippspiel"
                 },
                 report: {
-                    title: "Errors / Ideas",
-                    desc: "Report bugs or propose a feature"
+                    title: "Report an error",
+                    desc: "Something doesn't work? Report it to us!"
+                },
+                idea: {
+                    title: "Suggest a feature",
+                    desc: "Got an idea for Tippspiel? Show it to us!"
+                },
+                console: {
+                    title: "Console"
                 }
             },
             profile: {

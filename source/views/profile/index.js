@@ -12,7 +12,18 @@ export default class Profile extends View {
             <span class="short"></span>
             <span class="name"></span>
             <span class="points"></span>
+            <span class="tags">
+                <span><span class="material-icons">build</span> Admin</span>
+                <span><span class="material-icons">bug_report</span> Bug-Hunter</span>
+                <span><span class="material-icons">lightbulb</span> Feature-Creator</span>
+                <span><span class="material-icons">add_circle_outline</span> Supporter</span>
+            </span>
         </div>
+        <a class="tipp-box" href="/game/create/" target="_blank" >
+            <span class="icon"><span class="material-icons">add_circle_outline</span></span>
+            <span class="title">Neues Spiel</span>
+            <span class="meta">Erstelle ein neues Spiel</span>
+        </a>
         <h4>${Lang.get("section/profile/tipps/heading")}</h4>
         <div class="tipp-game-list"></div>`;
 
