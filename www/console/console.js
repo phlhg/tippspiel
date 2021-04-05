@@ -38,7 +38,7 @@ class Controller {
 
         this.view = new View();
 
-        this.socket = new H2RFP_Socket('wss://wetterfrosch.internet-box.ch',15320);
+        this.socket = new H2RFP_Socket('wss://wetterfrosch.internet-box.ch',location.hostname == "new.phlhg.ch" ? 15321 : 15320);
 
         this.socket.onConnect = () => {
             this.view.addInfo("Mit der Server verbunden")
@@ -50,7 +50,7 @@ class Controller {
         }
 
         this.view.addCommand("connect")
-        this.view.addOutput("Versuche zu verbinden...")
+        this.view.addOutput("Verbinde mit Server auf Port "+this.socket.port)
 
         this.socket.open().then(() => {
             this.socket.listen("Ping", (data,respond) => { respond() });
