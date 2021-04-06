@@ -133,6 +133,7 @@ export default class GameIndex extends View {
         this.mytipp.a.setAttribute("href","/game/"+this.game.id+"/tipp/");
 
         if(this.game.hasOwnTipp()){
+            this.mytipp.root.classList.remove("hidden");
             this.mytipp.meta.innerText = Lang.get("general/loading")
             this.game.getOwnTipp().then(async tipp => {
                 var winner = await tipp.getWinner();
@@ -147,6 +148,7 @@ export default class GameIndex extends View {
         } else {
             this.mytipp.flag.setAttribute("data-t","");
             if(this.game.status == GameStatus.UPCOMING){
+                this.mytipp.root.classList.remove("hidden");
                 this.mytipp.meta.innerText = Lang.get("section/game/tipp/notyet")
             } else {
                 this.mytipp.a.removeAttribute("href","");
@@ -159,6 +161,7 @@ export default class GameIndex extends View {
     }
 
     clear(){
+        this.stream.iframe.src = "";
         this.tipps.list.innerHTML = "";
     }
 
