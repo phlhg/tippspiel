@@ -55,6 +55,9 @@ __LANG = {
             loading: "Lade..."
         },
         section: {
+            home: {
+                pastgames: "Beändet"
+            },
             errors: {
                 notfound: {
                     title: "Hoppla...",
@@ -185,6 +188,9 @@ __LANG = {
             loading: "Laden..."
         },
         section: {
+            home: {
+                pastgames: "Beendet"
+            },
             errors: {
                 notfound: {
                     title: "Hoppla...",
@@ -314,6 +320,9 @@ __LANG = {
             loading: "Loading..."
         },
         section: {
+            home: {
+                pastgames: "Finished"
+            },
             errors: {
                 notfound: {
                     title: "Whoops...",
