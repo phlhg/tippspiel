@@ -1,5 +1,5 @@
 import Form from '../helpers/form'
-import SearchSelect from '../helpers/searchinput'
+import SearchSelect from '../helpers/searchselect'
 import View from '../view'
 
 export default class GameIndex extends View {
@@ -159,7 +159,6 @@ export default class GameIndex extends View {
 
         var p = await this.tipp.getPlayer();
         var t = await p.getTeam();
-        console.log(t);
         this.searchselect._select({
             value: p.id,
             img: `/img/flag/${t.short.toLowerCase()}.png`,

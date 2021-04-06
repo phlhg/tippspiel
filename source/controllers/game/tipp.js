@@ -1,5 +1,6 @@
 import Controller from '../controller'
 import GameTippView from '../../views/game/tipp'
+import { GameStatus } from '../../models/games/enums';
 
 export default class GameTipp extends Controller {
 
@@ -15,6 +16,11 @@ export default class GameTipp extends Controller {
         if(!App.client.active){ return App.client.prompt() };
 
         this.game = await App.model.games.get(this.params.id);
+
+        if(this.game.status != GameStatus.UPCOMING){ 
+            return App.router.overwrite(`/`);
+        }
+
         this.view.setGame(this.game);
 
         if(this.game.hasOwnTipp()){
@@ -31,7 +37,7 @@ export default class GameTipp extends Controller {
                 if(r){
                     App.router.forward(`/game/${this.game.id}/${this.game.team1.short.toLowerCase()}-${this.game.team2.short.toLowerCase()}/`)
                 } else {
-                    this.view.error("Something went wrong");
+                    this.view.form.error("Something went wrong");
                 }
             })
         })

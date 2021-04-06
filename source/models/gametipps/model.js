@@ -29,7 +29,9 @@ export default class GameTipps extends Manager {
             }
             return false;
         } else {
-            await this.update([r.data.id]);
+            var id = parseInt(r.data.id);
+            if(!App.client.gameTipps.includes(id)){ App.client.gameTipps.push(parseInt(id)); }
+            await this.update([id]);
             return true;
         }
     }
