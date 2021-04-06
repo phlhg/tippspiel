@@ -7,7 +7,7 @@ export default class SignIn extends View {
     }
 
     init(){
-        this._pattern = new RegExp('^(?:(?:https?:\/\/)?new.phlhg.ch\/token\/)?([0-9]{0,9}-[A-Za-z0-9]{5,20})(?:\/)?','i');
+        this._pattern = new RegExp('^(?:(?:https?:\/\/)?tipp.phlhg.ch\/token\/)?([0-9]{0,9}-[A-Za-z0-9]{5,20})(?:\/)?','i');
         this.root.classList.add("tipp-login-page");
         this.root.innerHTML = `<div class="inner">
             <h3>${Lang.get("section/signIn/title")}</h3>

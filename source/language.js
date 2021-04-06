@@ -111,4 +111,8 @@ export default class Language {
         })
     }
 
+    normalize(text){
+        return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace("ø","o").toLowerCase()
+    }
+
 }

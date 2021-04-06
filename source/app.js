@@ -14,7 +14,8 @@ import Users from './models/users/model'
 export default class Application {
 
     constructor(){
-        this.socket = new H2RFP_Socket('wss://wetterfrosch.internet-box.ch',15320);
+        this.socket = new H2RFP_Socket('wss://wetterfrosch.internet-box.ch',SERVER_PORT);
+        Debugger.log(this, "Connecting to server on port "+SERVER_PORT)()
         this.socket.onConnect = () => { Debugger.log(this, "Connected to server")() }
         this.socket.onDisconnect = () => { Debugger.log(this, "Disconnected from server") }
 
@@ -68,7 +69,7 @@ export default class Application {
     }
 
     setEvents(root){
-        Array.from(root.querySelectorAll("a")).forEach(a => {
+        Array.from(root.parentElement.querySelectorAll("a")).forEach(a => {
             a.onclick = e => {
                 if(a.hasAttribute("href") && a.getAttribute("href").indexOf("http") != 0 && a.getAttribute("href").indexOf("//") != 0){
                     e.preventDefault();

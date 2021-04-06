@@ -27,7 +27,7 @@ export default class Route {
     take(path){
         if(!this.matches(path)){ return false; }
         var match = this.pattern.exec(path);
-        return this.load(match.groups ? match.groups : {});
+        return this.load(Object.assign({}, match.groups ? match.groups : {}));
     }
 
     load(params){

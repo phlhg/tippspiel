@@ -25,6 +25,8 @@ export default class Component {
         });
 
         this.update();
+
+        App.setEvents(this.view.root);
     }
 
     init(){

@@ -1,5 +1,6 @@
 import Manager from '../model'
 import Player from './player'
+import Debugger from "../../debugger";
 
 /** Users Model */
 export default class Players extends Manager {

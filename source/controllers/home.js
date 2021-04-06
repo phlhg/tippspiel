@@ -1,5 +1,5 @@
 import Controller from './controller';
-import GameListView from '../views/gamelist'
+import HomeView from '../views/home'
 
 export default class Home extends Controller {
 
@@ -8,13 +8,15 @@ export default class Home extends Controller {
     }
 
     init(){
-        this.setView(GameListView);
+        this.setView(HomeView);
     }
 
     load(){
         if(App.socket.state != SocketState.OPEN){ return App.router.overwrite("/noconnection/"); }
-        App.model.games.getAll([1,2,3]).forEach(game => {
-            this.view.addGame(game)
+        
+        App.model.games.getHot().then(data => {
+          data.upcoming.forEach(game => { this.view.addUpcoming(game) })
+          data.over.forEach(game => { this.view.addOver(game) })
         })
     }
 

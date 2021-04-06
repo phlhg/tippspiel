@@ -1,3 +1,5 @@
+import Form from '../helpers/form'
+import SearchSelect from '../helpers/searchinput'
 import View from '../view'
 
 export default class GameIndex extends View {
@@ -17,13 +19,13 @@ export default class GameIndex extends View {
             <img class="flag2" src="/img/flag/esp.png"/>
         </a>
         <form class="tipp-form">
-            <h4>Resultat</h4>
+            <h4>${Lang.get("section/game/tipp/form/result")}</h4>
             <div class="tipp-score">
                 <input required class="t1" name="score1" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
                 <span class="seperator">:</span>
                 <input required class="t2" name="score2" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
             </div>
-            <h4>Gewinner <small> (bei möglichem Penaltyschiessen)</small></h4>
+            <h4>${Lang.get("section/game/tipp/form/winner")} <small> ${Lang.get("section/game/tipp/form/winner_notice")}</small></h4>
             <div class="tipp-winner">
                 <div class="tipp-radio-select">
                     <input type="radio" id="tippscoreteam1" name="winner" required value=""/>
@@ -32,17 +34,13 @@ export default class GameIndex extends View {
                     <label for="tippscoreteam2"></label>
                 </div>
             </div>
-            <h4>Torschütze</h4>
-            <div class="tipp-search tipp-player">
-                <span class="tflag" data-t=""></span>
-                <input type="search" autocomplete="off" placeholder="Suche nach einem Spieler" name="player"/>
-                <div class="suggestions"></div>
-            </div>
-            <span class="info"></span>
-            <span class="error"></span>
-            <input type="submit" value="Tippen" style="margin: 10px 0 0 15px;"/>
+            <h4>${Lang.get("section/game/tipp/form/topscorer")}</h4>
+            <div class="tipp-player"></div>
+            <input type="submit" value="${Lang.get("section/game/tipp/form/submit")}" style="margin: 10px 0 0 15px;"/>
         </form>
         `
+
+        this.form = new Form(this.root.querySelector("form"));
 
         this.header = {}
         this.header.root = this.root.querySelector(".game-header")
@@ -57,10 +55,6 @@ export default class GameIndex extends View {
         this.header.team2.flag = this.header.root.querySelector(".team2 .tflag")
         this.header.team2.bg = this.header.root.querySelector(".flag2")
 
-        this.form = this.root.querySelector("form")
-        this.dominfo = this.root.querySelector("form .info");
-        this.domerror = this.root.querySelector("form .error");
-
         this.score = {}
         this.score.team1 = this.root.querySelector("form .tipp-score .t1")
         this.score.team2 = this.root.querySelector("form .tipp-score .t2")
@@ -71,11 +65,8 @@ export default class GameIndex extends View {
         this.winner.team2 = this.root.querySelector("form .tipp-winner #tippscoreteam2")
         this.winner.label2 = this.root.querySelector("form .tipp-winner label[for='tippscoreteam2']")
 
-        this.player = {}
-        this.player.id = 0;
-        this.player.input = this.root.querySelector(".tipp-player input");
-        this.player.flag = this.root.querySelector(".tipp-player .tflag");
-        this.player.suggestions = this.root.querySelector(".tipp-player .suggestions");
+        this.player = this.root.querySelector(".tipp-player");
+        this.player_suggestions = [];
 
         [this.score.team1,this.score.team2].forEach(element => {
             element.onkeyup = () => {
@@ -86,39 +77,28 @@ export default class GameIndex extends View {
             }
         })
 
-        this.player_suggestions = [];
-
-        this.player.input.onkeyup = e => {
-            this.player.suggestions.innerHTML = "";
-            if(this.player.input.value.replace(/ /ig,"") != ""){
-                this.player_suggestions.filter(p => {
-                    return p.normalized.indexOf(this.player.input.value.toLowerCase()) > -1
-                }).sort((a,b) => {
-                    return -a.normalized.localeCompare(this.player.input.value.toLowerCase())
-                }).slice(0,4).forEach(async p => {
-                    var t = await p.getTeam();
-                    var s = document.createElement("span");
-                    s.innerHTML = `<span class="tflag" data-t="${t.name.toLowerCase()}"></span>${p.name}`;
-                    s.onclick = () => { this.setPlayer(p.id); }
-                    this.player.suggestions.appendChild(s);
-                })
-            }
+        this.searchselect = new SearchSelect("player",Lang.get("section/game/tipp/form/search"));
+        this.searchselect.getSuggestions = async (input) => {
+            return await Promise.all(this.player_suggestions.filter(p => {
+                return p.normalized.indexOf(input.toLowerCase()) > -1
+            }).sort((a,b) => {
+                return -a.normalized.localeCompare(input.toLowerCase())
+            }).map(async p => { 
+                var t = await p.getTeam();
+                return {
+                    value: p.id,
+                    text: p.name,
+                    img: `/img/flag/${t.short.toLowerCase()}.png`
+                }
+            }));
         }
 
-        this.player.input.onfocus = e => {
-            this.player.flag.setAttribute("data-t","")
-            this.player.input.value = "";
-            this.player.suggestions.innerHTML = "";
-        }
+        this.player.appendChild(this.searchselect.getHtml())
 
-        this.player.input.onblur = e => {
-            this.setPlayer(this.player.id);
-        }
-
-        this.form.addEventListener("submit",e => {
+        this.form.root.addEventListener("submit",e => {
             e.preventDefault();
 
-            var p = Math.max(parseInt(this.player.id),0);
+            var p = Math.max(parseInt(this.searchselect.getSelected().value),0);
             var b1 = this.score.team1;
             var b2 = this.score.team2;
 
@@ -126,7 +106,7 @@ export default class GameIndex extends View {
             var b2 = parseInt(this.score.team2.value)
 
             if(isNaN(b1) || isNaN(b2)){
-                this.error("Bitte gib ein gültiges Resultat ein")
+                this.form.error("Bitte gib ein gültiges Resultat ein")
                 return;
             }
 
@@ -141,7 +121,7 @@ export default class GameIndex extends View {
             }
 
             if(w < 1){
-                this.error("Bitte gib einen Gewinner für das Penaltyschiessen an")
+                this.form.error("Bitte gib einen Gewinner für das Penaltyschiessen an")
                 return;
             }
             
@@ -177,7 +157,14 @@ export default class GameIndex extends View {
             this.winner.team2.checked = true;
         }
 
-        this.setPlayer(this.tipp.topscorer)
+        var p = await this.tipp.getPlayer();
+        var t = await p.getTeam();
+        console.log(t);
+        this.searchselect._select({
+            value: p.id,
+            img: `/img/flag/${t.short.toLowerCase()}.png`,
+            text: p.name
+        })
     }
 
     setResult(t1,t2){
@@ -198,16 +185,6 @@ export default class GameIndex extends View {
                 this.winner.team2.checked = true;
             }
         }
-    }
-
-    async setPlayer(id){
-        if(id <= 0){ return; }
-        this.player.id = id;
-        var p = await App.model.players.get(id);
-        var t = await p.getTeam();
-        this.player.id = p.id;
-        this.player.input.value = p.name;
-        this.player.flag.setAttribute("data-t",t.name.toLowerCase())
     }
 
     async update(){
@@ -232,14 +209,6 @@ export default class GameIndex extends View {
         this.player_suggestions.sort((a,b) => a.name.localeCompare(b.name))
     }
 
-    info(message){
-        this.dominfo.innerText = message;
-    }
-
-    error(message){
-        this.domerror.innerText = message;
-    }
-
     clear(){
         this.score.team1.value = 0 
         this.score.team2.value = 0
@@ -247,7 +216,7 @@ export default class GameIndex extends View {
         this.winner.team2.disabled = false;
         this.winner.team1.checked = false;
         this.winner.team1.checked = false;
-        this.player.input.value = "";
+        this.searchselect.reset();
         this.player_suggestions = [];
     }
 

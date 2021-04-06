@@ -55,6 +55,9 @@ __LANG = {
             loading: "Lade..."
         },
         section: {
+            home: {
+                pastgames: "Beändet"
+            },
             errors: {
                 notfound: {
                     title: "Hoppla...",
@@ -67,9 +70,36 @@ __LANG = {
                 }
             },
             game: {
+                create: {
+                    team1: {
+                        name: "Team 1",
+                        placeholder: "Wähl es Team us"
+                    },
+                    team2: {
+                        name: "Team 2",
+                        placeholder: "Wähl es wiiters Team us"
+                    },
+                    kickoff: "Ahspil",
+                    location: {
+                        name: "Standort",
+                        placeholder: "Stadt & Stadion wo s Spil stattfindet",
+                    }
+                },
                 tipp: {
                     your: "Din Tipp",
-                    notyet: "Du hesch nonig tippt"
+                    notyet: "Du hesch nonig tippt",
+                    form: {
+                        result: "Resultat",
+                        winner: "Gwünner",
+                        winner_notice: "(bim ne Penaltyschüsse)",
+                        topscorer: "Torschütz",
+                        search: "Suech nach eme spiler",
+                        submit: "Tippe"
+                    }
+                },
+                tipps: {
+                    single: "1 Tipp",
+                    multi: "{n} Tipps"
                 }
             },
             signUp: {
@@ -97,6 +127,22 @@ __LANG = {
                 lang: {
                     title: "Sprach",
                     desc: "Änderet d'Sprach vom Tippspiel"
+                },
+                report: {
+                    title: "Fehler melde",
+                    desc: "Epis funktioniert ned? Melds eus!"
+                },
+                idea: {
+                    title: "Idee vorschlah",
+                    desc: "Hesch en Idee fürs Tippspiel? Zeig sie eus!"
+                },
+                console: {
+                    title: "Konsole"
+                }
+            },
+            profile: {
+                tipps: {
+                    heading: "Mini Tipps"
                 }
             }
         }
@@ -157,6 +203,9 @@ __LANG = {
             loading: "Laden..."
         },
         section: {
+            home: {
+                pastgames: "Beendet"
+            },
             errors: {
                 notfound: {
                     title: "Hoppla...",
@@ -169,9 +218,36 @@ __LANG = {
                 }
             },
             game: {
+                create: {
+                    team1: {
+                        name: "Team 1",
+                        placeholder: "Wähle ein Team aus"
+                    },
+                    team2: {
+                        name: "Team 2",
+                        placeholder: "Wähle ein weiteres Team aus"
+                    },
+                    kickoff: "Anspiel",
+                    location: {
+                        name: "Standort",
+                        placeholder: "Stadt & Stadion in dem das Spiel stattfindet",
+                    }
+                },
                 tipp: {
                     your: "Dein Tipp",
-                    notyet: "Du hast noch nicht getippt"
+                    notyet: "Du hast noch nicht getippt",
+                    form: {
+                        result: "Resultat",
+                        winner: "Gewinner",
+                        winner_notice: "(bei möglichem Penaltyschiessen)",
+                        topscorer: "Torschütze",
+                        search: "Suche nach einem Spieler",
+                        submit: "Tippen"
+                    }
+                },
+                tipps: {
+                    single: "1 Tipp",
+                    multi: "{n} Tipps"
                 }
             },
             signUp: {
@@ -199,6 +275,22 @@ __LANG = {
                 lang: {
                     title: "Sprache",
                     desc: "Ändert die Sprache des Tippspiels"
+                },
+                report: {
+                    title: "Fehler melden",
+                    desc: "Etwas funktioniert nicht? Melde es uns"
+                },
+                idea: {
+                    title: "Idee vorschlagen",
+                    desc: "Du hast eine Idee fürs Tippspiel? Zeige sie uns!"
+                },
+                console: {
+                    title: "Konsole"
+                }
+            },
+            profile: {
+                tipps: {
+                    heading: "Meine Tipps"
                 }
             }
         }
@@ -258,6 +350,9 @@ __LANG = {
             loading: "Loading..."
         },
         section: {
+            home: {
+                pastgames: "Finished"
+            },
             errors: {
                 notfound: {
                     title: "Whoops...",
@@ -271,8 +366,35 @@ __LANG = {
             },
             game: {
                 tipp: {
-                    your: "Your Tipp",
-                    notyet: "You didn't tipped yet"
+                    your: "Your Tip",
+                    notyet: "You haven't tiped yet",
+                    form: {
+                        result: "Result",
+                        winner: "Winner",
+                        winner_notice: "(in case of a penalty shootout)",
+                        topscorer: "Topscorer",
+                        search: "Search for a player",
+                        submit: "Tipp now"
+                    }
+                },
+                create: {
+                    team1: {
+                        name: "Team 1",
+                        placeholder: "Select a team"
+                    },
+                    team2: {
+                        name: "Team 2",
+                        placeholder: "Select another team"
+                    },
+                    kickoff: "Kickoff",
+                    location: {
+                        name: "Location",
+                        placeholder: "City & Stadium where the game takes place",
+                    }
+                },
+                tipps: {
+                    single: "1 Tip",
+                    multi: "{n} Tips"
                 }
             },
             signUp: {
@@ -300,6 +422,26 @@ __LANG = {
                 lang: {
                     title: "Language",
                     desc: "Changes the language of Tippspiel"
+                },
+                report: {
+                    title: "Report an error",
+                    desc: "Something doesn't work? Report it to us!"
+                },
+                idea: {
+                    title: "Suggest a feature",
+                    desc: "Got an idea for Tippspiel? Show it to us!"
+                },
+                console: {
+                    title: "Console"
+                }
+            },
+            profile: {
+                newgame: {
+                    name: "New game",
+                    desc: "Create a new game"
+                },
+                tipps: {
+                    heading: "My Tips"
                 }
             }
         }

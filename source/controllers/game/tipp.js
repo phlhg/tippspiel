@@ -1,6 +1,5 @@
 import Controller from '../controller'
 import GameTippView from '../../views/game/tipp'
-import { GameStatus } from '../../models/games/enums';
 
 export default class GameTipp extends Controller {
 

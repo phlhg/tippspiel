@@ -7,6 +7,10 @@ Options -Indexes -Multiviews
 RewriteEngine on
 RewriteBase /
 
+RewriteCond %{HTTP_HOST} ^phlhg\.ch [NC]
+RewriteCond %{REQUEST_URI} ^/tipp/ [NC]
+RewriteRule .* https://tipp.phlhg.ch [L,QSA,R=301]
+
 # Redirect to https://
 # RewriteCond %{HTTPS} off 
 # RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,QSA,R=301]
