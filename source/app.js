@@ -69,7 +69,7 @@ export default class Application {
     }
 
     setEvents(root){
-        Array.from(root.querySelectorAll("a")).forEach(a => {
+        Array.from(root.parentElement.querySelectorAll("a")).forEach(a => {
             a.onclick = e => {
                 if(a.hasAttribute("href") && a.getAttribute("href").indexOf("http") != 0 && a.getAttribute("href").indexOf("//") != 0){
                     e.preventDefault();
