@@ -35,4 +35,46 @@ export default class Games extends Model {
         }
     }
 
+    async getSuggestedLocations(){
+        var r = await App.socket.exec("suggest_locations", {})
+        if(r.state != ResponseState.SUCCESS){
+            if(r.error != 0){
+                Debugger.warn(this,Lang.getError(r.error,r.data))()
+            } else if(r.data.hasOwnProperty("info")) {
+                Debugger.error(this,r.data.info)()
+            } else {
+                Debugger.error(this,`Unbekannter Fehler beim Laden von "suggest_locations":`, r)()
+            }
+            return [];
+        } else {
+            return r.data.map(e => e.toString());
+        }
+    }
+
+    async create(team1, team2, time, location){
+        var r = await App.socket.exec("createGame", {
+            location: location,
+            time: time,
+            name: "",
+            stream: "",
+            event: 1,
+            team1: team1,
+            team2: team2,
+        })
+
+        if(r.state != ResponseState.SUCCESS){
+            if(r.error != 0){
+                Debugger.warn(this,Lang.getError(r.error,r.data))()
+            } else if(r.data.hasOwnProperty("info")) {
+                Debugger.error(this,r.data.info)()
+            } else {
+                Debugger.error(this,`Unbekannter Fehler beim Erstellen des Spiels:`, r)()
+            }
+            return -1;
+        } else {
+            return parseInt(r.data.id);
+        }
+
+    }
+
 }

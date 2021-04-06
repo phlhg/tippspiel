@@ -137,7 +137,7 @@ export default class GameIndex extends View {
             this.mytipp.meta.innerText = Lang.get("general/loading")
             this.game.getOwnTipp().then(async tipp => {
                 var winner = await tipp.getWinner();
-                this.mytipp.flag.setAttribute("data-t",winner.name.toLowerCase());
+                this.mytipp.flag.setAttribute("data-t",winner.short.toLowerCase());
                 if(tipp.topscorer > 0){
                     var player = await tipp.getPlayer()
                     this.mytipp.meta.innerText = `${tipp.bet1} : ${tipp.bet2} / ${player.name}`

@@ -21,8 +21,8 @@ export default class Profile extends View {
         </div>
         <a class="tipp-box" href="/game/create/" target="_blank" >
             <span class="icon"><span class="material-icons">add_circle_outline</span></span>
-            <span class="title">Neues Spiel</span>
-            <span class="meta">Erstelle ein neues Spiel</span>
+            <span class="title">${Lang.get("section/profile/newgame/name")}</span>
+            <span class="meta">${Lang.get("section/profile/newgame/desc")}</span>
         </a>
         <h4>${Lang.get("section/profile/tipps/heading")}</h4>
         <div class="tipp-game-list"></div>`;

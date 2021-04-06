@@ -7,6 +7,7 @@ a { color: inherit; cursor: pointer; text-decoration: none; }
 .material-icons { font-size: inherit !important;}
 
 /* Transitions */
+.tipp-date-input > select,
 .tipp-search > .suggestions,
 .tipp-radio-select > label,
 .tflag,
@@ -189,15 +190,22 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 
 /* Search Suggestions */
 
-.tipp-search { position: relative; display: block; width: 100%; margin-bottom: 10px; }
-.tipp-search > input { margin-bottom: 0; padding: 15px 15px 15px 40px; border-left: none; }
-.tipp-search > input:focus { border-radius: 4px 4px 0 0;}
-.tipp-search > .tflag { position: absolute; left: 15px; top: 14px; }
-.tipp-search > .suggestions { z-index: 100; position: relative; top: 100%; left: 0; width: 100%; background:rgb(0, 20, 44); overflow: hidden; border-radius: 4px; max-height: 0; opacity: 1;}
-.tipp-search > input:focus + .suggestions { border-radius: 0 0 4px 4px; max-height: 160px; opacity: 1;}
-.tipp-search > .suggestions > span { cursor: pointer; position: relative; display: block; padding: 10px 15px 10px 40px; background: rgba(0,0,0,0); color: #fff; line-height: 20px; height: 40px;}
-.tipp-search > .suggestions > span:hover { background: rgba(0,0,0,0.15); }
-.tipp-search > .suggestions > span > .tflag { position: absolute; left: 15px; top: 11px; }
+.tipp-searchselect { position: relative; display: block; width: 100%; margin-bottom: 10px; }
+.tipp-searchselect > input { margin-bottom: 0; padding: 15px 15px 15px 40px; border-left: none; }
+.tipp-searchselect > input:focus { border-radius: 4px 4px 0 0;}
+.tipp-searchselect .icon { position: absolute; display: block; left: 15px; top: 14px; width: 18px; height: 18px; background-color: rgba(0,0,0,0.25); background-size: cover; background-position: center; border-radius: 50%; }
+.tipp-searchselect > .suggestions { z-index: 100; position: relative; top: 100%; left: 0; width: 100%; background:rgb(0, 20, 44); overflow: hidden; border-radius: 4px; max-height: 0; opacity: 1;}
+.tipp-searchselect > input:focus + .suggestions { border-radius: 0 0 4px 4px; max-height: 160px; opacity: 1;}
+.tipp-searchselect > .suggestions > span { cursor: pointer; position: relative; display: block; padding: 10px 15px 10px 40px; background: rgba(0,0,0,0); color: #fff; line-height: 20px; height: 40px;}
+.tipp-searchselect > .suggestions > span:hover { background: rgba(0,0,0,0.15); }
+.tipp-searchselect > .suggestions > span > .icon { position: absolute; left: 15px; top: 11px; }
+
+/* Input Date */
+.tipp-date-input { position: relative; display: flex; flex-wrap: nowrap; flex-direction: row; width: 100%; margin-bottom: 10px; }
+.tipp-date-input > select { position: relative; margin-left: 5px; text-align: center; border: 1px solid transparent; }
+.tipp-date-input.invalid > select { border-color: rgb(255, 61, 61) }
+.tipp-date-input > select:first-of-type { margin-left: 0;}
+.tipp-date-input > select.hour { margin-left: 15px; }
 
 /* Profile view */
 .tipp-profile-header { position: relative; display: block; width: 100%; padding: 15px 130px 15px 15px; margin: 0 0 15px 0; background: rgba(0,0,0,0.15); border-radius: 4px;}

@@ -70,6 +70,21 @@ __LANG = {
                 }
             },
             game: {
+                create: {
+                    team1: {
+                        name: "Team 1",
+                        placeholder: "Wähl es Team us"
+                    },
+                    team2: {
+                        name: "Team 2",
+                        placeholder: "Wähl es wiiters Team us"
+                    },
+                    kickoff: "Ahspil",
+                    location: {
+                        name: "Standort",
+                        placeholder: "Stadt & Stadion wo s Spil stattfindet",
+                    }
+                },
                 tipp: {
                     your: "Din Tipp",
                     notyet: "Du hesch nonig tippt",
@@ -203,6 +218,21 @@ __LANG = {
                 }
             },
             game: {
+                create: {
+                    team1: {
+                        name: "Team 1",
+                        placeholder: "Wähle ein Team aus"
+                    },
+                    team2: {
+                        name: "Team 2",
+                        placeholder: "Wähle ein weiteres Team aus"
+                    },
+                    kickoff: "Anspiel",
+                    location: {
+                        name: "Standort",
+                        placeholder: "Stadt & Stadion in dem das Spiel stattfindet",
+                    }
+                },
                 tipp: {
                     your: "Dein Tipp",
                     notyet: "Du hast noch nicht getippt",
@@ -347,6 +377,21 @@ __LANG = {
                         submit: "Tipp now"
                     }
                 },
+                create: {
+                    team1: {
+                        name: "Team 1",
+                        placeholder: "Select a team"
+                    },
+                    team2: {
+                        name: "Team 2",
+                        placeholder: "Select another team"
+                    },
+                    kickoff: "Kickoff",
+                    location: {
+                        name: "Location",
+                        placeholder: "City & Stadium where the game takes place",
+                    }
+                },
                 tipps: {
                     single: "1 Tip",
                     multi: "{n} Tips"
@@ -391,6 +436,10 @@ __LANG = {
                 }
             },
             profile: {
+                newgame: {
+                    name: "New game",
+                    desc: "Create a new game"
+                },
                 tipps: {
                     heading: "My Tips"
                 }

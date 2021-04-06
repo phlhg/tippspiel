@@ -25,7 +25,7 @@ export default class Player extends Element {
     set(data){
         this.name = data.name ?? this.name
         // See: https://stackoverflow.com/a/51874002
-        this.normalized = data.hasOwnProperty("name") ? data.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : this.normalized
+        this.normalized = data.hasOwnProperty("name") ? Lang.normalize(data.name) : this.normalized
         this.team = parseInt(data.team ?? this.team)
     }
 

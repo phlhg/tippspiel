@@ -6,6 +6,9 @@ export default class Team extends Element {
     constructor(data){
         super(data.id)
 
+        /** @property {string} short - Short name of the team */
+        this.short = ""
+
         /** @property {string} name - Name of the team */
         this.name = "Anon"
 
@@ -23,7 +26,8 @@ export default class Team extends Element {
      * @param {object} data - Properties of to update
      */
     set(data){
-        this.name = data.short ?? this.name
+        this.short = data.short ?? this.short
+        this.name = data.hasOwnProperty("short") ? Lang.get("teams/"+data.short.toLowerCase()) : this.name
         this.games = Array.from(data.games ?? this.games).map(i => parseInt(i))
         this.players = Array.from(data.players ?? this.players).map(i => parseInt(i))
     }

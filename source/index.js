@@ -16,6 +16,7 @@ import SignUp from './controllers/signup'
 import SignIn from './controllers/signin'
 
 import Settings from './controllers/settings/index'
+import GameCreate from './controllers/game/create'
 
 Debugger.active = true;
 
@@ -30,6 +31,7 @@ window.addEventListener("DOMContentLoaded", function(){
 
     App.router.add("/",new Home)
 
+    App.router.add("/game/create/",new GameCreate)
     App.router.add("/game/{id}/tipp/",new GameTipp).where({ id: 'NUMBER' })
     App.router.add("/game/{id}/{name}/",new Game).where({ id: 'NUMBER', name: 'TEXT' })
 
