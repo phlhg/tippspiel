@@ -21,9 +21,12 @@ export default class Controller {
         if(!this._active){
             this._active = true;
             this.params = params ?? {};
-            if(await this.load() !== false){
+            await this.load()
+            if(this._active){
                 this.view._show();
                 App.setEvents(this.view.root);
+            } else {
+                this._unload();
             }
         }
     }
@@ -31,11 +34,9 @@ export default class Controller {
     async load(){ }
 
     _unload(){
-        if(this._active){
-            this.view._hide()
-            setTimeout(() => { this.unload() }, 250);
-            this._active = false;
-        }
+        this.view._hide()
+        setTimeout(() => { this.unload() }, 250);
+        this._active = false;
     }
 
     unload(){ }
