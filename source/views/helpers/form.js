@@ -22,6 +22,8 @@ export default class Form {
     setEvents(){
         this.root.addEventListener("submit",e => {
             e.preventDefault();
+            this.info(""); 
+            this.error("");
             let data = Object.fromEntries(new FormData(e.target).entries());
             this.onSubmit(data)
         })

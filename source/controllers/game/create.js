@@ -22,7 +22,7 @@ export default class GameCreate extends Controller {
             if(id > 0){
                 App.router.forward("/");
             } else {
-                this.view.form.error("Spiel konnte nicht erstellt werden");
+                this.view.form.error(Lang.get("section/game/create/errors/notcreated"));
             }
         })
     }

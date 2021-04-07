@@ -233,6 +233,12 @@ __LANG = {
                     location: {
                         name: "Standort",
                         placeholder: "Stadt & Stadion in dem das Spiel stattfindet",
+                    },
+                    errors: {
+                        missingteam: "Bitte wähle zwei Mannschaften aus",
+                        invaliddate: "Bitte gib ein gültiges Datum & eine gültige Zeit ein",
+                        missinglocation: "Bitte wähle einen Standort für das Spiel",
+                        notcreated: "Das Spiel konnte nicht erstellt werden - Versuche es später erneut"
                     }
                 },
                 tipp: {
@@ -393,6 +399,12 @@ __LANG = {
                     location: {
                         name: "Location",
                         placeholder: "City & Stadium where the game takes place",
+                    },
+                    errors: {
+                        missingteam: "Please select two teams",
+                        invaliddate: "Plase enter a valid date & time",
+                        missinglocation: "Please select a location",
+                        notcreated: "Game could not be created - Try again later"
                     }
                 },
                 tipps: {

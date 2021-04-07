@@ -36,7 +36,7 @@ export default class GameCreate extends View {
 
         this.team1.getSuggestions = async (input) => {
             return this.teams.filter(t => {
-                return t.name.toLowerCase().includes(input.toLowerCase()) || t.short.toLowerCase().includes(input.toLowerCase())
+                return this.team2.getSelected().value != t.id && (t.name.toLowerCase().includes(input.toLowerCase()) || t.short.toLowerCase().includes(input.toLowerCase()))
             }).map(t => {
                 return {
                     text: t.name,
@@ -46,7 +46,17 @@ export default class GameCreate extends View {
             })
         }
 
-        this.team2.getSuggestions = this.team1.getSuggestions;
+        this.team2.getSuggestions = async (input) => {
+            return this.teams.filter(t => {
+                return this.team1.getSelected().value != t.id && (t.name.toLowerCase().includes(input.toLowerCase()) || t.short.toLowerCase().includes(input.toLowerCase()))
+            }).map(t => {
+                return {
+                    text: t.name,
+                    value: t.id,
+                    img: `/img/flag/${t.short.toLowerCase()}.png`
+                }
+            })
+        }
 
         this.location.getSuggestions = async (input) => {
             return this.locations.filter(l => {
@@ -62,6 +72,9 @@ export default class GameCreate extends View {
         this.root.querySelector(".tipp-location-select").appendChild(this.location.getHtml());
 
         this.form.onSubmit = (data) => {
+            if(parseInt(data.team1) < 1 || parseInt(data.team2) < 1) { this.form.error(Lang.get("section/game/create/errors/missingteam")); return; }
+            if(!this.kickoff.isValid()){ this.form.error(Lang.get("section/game/create/errors/invaliddate")); return; }
+            if(data.location.replace(/ /ig,"") == ""){ this.form.error(Lang.get("section/game/create/errors/missinglocation")); return; }
             data["date"] = this.kickoff.getDate();
             this.event("submit",data);
         }
@@ -74,7 +87,6 @@ export default class GameCreate extends View {
             name: l, 
             normalized: Lang.normalize(l)
         }});
-        console.log(this.locations);
     }
 
     clear(){
