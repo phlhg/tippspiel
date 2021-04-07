@@ -11,7 +11,10 @@ __LANG = {
             3: "De Name wird scho gnutzt",
             4: "De Zuegangscode isch unbekannt",
             5: "De Name chasch nöd bringe",
-            6: "Es chönd kei Tipps meh abgeh werde"
+            6: "Es chönd kei Tipps meh abgeh werde",
+            7: "Du bisch scho aagmolde.",
+            8: "Die Aafrag isch scho am laufe.",
+            9: "Es git kein account mit de Email {email}"
         },
         teams: {
             "aut": "Österich",
@@ -160,7 +163,10 @@ __LANG = {
             3: "Dieser Name wird bereits verwendet",
             4: "Dieser Zugangscode ist unbekannt",
             5: "Dieser Name ist ungültig",
-            6: "Es können keine Tipps mehr abgegeben werden"
+            6: "Es können keine Tipps mehr abgegeben werden",
+            7: "Du bist bereits eingeloggt",
+            8: "Dieser Prozess läuft bereits.",
+            9: "Es gibt keinen Account mit der Email {email}"
         },
         teams: {
             "aut": "Österreich",
@@ -314,7 +320,10 @@ __LANG = {
             3: "This name is already in use",
             4: "This accesscode is unkown",
             5: "This name is invalid",
-            6: "Tipps can't be submitted anymore"
+            6: "Tipps can't be submitted anymore",
+            7: "You are already logged in.",
+            8: "This request is already running.",
+            9: "There is no account with the email {email}"
         },
         teams: {
             "aut": "Austria",
