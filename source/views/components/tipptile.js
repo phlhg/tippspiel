@@ -31,9 +31,9 @@ export default class TippTile extends Component {
         var player = await (this.obj.topscorer > 0 ? this.obj.getPlayer() : { name: "" })
 
         this.view.name.innerText = user.name;
-        this.view.flag.setAttribute("data-t",winner.name.toLowerCase());
+        this.view.flag.setAttribute("data-t",winner.short.toLowerCase());
         this.view.meta.innerText = `${this.obj.bet1} : ${this.obj.bet2} /  ${player.name}`;
-        this.view.reward.innerText = '+'+this.obj.reward;
+        this.view.reward.innerText = this.obj.reward > 0 ? '+'+this.obj.reward : '';
     }
 
 }

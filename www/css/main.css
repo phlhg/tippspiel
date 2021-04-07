@@ -64,8 +64,8 @@ nav a:hover img { opacity: 1 !important; }
 
 section h3 { font-size: 30px; }
 section h4 { font-size: 20px; font-weight: normal; }
-section > h3 { padding: 0 15px; margin: 15px 0 10px 0; }
-section > h4 { padding: 0 15px; margin: 15px 0 10px 0; }
+section h3 { padding: 0 15px; margin: 15px 0 10px 0; }
+section h4 { padding: 0 15px; margin: 15px 0 10px 0; }
 h4 > small { font-size: 12px; font-weight: normal; opacity: 0.75; line-height: inherit; }
 section > .text { position: relative; display: block; padding: 0 15px; }
 section a.button, section span.button { position: relative; display: inline-block; padding: 10px 15px; margin: 10px 0; background: rgba(0,0,0,0.15); border-radius: 4px; font-size: 14px; color: #fff; text-decoration: none;}
