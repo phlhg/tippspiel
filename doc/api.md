@@ -57,6 +57,17 @@ socket.exec("signup",{ name: String, email: String })
 { state, error, data: {} }
 ```
 
+### restoreToken
+
+Erstellt ein Neues Token für einen Account
+
+```js
+socket.exec("restoreToken",{email: String})
+socket.exec("restoreToken")
+```
+
+`email` Email des betroffenen Accounts. Alternativ kann eine eingeloggte session verwendet werden
+
 ### Me
 
 Gibt Information über den Klient

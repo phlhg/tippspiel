@@ -1,8 +1,9 @@
 feature;dokumentiert;Server implementiert;Server getestet;Web implementiert;Web getestet
 signup;x;x;;;
-signin;x;x;x;;
-me;x;x;x;;
-get_data;x;x;x;;
+restoreToken;x;x;;;
+signin;x;x;;;
+me;x;x;;;
+get_data;x;x;;;
 hotGames;x;x;;;
 suggest_locations;x;x;;;
 suggest_players;x;x;;;
@@ -13,4 +14,4 @@ reportGame;x;;;;
 console;x;x;;;
 ranking;~;;;;
 Update;x;x;;;
-Ping;x;x;x;x;x
+Ping;x;x;;x;x
