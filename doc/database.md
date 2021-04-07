@@ -187,10 +187,6 @@ type Game
 
 `status` Momentaner Status des Spiels
 
-`previousStage` Ein vorangehendes Spiel; Der Sieger des Vorangehenden Spiels nimmt an diesem Spiel Teil.
-
-`nextStage` Der Sieger dieses Spiels nimmt am nächsten Spiel teil.
-
 ```js
 0 Game.UPCOMING
 1 Game.RUNNING
@@ -198,11 +194,16 @@ type Game
 3 Game.ENDED
 ```
 
+`previousStage` Ein vorangehendes Spiel; Der Sieger des Vorangehenden Spiels nimmt an diesem Spiel Teil.
+
+`nextStage` Der Sieger dieses Spiels nimmt am nächsten Spiel teil.
+
 `phase` Maximal erreichter Spielabschnitt
 
 ```js
 0 Game.NORMAL
-1 Game.PENALTY
+1 Game.OVERTIME
+2 Game.PENALTY
 ```
 
 `teams` Teilnehmer des Spiels (2)

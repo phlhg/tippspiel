@@ -153,6 +153,7 @@ socket.exec("makeTipp",{
 ```js
 socket.exec("reportGame",{
     game: ID,
+    phase: Int,
     score1: Int,
     score2: Int,
     scorePenalty1: Int,
@@ -164,6 +165,8 @@ socket.exec("reportGame",{
 ```js
 {state, error, data:{ }}
 ```
+
+`phase` siehe enumeration in [Datenbank](database.md#Game)
 
 ### Console
 
