@@ -168,6 +168,17 @@ socket.exec("reportGame",{
 
 `phase` siehe enumeration in [Datenbank](database.md#Game)
 
+
+### nextPhase
+
+Updates the Phase of the game from NORMAL to OVERTIME and OVERTIME to PENALTY
+
+```js
+socket.exec("nextPhase",{
+    game: ID,
+});
+```
+
 ### Console
 
 ```js
