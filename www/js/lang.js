@@ -156,7 +156,7 @@ __LANG = {
         _extends: "en",
         name: "Tippspiel",
         errors: {
-            '-1': "Es besteht zurzeit keine Verbindung zum Server",
+            '-1': "Feilchen sind blau, Rosen sind rot und der Server ist tot.", // keine Verbindung
             0: "Es ist ein unbekannter Fehler aufgetreten",
             1: "Für dies ist eine Anmeldung erforderlich",
             2: "Diese E-Mail wird bereits verwendet",
