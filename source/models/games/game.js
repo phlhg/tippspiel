@@ -110,4 +110,17 @@ export default class Game extends Element {
         return App.model.players.getSuggested(this.id);
     }
 
+    report(data){
+        return App.model.games.report(this.id, data);
+    }
+
+    async nextPhase(){
+        var r = await App.model.games.nextPhase(this.id);
+        if(!r){ return false; }
+        if(this.phase == GamePhase.NORMAL){ this.phase = GamePhase.OVERTIME; }
+        else if(this.phase == GamePhase.OVERTIME){ this.phase = GamePhase.PENALTY; }
+        this.status = GameStatus.RUNNING;
+        return true;
+    }
+
 }

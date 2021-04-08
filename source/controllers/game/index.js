@@ -9,16 +9,13 @@ export default class GameIndex extends Controller {
     }
 
     init(){
-        this.setView(GameView)
+        this.setView(GameView);
     }
 
-    load(){
-        App.model.games.get(this.params.id).then(g => {
-            this.view.setGame(g);
-            if(g.status != GameStatus.UPCOMING){ this.view.addTipps(g.getTipps()) }
-        }, e => {
-            return App.router.forward("/");
-        });
+    async load(){
+        var g = await App.model.games.get(this.params.id);
+        this.view.setGame(g);
+        if(g.status != GameStatus.UPCOMING){ this.view.addTipps(g.getTipps()) }
     }
 
     unload(){

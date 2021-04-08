@@ -77,4 +77,54 @@ export default class Games extends Model {
 
     }
 
+    async report(id, data){
+
+        if(!["phase","score1","score2","penalty1","penalty2","scorer"].every(p => data.hasOwnProperty(p))){
+            return false;
+        }
+
+        var r = await App.socket.exec("reportGame", {
+            game: id,
+            phase: data.phase,
+            score1: data.score1,
+            score2: data.score2,
+            scorePenalty1: data.penalty1,
+            scorePenalty2: data.penalty2,
+            scorers: data.scorer
+        })
+
+        if(r.state != ResponseState.SUCCESS){
+            if(r.error != 0){
+                Debugger.warn(this,Lang.getError(r.error,r.data))()
+            } else if(r.data.hasOwnProperty("info")) {
+                Debugger.error(this,r.data.info)()
+            } else {
+                Debugger.error(this,`Unbekannter Fehler beim Melden des Spiels:`, r)()
+            }
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
+    async nextPhase(id){
+
+        var r = await App.socket.exec("nextPhase", { game: id })
+
+        if(r.state != ResponseState.SUCCESS){
+            if(r.error != 0){
+                Debugger.warn(this,Lang.getError(r.error,r.data))()
+            } else if(r.data.hasOwnProperty("info")) {
+                Debugger.error(this,r.data.info)()
+            } else {
+                Debugger.error(this,`Unbekannter Fehler beim Aktualisieren der Spiel-Phase`, r)()
+            }
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
 }

@@ -9,6 +9,8 @@ import Home from './controllers/home'
 
 import Game from './controllers/game/index'
 import GameTipp from './controllers/game/tipp'
+import GameCreate from './controllers/game/create'
+import GameReport from './controllers/game/report'
 
 import Profile from './controllers/profile'
 
@@ -16,7 +18,6 @@ import SignUp from './controllers/signup'
 import SignIn from './controllers/signin'
 
 import Settings from './controllers/settings/index'
-import GameCreate from './controllers/game/create'
 
 Debugger.active = true;
 
@@ -33,7 +34,8 @@ window.addEventListener("DOMContentLoaded", function(){
 
     App.router.add("/game/create/",new GameCreate)
     App.router.add("/game/{id}/tipp/",new GameTipp).where({ id: 'NUMBER' })
-    App.router.add("/game/{id}/{name}/",new Game).where({ id: 'NUMBER', name: 'TEXT' })
+    App.router.add("/game/{id}/report/",new GameReport).where({ id: 'NUMBER' })
+    App.router.add("/game/{id}/{t1}-{t2}/",new Game).where({ id: 'NUMBER', t1: 'TEXT',t2: 'TEXT' })
 
     App.router.add("/profile/",new Profile)
 

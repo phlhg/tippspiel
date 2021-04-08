@@ -12,11 +12,12 @@ export default class GameIndex extends View {
     }
 
     init(){
-        this.root.innerHTML = `<div class="game-stream">
-            <span class="live">live</span>
+        this.root.innerHTML = `
+        <div class="game-stream">
             <iframe frameborder="0" allow="picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="game-header">
+            <span class="live">live</span>
             <h2 class="top">
                 <span class="team1"><span class="tflag" data-t="sui" ></span> <span class="name">Schweiz</span></span>
                 <span class="team2"><span class="name">Spanien</span> <span class="tflag" data-t="esp" ></span></span>
@@ -29,11 +30,29 @@ export default class GameIndex extends View {
             <img class="flag1" src="/img/flag/sui.png"/>
             <img class="flag2" src="/img/flag/esp.png"/>
         </div>
+        <div class="game-prompt-wrapper">
+            <a class="tipp-box ended" style="background-color: #d42700; ">
+                <span class="icon"><span class="material-icons">stop</span></span>
+                <span class="title">${Lang.get("section/game/prompt/ended/name")}</span>
+                <span class="meta">${Lang.get("section/game/prompt/ended/desc")}</span>
+            </a>
+            <a class="tipp-box extension" style="background-color: #00b50c; display: none;">
+                <span class="icon"><span class="material-icons">chevron_right</span></span>
+                <span class="title">${Lang.get("section/game/prompt/continues/name")}</span>
+                <span class="meta">${Lang.get("section/game/prompt/continues/extension")}</span>
+            </a>
+            <a class="tipp-box penalty" style="background-color: #00b50c; display: none;">
+                <span class="icon"><span class="material-icons">last_page</span></span>
+                <span class="title">${Lang.get("section/game/prompt/continues/name")}</span>
+                <span class="meta">${Lang.get("section/game/prompt/continues/penalty")}</span>
+            </a>
+        </div>
         <div class="game-mytipp">
             <a class="tipp-tile fullwidth">
                 <span class="tflag" data-t=""></span>
                 <span class="name">${Lang.get("section/game/tipp/your")}</span>
                 <span class="meta">${Lang.get("general/loading")}</span>
+                <span class="reward"></span>
             </a>
         </div>
         <div class="game-tipps">
@@ -47,6 +66,7 @@ export default class GameIndex extends View {
 
         this.header = {}
         this.header.root = this.root.querySelector(".game-header")
+        this.header.live = this.header.root.querySelector(".live");
 
         this.header.score = {}
         this.header.score.normal = this.header.root.querySelector(".score .normal")
@@ -67,6 +87,12 @@ export default class GameIndex extends View {
         this.header.meta.time = this.header.root.querySelector(".meta .time")
         this.header.meta.location = this.header.root.querySelector(".meta .location")
 
+        this.prompt = {}
+        this.prompt.wrapper = this.root.querySelector(".game-prompt-wrapper")
+        this.prompt.ended = this.prompt.wrapper.querySelector(".ended")
+        this.prompt.extension = this.prompt.wrapper.querySelector(".extension")
+        this.prompt.penalty = this.prompt.wrapper.querySelector(".penalty")
+
         this.tipps = {}
         this.tipps.root = this.root.querySelector(".game-tipps")
         this.tipps.list = this.tipps.root.querySelector(".tipp-list")
@@ -77,6 +103,7 @@ export default class GameIndex extends View {
         this.mytipp.title = this.mytipp.root.querySelector(".name")
         this.mytipp.meta = this.mytipp.root.querySelector(".meta")
         this.mytipp.flag = this.mytipp.root.querySelector(".tflag")
+        this.mytipp.reward = this.mytipp.root.querySelector(".reward")
 
     }
 
@@ -98,6 +125,19 @@ export default class GameIndex extends View {
     }
 
     update(){
+
+        // Stream
+        if((this.game.status == GameStatus.RUNNING || this.game.status == GameStatus.PENDING) && this.game.stream != ""){
+            this.stream.root.classList.add("active");
+            if(this.stream.iframe.src != this.game.stream){
+                this.stream.iframe.src = this.game.stream;
+            }
+        } else {
+            this.stream.root.classList.remove("active");
+            this.stream.iframe.src = "";
+        }
+
+        // Header
         this.header.team1.name.innerText = this.game.team1.name;
         this.header.team2.name.innerText = this.game.team2.name;
 
@@ -109,19 +149,8 @@ export default class GameIndex extends View {
 
         this.header.score.normal.innerText = this.game.team1.score + ":" + this.game.team2.score;
 
-        if(this.game.status == GameStatus.UPCOMING){
-            this.tipps.root.classList.add("hidden");
-        } else {
-            this.tipps.root.classList.remove("hidden");
-        }
-
-        if((this.game.status == GameStatus.RUNNING || this.game.status == GameStatus.PENDING) && this.game.stream != ""){
-            this.stream.root.classList.add("active");
-            this.stream.iframe.src = this.game.stream;
-        } else {
-            this.stream.root.classList.remove("active");
-            this.stream.iframe.src = "";
-        }
+        this.header.meta.time.innerText = TippDate.toString(this.game.start);
+        this.header.meta.location.innerText = this.game.location;
 
         if(this.game.phase == GamePhase.PENALTY){
             this.header.score._penalty.classList.add("active");
@@ -130,10 +159,44 @@ export default class GameIndex extends View {
             this.header.score._penalty.classList.remove("active");
         }
 
-        this.mytipp.a.setAttribute("href","/game/"+this.game.id+"/tipp/");
+        if(this.game.status == GameStatus.RUNNING || this.game.status == GameStatus.PENDING){
+            this.header.live.style.display = "inline-block";
+        } else {
+            this.header.live.style.display = "none";
+        }
+
+        // Game End Prompt
+        if(this.game.status == GameStatus.PENDING && App.client.permission.gameReport){
+            if(this.game.phase == GamePhase.NORMAL){
+                this.prompt.penalty.style.display = "none";
+                this.prompt.extension.style.display = "block";
+            } else if(this.game.phase == GamePhase.OVERTIME){
+                this.prompt.penalty.style.display = "block";
+                this.prompt.extension.style.display = "none";
+            } else {
+                this.prompt.penalty.style.display = "none";
+                this.prompt.extension.style.display = "none";
+            }
+            this.prompt.wrapper.classList.remove("hidden");
+            this.prompt.ended.setAttribute("href","/game/"+this.game.id+"/report/");
+            this.prompt.extension.onclick = async () => {
+                console.log("LOL");
+                await this.game.nextPhase()
+                this.update();
+            }
+            this.prompt.penalty.onclick = this.prompt.extension.onclick;
+        } else {
+            this.prompt.wrapper.classList.add("hidden");
+        }
+
+        // My Tipp
+        if(this.game.status == GameStatus.UPCOMING){
+            this.mytipp.a.setAttribute("href","/game/"+this.game.id+"/tipp/");
+        } else {
+            this.mytipp.a.removeAttribute("href");
+        }
 
         if(this.game.hasOwnTipp()){
-            this.mytipp.root.classList.remove("hidden");
             this.mytipp.meta.innerText = Lang.get("general/loading")
             this.game.getOwnTipp().then(async tipp => {
                 var winner = await tipp.getWinner();
@@ -144,20 +207,20 @@ export default class GameIndex extends View {
                 } else {
                     this.mytipp.meta.innerText = `${tipp.bet1} : ${tipp.bet2} / `;
                 }
+                this.mytipp.reward.innerText = tipp.reward > 0 ? '+'+tipp.reward : '';
             })
         } else {
+            this.mytipp.reward.innerText = '';
             this.mytipp.flag.setAttribute("data-t","");
-            if(this.game.status == GameStatus.UPCOMING){
-                this.mytipp.root.classList.remove("hidden");
-                this.mytipp.meta.innerText = Lang.get("section/game/tipp/notyet")
-            } else {
-                this.mytipp.a.removeAttribute("href","");
-                this.mytipp.root.classList.add("hidden");
-            }
+            this.mytipp.meta.innerText = this.game.status == GameStatus.UPCOMING ? Lang.get("section/game/tipp/notyet") : Lang.get("section/game/tipp/none")
         }
 
-        this.header.meta.time.innerText = TippDate.toString(this.game.start);
-        this.header.meta.location.innerText = this.game.location;
+        // Tipps
+        if(this.game.status == GameStatus.UPCOMING){
+            this.tipps.root.classList.add("hidden");
+        } else {
+            this.tipps.root.classList.remove("hidden");
+        }
     }
 
     clear(){

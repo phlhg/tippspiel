@@ -244,6 +244,7 @@ __LANG = {
                 tipp: {
                     your: "Dein Tipp",
                     notyet: "Du hast noch nicht getippt",
+                    none: "Du hast nicht getippt",
                     form: {
                         result: "Resultat",
                         winner: "Gewinner",
@@ -256,6 +257,17 @@ __LANG = {
                 tipps: {
                     single: "1 Tipp",
                     multi: "{n} Tipps"
+                },
+                prompt: {
+                    ended: {
+                        name: "Spiel beendet?",
+                        desc: "Melde das Resultat"
+                    },
+                    continues: {
+                        name: "Spiel geht weiter?",
+                        extension: "Spiel-Verlängerung melden",
+                        penalty: "Penaltyschiessens melden"
+                    }
                 }
             },
             signUp: {
@@ -377,6 +389,7 @@ __LANG = {
                 tipp: {
                     your: "Your Tip",
                     notyet: "You haven't tiped yet",
+                    none: "You haven't tiped",
                     form: {
                         result: "Result",
                         winner: "Winner",
@@ -398,18 +411,29 @@ __LANG = {
                     kickoff: "Kickoff",
                     location: {
                         name: "Location",
-                        placeholder: "City & Stadium where the game takes place",
+                        placeholder: "City & Stadium where the match takes place",
                     },
                     errors: {
                         missingteam: "Please select two teams",
                         invaliddate: "Plase enter a valid date & time",
                         missinglocation: "Please select a location",
-                        notcreated: "Game could not be created - Try again later"
+                        notcreated: "Match could not be created - Try again later"
                     }
                 },
                 tipps: {
                     single: "1 Tip",
                     multi: "{n} Tips"
+                },
+                prompt: {
+                    ended: {
+                        name: "Match ended?",
+                        desc: "Report the result"
+                    },
+                    continues: {
+                        name: "Match continues?",
+                        extension: "Report match extension",
+                        penalty: "Report penalty shootout"
+                    }
                 }
             },
             signUp: {

@@ -36,7 +36,7 @@ export default class GameTile extends Component {
         this.view.meta.innerText = `${TippDate.toString(this.obj.start)} | ${this.obj.tipps.length != 1 ? Lang.get("section/game/tipps/multi",{n: this.obj.tipps.length}) : Lang.get("section/game/tipps/single") }`;
         this.view.root.classList.remove("loading")
         
-        if(this.obj.status == GameStatus.RUNNING){ 
+        if(this.obj.status == GameStatus.RUNNING || this.obj.status == GameStatus.PENDING){ 
             this.view.root.classList.add("live") 
         } else { 
             this.view.root.classList.remove("live")

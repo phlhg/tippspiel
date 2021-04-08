@@ -52,4 +52,8 @@ export default class View {
         this.root.remove();
     }
 
+    clear(){
+        
+    }
+
 }

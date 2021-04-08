@@ -70,10 +70,12 @@ export default class Application {
 
     setEvents(root){
         Array.from(root.parentElement.querySelectorAll("a")).forEach(a => {
-            a.onclick = e => {
-                if(a.hasAttribute("href") && a.getAttribute("href").indexOf("http") != 0 && a.getAttribute("href").indexOf("//") != 0){
-                    e.preventDefault();
-                    this.router.load(a.getAttribute("href"));
+            if(a.hasAttribute("href")){
+                a.onclick = e => {
+                    if(a.hasAttribute("href") && a.getAttribute("href").indexOf("http") != 0 && a.getAttribute("href").indexOf("//") != 0){
+                        e.preventDefault();
+                        this.router.load(a.getAttribute("href"));
+                    }
                 }
             }
         })

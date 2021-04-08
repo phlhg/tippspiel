@@ -18,7 +18,7 @@ export default class GameTipp extends Controller {
         this.game = await App.model.games.get(this.params.id);
 
         if(this.game.status != GameStatus.UPCOMING){ 
-            return App.router.overwrite(`/`);
+            return App.router.forward(`/`);
         }
 
         this.view.setGame(this.game);
