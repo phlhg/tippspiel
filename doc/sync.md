@@ -73,10 +73,20 @@ EventTipp {
     user: User,
     winner: Team,
     topscorer: Player,
-    reward: int
+    reward: int,
+    tippkat: enum, // Preiskategorie
+    goals: int, // der Torschütze hat so viel getroffen
+    bonus: bool // Bonus für korrektes Penaltyschiessen (+1)
 }
 ```
 
+`tipkat`: Preiskategorie des Tipps
+```js
+0 TIPPKAT.WRONG // Komplett falsch getippt (+0)
+1 TIPPKAT.TEAM // Auf richtiges Team getippt (+1)
+2 TIPPKAT.DIFF // Richtige Tordifferenz (+2)
+3 TIPPKAT.EXACT // Exaktes Resulat (+4)
+```
 ## Game
 
 ```js
