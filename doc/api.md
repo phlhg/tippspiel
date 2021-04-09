@@ -230,11 +230,11 @@ socket.exec("hotGames")
 Rangliste aller Spieler
 
 ```js
-socket.exec("ranking", {})
+socket.exec("ranking", {event: ID})
 ```
 
 ```js
-{ state, error, data: [ Int, Int, ... ] }
+{ state, error, data: [ {user: ID, points: int}, ... ] }
 ```
 
 ## Anfrage
