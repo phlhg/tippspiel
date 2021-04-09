@@ -20,7 +20,6 @@ export default class Game extends Element {
         this.team1.short = "[T1S]"
         this.team1.score = 0;
         this.team1.penalty = 0;
-        this.team1.scorers = [];
 
         this.team2 = {}
         this.team2.id = 0;
@@ -28,8 +27,8 @@ export default class Game extends Element {
         this.team2.short = "[T2S]";
         this.team2.score = 0;
         this.team2.penalty = 0;
-        this.team2.scorers = [];
 
+        this.scorers = [];
         this.tipps = [];
 
         this.set(data);
@@ -52,15 +51,14 @@ export default class Game extends Element {
         this.team1.short = data.short1 ?? this.team1.short;
         this.team1.score = parseInt(data.score1 ?? this.team1.score);
         this.team1.penalty = parseInt(data.penaltyScore1 ?? this.team1.penalty);
-        this.team1.scorers = Array.from(data.scorers ?? this.team1.scorers).map(id => parseInt(id));
 
         this.team2.id = parseInt(data.team2 ?? this.team2.id);
         this.team2.name = data.short2 ? Lang.get("teams/"+data.short2.toLowerCase()) : this.team2.name;
         this.team2.short = data.short2 ?? this.team2.short;
         this.team2.score = parseInt(data.score2 ?? this.team2.score);
         this.team2.penalty = parseInt(data.penaltyScore2 ?? this.team2.penalty);
-        this.team2.scorers = Array.from(data.scorers ?? this.team2.scorers).map(id => parseInt(id));
-
+        
+        this.scorers = Array.from(data.scorers ?? this.scorers).map(id => parseInt(id));
         this.tipps = Array.from(data.tipps ?? this.tipps).map(id => parseInt(id))
     }
 
@@ -78,6 +76,10 @@ export default class Game extends Element {
      */
     getTipps(){
         return App.model.gameTipps.getAll(this.tipps)
+    }
+
+    getScorers(){
+        return App.model.players.getAll(this.scorers)
     }
 
 

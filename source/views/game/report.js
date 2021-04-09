@@ -123,7 +123,7 @@ export default class GameReportView extends View {
             d.score1 = parseInt(data.score1);
             d.score2 = parseInt(data.score2);
             d.penalty1 = d.phase == 2 ? parseInt(data.penalty1) : 0;
-            d.penalty2 = d.phase == 2 ? parseInt(data.penalty1) : 0;
+            d.penalty2 = d.phase == 2 ? parseInt(data.penalty2) : 0;
             d.scorer = this.playerSelects.map(s => parseInt(s.getSelected().value));
             
             if(d.scorer.filter(s => s < 1).length > 0){
