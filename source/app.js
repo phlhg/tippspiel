@@ -82,10 +82,17 @@ export default class Application {
     }
 
     updateModel(data){
-        
-        this.model.games.update(data.game ?? [])
-        this.model.gameTipps.update(data.gameTipp ?? [])
-        this.model.users.update(data.user ?? [])
+
+        this.model.events.update(data.event ?? [])
+        this.model.eventTipps.update(data.EventTipp ?? [])
+        this.model.games.update(data.Game ?? [])
+        this.model.gameTipps.update(data.GameTipp ?? [])
+        this.model.groups.update(data.Group ?? [])
+        this.model.players.update(data.Player ?? [])
+        this.model.teams.update(data.Team ?? [])
+        this.model.users.update(data.User ?? [])
+
+        if((data.User ?? []).includes(this.client.id)){ this.client.getMe(); }
 
     }
 
