@@ -149,7 +149,8 @@ export default class Model {
     }
 
     async update(data){
-        var ids = data.map(id => parseInt(id)).filter(id => (this.list.hasOwnProperty(id)))
+        var ids = data.map(id => parseInt(id)).filter(id => this.list.hasOwnProperty(id))
+        if(ids.length < 1){ return; }
         await this._load(ids);
     }
 

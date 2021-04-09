@@ -11,6 +11,7 @@ export default class Component {
     set(obj){
 
         this.obj = obj;
+        this._id = this.obj.id;
         
         this._func = function(e){
             if(e.detail?.type == this._type && e.detail?.id == this._id){ 
