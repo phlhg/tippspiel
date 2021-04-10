@@ -80,6 +80,21 @@ class Controller {
             return false;
         }
 
+        var r2 = await this.socket.exec("me",{})
+        if(r2.state != 0){ 
+            if(r2.error != 0){
+                this.view.addError(__LANG.de.errors[r2.error] ? __LANG.de.errors[r2.error] : __LANG.de.errors[0]);
+            } else {
+                this.view.addError(r2.data.info);
+            }
+            this.view.events.submit = () => {}
+            return false;
+        }
+
+        if(r2.data.permission.console != "true"){
+            window.location = "/";
+        }
+
         this.token = token;
         localStorage.setItem("tipp-dev-token",this.token)
 
