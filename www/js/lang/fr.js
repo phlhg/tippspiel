@@ -40,6 +40,6 @@ __LANG["fr"] = {
         future_today: "Demain {h}:{m}",
         future_tomorrow: " {h}:{m}",
         future_day: "{d} {h}:{m}",
-        general: "{day}/{month}/{year} {h}:{m}",
+        general: "{day}.{month}.{year} {h}:{m}",
     }
 }
