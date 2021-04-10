@@ -71,7 +71,7 @@ section > .text { position: relative; display: block; padding: 0 15px; }
 section a.button, section span.button { position: relative; display: inline-block; padding: 10px 15px; margin: 10px 0; background: rgba(0,0,0,0.15); border-radius: 4px; font-size: 14px; color: #fff; text-decoration: none;}
 
 section .tipp-box { text-decoration: none;  position: relative; display: block; padding: 15px 15px 15px 55px; background: rgba(0,0,0,0.15); margin-bottom: 10px; border-radius: 4px; }
-section .tipp-box .icon { position: absolute; left: 15px; top: 15px; display: inline-block; width: 25px; font-size: 24px; }
+section .tipp-box .icon { position: absolute; left: 15px; top: 15px; display: inline-block; text-align: center; width: 25px; font-size: 24px; line-height: 24px; font-weight: bold; }
 section .tipp-box .title { position: relative; display: block; font-weight: bold; font-size: 20px; }
 section .tipp-box .meta { position: relative; display: block; color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 5px; }
 
@@ -113,7 +113,7 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .game-tile .live-indicator:after { position: absolute; display: block; content: ''; top: 2px; right: 0; width: 10px; height: 10px; border-radius: 50%; background: #f00; animation: live 2s linear infinite normal;}
 .game-tile.live .live-indicator { opacity: 1; visibility: visible; }
 
-.game-tile .title { position: relative; display: block; font-size: 20px; line-height: 25px; }
+.game-tile .title { position: relative; display: block; font-size: 22px; line-height: 22px; }
 .game-tile .meta { position: relative; display: block; font-size: 12px; line-height: 20px; opacity: 0.8;}
 
 @keyframes live {
@@ -124,8 +124,8 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 
 /* Tipp-List */
 .tipp-list { position: relative; display: flex; flex-wrap: wrap; justify-content: space-between; width: 100%; }
-.tipp-tile { position: relative; display: block; width: calc(50% - 5px); padding: 15px 50px 15px 45px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; min-height: 50px; }
-.tipp-tile > .tflag { position: absolute; top: 15px; left: 15px; line-height: 20px; font-size: 20px; }
+.tipp-tile { position: relative; display: block; width: calc(50% - 5px); padding: 15px 50px 15px 55px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; min-height: 50px; }
+.tipp-tile > .tflag { position: absolute; top: 15px; left: 15px; line-height: 25px; font-size: 25px; }
 .tipp-tile > .name { display: block; font-weight: bold; line-height: 20px; font-size: 20px; margin: 0 0 5px 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .tipp-tile > .meta { display: block; color: rgba(255,255,255,0.6); font-size: 14px; }
 .tipp-tile > .reward { position: absolute; display: inline-block; top: 15px; right: 15px; line-height: 20px; font-size: 20px; font-weight: bold; }

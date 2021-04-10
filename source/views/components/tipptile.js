@@ -3,7 +3,7 @@ import Component from './component'
 export default class TippTile extends Component {
     
     constructor(promise){
-        super("GameTipp","div");
+        super("GameTipp","a");
         this.init();
         promise.then(tipp => {
             this.set(tipp)
@@ -14,6 +14,7 @@ export default class TippTile extends Component {
 
     init(){
         this.view.root.classList.add("tipp-tile")
+        this.view.root.setAttribute("href","");
         this.view.root.innerHTML = `<span class="tflag" data-t=""></span>
         <span class="name"></span>
         <span class="meta"></span>
@@ -26,6 +27,9 @@ export default class TippTile extends Component {
     }
 
     async update(){
+
+        this.view.root.setAttribute("href",`/tipp/${this.obj.id}/`);
+
         var user = await this.obj.getUser()
         var winner = await this.obj.getWinner()
         var player = await (this.obj.topscorer > 0 ? this.obj.getPlayer() : { name: "" })

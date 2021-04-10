@@ -18,6 +18,7 @@ import SignUp from './controllers/signup'
 import SignIn from './controllers/signin'
 
 import Settings from './controllers/settings/index'
+import TippIndex from './controllers/tipp'
 
 Debugger.active = true;
 
@@ -36,6 +37,8 @@ window.addEventListener("DOMContentLoaded", function(){
     App.router.add("/game/{id}/tipp/",new GameTipp).where({ id: 'NUMBER' })
     App.router.add("/game/{id}/report/",new GameReport).where({ id: 'NUMBER' })
     App.router.add("/game/{id}/{t1}-{t2}/",new Game).where({ id: 'NUMBER', t1: 'TEXT',t2: 'TEXT' })
+
+    App.router.add("/tipp/{id}/",new TippIndex).where({id: 'NUMBER'})
 
     App.router.add("/profile/",new Profile)
 
