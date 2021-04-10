@@ -125,7 +125,7 @@ export default class Client {
     signout(){
         localStorage.setItem("tipp-dev-iskown","true")
         localStorage.removeItem("tipp-dev-token")
-        window.location.reload()
+        window.location = "/"
     }
 
 
