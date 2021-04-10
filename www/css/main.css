@@ -103,18 +103,24 @@ section.tipp-login-page > .inner > h3 { font-size: 40px; margin-bottom: 5px; }
 section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 
 /* Game Tile */
-.game-tile { position: relative; display: block; padding: 15px 15px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; }
+.game-tile { position: relative; display: block; padding: 15px 55px 15px 55px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; }
 .game-tile.loading { color: transparent; }
 .game-tile.loading .tflag { opacity: 0; }
-.game-tile .live-view { position: relative; display: block; background: #000; width: calc(100% + 30px); margin: 10px 0 -15px -15px; padding-bottom: 0; border-radius: 4px; overflow: hidden; }
-.game-tile .live-view > iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-.game-tile.live .live-view { padding-bottom: calc(100% * (9 / 16)); }
-.game-tile .live-indicator { position: absolute; display: inline-block; top: 15px; right: 15px; font-size: 12px; padding: 0 15px 0 0; text-transform: uppercase; opacity: 0; visibility: hidden; }
-.game-tile .live-indicator:after { position: absolute; display: block; content: ''; top: 2px; right: 0; width: 10px; height: 10px; border-radius: 50%; background: #f00; animation: live 2s linear infinite normal;}
-.game-tile.live .live-indicator { opacity: 1; visibility: visible; }
 
-.game-tile .title { position: relative; display: block; font-size: 22px; line-height: 22px; }
-.game-tile .meta { position: relative; display: block; font-size: 12px; line-height: 20px; opacity: 0.8;}
+.game-tile > .name { position: absolute; display: block; font-size: 20px; line-height: 22px; font-weight: bold; top: 15px; width: 45%; overflow: hidden; text-overflow: ellipsis; }
+.game-tile > .t1.name { left: 0; padding-left: 55px; text-align: left; }
+.game-tile > .t2.name { right: 0; padding-right: 55px; text-align: right;}
+.game-tile > .tflag ,.game-tile > .tflag { position: absolute; top: 15; font-size: 25px; line-height: 25px; }
+.game-tile > .t1.tflag { left: 15px; }
+.game-tile > .t2.tflag { right: 15px; }
+.game-tile .result { position: relative; display: block; font-size: 25px; line-height: 25px; height: 25px; margin-bottom: -5px; font-weight: bold;  text-align: center; }
+.game-tile .meta { position: relative; display: block; font-size: 12px; line-height: 18px; height: 18px; text-align: center;}
+.game-tile .meta > .date { position: absolute; left: 0; top: 0; display: inline-block; opacity: 0.8; }
+.game-tile .meta > .tipps { position: absolute; right: 0; top: 0; display: inline-block; opacity: 0.8; }
+
+.game-tile .meta > .live-indicator { position: relative; display: inline-block; font-size: 10px; line-height: 14px; padding: 0 15px 0 3px; margin-top: 5px; border-radius: 4px; text-transform: uppercase; opacity: 0; visibility: hidden; color: #fff; background: #f00; font-weight: bold; }
+.game-tile .meta > .live-indicator:after { position: absolute; display: block; content: ''; top: 3px; right: 3px; width: 8px; height: 8px; border-radius: 50%; background: #fff; animation: live 2s linear infinite normal;}
+.game-tile.live .meta > .live-indicator { opacity: 1; visibility: visible; }
 
 @keyframes live {
     0% { opacity: 0; }
