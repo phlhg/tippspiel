@@ -10,11 +10,11 @@ export default class DateInput {
         this.dom.root.classList.add("tipp-date-input");
 
         this.dom.root.innerHTML = `
-            <select class="day"><option disabled >Day</option></select>
-            <select class="month"><option disabled >Month</option></select>
-            <select class="year"><option disabled >Year</option></select>
-            <select class="hour"><option disabled >Hour</option></select>
-            <select class="minute"><option disabled >Minute</option></select>
+            <select class="day"><option disabled >${Lang.get("date/name/day")}</option></select>
+            <select class="month"><option disabled >${Lang.get("date/name/month")}</option></select>
+            <select class="year"><option disabled >${Lang.get("date/name/year")}</option></select>
+            <select class="hour"><option disabled >${Lang.get("date/name/hour")}</option></select>
+            <select class="minute"><option disabled >${Lang.get("date/name/minute")}</option></select>
         `
 
         this.dom.day = this.dom.root.querySelector(".day");

@@ -19,14 +19,14 @@ export default class GameIndex extends View {
         <div class="game-header">
             <span class="live">live</span>
             <h2 class="top">
-                <span class="team1"><span class="tflag" data-t="sui" ></span> <span class="name">Schweiz</span></span>
-                <span class="team2"><span class="name">Spanien</span> <span class="tflag" data-t="esp" ></span></span>
+                <span class="team1"><span class="tflag" data-t="" ></span> <span class="name"></span></span>
+                <span class="team2"><span class="name"></span> <span class="tflag" data-t="" ></span></span>
             </h2>
             <div class="score">
                 <span class="normal">1:1</span>
-                <span class="penalty">Penaltyschiessen<span>4:6</span></span>
+                <span class="penalty">${Lang.get("section/game/penalty")}<span></span></span>
             </div>
-            <div class="meta"><span class="time">01.01. 20:00</span> | <span class="location">Letzigrund Zürich</span></div>
+            <div class="meta"><span class="time"></span> | <span class="location"></span></div>
             <img class="flag1" src="/img/flag/sui.png"/>
             <img class="flag2" src="/img/flag/esp.png"/>
         </div>
@@ -57,7 +57,7 @@ export default class GameIndex extends View {
             </a>
         </div>
         <div class="game-tipps">
-            <h3>Tipps</h3>
+            <h3>${Lang.get("section/game/tipps/list")}</h3>
             <div class="tipp-list"></div>
         </div>`
 

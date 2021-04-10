@@ -12,36 +12,36 @@ export default class GameReportView extends View {
     init(){
         this.root.innerHTML = `<a class="game-header">
             <h2 class="top">
-                <span class="team1"><span class="tflag" data-t="sui" ></span> <span class="name">Schweiz</span></span>
-                <span class="team2"><span class="name">Spanien</span> <span class="tflag" data-t="esp" ></span></span>
+                <span class="team1"><span class="tflag" data-t="" ></span> <span class="name"></span></span>
+                <span class="team2"><span class="name"></span> <span class="tflag" data-t="" ></span></span>
             </h2>
             <img class="flag1" src="/img/flag/sui.png"/>
             <img class="flag2" src="/img/flag/esp.png"/>
         </a>
         <form class="tipp-form">
-            <h4>Spiel-Ende</h4>
+            <h4>${Lang.get("section/game/report/phase/name")}</h4>
             <select name="phase">
-                <option value="0" checked>Beendet nach 90 Minuten</option>
-                <option value="1">Beendet nach Verlängerung</option>
-                <option value="2">Beendet nach Penaltyschiessen</option>
+                <option value="0" checked>${Lang.get("section/game/report/phase/0")}</option>
+                <option value="1">${Lang.get("section/game/report/phase/1")}</option>
+                <option value="2">${Lang.get("section/game/report/phase/2")}</option>
             </select>
-            <h4>${Lang.get("section/game/tipp/form/result")}</h4>
+            <h4>${Lang.get("section/game/report/result/normal")}</h4>
             <div class="tipp-score">
                 <input required class="t1" name="score1" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
                 <span class="seperator">:</span>
                 <input required class="t2" name="score2" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
             </div>
-            <h4>Torschützen <small>(Chronologisch)</small></h4>
+            <h4>${Lang.get("section/game/report/scorers/name")} <small>${Lang.get("section/game/report/scorers/hint")}</small></h4>
             <div class="tipp-player" style="position: relative; display: block; margin-bottom: 10px;" ></div>
             <span class="penalty-section" style="display: none" >
-                <h4>Resultat Penaltyschiessen</h4>
+                <h4>${Lang.get("section/game/report/result/penalty")}</h4>
                 <div class="tipp-score">
                     <input required class="t1" name="penalty1" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
                     <span class="seperator">:</span>
                     <input required class="t2" name="penalty2" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
                 </div>
             </span>
-            <input type="submit" value="Spiel beenden" style="margin: 10px 0 0 15px;"/>
+            <input type="submit" value="${Lang.get("section/game/report/submit")}" style="margin: 10px 0 0 15px;"/>
         </form>
         `
 
@@ -103,7 +103,7 @@ export default class GameReportView extends View {
                 var d = n - l;
                 if(d > 0){
                     for(var i = l; i < n; i++){
-                        this.playerSelects[i] = new SearchSelect("","Wähle einen Spieler");
+                        this.playerSelects[i] = new SearchSelect("",Lang.get("section/game/report/scorers/select"));
                         this.playerSelects[i].getSuggestions = this.playerSuggestion;
                         this.playerWrapper.appendChild(this.playerSelects[i].getHtml());
                     }

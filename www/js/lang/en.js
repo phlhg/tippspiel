@@ -53,6 +53,13 @@ __LANG["en"] = {
         future_tomorrow: "Tomorrow {h}:{m}",
         future_day: "{d} {h}:{m}",
         general: "{day}/{month}/{year} {h}:{m}",
+        name: {
+            day: "Day",
+            month: "Month",
+            year: "Year",
+            hour: "Hour",
+            minute: "Minute"
+        }
     },
     general: {
         loading: "Loading..."
@@ -73,6 +80,7 @@ __LANG["en"] = {
             }
         },
         game: {
+            penalty: "Penalty shootout",
             tipp: {
                 your: "Your bet",
                 notyet: "You haven't betted yet",
@@ -105,11 +113,13 @@ __LANG["en"] = {
                     invaliddate: "Plase enter a valid date & time",
                     missinglocation: "Please select a location",
                     notcreated: "Match could not be created - Try again later"
-                }
+                },
+                submit: "Create game"
             },
             tipps: {
                 single: "1 Bet",
-                multi: "{n} Bets"
+                multi: "{n} Bets",
+                list: "Bets"
             },
             prompt: {
                 ended: {
@@ -121,6 +131,24 @@ __LANG["en"] = {
                     extension: "Report match extension",
                     penalty: "Report penalty shootout"
                 }
+            },
+            report: {
+                phase: {
+                    name: "Game-End",
+                    0: "Finished after 90 minutes",
+                    1: "Finished after extension",
+                    2: "Finished after penalty shootout"
+                },
+                result: {
+                    normal: "Result",
+                    penalty: "Result of penalty shootout"
+                },
+                scorers: {
+                    name: "Scorers",
+                    hint: "(Chronological, without penalty shootout)",
+                    select: "Select a player"
+                },
+                submit: "End game"
             }
         },
         signUp: {

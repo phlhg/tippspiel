@@ -54,6 +54,13 @@ __LANG["de"] = {
         future_tomorrow: "Morgen {h}:{m}",
         future_day: "{d} {h}:{m}",
         general: "{day}.{month}.{year} {h}:{m}",
+        name: {
+            day: "Tag",
+            month: "Monat",
+            year: "Jahr",
+            hour: "Stunde",
+            minute: "Minute"
+        }
     },
     general: {
         loading: "Laden..."
@@ -74,6 +81,7 @@ __LANG["de"] = {
             }
         },
         game: {
+            penalty: "Penaltyschiessen",
             create: {
                 team1: {
                     name: "Team 1",
@@ -93,7 +101,8 @@ __LANG["de"] = {
                     invaliddate: "Bitte gib ein gültiges Datum & eine gültige Zeit ein",
                     missinglocation: "Bitte wähle einen Standort für das Spiel",
                     notcreated: "Das Spiel konnte nicht erstellt werden - Versuche es später erneut"
-                }
+                },
+                submit: "Spiel erstellen"
             },
             tipp: {
                 your: "Dein Tipp",
@@ -110,7 +119,8 @@ __LANG["de"] = {
             },
             tipps: {
                 single: "1 Tipp",
-                multi: "{n} Tipps"
+                multi: "{n} Tipps",
+                list: "Tipps"
             },
             prompt: {
                 ended: {
@@ -122,6 +132,24 @@ __LANG["de"] = {
                     extension: "Spiel-Verlängerung melden",
                     penalty: "Penaltyschiessens melden"
                 }
+            },
+            report: {
+                phase: {
+                    name: "Spiel-Ende",
+                    0: "Beendet nach 90 Minuten",
+                    1: "Beendet nach Verlängerung",
+                    2: "Beendet nach Penaltyschiessen"
+                },
+                result: {
+                    normal: "Resultat",
+                    penalty: "Resultat des Penaltyschiessens"
+                },
+                scorers: {
+                    name: "Torschützen",
+                    hint: "(Chronologisch, ohne Penaltyschiessen)",
+                    select: "Wähle eine Spieler"
+                },
+                submit: "Spiel beenden"
             }
         },
         signUp: {
