@@ -118,7 +118,7 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .game-tile .meta > .date { position: absolute; left: 0; top: 0; display: inline-block; opacity: 0.8; }
 .game-tile .meta > .tipps { position: absolute; right: 0; top: 0; display: inline-block; opacity: 0.8; }
 
-.game-tile .meta > .live-indicator { position: relative; display: inline-block; font-size: 10px; line-height: 14px; padding: 0 15px 0 3px; margin-top: 5px; border-radius: 4px; text-transform: uppercase; opacity: 0; visibility: hidden; color: #fff; background: #f00; font-weight: bold; }
+.game-tile .meta > .live-indicator { position: relative; display: inline-block; font-size: 10px; line-height: 14px; padding: 0 15px 0 3px; margin-top: 8px; border-radius: 4px; text-transform: uppercase; opacity: 0; visibility: hidden; color: #fff; background: #f00; font-weight: bold; }
 .game-tile .meta > .live-indicator:after { position: absolute; display: block; content: ''; top: 3px; right: 3px; width: 8px; height: 8px; border-radius: 50%; background: #fff; animation: live 2s linear infinite normal;}
 .game-tile.live .meta > .live-indicator { opacity: 1; visibility: visible; }
 
