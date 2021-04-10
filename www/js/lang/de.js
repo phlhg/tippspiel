@@ -166,6 +166,31 @@ __LANG["de"] = {
             tipps: {
                 heading: "Meine Tipps"
             }
+        },
+        tipp: {
+            team: {
+                name: "Richtiges Team",
+                desc: "Das getippte Team hat das Spiel gewonnen."
+            },
+            delta: {
+                name: "Richtige Tordifferenz",
+                desc: "Die Differenz der Tore ist gleich wie getippt."
+            },
+            exact: {
+                name: "Exaktes Resultat",
+                desc: "Es wurde das exakte Resultat des Spiels getippt."
+            },
+            scorer: {
+                name: "Torschütze",
+                desc: "Der gewählte Torschütze hat {n} Tor(e) geschossen."
+            },
+            penalty: {
+                name: "Penaltyschiessen",
+                desc: "Es wurde auf ein Penaltyschiessen getippt und das getippte Team hat gewonnen."
+            },
+            total: {
+                name: "Total"
+            }
         }
     }
 }

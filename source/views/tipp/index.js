@@ -14,32 +14,32 @@ export default class TippIndexView extends View {
         </div>
         <div class="tipp-box">
             <span class="icon">1</span>
-            <span class="title">Richtiges Team</span>
-            <span class="meta">Das getippte Team hat gewonnen</span>
+            <span class="title">${Lang.get("section/tipp/team/name")}</span>
+            <span class="meta">${Lang.get("section/tipp/team/desc")}</span>
         </div>
         <div class="tipp-box">
             <span class="icon">1</span>
-            <span class="title">Richtige Tordifferenz</span>
-            <span class="meta">Der getippte Torunterschied stimmt mit dem tatsächlichen Resultat überein</span>
+            <span class="title">${Lang.get("section/tipp/delta/name")}</span>
+            <span class="meta">${Lang.get("section/tipp/delta/desc")}</span>
         </div>
         <div class="tipp-box">
             <span class="icon">2</span>
-            <span class="title">Exaktes Resultat</span>
-            <span class="meta">Es wurde exkat das richtige Resultat getippt</span>
+            <span class="title">${Lang.get("section/tipp/exact/name")}</span>
+            <span class="meta">${Lang.get("section/tipp/exact/desc")}</span>
         </div>
         <div class="tipp-box">
             <span class="icon">1</span>
-            <span class="title">Torschütze</span>
-            <span class="meta">Der getippte Torschütze hat 1 Goal(s) geschossen</span>
+            <span class="title">${Lang.get("section/tipp/scorer/name")}</span>
+            <span class="meta"></span>
         </div>
         <div class="tipp-box">
             <span class="icon">1</span>
-            <span class="title">Penaltyschiessen richtig getippt</span>
-            <span class="meta">Es wurde auf ein Penaltyschiessen getippt und die getippte Manschaft hat gewonnen.</span>
+            <span class="title">${Lang.get("section/tipp/penalty/name")}</span>
+            <span class="meta">${Lang.get("section/tipp/penalty/desc")}</span>
         </div>
         <div class="tipp-box">
             <span class="icon">5</span>
-            <span class="title">Total</span>
+            <span class="title">${Lang.get("section/tipp/total/name")}</span>
         </div>`
 
         this.header = {}
@@ -96,7 +96,7 @@ export default class TippIndexView extends View {
         this.goals.icon.innerText = this.tipp.tippkat > 1 ? 1 : 0;
         this.result.icon.innerText = this.tipp.tippkat > 2 ? 2 : 0;
         this.scorer.icon.innerText = this.tipp.goals;
-        this.scorer.meta.innerText = `Der getippte Torschütze hat ${this.tipp.goals} Tor(e) geschossen`;
+        this.scorer.meta.innerText = Lang.get("section/tipp/scorer/desc",{n: this.tipp.goals})
         this.penalty.icon.innerText = this.tipp.bonus == true ? 1 : 0;
 
         this.total.icon.innerText = this.tipp.reward;

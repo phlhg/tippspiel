@@ -74,16 +74,16 @@ __LANG["en"] = {
         },
         game: {
             tipp: {
-                your: "Your Tip",
-                notyet: "You haven't tiped yet",
-                none: "You haven't tiped",
+                your: "Your bet",
+                notyet: "You haven't betted yet",
+                none: "You haven't betted",
                 form: {
                     result: "Result",
                     winner: "Winner",
                     winner_notice: "(in case of a penalty shootout)",
                     topscorer: "Topscorer",
                     search: "Search for a player",
-                    submit: "Tipp now"
+                    submit: "Bet now"
                 }
             },
             create: {
@@ -108,8 +108,8 @@ __LANG["en"] = {
                 }
             },
             tipps: {
-                single: "1 Tip",
-                multi: "{n} Tips"
+                single: "1 Bet",
+                multi: "{n} Bets"
             },
             prompt: {
                 ended: {
@@ -167,7 +167,32 @@ __LANG["en"] = {
                 desc: "Create a new game"
             },
             tipps: {
-                heading: "My Tips"
+                heading: "My bets"
+            }
+        }, 
+        tipp: {
+            team: {
+                name: "Correct team",
+                desc: "The betted team won the match"
+            },
+            delta: {
+                name: "Correct goal difference",
+                desc: "The difference between the goals is same as betted"
+            },
+            exact: {
+                name: "Exact result",
+                desc: "The exact result of the match was betted"
+            },
+            scorer: {
+                name: "Scorer",
+                desc: "The selected scorer scored {n} goal(s)"
+            },
+            penalty: {
+                name: "Penalty shootout",
+                desc: "It was betted on a penalty shootout and the betted team won"
+            },
+            total: {
+                name: "Total"
             }
         }
     }
