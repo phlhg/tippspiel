@@ -187,13 +187,22 @@ __LANG["de"] = {
                 desc: "Du hast eine Idee fürs Tippspiel? Zeige sie uns!"
             },
             console: {
-                title: "Konsole"
+                title: "Konsole",
+                desc: "Zugriff auf den Server"
+            },
+            logout: {
+                name: "Abmelden",
+                desc: "Du benötgst deinen Zuganscode um dich wieder anzumelden"
             }
         },
         profile: {
+            newgame: {
+                name: "Neues Spiel",
+                desc: "Erstelle ein neues Spiel"
+            },
             tipps: {
                 heading: "Meine Tipps"
-            }
+            },
         },
         tipp: {
             team: {

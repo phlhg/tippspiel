@@ -23,41 +23,46 @@ export default class Settings extends View {
             <span class="title">${Lang.get("section/settings/idea/title")}</span>
             <span class="meta">${Lang.get("section/settings/idea/desc")}</span>
         </a>
-        <span class="tipp-box console-button">
+        <a class="tipp-box console-button">
             <span class="icon"><span class="material-icons">code</span></span>
             <span class="title">${Lang.get("section/settings/console/title")}</span>
-        </span>
+        </a>
+        <a class="tipp-box signout-button">
+            <span class="icon"><span class="material-icons">logout</span></span>
+            <span class="title">${Lang.get("section/settings/logout/name")}</span>
+            <span class="meta">${Lang.get("section/settings/logout/desc")}</span>
+        </a>
         `
 
-        this.select = this.root.querySelector("select");
+        this.languageSelect = this.root.querySelector("select");
 
         Lang.available.forEach(element => {
             var o = document.createElement("option");
             o.value = element;
             o.innerText = __LANG[element]._name;
-            this.select.appendChild(o)
+            this.languageSelect.appendChild(o)
         });
-        this.select.value = Lang.id
 
-        this.select.onchange = e => {
-            if(Lang.setLanguage(this.select.value)){
+        this.languageSelect.value = Lang.id
+
+        this.languageSelect.onchange = e => {
+            if(Lang.setLanguage(this.languageSelect.value)){
                 document.body.classList.add("loading");
                 setTimeout(() => window.location.reload(),1000);
             }
         }
 
-        this.root.querySelector(".console-button").onclick = () => {
-            window.open ("/console/","Tippspiel-Console","resizable=1,width=720,height=450");
-        }
+        this.consoleButton = this.root.querySelector(".console-button");
+        this.consoleButton.onclick = () => { window.open ("/console/","Tippspiel-Console","resizable=1,width=720,height=450"); }
+
+        this.signOutButton = this.root.querySelector(".signout-button");
+        this.signOutButton.onclick = () => { App.client.signout(); }
 
     }
 
     show(){
-        if(App.client.permission?.console == true){
-            this.root.querySelector(".console-button").style.display = "block";
-        } else {
-            this.root.querySelector(".console-button").style.display = "none";
-        }
+        this.consoleButton.style.display = App.client.permission.console ? "block" : "none"
+        this.signOutButton.style.display = App.client.active ? "block" : "none"
     }
 
 }

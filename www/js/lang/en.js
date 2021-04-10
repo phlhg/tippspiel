@@ -186,8 +186,13 @@ __LANG["en"] = {
                 desc: "Got an idea for Tippspiel? Show it to us!"
             },
             console: {
-                title: "Console"
-            }
+                title: "Console",
+                desc: "Access the Server"
+            },
+            logout: {
+                name: "Sign out",
+                desc: "You need your accesscode to sign in again"
+            },
         },
         profile: {
             newgame: {
