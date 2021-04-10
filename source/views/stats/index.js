@@ -1,4 +1,4 @@
-import UserTile from '../components/usertile'
+import RankTile from '../components/ranktile'
 import View from '../view'
 
 export default class TippIndexView extends View {
@@ -8,12 +8,12 @@ export default class TippIndexView extends View {
     }
 
     init(){
-        this.root.innerHTML = `<div class="user-list rank"></div>`
-        this.list = this.root.querySelector(".user-list");
+        this.root.innerHTML = `<div class="rank-list rank"></div>`
+        this.list = this.root.querySelector(".rank-list");
     }
 
     addUser(u){
-        var u = new UserTile(u);
+        var u = new RankTile(u);
         this.list.appendChild(u.getHtml());
         return u;
     }
