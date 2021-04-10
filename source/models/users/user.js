@@ -9,6 +9,8 @@ export default class User extends Element {
         /** @property {string} name - Name of the user */
         this.name = "Anon"
 
+        this.short = "A"
+
         /** @property {number} points - Points of the user */
         this.points = 0
 
@@ -21,6 +23,7 @@ export default class User extends Element {
      */
     set(data){
         this.name = data.name ?? this.name
+        this.short = data.hasOwnProperty("name") ? data.name.split(/\s/ig).slice(0,2).map(s => s.charAt(0)).join("").toUpperCase() : this.short;
         this.points = parseInt(data.points ?? this.points)
     }
 

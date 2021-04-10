@@ -131,6 +131,20 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .tipp-tile > .reward { position: absolute; display: inline-block; top: 15px; right: 15px; line-height: 20px; font-size: 20px; font-weight: bold; }
 .tipp-tile.fullwidth { width: 100%; }
 
+
+/* User-List */
+.user-list { position: relative; display: block; width: 100%; }
+.user-tile { position: relative; display: block; width: 100%; padding: 15px 75px 15px 55px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; min-height: 50px; overflow: hidden; }
+.user-tile > .icon { position: absolute; top: 10px; left: 15px; width: 30px; height: 30px; line-height: 30px; font-size: 12px; border-radius: 50%; background: rgba(0,0,0,0.15); text-align: center; font-weight: bold;}
+.user-tile > .name { display: block; font-weight: bold; line-height: 20px; font-size: 20px; margin: 0 0 5px 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.user-tile > .meta { display: block; color: rgba(255,255,255,0.6); font-size: 14px; }
+.user-tile > .rank { position: absolute; display: block; top: 0; right: 0; width: 75px; height: 73px; text-align: center; background: rgba(0,0,0,0.15); line-height: 73px; font-size: 20px; font-weight: bold; }
+.user-tile > .rank:empty { display: none; }
+
+.user-list.rank .user-tile:nth-child(1) > .rank { background: radial-gradient(circle at 0 0, #f8eba0, #8d702c); color: #8d702c; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
+.user-list.rank .user-tile:nth-child(2) > .rank { background: radial-gradient(circle at 0 0, #e0e0e0, #505050); ; color: #505050; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
+.user-list.rank .user-tile:nth-child(3) > .rank { background: radial-gradient(circle at 0 0, #e4b98d, #53300c); color: #53300c; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
+
 /* Game View */
 .game-stream { position: relative; display: none; background: #000; width: 100%; padding-bottom: calc(100% * (9 / 16)); overflow: hidden; border-radius: 4px; margin-bottom: 10px; }
 .game-stream.active { display: block; }

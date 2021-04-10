@@ -49,4 +49,8 @@ export default class Event extends Element {
         this.topscorer = parseInt(data.topscorer ?? this.topscorer)
     }
 
+    getRanking(){
+        return App.model.events.getRanking(this.id);
+    }
+
 }
