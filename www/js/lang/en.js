@@ -173,23 +173,23 @@ __LANG["en"] = {
         tipp: {
             team: {
                 name: "Correct team",
-                desc: "The betted team won the match"
+                desc: "The betted team won the match."
             },
             delta: {
                 name: "Correct goal difference",
-                desc: "The difference between the goals is same as betted"
+                desc: "The difference between the goals is the same as betted."
             },
             exact: {
                 name: "Exact result",
-                desc: "The exact result of the match was betted"
+                desc: "The exact result of the match was betted."
             },
             scorer: {
                 name: "Scorer",
-                desc: "The selected scorer scored {n} goal(s)"
+                desc: "The selected scorer scored {n} goal(s)."
             },
             penalty: {
                 name: "Penalty shootout",
-                desc: "It was betted on a penalty shootout and the betted team won"
+                desc: "It was betted on a penalty shootout and the betted team won."
             },
             total: {
                 name: "Total"
