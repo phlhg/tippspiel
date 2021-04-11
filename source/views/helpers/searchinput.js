@@ -32,7 +32,8 @@ export default class SearchInput {
                 (await this.getSuggestions(this.dom.input.value)).slice(0,4).forEach(value => {
                     var s = document.createElement("span");
                     s.innerHTML = `<span class="icon" style="background-image: url(${this.img});"></span>${value}`;
-                    s.onclick = () => { this._select(value); }
+                    s.onmousedown = () => { this._select(value); }
+                    s.ontouchstart = () => { this._select(value); }
                     this.dom.suggestions.appendChild(s);
                 });
             }

@@ -13,7 +13,7 @@ export default class GameCreate extends View {
 
     init(){
         this.root.innerHTML = `
-            <form class="tipp-form">
+            <form class="tipp-form" style="margin-bottom: 200px">
                 <h4>${Lang.get("section/game/create/team1/name")}</h4>
                 <div class="tipp-team1-select"></div>
                 <h4>${Lang.get("section/game/create/team2/name")}</h4>

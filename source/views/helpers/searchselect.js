@@ -36,7 +36,8 @@ export default class SearchSelect {
                 (await this.getSuggestions(this.dom.search.value)).slice(0,4).forEach(e => {
                     var s = document.createElement("span");
                     s.innerHTML = `<span class="icon" style="background-image: url(${e.img});"></span>${e.text}`;
-                    s.onclick = () => { this._select(e); }
+                    s.onmousedown = () => { this._select(e); }
+                    s.ontouchstart = () => { this._select(e); }
                     this.dom.suggestions.appendChild(s);
                 });
             }

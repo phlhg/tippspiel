@@ -18,7 +18,7 @@ export default class GameReportView extends View {
             <img class="flag1" src="/img/flag/sui.png"/>
             <img class="flag2" src="/img/flag/esp.png"/>
         </a>
-        <form class="tipp-form">
+        <form class="tipp-form" style="margin-bottom: 200px" >
             <h4>${Lang.get("section/game/report/phase/name")}</h4>
             <select name="phase">
                 <option value="0" checked>${Lang.get("section/game/report/phase/0")}</option>

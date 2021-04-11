@@ -18,7 +18,7 @@ export default class GameIndex extends View {
             <img class="flag1" src="/img/flag/sui.png"/>
             <img class="flag2" src="/img/flag/esp.png"/>
         </a>
-        <form class="tipp-form">
+        <form class="tipp-form" style="margin-bottom: 200px">
             <h4>${Lang.get("section/game/tipp/form/result")}</h4>
             <div class="tipp-score">
                 <input required class="t1" name="score1" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
@@ -157,13 +157,18 @@ export default class GameIndex extends View {
             this.winner.team2.checked = true;
         }
 
-        var p = await this.tipp.getPlayer();
-        var t = await p.getTeam();
-        this.searchselect._select({
-            value: p.id,
-            img: `/img/flag/${t.short.toLowerCase()}.png`,
-            text: p.name
-        })
+        if(this.tipp.topscorer > 0){
+            var p = await this.tipp.getPlayer();
+            var t = await p.getTeam();
+            this.searchselect._select({
+                value: p.id,
+                img: `/img/flag/${t.short.toLowerCase()}.png`,
+                text: p.name
+            })
+        } else {
+            this.searchselect.reset();
+        }
+
     }
 
     setResult(t1,t2){
