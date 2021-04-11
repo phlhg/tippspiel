@@ -20,6 +20,7 @@ import SignIn from './controllers/signin'
 import Settings from './controllers/settings/index'
 import TippIndex from './controllers/tipp'
 import StatsIndex from './controllers/stats'
+import GroupsIndex from './controllers/groups'
 
 Debugger.active = true;
 
@@ -44,6 +45,8 @@ window.addEventListener("DOMContentLoaded", function(){
     App.router.add("/profile/",new Profile)
 
     App.router.add("/stats/",new StatsIndex)
+
+    App.router.add("/groups/",new GroupsIndex)
 
     App.router.add("/signin/",new SignIn).alias("/signin/{token}/");
     App.router.add("/signup/",new SignUp)

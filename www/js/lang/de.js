@@ -234,6 +234,10 @@ __LANG["de"] = {
             total: {
                 name: "Total"
             }
+        },
+        groups: {
+            title: "Gruppen",
+            desc: "Diese Funktion wird bald verfügbar sein"
         }
     }
 }

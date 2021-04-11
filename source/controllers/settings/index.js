@@ -11,12 +11,4 @@ export default class Settings extends Controller {
         this.setView(View);
     }
 
-    load(){
-        
-    }
-
-    unload(){
-        
-    }
-
 }
