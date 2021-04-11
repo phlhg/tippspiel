@@ -24,6 +24,18 @@ import GroupsIndex from './controllers/groups'
 
 Debugger.active = true;
 
+window.onerror = function(msg, src, line, col){
+    fetch("/errorfunnel.php",{ 
+        method: "POST",
+        body: JSON.stringify({
+            msg: msg,
+            src: src,
+            line: line,
+            col: col
+        }) 
+    });
+}
+
 window.Lang = new Language();
 
 window.addEventListener("DOMContentLoaded", function(){
