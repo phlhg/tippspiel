@@ -77,3 +77,13 @@ access get User.1.group.1.name
 
 
 
+## Guard
+
+### watch
+listet laufende sessions auf
+
+### ban
+`guard ban [id]`: banne Nutzer mit bestimmter id
+
+### pardon
+`guard pardon [id]` entbanne einen Nutzer mit bestimmter id
