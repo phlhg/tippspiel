@@ -24,14 +24,17 @@ import GroupsIndex from './controllers/groups'
 
 Debugger.active = true;
 
-window.onerror = function(msg, src, line, col){
+window.onerror = function(msg, src, line, col, error){
+    var stack = error.stack ?? "";
+    stack = stack.split("\n").map(a => a.split("@")[0]);
     fetch("/errorfunnel.php",{ 
         method: "POST",
         body: JSON.stringify({
             msg: msg,
             src: src,
             line: line,
-            col: col
+            col: col,
+            stack : stack
         }) 
     });
 }
