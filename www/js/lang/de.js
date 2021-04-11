@@ -4,17 +4,23 @@ __LANG["de"] = {
     _extends: "en",
     name: "Tippspiel",
     errors: {
-        '-1': "Feilchen sind blau, Rosen sind rot und der Server ist tot.", // keine Verbindung
-        0: "Es ist ein unbekannter Fehler aufgetreten",
-        1: "Für dies ist eine Anmeldung erforderlich",
-        2: "Diese E-Mail wird bereits verwendet",
-        3: "Dieser Name wird bereits verwendet",
-        4: "Dieser Zugangscode ist unbekannt",
-        5: "Dieser Name ist ungültig",
-        6: "Es können keine Tipps mehr abgegeben werden",
-        7: "Du bist bereits eingeloggt",
-        8: "Dieser Prozess läuft bereits.",
-        9: "Es gibt keinen Account mit der Email {email}"
+        server: {
+            0: "Es ist ein unbekannter Fehler aufgetreten",
+            1: "Für dies ist eine Anmeldung erforderlich",
+            2: "Diese E-Mail wird bereits verwendet",
+            3: "Dieser Name wird bereits verwendet",
+            4: "Dieser Zugangscode ist unbekannt",
+            5: "Dieser Name ist ungültig",
+            6: "Es können keine Tipps mehr abgegeben werden",
+            7: "Du bist bereits eingeloggt",
+            8: "Dieser Prozess läuft bereits.",
+            9: "Es existiert keinen Account mit dieser E-Mail",
+            10: "Dieser Account wurde gesperrt - Nimm mit uns Kontakt auf"
+        },
+        local: {
+            "unknown": "Es ist ein unbekannter Fehler aufgetreten",
+            "noconnection": "Feilchen sind blau, Rosen sind rot und der Server ist tot.", // keine Verbindung
+        }
     },
     teams: {
         "aut": "Österreich",

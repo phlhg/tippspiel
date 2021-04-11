@@ -13,8 +13,9 @@ export default class StatsIndex extends Controller {
 
     async load(){
         if(!App.client.active){ return App.client.prompt() };
-        var ranking = await App.model.events.getRanking(1);
-        var users = ranking.map(u => u.user);
+        var r = await App.model.events.getRanking(1);
+        if(!r.success) return
+        var users = r.data.map(u => u.user);
         var i = 1;
         App.model.users.getAll(users).forEach(promise => {
             var v = this.view.addUser(promise);

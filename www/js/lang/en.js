@@ -3,17 +3,23 @@ __LANG["en"] = {
     _name: "English",
     name: "Tippspiel",
     errors: {
-        '-1': "There is currently no connection to the server",
-        0: "An unknown error occured",
-        1: "Please sign in",
-        2: "This E-Mail is already in use",
-        3: "This name is already in use",
-        4: "This accesscode is unkown",
-        5: "This name is invalid",
-        6: "Tipps can't be submitted anymore",
-        7: "You are already logged in.",
-        8: "This request is already running.",
-        9: "There is no account with the email {email}"
+        server: {
+            0: "An unknown error occured",
+            1: "Please sign in",
+            2: "This email is already in use",
+            3: "This name is already in use",
+            4: "This accesscode is unkown",
+            5: "This name is invalid",
+            6: "Tipps can't be submitted anymore",
+            7: "You are already logged in.",
+            8: "This request is already running.",
+            9: "There is no account associated with this email",
+            10: "This account has been banned - Get in touch with us"
+        },
+        local: {
+            "unknown": "An unkown error has occored",
+            "noconnection": "There is currently no connection to the server"
+        }
     },
     teams: {
         "aut": "Austria",

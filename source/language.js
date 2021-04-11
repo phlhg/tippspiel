@@ -66,7 +66,7 @@ export default class Language {
 
     getError(id,data){
         data = data ?? {}
-        var e = this.getRaw("errors");
+        var e = this.getRaw("errors/server");
         if(e.hasOwnProperty(id)){ return this.bake(e[id],data);  }
         return this.bake(e[0],data)
     }

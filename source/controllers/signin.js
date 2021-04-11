@@ -19,8 +19,8 @@ export default class SignIn extends Controller {
 
     async signIn(token){
         var r = await App.client.singIn(token)
-        if(r.state != ResponseState.SUCCESS){
-            this.view.error(Lang.getError(r.error,r.data));
+        if(!r.success){
+            this.view.error(r.message);
             return false;
         } else {
             App.router.load("/");

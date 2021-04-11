@@ -1,6 +1,7 @@
 import Manager from '../model'
 import GameTipp from './gametipp'
 import Debugger from '../../debugger';
+import Request from '../request';
 
 /** Users Model */
 export default class GameTipps extends Manager {
@@ -10,30 +11,24 @@ export default class GameTipps extends Manager {
     }
 
     async makeTipp(data){
-
-        var r = await App.socket.exec("makeTipp", { 
+        var r = new Request("makeTipp",{ 
             game: data.id,
             bet1: data.bet1,
             bet2: data.bet2,
             winner: data.winner,
             topscorer: data.topscorer
         })
+        if(!(await r.run())){ return r; }
 
-        if(r.state != ResponseState.SUCCESS){
-            if(r.error != 0){
-                Debugger.warn(this,Lang.getError(r.error,r.data))()
-            } else if(r.data.hasOwnProperty("info")) {
-                Debugger.warn(this,r.data.info)()
-            } else {
-                Debugger.warn(this,`Unbekannter Fehler beim Laden von ${this.type.name}[${ids.join(",")}] :`, r)()
-            }
-            return false;
-        } else {
-            var id = parseInt(r.data.id);
-            if(!App.client.gameTipps.includes(id)){ App.client.gameTipps.push(parseInt(id)); }
-            await this.update([id]);
-            return true;
+        var id = parseInt(r.data.id);
+        if(!App.client.gameTipps.includes(id)){ 
+            var g = await App.model.games.get(data.id);
+            App.client.gameTipps.push(id);
+            g.tipps.push(id);
         }
+        await this.update([id]);
+
+        return r;
     }
 
 }

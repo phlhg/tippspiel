@@ -1,4 +1,5 @@
 import Debugger from './debugger';
+import Request from './models/request';
 
 /** Class representing the client */
 export default class Client {
@@ -24,7 +25,13 @@ export default class Client {
         this.points = 0;
 
         /** @type {object} Permissions of the client */
-        this.permission = {}
+        this.permission = {
+            eventAnnounce: false,
+            eventReport: false,
+            gameAnnounce: false,
+            gameReport: false,
+            console: false
+        }
         
         /** @type {array} Groups of the client */
         this.groups = []
@@ -40,16 +47,17 @@ export default class Client {
     /**
      * Restore a possible previous session of the client
      */
-    restoreSession(){
+    async restoreSession(){
         this.isknown = (localStorage.getItem("tipp-dev-iskown") !== null)
         if(localStorage.getItem("tipp-dev-token") !== null){
-           this.singIn(localStorage.getItem("tipp-dev-token")).then(r => {
-                if(r.state != ResponseState.SUCCESS){
-                    Debugger.warn(this, `Could not restore session (State: ${r.state}, Error: ${Lang.getError(r.error,r.data)}) `)()
-                } else {
-                    Debugger.log(this, "Session was restored")()
-                }
-           })
+            var r = await this.singIn(localStorage.getItem("tipp-dev-token"));
+            if(!r.success){
+                Debugger.warn(this, `Could not restore session (${Lang.getError(r.message)})`)()
+                localStorage.removeItem("tipp-dev-token")
+                App.router.forward("/signin/")
+            } else {
+                Debugger.log(this, "Session was restored")()
+            }
         }
     }
 
@@ -72,38 +80,44 @@ export default class Client {
      * @return {object} Response object
      */
     async singIn(token){
-        if(App.socket.state != SocketState.OPEN) return { state: ResponseState.CLIENT_ERROR, error: -1, data: {} };
-        var msg = await App.socket.exec("signin",{ token: token, retry: false });
-        if(msg.state != ResponseState.SUCCESS){ return msg; }
+        var r = new Request("signin", { token: token, retry: false });
+        if(!(await r.run())){ return r; }
+
         this.active = true;
         this.token = token;
+
+        var r2 = await this.getMe();
+        if(!r2.success){ 
+            this.active = false;
+            this.token = "";
+            return r2; 
+        }
+
         localStorage.setItem("tipp-dev-iskown","true")
         localStorage.setItem("tipp-dev-token",this.token)
-        if(!await this.getMe()){
-            this.singOut()
-            return { state: ResponseState.SERVER_ERROR, error: 0, data: {} }
-        }
-        return msg;
+
+        return r;
     }
 
     /**
      * Retireves data about the client from the server
      */
     async getMe(){
-        if(App.socket.state != SocketState.OPEN) return false;
-        if(!this.active) return false;
-        var r = await App.socket.exec("me",{})
-        if(r.state != ResponseState.SUCCESS){ return false; }
-        this.id = r.data.id;
+        var r = new Request("me", {});
+        if(!(await r.run())){ return r; }
+
+        this.id = parseInt(r.data.id);
         this.name = r.data.name;
-        this.permission = {}
-        for(var p in r.data.permission){
-            this.permission[p] = (r.data.permission[p] == 'true')
+
+        for(var p in this.permission){
+            this.permission[p] = (r.data.permission.hasOwnProperty(p) && r.data.permission[p] == 'true')
         }
+
         this.groups = Array.from(r.data.groups).map(i => parseInt(i))
         this.gameTipps = Array.from(r.data.gameTipps).map(i => parseInt(i))
         this.eventTipps = Array.from(r.data.eventTipps).map(i => parseInt(i))
-        return true;
+
+        return r;
     }
     
     /**
@@ -114,11 +128,12 @@ export default class Client {
      * @return {object} Response object
      */
     async singUp(name, email){
-        if(App.socket.state != SocketState.OPEN) return { state: ResponseState.CLIENT_ERROR, error: -1, data: {} };
-        var r = await App.socket.exec("signup",{ name: name, email: email })
-        if(r.state != ResponseState.SUCCESS){ return r; }
+        var r = new Request("signup", { name: name, email: email });
+        if(!(await r.run())){ return r; }
+
         this.isknown = true;
         localStorage.setItem("tipp-dev-iskown","true")
+        
         return r;
     }
 

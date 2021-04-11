@@ -4,17 +4,22 @@ __LANG["de-ch"] = {
     _extends: "de",
     name: "Tippspiil",
     errors: {
-        '-1': "Momentan kei Verbindig zum Server",
-        0: "Es isch en unbekannte Fehler uftrete",
-        1: "Für das muesch dich ahmelde",
-        2: "Die E-Mail wird scho gnutzt",
-        3: "De Name wird scho gnutzt",
-        4: "De Zuegangscode isch unbekannt",
-        5: "De Name chasch nöd bringe",
-        6: "Es chönd kei Tipps meh abgeh werde",
-        7: "Du bisch scho aagmolde.",
-        8: "Die Aafrag isch scho am laufe.",
-        9: "Es git kein account mit de Email {email}"
+        server: {
+            0: "Es isch en unbekannte Fehler uftrete",
+            1: "Für das muesch dich ahmelde",
+            2: "Die E-Mail wird scho gnutzt",
+            3: "De Name wird scho gnutzt",
+            4: "De Zuegangscode isch unbekannt",
+            5: "De Name chasch nöd bringe",
+            6: "Es chönd kei Tipps meh abgeh werde",
+            7: "Du bisch scho aagmolde.",
+            8: "Die Aafrag isch scho am laufe.",
+            9: "Es git kein account mit de Email {email}"
+        },
+        local: {
+            "unknown": "Es isch en unbekannte Fehler uftrete",
+            "noconnection": "S het momentan kei Verbinding zum Server",
+        }
     },
     teams: {
         "aut": "Österich",

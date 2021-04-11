@@ -88,8 +88,8 @@ export default class Game extends Element {
         return id.length > 0
     }
 
-    makeTipp(data){
-        return App.model.gameTipps.makeTipp({
+    async makeTipp(data){
+        var r = await App.model.gameTipps.makeTipp({
             id: this.id,
             bet1: data.bet1,
             bet2: data.bet2,

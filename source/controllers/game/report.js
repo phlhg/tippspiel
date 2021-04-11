@@ -25,10 +25,10 @@ export default class GameReport extends Controller {
 
         this.view.on("submit",async data => {
             var r = await this.game.report(data);
-            if(r){
-                App.router.forward("/"); 
+            if(!r.success){
+                this.view.form.error(r.message);
             } else {
-                this.view.form.error("Spiel konnte nicht beendet werden");
+                App.router.forward("/"); 
             }
         })
     }

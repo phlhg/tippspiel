@@ -19,14 +19,11 @@ export default class GameCreate extends Controller {
         }
 
         this.view.on("submit", async data => {
-            var id = await App.model.games.create(
-                data.team1, data.team2, data.date.getTime()/1000, data.location
-            )
-
-            if(id > 0){
-                App.router.forward("/");
+            var r = await App.model.games.create(data.team1, data.team2, data.date.getTime()/1000, data.location)
+            if(!r.success){
+                this.view.form.error(r.message);
             } else {
-                this.view.form.error(Lang.get("section/game/create/errors/notcreated"));
+                App.router.forward("/");
             }
         })
     }

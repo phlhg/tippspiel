@@ -11,8 +11,8 @@ export default class SignUp extends Controller {
         this.setView(SignUpView);
         this.view.on("submit",async (data) => {
             var r = await App.client.singUp(data.name, data.email)
-            if(r.state != ResponseState.SUCCESS){
-                this.view.error(Lang.getError(r.error,r.data));
+            if(!r.success){
+                this.view.error(r.message);
                 return false;
             } else {
                 App.router.load("/");

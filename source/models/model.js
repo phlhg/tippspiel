@@ -28,30 +28,32 @@ export default class Model {
     }
 
     async _load(ids){
-        if(ids.length > 0 && App.socket.state == SocketState.OPEN){
-            Debugger.log(this,`Requested data for ${this.type.name}[${ids.join(",")}]`)()
-            var r = await App.socket.exec("get_data", { table: this.type.name, ids: ids })
-            if(r.state != ResponseState.SUCCESS){
-                if(r.error != 0){
-                    Debugger.warn(this,Lang.getError(r.error,r.data))()
-                } else if(r.data.hasOwnProperty("info")) {
-                    Debugger.warn(this,r.data.info)()
-                } else {
-                    Debugger.warn(this,`Unbekannter Fehler beim Laden von ${this.type.name}[${ids.join(",")}] :`, r)()
-                }
+        if(ids.length < 1) return;
+        if(App.socket.state != SocketState.OPEN) return; 
+
+        Debugger.log(this,`Requested data for ${this.type.name}[${ids.join(",")}]`)()
+        var r = await App.socket.exec("get_data", { table: this.type.name, ids: ids })
+            
+        if(r.state != ResponseState.SUCCESS){
+            if(parseInt(r.error) >= 0){
+                Debugger.warn(this,Lang.getError(r.error,r.data))()
+            } else if(r.data.hasOwnProperty("info")) {
+                Debugger.warn(this,r.data.info)()
             } else {
-                var data = Array.from(r.data);
-                var delivered = data.filter(g => g != "" && g.hasOwnProperty("id")).map(g => parseInt(g.id));
-                var missing = ids.filter(id => !delivered.includes(id))
-                if(missing.length > 0){ Debugger.error(this,`Data for ${this.type.name}[${missing.join(",")}] was not delivered`)(); }
-                r.data.filter(e => e != "").forEach(e => {
-                    if(!this.list.hasOwnProperty(e.id)){
-                        this.list[e.id] = new this.type(e)
-                    } else {
-                        this.list[e.id].update(e)
-                    }
-                })
+                Debugger.warn(this,`Unbekannter Fehler beim Laden von ${this.type.name}[${ids.join(",")}] :`, r)()
             }
+        } else {
+            var data = Array.from(r.data);
+            var delivered = data.filter(g => g != "" && g.hasOwnProperty("id")).map(g => parseInt(g.id));
+            var missing = ids.filter(id => !delivered.includes(id))
+            if(missing.length > 0){ Debugger.error(this,`Data for ${this.type.name}[${missing.join(",")}] was not delivered`)(); }
+            r.data.filter(e => e != "").forEach(e => {
+                if(!this.list.hasOwnProperty(e.id)){
+                    this.list[e.id] = new this.type(e)
+                } else {
+                    this.list[e.id].update(e)
+                }
+            })
         }
     }
 
