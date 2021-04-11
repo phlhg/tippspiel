@@ -12,14 +12,8 @@ export default class Profile extends View {
             <span class="short"></span>
             <span class="name"></span>
             <span class="points"></span>
-            <span class="tags">
-                <span><span class="material-icons">build</span> Admin</span>
-                <span><span class="material-icons">bug_report</span> Bug-Hunter</span>
-                <span><span class="material-icons">lightbulb</span> Feature-Creator</span>
-                <span><span class="material-icons">add_circle_outline</span> Supporter</span>
-            </span>
         </div>
-        <a class="tipp-box" href="/game/create/" target="_blank" >
+        <a class="tipp-box createGame" href="/game/create/" target="_blank" style="display: none" >
             <span class="icon"><span class="material-icons">add_circle_outline</span></span>
             <span class="title">${Lang.get("section/profile/newgame/name")}</span>
             <span class="meta">${Lang.get("section/profile/newgame/desc")}</span>
@@ -32,6 +26,8 @@ export default class Profile extends View {
         this.header.name = this.root.querySelector(".tipp-profile-header .name")
         this.header.points = this.root.querySelector(".tipp-profile-header .points")
 
+        this.createGame = this.root.querySelector(".createGame");
+
         this.gamelist = this.root.querySelector(".tipp-game-list");
     }
 
@@ -39,6 +35,7 @@ export default class Profile extends View {
         this.header.name.innerText = client.name;
         this.header.short.innerText = client.name.split(/\s/ig).slice(0,2).map(s => s.charAt(0)).join("") + ".";
         this.header.points.innerText = `${client.points}+`
+        this.createGame.style.display = client.permission.gameAnnounce ? "block" : "none";
     }
 
     setGames(list){

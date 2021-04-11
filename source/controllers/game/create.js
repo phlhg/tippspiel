@@ -14,6 +14,10 @@ export default class GameCreate extends Controller {
     async load(){
         if(!App.client.active){ return App.client.prompt() };
 
+        if(!App.client.permission.gameAnnounce){ 
+            return App.router.forward(`/`);
+        }
+
         this.view.on("submit", async data => {
             var id = await App.model.games.create(
                 data.team1, data.team2, data.date.getTime()/1000, data.location

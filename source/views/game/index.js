@@ -19,19 +19,20 @@ export default class GameIndex extends View {
         <div class="game-header">
             <span class="live">live</span>
             <h2 class="top">
-                <span class="team1"><span class="tflag" data-t="sui" ></span> <span class="name">Schweiz</span></span>
-                <span class="team2"><span class="name">Spanien</span> <span class="tflag" data-t="esp" ></span></span>
+                <span class="team1"><span class="tflag" data-t="" ></span> <span class="name"></span></span>
+                <span class="team2"><span class="name"></span> <span class="tflag" data-t="" ></span></span>
             </h2>
             <div class="score">
                 <span class="normal">1:1</span>
-                <span class="penalty">Penaltyschiessen<span>4:6</span></span>
+                <span class="penalty">${Lang.get("section/game/penalty")}<span></span></span>
             </div>
-            <div class="meta"><span class="time">01.01. 20:00</span> | <span class="location">Letzigrund Zürich</span></div>
+            <div class="meta"><span class="time"></span> | <span class="location"></span></div>
             <img class="flag1" src="/img/flag/sui.png"/>
             <img class="flag2" src="/img/flag/esp.png"/>
         </div>
+        <div class="game-timeline"></div>
         <div class="game-prompt-wrapper">
-            <a class="tipp-box ended" style="background-color: #d42700; ">
+            <a class="tipp-box ended" href="" style="background-color: #d42700; ">
                 <span class="icon"><span class="material-icons">stop</span></span>
                 <span class="title">${Lang.get("section/game/prompt/ended/name")}</span>
                 <span class="meta">${Lang.get("section/game/prompt/ended/desc")}</span>
@@ -56,7 +57,7 @@ export default class GameIndex extends View {
             </a>
         </div>
         <div class="game-tipps">
-            <h3>Tipps</h3>
+            <h3>${Lang.get("section/game/tipps/list")}</h3>
             <div class="tipp-list"></div>
         </div>`
 
@@ -87,6 +88,9 @@ export default class GameIndex extends View {
         this.header.meta.time = this.header.root.querySelector(".meta .time")
         this.header.meta.location = this.header.root.querySelector(".meta .location")
 
+        this.timeline = {}
+        this.timeline.root = this.root.querySelector(".game-timeline");
+
         this.prompt = {}
         this.prompt.wrapper = this.root.querySelector(".game-prompt-wrapper")
         this.prompt.ended = this.prompt.wrapper.querySelector(".ended")
@@ -115,13 +119,6 @@ export default class GameIndex extends View {
         }.bind(this)
         window.addEventListener("datachange",this._func);
         this.update();
-    }
-
-    addTipps(tipps){
-        tipps.forEach(tipp => {
-            var t = new TippTile(tipp);
-            this.tipps.list.appendChild(t.getHtml())
-        });
     }
 
     update(){
@@ -165,6 +162,22 @@ export default class GameIndex extends View {
             this.header.live.style.display = "none";
         }
 
+        // Timeline 
+        
+        this.timeline.root.innerHTML = "";
+
+        if(this.game.status != GameStatus.UPCOMING && this.game.scorers.length > 0){
+            Promise.all(this.game.getScorers()).then(data => {
+                data.forEach(s => {
+                    var e = document.createElement("span");
+                    var t1 = (s.team == this.game.team1.id)
+                    e.classList.add(t1 ? "left" : "right");
+                    e.innerHTML = `<span class="tflag" data-t="${(t1 ? this.game.team1.short : this.game.team2.short).toLowerCase()}" ></span> ${s.name}`;
+                    this.timeline.root.appendChild(e);
+                })
+            })
+        }
+
         // Game End Prompt
         if(this.game.status == GameStatus.PENDING && App.client.permission.gameReport){
             if(this.game.phase == GamePhase.NORMAL){
@@ -180,7 +193,6 @@ export default class GameIndex extends View {
             this.prompt.wrapper.classList.remove("hidden");
             this.prompt.ended.setAttribute("href","/game/"+this.game.id+"/report/");
             this.prompt.extension.onclick = async () => {
-                console.log("LOL");
                 await this.game.nextPhase()
                 this.update();
             }
@@ -216,16 +228,19 @@ export default class GameIndex extends View {
         }
 
         // Tipps
-        if(this.game.status == GameStatus.UPCOMING){
-            this.tipps.root.classList.add("hidden");
-        } else {
+        this.tipps.root.classList.add("hidden");
+        this.tipps.list.innerHTML = "";
+        if(this.game.status != GameStatus.UPCOMING){ 
             this.tipps.root.classList.remove("hidden");
+            this.game.getTipps().forEach(tipp => {
+                var t = new TippTile(tipp);
+                this.tipps.list.appendChild(t.getHtml())
+            })
         }
     }
 
     clear(){
         this.stream.iframe.src = "";
-        this.tipps.list.innerHTML = "";
     }
 
 }

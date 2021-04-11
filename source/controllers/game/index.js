@@ -15,7 +15,6 @@ export default class GameIndex extends Controller {
     async load(){
         var g = await App.model.games.get(this.params.id);
         this.view.setGame(g);
-        if(g.status != GameStatus.UPCOMING){ this.view.addTipps(g.getTipps()) }
     }
 
     unload(){

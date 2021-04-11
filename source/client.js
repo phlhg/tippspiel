@@ -122,6 +122,12 @@ export default class Client {
         return r;
     }
 
+    signout(){
+        localStorage.setItem("tipp-dev-iskown","true")
+        localStorage.removeItem("tipp-dev-token")
+        window.location = "/"
+    }
+
 
 
 }

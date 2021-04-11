@@ -14,7 +14,7 @@ export default class Component {
         this._id = this.obj.id;
         
         this._func = function(e){
-            if(e.detail?.type == this._type && e.detail?.id == this._id){ 
+            if(e.detail?.type == this._type.toLowerCase() && e.detail?.id == this._id){ 
                 this.update(); 
             }
         }.bind(this);

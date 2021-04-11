@@ -27,6 +27,12 @@ export default class GameTipp extends Element {
         /** @property {number} reward Received points for this tipp */
         this.reward = 0;
 
+        this.tippkat = 0;
+
+        this.goals = 0;
+
+        this.bonus = false;
+
         this.set(data);
     }
 
@@ -42,6 +48,9 @@ export default class GameTipp extends Element {
         this.winner = parseInt(data.winner ?? this.winner);
         this.topscorer = parseInt(data.topscorer ?? this.topscorer);
         this.reward = parseInt(data.reward ?? this.reward);
+        this.tippkat = parseInt(data.tippkat ?? this.tippkat);
+        this.goals = parseInt(data.goals ?? this.goals);
+        this.bonus = data.hasOwnProperty("bonus") ? data.bonus == "true" : this.bonus;
     }
 
     getGame(){

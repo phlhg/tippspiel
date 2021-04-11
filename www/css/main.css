@@ -2,7 +2,7 @@
 html, body { color: #fff; background: #00315e; background: linear-gradient(45deg,#061c36, #00315e); font-family: 'Montserrat', sans-serif; padding: 0; margin: 0; width: 100%; height: 100%; }
 body, html { overflow-x: hidden;}
 
-a { color: inherit; cursor: pointer; text-decoration: none; }
+a { color: inherit; cursor: pointer; }
 
 .material-icons { font-size: inherit !important;}
 
@@ -70,8 +70,8 @@ h4 > small { font-size: 12px; font-weight: normal; opacity: 0.75; line-height: i
 section > .text { position: relative; display: block; padding: 0 15px; }
 section a.button, section span.button { position: relative; display: inline-block; padding: 10px 15px; margin: 10px 0; background: rgba(0,0,0,0.15); border-radius: 4px; font-size: 14px; color: #fff; text-decoration: none;}
 
-section .tipp-box { position: relative; display: block; padding: 15px 15px 15px 55px; background: rgba(0,0,0,0.15); margin-bottom: 10px; border-radius: 4px; }
-section .tipp-box .icon { position: absolute; left: 15px; top: 15px; display: inline-block; width: 25px; font-size: 24px; }
+section .tipp-box { text-decoration: none;  position: relative; display: block; padding: 15px 15px 15px 55px; background: rgba(0,0,0,0.15); margin-bottom: 10px; border-radius: 4px; }
+section .tipp-box .icon { position: absolute; left: 15px; top: 15px; display: inline-block; text-align: center; width: 25px; font-size: 24px; line-height: 24px; font-weight: bold; }
 section .tipp-box .title { position: relative; display: block; font-weight: bold; font-size: 20px; }
 section .tipp-box .meta { position: relative; display: block; color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 5px; }
 
@@ -93,28 +93,34 @@ section form .additional { display: block; font-size: 12px; color: rgba(255,255,
 section.tipp-error-page { height: 100vh; padding-left: 20px; padding-right: 20px; }
 section.tipp-error-page.active { height: 100vh; }
 section.tipp-error-page > .inner { position: relative; display: block; text-align: center; left: 0; top: 50%; transform: translateY(-50%); }
-section.tipp-error-page > .inner > h3 { font-size: 40px; }
+section.tipp-error-page > .inner > h3 { font-size: 40px; padding: 0; }
 section.tipp-error-page > .inner > p { font-size: 14px; }
 
 section.tipp-login-page { height: 100vh; padding-left: 20px; padding-right: 20px;}
 section.tipp-login-page.active { height: 100vh}
 section.tipp-login-page > .inner { position: relative; display: block; left: 0; top: 50%; transform: translateY(-50%); }
-section.tipp-login-page > .inner > h3 { font-size: 40px; margin-bottom: 5px; }
+section.tipp-login-page > .inner > h3 { font-size: 40px; margin-bottom: 5px; padding: 0; }
 section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 
 /* Game Tile */
-.game-tile { position: relative; display: block; padding: 15px 15px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; }
+.game-tile { position: relative; display: block; padding: 15px 55px 15px 55px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; }
 .game-tile.loading { color: transparent; }
 .game-tile.loading .tflag { opacity: 0; }
-.game-tile .live-view { position: relative; display: block; background: #000; width: calc(100% + 30px); margin: 10px 0 -15px -15px; padding-bottom: 0; border-radius: 4px; overflow: hidden; }
-.game-tile .live-view > iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-.game-tile.live .live-view { padding-bottom: calc(100% * (9 / 16)); }
-.game-tile .live-indicator { position: absolute; display: inline-block; top: 15px; right: 15px; font-size: 12px; padding: 0 15px 0 0; text-transform: uppercase; opacity: 0; visibility: hidden; }
-.game-tile .live-indicator:after { position: absolute; display: block; content: ''; top: 2px; right: 0; width: 10px; height: 10px; border-radius: 50%; background: #f00; animation: live 2s linear infinite normal;}
-.game-tile.live .live-indicator { opacity: 1; visibility: visible; }
 
-.game-tile .title { position: relative; display: block; font-size: 20px; line-height: 25px; }
-.game-tile .meta { position: relative; display: block; font-size: 12px; line-height: 20px; opacity: 0.8;}
+.game-tile > .name { position: absolute; display: block; font-size: 20px; line-height: 22px; font-weight: bold; top: 15px; width: 45%; overflow: hidden; text-overflow: ellipsis; }
+.game-tile > .t1.name { left: 0; padding-left: 55px; text-align: left; }
+.game-tile > .t2.name { right: 0; padding-right: 55px; text-align: right;}
+.game-tile > .tflag ,.game-tile > .tflag { position: absolute; top: 15; font-size: 25px; line-height: 25px; }
+.game-tile > .t1.tflag { left: 15px; }
+.game-tile > .t2.tflag { right: 15px; }
+.game-tile .result { position: relative; display: block; font-size: 25px; line-height: 25px; height: 25px; margin-bottom: -5px; font-weight: bold;  text-align: center; }
+.game-tile .meta { position: relative; display: block; font-size: 12px; line-height: 18px; height: 18px; text-align: center;}
+.game-tile .meta > .date { position: absolute; left: 0; top: 0; display: inline-block; opacity: 0.8; }
+.game-tile .meta > .tipps { position: absolute; right: 0; top: 0; display: inline-block; opacity: 0.8; }
+
+.game-tile .meta > .live-indicator { position: relative; display: inline-block; font-size: 10px; line-height: 14px; padding: 0 15px 0 3px; margin-top: 8px; border-radius: 4px; text-transform: uppercase; opacity: 0; visibility: hidden; color: #fff; background: #f00; font-weight: bold; }
+.game-tile .meta > .live-indicator:after { position: absolute; display: block; content: ''; top: 3px; right: 3px; width: 8px; height: 8px; border-radius: 50%; background: #fff; animation: live 2s linear infinite normal;}
+.game-tile.live .meta > .live-indicator { opacity: 1; visibility: visible; }
 
 @keyframes live {
     0% { opacity: 0; }
@@ -124,12 +130,25 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 
 /* Tipp-List */
 .tipp-list { position: relative; display: flex; flex-wrap: wrap; justify-content: space-between; width: 100%; }
-.tipp-tile { position: relative; display: block; width: calc(50% - 5px); padding: 15px 50px 15px 45px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; min-height: 50px; }
-.tipp-tile > .tflag { position: absolute; top: 15px; left: 15px; line-height: 20px; font-size: 20px; }
+.tipp-tile { position: relative; display: block; width: calc(50% - 5px); padding: 15px 50px 15px 55px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; min-height: 50px; }
+.tipp-tile > .tflag { position: absolute; top: 15px; left: 15px; line-height: 25px; font-size: 25px; }
 .tipp-tile > .name { display: block; font-weight: bold; line-height: 20px; font-size: 20px; margin: 0 0 5px 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .tipp-tile > .meta { display: block; color: rgba(255,255,255,0.6); font-size: 14px; }
 .tipp-tile > .reward { position: absolute; display: inline-block; top: 15px; right: 15px; line-height: 20px; font-size: 20px; font-weight: bold; }
 .tipp-tile.fullwidth { width: 100%; }
+
+
+/* User-List */
+.rank-list { position: relative; display: block; width: 100%; }
+.rank-tile { position: relative; display: block; width: 100%; padding: 15px 75px 15px 55px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; min-height: 50px; overflow: hidden; }
+.rank-tile > .points { position: absolute; top: 15px; right: 15px; display: inline-block; font-weight: bold; line-height: 24px; font-size: 20px;  }
+.rank-tile > .name { display: block; font-weight: bold; line-height: 24px; font-size: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.rank-tile > .rank { position: absolute; display: block; top: 12px; right: calc(100% - 45px); min-width: 30px; max-width: 40px; padding: 0 5px; height: 30px; overflow: hidden; text-overflow: clip; text-align: center; background: rgba(0,0,0,0.15); line-height: 30px; font-size: 14px; border-radius: 15px; font-weight: bold; }
+.rank-tile > .rank:empty { display: none; }
+
+.rank-list.rank .rank-tile:nth-child(1) > .rank { background: radial-gradient(circle at 25% 25%, #f8eba0, #8d702c); color: #8d702c; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
+.rank-list.rank .rank-tile:nth-child(2) > .rank { background: radial-gradient(circle at 25% 25%, #e0e0e0, #505050); ; color: #505050; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
+.rank-list.rank .rank-tile:nth-child(3) > .rank { background: radial-gradient(circle at 25% 25%, #e4b98d, #53300c); color: #53300c; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
 
 /* Game View */
 .game-stream { position: relative; display: none; background: #000; width: 100%; padding-bottom: calc(100% * (9 / 16)); overflow: hidden; border-radius: 4px; margin-bottom: 10px; }
@@ -162,6 +181,15 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
     rgba(0, 32, 71, 0.0) 250%
     );
 }
+
+.game-timeline { position: relative; display: block; width: 100%; padding: 10px 10px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px;}
+.game-timeline:empty { display: none; margin-bottom: 0; }
+.game-timeline > span { position: relative; display: block; width: 60%; background: rgba(0,0,0,0.15); padding: 7px 10px; border-radius: 4px; margin-bottom: 5px; }
+.game-timeline > span.left { padding-left: 36px; }
+.game-timeline > span.left > .tflag { position: absolute; top: 7px; left: 10px; }
+.game-timeline > span.right { padding-right: 36px; text-align: right; left: 40%; }
+.game-timeline > span.right > .tflag { position: absolute; top: 7px; right: 10px; }
+.game-timeline > span:last-child { margin-bottom: 0;}
 
 .game-prompt-wrapper { position: relative; display: flex; width: 100%; flex-wrap: nowrap; flex-direction: row; margin-bottom: 10px; }
 .game-prompt-wrapper.hidden { display: none; }

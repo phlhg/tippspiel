@@ -29,7 +29,6 @@ export default class SignIn extends Controller {
     }
 
     load(){
-        console.log(this.params);
         if(this.params.hasOwnProperty("token")){
             this.view.token.value = this.params["token"];
             this.signIn(this.params["token"]);
