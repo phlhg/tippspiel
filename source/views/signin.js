@@ -32,7 +32,7 @@ export default class SignIn extends View {
 
         this.token.onchange = e => { this.user.value = this.token.value; }
 
-        this.form.addEventListener("submit",e => {
+        this.form.addEventListener("submit",async e => {
             e.preventDefault();
             this.info("");
             this.error("");
@@ -42,9 +42,8 @@ export default class SignIn extends View {
                 this.info("Bitte gib einen Zugangslink oder Zugangscode ein");
             } else {
                 data.token = match[1];
-                this.event("submit",data).then(r => {
-                    if(r){ this.form.reset(); }
-                })
+                var r = await this.event("submit",data)
+                if(r){ this.form.reset(); }
             }
         })
 
