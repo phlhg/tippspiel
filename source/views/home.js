@@ -8,7 +8,19 @@ export default class Home extends View {
     }
 
     init(){
-        this.root.innerHTML = `<div class="tipp_home_upcoming"></div><h3>${Lang.get("section/home/pastgames")}</h3><div class="tipp_home_over"></div>`
+        this.root.innerHTML = 
+        `<div class="tipp-box" style="background:rgb(240,100,0);">
+            <span class="icon"><span class="material-icons">science</span></span>
+            <span class="title">ALPHA Version</span>
+            <span class="meta">
+                Bitte probiere die folgenden Funktionen aus und <u>informiere uns über Fehler und mögliche Verbesserungen</u>: Registrierung, An- & Abmelden, Tippen, Profil und Sprachen<br/>
+                <br/>
+                <b>Tipp</b> Installiere diese Seite als App mit <i>"Zum Homescreen hinzufügen"</i> unter <span class="material-icons">ios_share</span> oder <i>"Installieren"</i> unter <span class="material-icons">more_vert</span>
+            </span>
+        </div>
+        <div class="tipp_home_upcoming"></div>
+        <h3>${Lang.get("section/home/pastgames")}</h3>
+        <div class="tipp_home_over"></div>`
         this.upcoming = this.root.querySelector(".tipp_home_upcoming");
         this.over = this.root.querySelector(".tipp_home_over");
     }
