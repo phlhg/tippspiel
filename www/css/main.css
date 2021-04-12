@@ -107,7 +107,7 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .game-tile.loading { color: transparent; }
 .game-tile.loading .tflag { opacity: 0; }
 
-.game-tile > .name { position: absolute; display: block; font-size: 20px; line-height: 22px; font-weight: bold; top: 15px; width: 45%; overflow: hidden; text-overflow: ellipsis; }
+.game-tile > .name { white-space: nowrap; position: absolute; display: block; font-size: 20px; line-height: 22px; font-weight: bold; top: 15px; width: 45%; overflow: hidden; text-overflow: ellipsis; }
 .game-tile > .t1.name { left: 0; padding-left: 55px; text-align: left; }
 .game-tile > .t2.name { right: 0; padding-right: 55px; text-align: right;}
 .game-tile > .tflag ,.game-tile > .tflag { position: absolute; top: 15; font-size: 25px; line-height: 25px; }
