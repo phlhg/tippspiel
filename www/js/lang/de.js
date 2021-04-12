@@ -25,7 +25,7 @@ __LANG["de"] = {
     teams: {
         "aut": "Österreich",
         "bel": "Belgien",
-        "cro": "Krotatien",
+        "cro": "Kroatien",
         "cze": "Tschechien",
         "den": "Dänemark",
         "eng": "England",
