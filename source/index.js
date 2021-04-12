@@ -21,6 +21,7 @@ import Settings from './controllers/settings/index'
 import TippIndex from './controllers/tipp'
 import StatsIndex from './controllers/stats'
 import GroupsIndex from './controllers/groups'
+import EventIndex from './controllers/event'
 
 Debugger.active = true;
 
@@ -54,6 +55,8 @@ window.addEventListener("DOMContentLoaded", function(){
     App.router.add("/game/{id}/tipp/",new GameTipp).where({ id: 'NUMBER' })
     App.router.add("/game/{id}/report/",new GameReport).where({ id: 'NUMBER' })
     App.router.add("/game/{id}/{t1}-{t2}/",new Game).where({ id: 'NUMBER', t1: 'TEXT',t2: 'TEXT' })
+
+    App.router.add("/event/{id}/{name}/",new EventIndex).where({ id: 'NUMBER', name: 'TEXT' })
 
     App.router.add("/tipp/{id}/",new TippIndex).where({id: 'NUMBER'})
 

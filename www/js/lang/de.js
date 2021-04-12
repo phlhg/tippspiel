@@ -238,6 +238,24 @@ __LANG["de"] = {
         groups: {
             title: "Gruppen",
             desc: "Diese Funktion wird bald verfügbar sein"
+        },
+        event: {
+            tipp: {
+                single: "1 Tipp",
+                multi: "{n} Tipps",
+                your: "Dein Tipp",
+                deadline: "Offen bis {d}"
+            },
+            addgame: {
+                name: "Spiel hinzufügen",
+                desc: "Füge dem Event ein neues Spiel hinzu",
+            },
+            games: {
+                heading: "Spiele"
+            },
+            tile: {
+                desc: "Event"
+            }
         }
     }
 }

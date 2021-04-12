@@ -150,6 +150,14 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .rank-list.rank .rank-tile:nth-child(2) > .rank { background: radial-gradient(circle at 25% 25%, #e0e0e0, #505050); ; color: #505050; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
 .rank-list.rank .rank-tile:nth-child(3) > .rank { background: radial-gradient(circle at 25% 25%, #e4b98d, #53300c); color: #53300c; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
 
+/* Event-List */
+
+.event-tile { text-decoration: none; position: relative; display: block; padding: 15px 15px 15px 55px; background: rgba(0,0,0,0.15); margin-bottom: 10px; border-radius: 4px; }
+.event-tile .icon { position: absolute; left: 15px; top: 15px; display: inline-block; text-align: center; width: 25px; font-size: 24px; line-height: 24px; font-weight: bold; }
+.event-tile .name { position: relative; display: block; font-weight: bold; font-size: 20px; }
+.event-tile .meta { position: relative; display: block; color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 5px; }
+
+
 /* Game View */
 .game-stream { position: relative; display: none; background: #000; width: 100%; padding-bottom: calc(100% * (9 / 16)); overflow: hidden; border-radius: 4px; margin-bottom: 10px; }
 .game-stream.active { display: block; }
