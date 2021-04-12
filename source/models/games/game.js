@@ -17,19 +17,22 @@ export default class Game extends Element {
         this.team1 = {}
         this.team1.id = 0;
         this.team1.name = "T1"
-        this.team1.short = "[T1S]"
+        this.team1.short = "T1"
         this.team1.score = 0;
         this.team1.penalty = 0;
 
         this.team2 = {}
         this.team2.id = 0;
         this.team2.name = "T2"
-        this.team2.short = "[T2S]";
+        this.team2.short = "T2";
         this.team2.score = 0;
         this.team2.penalty = 0;
 
         this.scorers = [];
         this.tipps = [];
+
+        this.short = ""
+        this.url = ""
 
         this.set(data);
     }
@@ -60,6 +63,9 @@ export default class Game extends Element {
         
         this.scorers = Array.from(data.scorers ?? this.scorers).map(id => parseInt(id));
         this.tipps = Array.from(data.tipps ?? this.tipps).map(id => parseInt(id))
+
+        this.short = this.team1.short.toLowerCase() + "-" + this.team2.short.toLowerCase()
+        this.url = `/game/${this.id}/${this.short}/`
     }
 
     /** 

@@ -28,7 +28,7 @@ export default class GameReport extends Controller {
             if(!r.success){
                 this.view.form.error(r.message);
             } else {
-                App.router.forward("/"); 
+                App.router.forward(this.game.url); 
             }
         })
     }

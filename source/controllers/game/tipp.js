@@ -36,9 +36,9 @@ export default class GameTipp extends Controller {
             })
 
             if(!r.success){
-                this.view.form.error("Something went wrong");
+                this.view.form.error(r.message);
             } else {
-                App.router.forward(`/game/${this.game.id}/${this.game.team1.short.toLowerCase()}-${this.game.team2.short.toLowerCase()}/`)
+                App.router.forward(this.game.url)
             }
         })
     }

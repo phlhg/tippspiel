@@ -23,7 +23,8 @@ export default class GameCreate extends Controller {
             if(!r.success){
                 this.view.form.error(r.message);
             } else {
-                App.router.forward("/");
+                var game = await App.model.games.get(r.data);
+                App.router.forward(game.url);
             }
         })
     }

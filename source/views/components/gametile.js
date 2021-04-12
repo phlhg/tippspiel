@@ -37,7 +37,7 @@ export default class GameTile extends Component {
 
     update(){
 
-        this.view.root.setAttribute("href",`/game/${this.obj.id}/${this.obj.team1.short.toLowerCase()}-${this.obj.team2.short.toLowerCase()}/`)
+        this.view.root.setAttribute("href",this.obj.url);
 
         this.view.team1.innerText = this.obj.team1.name;
         this.view.team2.innerText = this.obj.team2.name;

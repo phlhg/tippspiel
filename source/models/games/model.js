@@ -42,7 +42,10 @@ export default class Games extends Model {
             team2: team2,
         })
         if(!(await r.run())){ return r; }
-        return r.return(parseInt(r.data.id))
+        var id = parseInt(r.data.id);
+        var e = await App.model.events.get(1);
+        if(!e.games.includes(id)){ e.games.push(id) }
+        return r.return(id)
     }
 
     async report(id, data){
