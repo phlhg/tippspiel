@@ -31,7 +31,13 @@ export default class SearchInput {
             if(this.dom.input.value.replace(/ /ig,"") != ""){
                 (await this.getSuggestions(this.dom.input.value)).slice(0,4).forEach(value => {
                     var s = document.createElement("span");
-                    s.innerHTML = `<span class="icon" style="background-image: url(${this.img});"></span>${value}`;
+                    s.innerHTML = `<span class="icon" style="background-image: url(${this.img});"></span>`
+
+                    // Prevent XSS in value
+                    var t = document.createElement("span");
+                    t.innerText = value;
+                    s.appendChild(t);
+
                     s.onmousedown = () => { this._select(value); }
                     s.ontouchstart = () => { this._select(value); }
                     this.dom.suggestions.appendChild(s);

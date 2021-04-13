@@ -35,7 +35,13 @@ export default class SearchSelect {
             if(this.dom.search.value.replace(/ /ig,"") != ""){
                 (await this.getSuggestions(this.dom.search.value)).slice(0,4).forEach(e => {
                     var s = document.createElement("span");
-                    s.innerHTML = `<span class="icon" style="background-image: url(${e.img});"></span>${e.text}`;
+                    s.innerHTML = `<span class="icon" style="background-image: url(${e.img});"></span>`;
+
+                    // Prevent XSS in text
+                    var t = document.createElement("span");
+                    t.innerText = e.text;
+                    s.appendChild(t);
+
                     s.onmousedown = () => { this._select(e); }
                     s.ontouchstart = () => { this._select(e); }
                     this.dom.suggestions.appendChild(s);
