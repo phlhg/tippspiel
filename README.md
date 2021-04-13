@@ -1,4 +1,4 @@
-<h1> <img src="./www/img/favicon100.png" style="height: 1.1em; vertical-align: text-bottom; border-radius: 4px;"/> Tippspiel (Client)</h1>
+<h1> <img src="./www/img/favicon100.png" height="25"/> Tippspiel (Client)</h1>
 
 ➡ [Tippspiel (Server)](https://github.com/LeTobi/Tippspiel)
 
@@ -17,7 +17,7 @@ A small _realtime_ appliciation for betting on sports with friends.
 
 ## Screenshot
 
-<img src="./screenshot.png" style="height: 400px"/>
+<img src="./screenshot.png" height="400"/>
 
 ## More
 
