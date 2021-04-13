@@ -1,16 +1,10 @@
-# Tippspiel (Client)
+<h1> <img src="./www/img/favicon100.png" style="height: 1.1em; vertical-align: text-bottom; border-radius: 4px;"/> Tippspiel (Client)</h1>
 
 ➡ [Tippspiel (Server)](https://github.com/LeTobi/Tippspiel)
 
-Tippspiel is a small _realtime*_ appliciation for betting on sports with friends. 
+A small _realtime_ appliciation for betting on sports with friends. 
 
-## ToDo
-
-- [ ] Games
-    
-    - [ ] Submit results
-    - [ ] Create new games
-    - [ ] Detailed post-game view
+## Todo
 
 - [ ] Groups
 
@@ -21,11 +15,9 @@ Tippspiel is a small _realtime*_ appliciation for betting on sports with friends
 
     - [ ] "Lost Accesscode"-option
 
-- [ ] Other
+## Screenshot
 
-    - [ ] Receive server-sent updates
-    - [ ] Socket Helper
-    - [ ] Form Helper
+<img src="./screenshot.png" style="height: 400px"/>
 
 ## More
 
