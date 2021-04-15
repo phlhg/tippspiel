@@ -1,6 +1,5 @@
 import Controller from './controller';
 import SignInView from '../views/signin'
-import State from '../../www/js/enum';
 
 export default class SignIn extends Controller {
 
@@ -20,10 +19,10 @@ export default class SignIn extends Controller {
     async signIn(token){
         var r = await App.client.singIn(token)
         if(!r.success){
-            this.view.error(r.message);
+            this.view.form.error(r.message);
             return false;
         } else {
-            App.router.load("/");
+            App.router.load(window.location.pathname);
             return true;
         }
     }

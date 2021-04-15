@@ -12,10 +12,10 @@ export default class SignUp extends Controller {
         this.view.on("submit",async (data) => {
             var r = await App.client.singUp(data.name, data.email)
             if(!r.success){
-                this.view.error(r.message);
+                this.view.form.error(r.message);
                 return false;
             } else {
-                App.router.load("/");
+                App.router.load(window.location.pathname);
                 return true;
             }
         })

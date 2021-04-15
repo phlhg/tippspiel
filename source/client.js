@@ -147,7 +147,8 @@ export default class Client {
     signout(){
         localStorage.setItem("tipp-dev-iskown","true")
         localStorage.removeItem("tipp-dev-token")
-        window.location = "/"
+        document.body.classList.add("loading"); 
+        setTimeout(() => { window.location = "/" },500);
     }
 
 

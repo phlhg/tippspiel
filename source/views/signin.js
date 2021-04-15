@@ -1,4 +1,5 @@
 import View from './view'
+import Form from './helpers/form';
 
 export default class SignIn extends View {
 
@@ -15,31 +16,29 @@ export default class SignIn extends View {
             <form>
                 <input required="" value="" type="text" name="username" style="display:none" />
                 <input required="" name="token" type="password" pattern="${this._pattern.source}" placeholder="${Lang.get("section/signIn/placeholder/code")}" />
-                <span class="info"></span>
-                <span class="error"></span>
                 <input type="submit" value="${Lang.get("section/signIn/action")}"/>
             </form>
             <span class="meta">
-                ${Lang.get("section/signIn/signUpInstead", { a: `<a href="/signup/">${Lang.get("section/signIn/signUpLink")}</a>` })}<br/><br/>
+                ${Lang.get("section/signIn/signUpInstead", { a: `<a class="signUpLink">${Lang.get("section/signIn/signUpLink")}</a>` })}<br/><br/>
                 ${Lang.get("section/signIn/recover", { a: `<a href="/recover/">${Lang.get("section/signIn/recoverLink")}</a>` })}
             </span>
         </div>`
 
-        this.form = this.root.querySelector("form");
-        this.dominfo = this.root.querySelector(".info");
-        this.domerror = this.root.querySelector(".error");
+        this.form = new Form(this.root.querySelector("form"));
+
+        this.signUpLink = this.root.querySelector(".signUpLink");
+        this.recoverLink = this.root.querySelector(".recoverLink");
+
+        this.signUpLink.onclick = e => { App.router.overwrite("/signup/"); }
         
         this.user = this.root.querySelector("input[name='username']")
         this.token = this.root.querySelector("input[name='token']");
         this.token.type = "text";
 
         this.token.onchange = e => { this.user.value = this.token.value; }
+        this.token.oninput = e => { this.user.value = this.token.value; }
 
-        this.form.addEventListener("submit",async e => {
-            e.preventDefault();
-            this.info("");
-            this.error("");
-            let data = Object.fromEntries(new FormData(e.target).entries());
+        this.form.onSubmit = async (data) => {
             let match = data.token.match(this._pattern);
             if(match === null || match.length < 2){ 
                 this.info("Bitte gib einen Zugangslink oder Zugangscode ein");
@@ -48,28 +47,12 @@ export default class SignIn extends View {
                 var r = await this.event("submit",data)
                 if(r){ this.form.reset(); }
             }
-        })
+        }
 
     }
 
     hide(){
-        this.clear();
-        this.info("");
-        this.error("");
-    }
-
-    clear(){
         this.form.reset();
     }
-
-    info(message){
-        this.dominfo.innerText = message;
-    }
-
-    error(message){
-        this.domerror.innerText = message;
-    }
-
-
 
 }

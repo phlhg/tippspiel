@@ -38,4 +38,10 @@ export default class Form {
         this.dom.error.innerText = message;
     }
 
+    reset(){
+        this.info(""); 
+        this.error("");
+        this.root.reset();
+    }
+
 }
