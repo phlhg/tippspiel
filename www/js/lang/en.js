@@ -176,7 +176,9 @@ __LANG["en"] = {
             },
             action: "Sign in",
             signUpInstead: "If you don't have an account yet, {a}",
-            signUpLink: "sign up instead"
+            signUpLink: "sign up instead",
+            recover: "In case you lost your accesscode you can get {a}",
+            recoverLink: "get a new one"
         },
         settings: {
             lang: {
@@ -255,6 +257,14 @@ __LANG["en"] = {
             tile: {
                 desc: "Event"
             }
+        },
+        recover: {
+            title: "Lost accesscode",
+            desc: "Somehow lost your accesscode? Enter the email you used to signup and we will send you a new one.",
+            placeholder: "Your email: e.g. tom.template@example.com",
+            submit: "Senden",
+            meta1: "If you don't have access to your e-mail or you don't know your email anymore, please {a}.",
+            meta2: "get in touch with us"
         }
     }
 }

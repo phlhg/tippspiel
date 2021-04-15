@@ -177,7 +177,9 @@ __LANG["de"] = {
             },
             action: "Anmelden",
             signUpInstead: "Falls du noch keinen Account hast, {a}",
-            signUpLink: "registriere dich"
+            signUpLink: "registriere dich",
+            recover: "Falls du deinen Zugangscode verloren hast, kannst du {a}.",
+            recoverLink: "einen Neuen anfordern"
         },
         settings: {
             lang: {
@@ -256,6 +258,14 @@ __LANG["de"] = {
             tile: {
                 desc: "Event"
             }
+        },
+        recover: {
+            title: "Zugangscode verloren",
+            desc: "Irgendwie deinen Zugansgcode verloren? Git die E-Mail mit der du dich Registriert hast ein und wir senden dir einen Neuen.",
+            placeholder: "Deine E-Mail: z.B. max.mustermann@beispiel.de",
+            submit: "Senden",
+            meta1: "Falls du keinen Zugriff auf deine E-Mail hast oder deine E-Mail nicht mehr weisst, nimm bitte {a}.",
+            meta2: "Kontakt mit uns auf"
         }
     }
 }

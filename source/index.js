@@ -22,6 +22,7 @@ import TippIndex from './controllers/tipp'
 import StatsIndex from './controllers/stats'
 import GroupsIndex from './controllers/groups'
 import EventIndex from './controllers/event'
+import Recover from './controllers/recover'
 
 Debugger.active = true;
 
@@ -68,6 +69,7 @@ window.addEventListener("DOMContentLoaded", function(){
 
     App.router.add("/signin/",new SignIn).alias("/signin/{token}/");
     App.router.add("/signup/",new SignUp)
+    App.router.add("/recover/",new Recover)
 
     App.router.add("/settings/", new Settings)
 

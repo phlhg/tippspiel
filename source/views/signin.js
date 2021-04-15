@@ -19,7 +19,10 @@ export default class SignIn extends View {
                 <span class="error"></span>
                 <input type="submit" value="${Lang.get("section/signIn/action")}"/>
             </form>
-            <span class="meta">${Lang.get("section/signIn/signUpInstead", { a: `<a href="/signup/">${Lang.get("section/signIn/signUpLink")}</a>` })}</span>
+            <span class="meta">
+                ${Lang.get("section/signIn/signUpInstead", { a: `<a href="/signup/">${Lang.get("section/signIn/signUpLink")}</a>` })}<br/><br/>
+                ${Lang.get("section/signIn/recover", { a: `<a href="/recover/">${Lang.get("section/signIn/recoverLink")}</a>` })}
+            </span>
         </div>`
 
         this.form = this.root.querySelector("form");

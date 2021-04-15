@@ -11,10 +11,6 @@ A small _realtime_ appliciation for betting on sports with friends.
     - [ ] Section "My Groups"
     - [ ] Join & Invite
 
-- [ ] Sign In
-
-    - [ ] "Lost Accesscode"-option
-
 ## Screenshot
 
 <img src="./screenshot.png" height="400"/>

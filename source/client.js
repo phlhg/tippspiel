@@ -137,6 +137,13 @@ export default class Client {
         return r;
     }
 
+    async recoverToken(email){
+        var r = new Request("restoreToken", { email: email });
+        if(this.active){ return r.error("Please sign out first"); }
+        if(!(await r.run())){ return r; }
+        return r;
+    }
+
     signout(){
         localStorage.setItem("tipp-dev-iskown","true")
         localStorage.removeItem("tipp-dev-token")
