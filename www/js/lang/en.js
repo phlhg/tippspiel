@@ -8,7 +8,7 @@ __LANG["en"] = {
             1: "Please sign in",
             2: "This email is already in use",
             3: "This name is already in use",
-            4: "This accesscode is unkown",
+            4: "This access code is unkown",
             5: "This name is invalid",
             6: "Tipps can't be submitted anymore",
             7: "You are already logged in.",
@@ -159,7 +159,7 @@ __LANG["en"] = {
         },
         signUp: {
             title: "Sign up",
-            desc: "Please enter your Name and your E-Mail. We will then send you an accesscode",
+            desc: "Please enter your Name and your E-Mail. We will then send you an access code",
             placeholder : {
                 name: "Name: e.g. Tom Template",
                 email: "E-Mail: e.g. tom.template@example.com"
@@ -170,14 +170,14 @@ __LANG["en"] = {
         },
         signIn: {
             title: "Sign in",
-            desc: "Please enter your accesscode or the link, <i>from the e-mail</i> we sent you.",
+            desc: "Please enter your access code or the link, <i>from the e-mail</i> we sent you.",
             placeholder : {
-                code: "Accesscode: e.g. 0-1a2b3c4d5e",
+                code: "Access code: e.g. 0-1a2b3c4d5e",
             },
             action: "Sign in",
             signUpInstead: "If you don't have an account yet, {a}",
             signUpLink: "sign up instead",
-            recover: "In case you lost your accesscode you can get {a}",
+            recover: "In case you lost your access code you can {a}",
             recoverLink: "get a new one"
         },
         settings: {
@@ -199,7 +199,7 @@ __LANG["en"] = {
             },
             logout: {
                 name: "Sign out",
-                desc: "You need your accesscode to sign in again"
+                desc: "You need your access code to sign in again"
             },
         },
         profile: {
@@ -259,8 +259,8 @@ __LANG["en"] = {
             }
         },
         recover: {
-            title: "Lost accesscode",
-            desc: "Somehow lost your accesscode? Enter the email you used to signup and we will send you a new one.",
+            title: "Lost access code",
+            desc: "Somehow lost your access code? Enter the email you used to signup and we will send you a new one.",
             placeholder: "Your email: e.g. tom.template@example.com",
             submit: "Senden",
             meta1: "If you don't have access to your e-mail or you don't know your email anymore, please {a}.",
