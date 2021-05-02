@@ -15,7 +15,9 @@ __LANG["de"] = {
             7: "Du bist bereits eingeloggt",
             8: "Dieser Prozess läuft bereits.",
             9: "Es existiert keinen Account mit dieser E-Mail",
-            10: "Dieser Account wurde gesperrt - Nimm mit uns Kontakt auf"
+            10: "Dieser Account wurde gesperrt - Nimm mit uns Kontakt auf",
+            11: "Diese Funktion ist nur begrenzt aufrufbar. Versuche es später noch ein Mal.",
+            12: "Zu diesem Zugangscode existiert keine Gruppe. Eventuell wurde dieser Zugang zurückgesetzt."
         },
         local: {
             "unknown": "Es ist ein unbekannter Fehler aufgetreten",

@@ -14,7 +14,9 @@ __LANG["en"] = {
             7: "You are already logged in.",
             8: "This request is already running.",
             9: "There is no account associated with this email",
-            10: "This account has been banned - Get in touch with us"
+            10: "This account has been banned - Get in touch with us",
+            11: "This Request cannot be executed indefinitely. Try again later.",
+            12: "There is no group corresponding to this access code. The access might have been reset by the group admin."
         },
         local: {
             "unknown": "An unkown error has occored",
