@@ -193,11 +193,20 @@ socket.exec("console",{cmd: String});
 
 ### group_create
 ```js
-socket.exec("group_create")
+socket.exec("group_create",{name: String})
 ```
 
 ```js
 {state, error, data:{ id }}
+```
+
+### group_rename
+```js
+socket.exec("group_rename",{id: id, name: String})
+```
+
+```
+{state, error, data: {}}
 ```
 
 ### group_join
@@ -223,7 +232,7 @@ socket.exec("group_reset_token",{group: id});
 {state, error, data: { }}
 ```
 
-### group_delete
+### group_delete (TODO ?)
 ```js
 socket.exec("group_delete",{group: id});
 ```
