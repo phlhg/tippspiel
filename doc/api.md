@@ -191,6 +191,46 @@ socket.exec("console",{cmd: String});
 {state, error, data:{text: String} }
 ```
 
+### group_create
+```js
+socket.exec("group_create")
+```
+
+```js
+{state, error, data:{ id }}
+```
+
+### group_join
+```js
+socket.exec("group_join",{token: String});
+```
+```js
+{state, error, data:{ id }}
+```
+### group_leave
+```js
+socket.exec("group_leave",{group: id}});
+```
+```js
+{state, error, data:{ }}
+```
+
+### group_reset_token
+```js
+socket.exec("group_reset_token",{group: id});
+```
+```js
+{state, error, data: { }}
+```
+
+### group_delete
+```js
+socket.exec("group_delete",{group: id});
+```
+```js
+{state, error, data:{ }}
+```
+
 ## Filter
 
 ### Suggestions
