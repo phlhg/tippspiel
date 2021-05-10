@@ -7,11 +7,25 @@ Beschreibt das Format in welchem Daten zwischen Client und Server synchronisiert
 ## User
 
 ```js
+// Public information
 User {
+    banned: bool,
+    id: User,
     name: String,
-    id: Int,
-    points: Int
+    points: int,
+
+    eventTipps: [EventTipp, ...], // private
+    gameTipps: [GameTipp, ...],   // "
+    groups: [Group, ...],         // "
+    permission: {                 // "
+       eventAnnounce: bool,       // "
+       eventReport: bool,         // "
+       gameAnnounce: bool,        // "
+       gameReport: bool,          // "
+       groupCreate: bool          // "
+    },
 }
+
 ```
 
 ## Group
@@ -20,8 +34,10 @@ User {
 Group {
     id: int,
     name: String(100),
-    owner: User
-    users: [ User, ... ]
+    admin: User,
+    users: [ User, ... ],
+
+    token: String  // admin only
 }
 ```
 
@@ -42,7 +58,7 @@ Team {
     id: int,
     name: String(100),
     short: String(10),
-    games: [ Game , ... ]
+    event: Event,
     players: [ Player , ... ]
 }
 ```
@@ -56,8 +72,8 @@ Event {
     description: String(256),
     deadline: Date,
     status: ENUM,
-    teams: [ Team, ...]
     games: [ Game, ... ],
+    teams: [ Team, ...],
     tipps: [ EventTipp, ... ]
     winner: Team
     topscorer: Player
@@ -71,9 +87,9 @@ EventTipp {
     id: int,
     event: Event,
     user: User,
+    reward: int,
     winner: Team,
     topscorer: Player,
-    reward: int,
 }
 ```
 
@@ -95,6 +111,9 @@ Game {
     scorePenalty1: int,
     scorePenalty2: int,
     scorers: [ Player, ... ],
+    tipps: [GameTipp, ...],
+    short1: String,
+    short2: String
 }
 ```
 
@@ -105,14 +124,14 @@ GameTipp {
     id: int,
     game: Game,
     user: User,
+    reward: int,
+    tippkat: int, // Preiskategorie siehe unten
+    goals: int, // der Torschütze hat so viel getroffen
+    bonus: bool // Bonus für korrektes Penaltyschiess (+1)
     bet1: int,
     bet2: int,
     winner: Team,
     topscorer: Player,
-    reward: int,
-    tippkat: enum, // Preiskategorie
-    goals: int, // der Torschütze hat so viel getroffen
-    bonus: bool // Bonus für korrektes Penaltyschiessen (+1)
 }
 ```
 
