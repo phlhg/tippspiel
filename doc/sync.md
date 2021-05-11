@@ -7,16 +7,15 @@ Beschreibt das Format in welchem Daten zwischen Client und Server synchronisiert
 ## User
 
 ```js
-// Public information
 User {
     banned: bool,
     id: User,
     name: String,
     points: int,
+    groups: [Group, ...],
 
     eventTipps: [EventTipp, ...], // private
     gameTipps: [GameTipp, ...],   // "
-    groups: [Group, ...],         // "
     permission: {                 // "
        eventAnnounce: bool,       // "
        eventReport: bool,         // "
