@@ -185,7 +185,13 @@ __LANG["en"] = {
         settings: {
             lang: {
                 title: "Language",
-                desc: "Changes the language of Tippspiel"
+                desc: "Choose your prefered language"
+            },
+            theme: {
+                title: "Theme",
+                desc: "Choose your prefered theme",
+                light: "Light",
+                dark: "Dark"
             },
             report: {
                 title: "Report an error",

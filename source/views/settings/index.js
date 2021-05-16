@@ -7,11 +7,20 @@ export default class Settings extends View {
     }
 
     init(){
-        this.root.innerHTML = `<div class="tipp-box">
+        this.root.innerHTML = `<div class="tipp-box language">
             <span class="icon"><span class="material-icons">translate</span></span>
             <span class="title">${Lang.get("section/settings/lang/title")}</span>
             <span class="meta">${Lang.get("section/settings/lang/desc")}</span>
             <select name="lang" style="margin-top: 10px"></select>
+        </div>
+        <div class="tipp-box theme">
+            <span class="icon"><span class="material-icons">dark_mode</span></span>
+            <span class="title">${Lang.get("section/settings/theme/title")}</span>
+            <span class="meta">${Lang.get("section/settings/theme/desc")}</span>
+            <select name="theme" style="margin-top: 10px">
+                <option value="0">${Lang.get("section/settings/theme/light")}</option>
+                <option value="1">${Lang.get("section/settings/theme/dark")}</option>
+            </select>
         </div>
         <a class="tipp-box" href="https://phlhg.ch/report/2/tippspiel/" target="_blank" >
             <span class="icon"><span class="material-icons">feedback</span></span>
@@ -34,7 +43,8 @@ export default class Settings extends View {
         </a>
         `
 
-        this.languageSelect = this.root.querySelector("select");
+        this.languageSelect = this.root.querySelector(".language select");
+        this.themeSelect = this.root.querySelector(".theme select");
 
         Lang.available.forEach(element => {
             var o = document.createElement("option");
@@ -49,6 +59,16 @@ export default class Settings extends View {
             if(Lang.setLanguage(this.languageSelect.value)){
                 document.body.classList.add("loading");
                 setTimeout(() => window.location.reload(),1000);
+            }
+        }
+
+        this.themeSelect.value = localStorage.getItem("tipp-theme-dark");
+
+        this.themeSelect.onchange = e => {
+            if(this.themeSelect.value == "1"){
+                App.enableDarkTheme();
+            } else {
+                App.disabledDarkTheme();
             }
         }
 

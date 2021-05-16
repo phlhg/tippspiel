@@ -1,0 +1,51 @@
+html, body { color: #fff; background: #010101; }
+
+.tipp-splash { background: #010101; }
+
+header { background: #111; border-color: #1c1c1c; }
+header .settings > img { filter: none; }
+
+nav { background: #111; border-color: #1c1c1c; } 
+nav a img { filter: none; }
+
+section .tipp-box { background: #111; border-color: #1c1c1c; } 
+
+select { background: rgba(255,255,255,0.02); color: #fff; }
+
+section form input { background: #111; border-color: #1c1c1c; color: #fff; }
+
+section form + .meta { color: rgba(255,255,255,0.75); }
+section form .additional { color: rgba(255,255,255,0.75); }
+
+section form .loader:after { border-color: #fff; }
+section form .loader:before { border-color: #fff; }
+
+input.inline { background: rgba(255,255,255,0.04); }
+
+.game-tile,
+.tipp-tile,
+.rank-tile,
+.user-tile,
+.event-tile,
+.group-tile,
+.game-timeline,
+.tipp-score,
+.tipp-radio-select,
+.tipp-searchselect > input,
+.tipp-searchselect > .suggestions,
+.tipp-date-input > select,
+.tipp-profile-header { background: #111; border-color: #1c1c1c; } 
+
+.game-timeline > span,
+.group-tile > label { background: rgba(255,255,255,0.02); }
+
+.game-header:after { opacity: 1; }
+
+.tipp-radio-select > input:checked + label { background-color: #1f1f1f; }
+
+.tipp-searchselect .icon { background-color: #1c1c1c; }
+.tipp-searchselect > .suggestions > span:hover { background-color: #1f1f1f; }
+
+.tipp-searchselect > .suggestions > span { color: #fff; }
+
+.tflag { background-color: #1c1c1c; }

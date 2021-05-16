@@ -186,7 +186,13 @@ __LANG["de"] = {
         settings: {
             lang: {
                 title: "Sprache",
-                desc: "Ändert die Sprache des Tippspiels"
+                desc: "Wähle deine gewünschte Sprache"
+            },
+            theme: {
+                title: "Design",
+                desc: "Wähle dein gewünschtes Design",
+                light: "Hell",
+                dark: "Dunkel"
             },
             report: {
                 title: "Fehler melden",

@@ -36,6 +36,10 @@ export default class Application {
 
     async run(){
 
+        // Dark Mode
+        if(localStorage.getItem("tipp-theme-dark") === null){ localStorage.setItem("tipp-theme-dark", window.matchMedia("(prefers-color-scheme: dark)").matches ? "1" : "0") }
+        if(localStorage.getItem("tipp-theme-dark") == "0"){ this.disabledDarkTheme(); }
+
         this.socket.open().then(() => {
             this.socket.listen("Ping", (data,respond) => { respond() });
             this.socket.listen("Update", this.updateModel.bind(this));
@@ -102,6 +106,19 @@ export default class Application {
 
         if((data.User ?? []).includes(this.client.id)){ this.client.getMe(); }
 
+    }
+
+    enableDarkTheme(){
+        localStorage.setItem("tipp-theme-dark", "1")
+        var l = document.createElement("link");
+        l.rel = "stylesheet"
+        l.href = "/css/dark.css"
+        document.head.append(l)
+    } 
+
+    disabledDarkTheme(){
+        localStorage.setItem("tipp-theme-dark", "0")
+        document.querySelector("link[href='/css/dark.css']").remove();
     }
 
 }
