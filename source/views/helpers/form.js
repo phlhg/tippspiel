@@ -37,7 +37,7 @@ export default class Form {
 
             this.info(""); 
             this.error("");
-            let data = Object.fromEntries(new FormData(e.target).entries());
+            let data = Object.fromEntries(new FormData(this.root).entries());
             this.dom.loader.classList.add("active");
 
             await this.onSubmit(data);

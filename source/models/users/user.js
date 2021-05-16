@@ -14,6 +14,8 @@ export default class User extends Element {
         /** @property {number} points - Points of the user */
         this.points = 0
 
+        this.groups = [];
+
         this.set(data)
     }
 
@@ -25,6 +27,7 @@ export default class User extends Element {
         this.name = data.name ?? this.name
         this.short = data.hasOwnProperty("name") ? data.name.split(/\s/ig).slice(0,2).map(s => s.charAt(0)).join("").toUpperCase() : this.short;
         this.points = parseInt(data.points ?? this.points)
+        this.groups = Array.from(data.groups ?? this.groups).map(id => parseInt(id))
     }
 
 }

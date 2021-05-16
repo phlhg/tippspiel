@@ -20,9 +20,13 @@ import SignIn from './controllers/signin'
 import Settings from './controllers/settings/index'
 import TippIndex from './controllers/tipp'
 import StatsIndex from './controllers/stats'
-import GroupsIndex from './controllers/groups'
+import GroupsIndex from './controllers/groups/index'
 import EventIndex from './controllers/event'
 import Recover from './controllers/recover'
+import GroupDetail from './controllers/groups/detail'
+import GroupAdvanced from './controllers/groups/advanced'
+import GroupJoin from './controllers/groups/join'
+import GroupCreate from './controllers/groups/create'
 
 Debugger.active = true;
 
@@ -66,6 +70,10 @@ window.addEventListener("DOMContentLoaded", function(){
     App.router.add("/stats/",new StatsIndex)
 
     App.router.add("/groups/",new GroupsIndex)
+    App.router.add("/groups/{id}/{name}/",new GroupDetail).where({ id: 'NUMBER', name: 'TEXT' })
+    App.router.add("/groups/advanced/{id}/{name}/",new GroupAdvanced).where({ id: 'NUMBER', name: 'TEXT' })
+    App.router.add("/groups/join/{id}-{token}/", new GroupJoin)
+    App.router.add("/groups/create/", new GroupCreate)
 
     App.router.add("/signin/",new SignIn).alias("/signin/{token}/");
     App.router.add("/signup/",new SignUp)

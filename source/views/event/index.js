@@ -1,4 +1,3 @@
-import TippDate from '../../helper/date'
 import GameTile from '../components/gametile'
 import View from '../view'
 

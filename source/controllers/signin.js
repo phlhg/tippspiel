@@ -1,5 +1,6 @@
 import Controller from './controller';
 import SignInView from '../views/signin'
+import Notification from '../helper/notification';
 
 export default class SignIn extends Controller {
 
@@ -22,6 +23,7 @@ export default class SignIn extends Controller {
             this.view.form.error(r.message);
             return false;
         } else {
+            (Notification.create("You're now logged in", 3000, "login")).show();
             App.router.load(window.location.pathname);
             return true;
         }

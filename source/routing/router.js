@@ -25,11 +25,13 @@ export default class Router {
         this.error.unload()
         let route = this.routes.find(r => r.matches(path));
         if(route == undefined){
-            Debugger.warn(this,`Did not find "${path}" - Serving error page`)()
-            setTimeout(() => { this.error.load() }, 250);
+            /*Debugger.warn(this,`Did not find "${path}" - Serving error page`)()
+            setTimeout(() => { this.error.load() }, 100);*/
+            this.error.load()
         } else {
             Debugger.log(this,`Loading "${path}"`)()
-            setTimeout(() => { route.take(path) }, 250);
+           // setTimeout(() => { route.take(path) }, 100);
+           route.take(path)
         }
     }
 

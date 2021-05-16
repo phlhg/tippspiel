@@ -239,8 +239,42 @@ __LANG["en"] = {
             }
         },
         groups: {
-            title: "Groups",
-            desc: "This feature will be available soon"
+            none: {
+                title: "No groups",
+                meta: "Create a group or join one"
+            },
+            new: {
+                title: "New Group",
+                meta: "Create a new group"
+            },
+            invitation: {
+                link: "Invitation link",
+                newlink: "New inviation link",
+                newlinkmeta: "Create a new inviation link"
+            },
+            more: {
+                title: "More",
+                meta: "Rename, Reset token, Leave group"
+            },
+            members: "Members",
+            header: {
+                by: "by {name}",
+                members_multi: "{n} Members",
+                members_single: "1 Member"
+            },
+            create: {
+                placeholder: "Groupname",
+                submit: "Create group"
+            },
+            leave: "Leave group",
+            join: "Join group",
+            messages: {
+                left: "You've left the group",
+                invitation_copied: "Inviation link was copied to clipboard",
+                created: "The group was created",
+                already_member: "You are already a member of the group",
+                joined: "You've joined the group"
+            }
         },
         event: {
             tipp: {

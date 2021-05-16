@@ -7,10 +7,18 @@ export default class Group extends Element {
         super(data.id)
 
         /** @property {string} name - Name of the group */
-        this.name = "Anon"
+        this.name = "Unkown Group";
 
-        /** @property {number[]} users - Users of the group */
+        /** @property {number} owner - User-ID of the group owner */
+        this.admin = -1;
+
+        /** @property {number[]} users - Lister of member IDs */
         this.users = []
+
+        this.token = "";
+
+        this.url = ""
+        this.url2 = ""
 
         this.set(data)
     }
@@ -21,7 +29,36 @@ export default class Group extends Element {
      */
     set(data){
         this.name = data.name ?? this.name
+        this.admin = parseInt(data.admin ?? this.admin);
         this.users = Array.from(data.users ?? this.users).map(i => parseInt(i))
+        this.token = data.token ?? this.token
+
+        this.url = `/groups/${this.id}/${encodeURIComponent(this.name.toLowerCase().replace(/ /ig,"-"))}/`;
+        this.url2 = `/groups/advanced/${this.id}/${encodeURIComponent(this.name.toLowerCase().replace(/ /ig,"-"))}/`;
+    }
+
+    getUsers(){
+        return App.model.users.getAll(this.users);
+    }
+
+    rename(name){
+        return App.model.groups.rename(this.id, name);
+    }
+
+    leave(){
+        return App.model.groups.leave(this.id);
+    }
+
+    resetToken(){
+        return App.model.groups.resetToken(this.id);
+    }
+
+    activate(){
+        App.client.addGroup(this.id);
+    }
+
+    disable(){
+        App.client.removeGroup(this.id);
     }
 
 }

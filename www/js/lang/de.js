@@ -240,8 +240,42 @@ __LANG["de"] = {
             }
         },
         groups: {
-            title: "Gruppen",
-            desc: "Diese Funktion wird bald verfügbar sein"
+            none: {
+                title: "Keine Gruppen",
+                meta: "Erstelle eine Gruppe oder trete einer bei"
+            },
+            new: {
+                title: "Neue Gruppe",
+                meta: "Erstelle eine neue Gruppe"
+            },
+            invitation: {
+                link: "Einladungslink",
+                newlink: "Neuer Einladungslink",
+                newlinkmeta: "Erstelle einen neuen Einladungslink"
+            },
+            more: {
+                title: "Weiteres",
+                meta: "Umbennen, Neuer Einladungslink, Verlassen"
+            },
+            members: "Mitglieder",
+            header: {
+                by: "von {name}",
+                members_multi: "{n} Mitglieder",
+                members_single: "1 Mitglied"
+            },
+            create: {
+                placeholder: "Gruppenname",
+                submit: "Gruppe erstellen"
+            },
+            leave: "Gruppe verlassen",
+            join: "Gruppe beitreten",
+            messages: {
+                left: "Du hast die Gruppe verlassen",
+                invitation_copied: "Der Einladungslink wurde in die Zwischenablage kopiert",
+                created: "Die Gruppe wurde erstellt",
+                already_member: "Du bist bereits Mitglied dieser Gruppe",
+                joined: "Du bist der Gruppe beigetreten"
+            }
         },
         event: {
             tipp: {

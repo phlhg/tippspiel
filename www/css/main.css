@@ -1,21 +1,24 @@
 * { padding: 0; margin: 0; font-family: inherit; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
-html, body { color: #fff; background: #00315e; background: linear-gradient(45deg,#061c36, #00315e); font-family: 'Montserrat', sans-serif; padding: 0; margin: 0; width: 100%; height: 100%; }
+html, body { color: #000; background: #fff; font-family: 'Montserrat', sans-serif; padding: 0; margin: 0; width: 100%; height: 100%; }
 body, html { overflow-x: hidden;}
 
 a { color: inherit; cursor: pointer;}
 
 .material-icons { font-size: inherit !important;}
 
+input { -webkit-appearance: none; }
+
 /* Transitions */
+.tipp-notification,
 section form .loader,
 .tipp-date-input > select,
+.tipp-searchselect > .suggestions > span,
 .tipp-search > .suggestions,
 .tipp-radio-select > label,
 .tflag,
 .game-tile,
 section form input,
 section form span.info, section form span.error,
-.tipp-section-wrapper > section,
 .game-tile .live-indicator,
 .game-tile .live-view,
 nav,
@@ -28,7 +31,7 @@ nav a img,
 }
 
 /* Splashscreen */
-.tipp-splash { position: fixed; display: block; z-index: 200; top: 0; left: 0; width: 100%; height: 100%;  visibility: hidden; }
+.tipp-splash { position: fixed; display: block; z-index: 500; top: 0; left: 0; width: 100%; height: 100%;  visibility: hidden; background: #fff; }
 .loading .tipp-splash { visibility: visible; }
 .tipp-splash > .center { position: absolute; display: inline-block; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0.5,0.5); opacity: 0;}
 .loading .tipp-splash > .center { transform: translate(-50%,-50%) scale(1,1); opacity: 1;} 
@@ -39,29 +42,27 @@ nav a img,
 .loading .tipp-splash > .meta { opacity: 1; transition-delay: 1s;  }
 
 /* Header */
-header { position: fixed; display: block; background: linear-gradient(to bottom,rgba(0,0,0,0.5),rgba(0,0,0,0)); z-index: 5; top: 0; left: 0; width: 100%; height: 60px; opacity: 1; transform: translateY(0); transition-delay: 200ms; }
-.loading header { opacity: 0; transform: translateY(-100%); }
+header { position: fixed; display: block; background: #fafafa; border-bottom: 1px solid #f4f4f4; z-index: 5; top: 0; left: 0; width: 100%; height: 60px; opacity: 1; transform: translateY(0); transition-delay: 200ms; }
 header .inner { position: relative; display: block; width: 100%; height: 100%; max-width: 800px; margin: 0 auto; padding: 0 50px 0 60px; }
 header .logo { position: absolute; display: block; top: 0; left: 0; width: 60px; height: 60px; } 
-header .logo > img { position: absolute; top: 15px; left: 20px; width: 30px; }
+header .logo > img { position: absolute; top: 18px; left: 20px; width: 25px; height: 25px; padding: 5px; background: linear-gradient(45deg,#061c36, #00315e); border-radius: 50%; }
 header .settings { position: absolute; display: block; top: 0; right: 0; width: 50px; height: 60px; } 
-header .settings > img { position: absolute; top: 20px; right: 20px; width: 20px; }
+header .settings > img { position: absolute; top: 20px; right: 20px; width: 20px;  filter: invert(1); }
 header .heading { position: relative; display: block; width: 100%; top: 50%; transform: translateY(-50%); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 25px; font-size: 22px; font-weight: normal; }
 
 /* Navigation */
-nav { position: fixed; display: block; z-index: 5; bottom: 0; left: 0; width: 100%; height: 50px; background: linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0)); opacity: 1; transform: translateY(0); transition-delay: 200ms;  }
-.loading nav { opacity: 0; transform: translateY(100%); }
+nav { position: fixed; display: block; z-index: 5; bottom: 0; left: 0; width: 100%; height: 50px; background: #fafafa; border-top: 1px solid #f4f4f4; opacity: 1; transform: translateY(0); transition-delay: 200ms;  }
 .tipp-nav-inner { position: relative; display: flex; flex-direction: row; align-content: stretch; width: 100%; height: 100%; max-width: 800px; margin: 0 auto; }
 nav a { position: relative; display: block; width: 100%; height: 100%; }
-nav a img { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0.6; }
+nav a img { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0.6; filter: invert(1); }
 nav a:hover img { opacity: 1 !important; }
 
 /* Sections */
 .tipp-section-wrapper { position: relative; display: block; top: 0; left: 50vw; width: 100%; max-width: 800px; transform: translateX(-50%); opacity: 1; transition: opacity 250ms ease-in-out;  }
 .loading .tipp-section-wrapper { opacity: 0; }
-.tipp-section-wrapper > section { position: absolute; display: block; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden; margin: 0 auto; padding: 60px 5px 50px 5px; opacity: 0; visibility: hidden; }
+.tipp-section-wrapper > section { position: absolute; display: none; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden; margin: 0 auto; padding: 80px 5px 50px 5px; visibility: hidden; }
 .tipp-section-wrapper > section.fullscreen { height: 100vh !important; padding-left: 0; padding-right: 0; }
-.tipp-section-wrapper > section.active { opacity: 1; visibility: visible; /*transition-delay: 400ms;*/  height: unset; overflow: visible;  }
+.tipp-section-wrapper > section.active { display: block; height: unset; overflow: visible;  visibility: visible;  }
 
 section h3 { font-size: 30px; }
 section h4 { font-size: 20px; font-weight: normal; }
@@ -69,32 +70,35 @@ section h3 { padding: 0 15px; margin: 15px 0 10px 0; }
 section h4 { padding: 0 15px; margin: 15px 0 10px 0; }
 h4 > small { font-size: 12px; font-weight: normal; opacity: 0.75; line-height: inherit; }
 section > .text { position: relative; display: block; padding: 0 15px; }
-section a.button, section span.button { position: relative; display: inline-block; padding: 10px 15px; margin: 10px 0; background: rgba(0,0,0,0.15); border-radius: 4px; font-size: 14px; color: #fff; text-decoration: none;}
+section a.button, section span.button { position: relative; display: inline-block; padding: 10px 15px; margin: 10px 0; background: #f4f4f4; border-radius: 4px; font-size: 14px; color: #000; text-decoration: none;}
 
-section .tipp-box { text-decoration: none;  position: relative; display: block; padding: 15px 15px 15px 55px; background: rgba(0,0,0,0.15); margin-bottom: 10px; border-radius: 4px; }
+section .tipp-box { text-decoration: none;  position: relative; display: block; padding: 15px 15px 15px 55px; background: #fafafa; border: 1px solid #f4f4f4;  margin-bottom: 10px; border-radius: 4px; }
 section .tipp-box .icon { position: absolute; left: 15px; top: 15px; display: inline-block; text-align: center; width: 25px; font-size: 24px; line-height: 24px; font-weight: bold; }
 section .tipp-box .title { position: relative; display: block; font-weight: bold; font-size: 20px; }
-section .tipp-box .meta { position: relative; display: block; color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 5px; }
+section .tipp-box .meta { position: relative; display: block; font-size: 14px; margin-top: 5px; }
 
-select { cursor: pointer; appearance: none; -webkit-appearance: none; position: relative; display: block; width: 100%; padding: 10px; border-radius: 4px; background: rgba(0,0,0,0.15); color: #fff; border: none; outline: none; }
+select { cursor: pointer; appearance: none; -webkit-appearance: none; position: relative; display: block; width: 100%; padding: 10px; border-radius: 4px; background: rgba(0,0,0,0.05); color: #000; border: none; outline: none; }
 select > option { background: #fff; color: #111; }
 
 section form { position: relative; display: block; width: 100%;}
-section form input { line-height: 15px; position: relative; display: block; width: 100%; margin: 0 0 10px 0; padding: 10px 15px 10px 11px; background-color: rgba(0,0,0,0.25); border: none; outline: none; border-left: 4px rgba(255,0,0,0) solid; border-radius: 4px; color: #fff; }
+section form input { line-height: 15px; position: relative; display: block; width: 100%; margin: 0 0 10px 0; padding: 10px 15px 10px 15px; background: #fafafa; border: 1px solid #f4f4f4; outline: none; border-radius: 4px; color: #000; }
 section form input:invalid { border-left-color: rgba(255,0,0,1); box-shadow: none; }
 section form input:placeholder-shown:required { border-left-color: rgba(255,0,0,0); }
-section form input[type='submit'] { cursor: pointer; background: #fff; color: #061c36; display: inline-block; width: unset; padding: 10px 15px; border-radius: 30px; }
-section form + .meta { position: relative; display: block; font-size: 12px; margin-top: 20px; color: rgba(255,255,255,0.75); }
+section form input[type='submit'] { cursor: pointer; background: rgb(6, 28, 55); color: #fff; display: inline-block; width: unset; padding: 10px 15px; border-radius: 30px; border: none; }
+section form + .meta { position: relative; display: block; font-size: 12px; margin-top: 20px; color: rgba(0,0,0,0.75); }
 section form + .meta a { text-decoration: underline; }
-section form span.info, section form span.error { position: relative; display: block; padding: 8px 15px; margin-bottom: 10px; font-size: 12px; background-color: rgba(0,0,0,0.1); border-radius: 2px; overflow: hidden; max-height: 500px; }
-section form span.info::before, section form span.error:before { content: ''; display: block; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #f00; }
-section form span.info::before { background: rgb(0, 162, 255);}
+section form span.info, section form span.error { position: relative; display: block; padding: 8px 15px; margin-bottom: 10px; font-size: 12px; background-color: #fafafa; border: 1px solid #f4f4f4; border-radius: 4px; overflow: hidden; max-height: 500px; }
+section form span.info { background: #00a2ff; border-color: #0089d8; color: #fff; }
+section form span.error { background: #f00;  border-color: #e70000; color: #fff; }
 section form span.info:empty, section form span.error:empty { opacity: 0; display: none; }
 section form .loader { position: relative; display: inline-block; width: 35px; height: 35px; vertical-align: middle; margin-left: 5px; opacity: 0; }
 section form .loader.active { opacity: 1; }
 section form .loader:after { animation: loader 1000ms linear infinite normal; content: ''; position: absolute; display: block; top: 5px; left: 5px; width: 19px; height: 19px; border: 3px solid #fff; border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent;  border-radius: 50%; }
 section form .loader:before { content: ''; position: absolute; display: block; top: 5px; left: 5px; width: 19px; height: 19px; border: 3px solid #fff; opacity: 0.25;; border-radius: 50%; }
-section form .additional { display: block; font-size: 12px; color: rgba(255,255,255,0.75); padding: 0 15px; text-align: right; }
+section form .additional { display: block; font-size: 12px; color: rgba(0,0,0,0.75); padding: 0 15px; text-align: right; }
+
+input.inline { display: block; width: 100%; font-size: inherit; font-weight: inherit; border: 0; outline: 0; padding: 5px; margin: -5px; background: rgba(0,0,0,0.05); border-radius: 4px;}
+input[disabled].inline, input:read-only.inline  { background: transparent; }
 
 @keyframes loader {
     0% { transform: rotateZ(0deg); }
@@ -115,7 +119,7 @@ section.tipp-login-page > .inner > h3 { font-size: 40px; margin-bottom: 5px; pad
 section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 
 /* Game Tile */
-.game-tile { position: relative; display: block; padding: 15px 55px 15px 55px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; }
+.game-tile { position: relative; display: block; padding: 15px 55px 15px 55px; border: 1px solid #f4f4f4; background: #fafafa; border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; }
 .game-tile.loading { color: transparent; }
 .game-tile.loading .tflag { opacity: 0; }
 
@@ -142,40 +146,71 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 
 /* Tipp-List */
 .tipp-list { position: relative; display: flex; flex-wrap: wrap; justify-content: space-between; width: 100%; }
-.tipp-tile { position: relative; display: block; width: calc(50% - 5px); padding: 15px 50px 15px 55px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; min-height: 50px; }
+.tipp-tile { position: relative; display: block; width: calc(50% - 5px); padding: 15px 50px 15px 55px; background: #fafafa; border: 1px solid #f4f4f4; border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; min-height: 50px; }
 .tipp-tile > .tflag { position: absolute; top: 15px; left: 15px; line-height: 25px; font-size: 25px; }
 .tipp-tile > .name { display: block; font-weight: bold; line-height: 20px; font-size: 20px; margin: 0 0 5px 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-.tipp-tile > .meta { display: block; color: rgba(255,255,255,0.6); font-size: 14px; }
+.tipp-tile > .meta { display: block; font-size: 14px; }
 .tipp-tile > .reward { position: absolute; display: inline-block; top: 15px; right: 15px; line-height: 20px; font-size: 20px; font-weight: bold; }
 .tipp-tile.fullwidth { width: 100%; }
 
 
 /* User-List */
 .rank-list { position: relative; display: block; width: 100%; }
-.rank-tile { position: relative; display: block; width: 100%; padding: 15px 75px 15px 55px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; min-height: 50px; overflow: hidden; }
+.rank-tile { position: relative; display: block; width: 100%; padding: 15px 75px 15px 55px; border: 1px solid #f4f4f4; background: #fafafa; border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; min-height: 50px; overflow: hidden; }
 .rank-tile > .points { position: absolute; top: 15px; right: 15px; display: inline-block; font-weight: bold; line-height: 24px; font-size: 20px;  }
 .rank-tile > .name { display: block; font-weight: bold; line-height: 24px; font-size: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .rank-tile > .rank { position: absolute; display: block; top: 12px; right: calc(100% - 45px); min-width: 30px; max-width: 40px; padding: 0 5px; height: 30px; overflow: hidden; text-overflow: clip; text-align: center; background: rgba(0,0,0,0.15); line-height: 30px; font-size: 14px; border-radius: 15px; font-weight: bold; }
 .rank-tile > .rank:empty { display: none; }
 
-.rank-list.rank .rank-tile:nth-child(1) > .rank { background: radial-gradient(circle at 25% 25%, #f8eba0, #8d702c); color: #8d702c; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
-.rank-list.rank .rank-tile:nth-child(2) > .rank { background: radial-gradient(circle at 25% 25%, #e0e0e0, #505050); ; color: #505050; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
-.rank-list.rank .rank-tile:nth-child(3) > .rank { background: radial-gradient(circle at 25% 25%, #e4b98d, #53300c); color: #53300c; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
+.rank-list.rank .rank-tile[data-rank="1"] > .rank { background: radial-gradient(circle at 25% 25%, #f8eba0, #8d702c); color: #8d702c; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
+.rank-list.rank .rank-tile[data-rank="2"] > .rank { background: radial-gradient(circle at 25% 25%, #e0e0e0, #505050); ; color: #505050; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
+.rank-list.rank .rank-tile[data-rank="3"] > .rank { background: radial-gradient(circle at 25% 25%, #e4b98d, #53300c); color: #53300c; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
+
+/* User_list */
+.user-tile { position: relative; display: block; width: 100%; padding: 15px 75px 15px 55px; border: 1px solid #f4f4f4; background: #fafafa; border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; min-height: 50px; overflow: hidden; }
+.user-tile > .points { position: absolute; top: 15px; right: 15px; display: inline-block; font-weight: bold; line-height: 24px; font-size: 20px;  }
+.user-tile > .name { display: block; font-weight: bold; line-height: 24px; font-size: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.user-tile > .icon { position: absolute; left: 15px; top: 15px; display: inline-block; text-align: center; width: 25px; font-size: 24px !important; line-height: 24px; font-weight: bold; }
+
 
 /* Event-List */
 
-.event-tile { text-decoration: none; position: relative; display: block; padding: 15px 15px 15px 55px; background: rgba(0,0,0,0.15); margin-bottom: 10px; border-radius: 4px; }
+.event-tile { text-decoration: none; position: relative; display: block; padding: 15px 15px 15px 55px; border: 1px solid #f4f4f4; background: #fafafa; margin-bottom: 10px; border-radius: 4px; }
 .event-tile .icon { position: absolute; left: 15px; top: 15px; display: inline-block; text-align: center; width: 25px; font-size: 24px; line-height: 24px; font-weight: bold; }
 .event-tile .name { position: relative; display: block; font-weight: bold; font-size: 20px; }
-.event-tile .meta { position: relative; display: block; color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 5px; }
+.event-tile .meta { position: relative; display: block;font-size: 14px; margin-top: 5px; }
 
+
+/* Group-List */
+
+.group-tile { text-decoration: none; position: relative; display: block; padding: 15px 55px 15px 55px; border: 1px solid #f4f4f4; background: #fafafa; margin-bottom: 10px; border-radius: 4px; }
+.group-tile .icon { position: absolute; left: 15px; top: 15px; display: inline-block; text-align: center; width: 25px; font-size: 24px; line-height: 24px; font-weight: bold; }
+.group-tile .name { position: relative; display: block; font-weight: bold; font-size: 20px; }
+.group-tile .meta { position: relative; display: block; font-size: 14px; margin-top: 5px; }
+.group-tile > a { text-decoration: none; }
+.group-tile > label { position: absolute; display: block; cursor: pointer; right: 0; top: 0; width: 55px; height: 100%; background-color: rgba(0,0,0,0.05);  }
+.group-tile > label > input { display: none; }
+.group-tile > label > .indicator { position: absolute; display: block; top: 50%; left: 0; width: 100%; transform: translateY(-50%); text-align: center; font-size: 20px; }
+.group-tile > label > .indicator > .material-icons { display: none; }
+.group-tile > label > .indicator > .material-icons:nth-child(2) { display: block; }
+.group-tile > label > input:checked + .indicator > .material-icons:nth-child(1) { display: block; }
+.group-tile > label > input:checked + .indicator > .material-icons:nth-child(2) { display: none; }
+
+/* Notification */
+
+.tipp-notification { position: fixed; display: inline-block; z-index: 500; top: 20px; right: 20px; min-width: 200px; padding: 20px 20px 20px 60px; border-radius: 2px; overflow: hidden; background: #111; color: #fff; border: 1px solid #151515; transform: translateY(calc(-100%  - 20px)); box-shadow: 0 0 10px rgba(0,0,0,0.25); }
+.tipp-notification.active { transform: translateY(0); }
+.tipp-notification > .icon { display: block; position: absolute; top: 0; left: 0; height: 100%; width: 60px; line-height: 60px; text-align: center; font-size: 20px !important; }
+
+.tipp-notification.error { background: #e00; border-color: #e00; }
+.tipp-notification.success { background: #20c000; border-color: #1fbb00; }
 
 /* Game View */
 .game-stream { position: relative; display: none; background: #000; width: 100%; padding-bottom: calc(100% * (9 / 16)); overflow: hidden; border-radius: 4px; margin-bottom: 10px; }
 .game-stream.active { display: block; }
 .game-stream > iframe { position: absolute; display: block; width: 100%; height: 100%; }
 
-.game-header { position: relative; display: block; padding: 15px 15px 15px 15px; background: rgba(0, 32, 71, 1.00); border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
+.game-header { position: relative; display: block; padding: 15px 15px 15px 15px; background: rgba(0,0,0, 1.00); border-radius: 4px; overflow: hidden; margin-bottom: 10px; color: #fff; }
 .game-header > .top { z-index: +2; position: relative; display: block; height: 25px; width: 100%; line-height: 25px; font-size: 20px; }
 .game-header > .top .team1 { position: absolute; display: inline-block; left: 0; top: 0; }
 .game-header > .top .team2 { position: absolute; display: inline-block; right: 0; top: 0; }
@@ -191,27 +226,27 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .game-header > .score > span.penalty.active { display: block; }
 .game-header > .score > span.penalty span { font-size: 30px; line-height: 30px; letter-spacing: 10px; display: block; text-align: center; font-weight: bold; margin-top: 8px; font-style: normal; }
 .game-header > .meta { z-index: +2; position: relative; display: block; text-align: center; font-size: 12px; line-height: 12px; margin-top: 20px; }
-.game-header:after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+.game-header:after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.75;
     background: radial-gradient(ellipse at center top, 
-    rgba(0, 32, 71, 1.00) 0%,
-    rgba(0, 32, 71, 0.90) 50%,
-    rgba(0, 32, 71, 0.65) 100%,
-    rgba(0, 32, 71, 0.34) 150%,
-    rgba(0, 32, 71, 0.09) 200%,
-    rgba(0, 32, 71, 0.0) 250%
+    rgba(0, 0, 0, 1.00) 0%,
+    rgba(0, 0, 0, 0.90) 50%,
+    rgba(0, 0, 0, 0.65) 100%,
+    rgba(0, 0, 0, 0.34) 150%,
+    rgba(0, 0, 0, 0.09) 200%,
+    rgba(0, 0, 0, 0.0) 250%
     );
 }
 
-.game-timeline { position: relative; display: block; width: 100%; padding: 10px 10px; background: rgba(0,0,0,0.15); border-radius: 4px; margin-bottom: 10px;}
+.game-timeline { position: relative; display: block; width: 100%; padding: 10px 10px; background: #fafafa; border: 1px solid #f4f4f4;; border-radius: 4px; margin-bottom: 10px;}
 .game-timeline:empty { display: none; margin-bottom: 0; }
-.game-timeline > span { position: relative; display: block; width: 60%; background: rgba(0,0,0,0.15); padding: 7px 10px; border-radius: 4px; margin-bottom: 5px; }
+.game-timeline > span { position: relative; display: block; width: 60%; background: rgba(0,0,0,0.05); padding: 7px 10px; border-radius: 4px; margin-bottom: 5px; }
 .game-timeline > span.left { padding-left: 36px; }
 .game-timeline > span.left > .tflag { position: absolute; top: 7px; left: 10px; }
 .game-timeline > span.right { padding-right: 36px; text-align: right; left: 40%; }
 .game-timeline > span.right > .tflag { position: absolute; top: 7px; right: 10px; }
 .game-timeline > span:last-child { margin-bottom: 0;}
 
-.game-prompt-wrapper { position: relative; display: flex; width: 100%; flex-wrap: nowrap; flex-direction: row; margin-bottom: 10px; }
+.game-prompt-wrapper { position: relative; display: flex; width: 100%; flex-wrap: nowrap; flex-direction: row; margin-bottom: 10px; color: #fff; }
 .game-prompt-wrapper.hidden { display: none; }
 .game-prompt-wrapper > .tipp-box { display: block; width: 100%; margin: 0; margin-left: 10px; }
 .game-prompt-wrapper > .tipp-box:nth-child(1){ margin-left: 0; }
@@ -221,7 +256,7 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 
 /* Tipp View */
 
-.tipp-score { position: relative; display: flex; flex-wrap: nowrap; flex-direction: row; align-content: stretch; line-height: 80px; font-size: 80px; width: 100%; padding: 15px 15px 15px 15px; background: rgba(0,0,0,0.15); border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
+.tipp-score { position: relative; display: flex; flex-wrap: nowrap; flex-direction: row; align-content: stretch; line-height: 80px; font-size: 80px; width: 100%; padding: 15px 15px 15px 15px; background: #fafafa; border: 1px solid #f4f4f4; border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
 .tipp-score > input { position: relative; display: block; font-weight: bold; background-color: transparent; line-height: inherit; font-size: inherit; padding: 0; margin: 0; border: none; overflow: hidden; -moz-appearance: textfield; }
 .tipp-score > input:nth-child(1) { text-align: right; }
 .tipp-score > input:invalid { color: rgb(255, 61, 61); }
@@ -230,47 +265,44 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .tipp-form > h4 { padding: 0 15px; margin: 15px 0 10px 0; }
 
 .tipp-player { position: relative; display: block; border-radius: 4px; margin-bottom: 10px; }
-.tipp-player input { padding: 15px 15px; background-color: rgba(0,0,0,0.15); }
+.tipp-player input { padding: 15px 15px; background-color: rgba(0,0,0,0.05); }
 
 /* Radio Selection */
 
-.tipp-radio-select { position: relative; width: 100%; display: flex; flex-wrap: nowrap; background: rgba(0,0,0,0.15); border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
+.tipp-radio-select { position: relative; width: 100%; display: flex; flex-wrap: nowrap; background: #fafafa; border: 1px solid #f4f4f4; border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
 .tipp-radio-select > input { visibility: hidden; position: absolute; top: 100%; left: 0; }
-.tipp-radio-select > label { cursor: pointer; text-align: center; position: relative; display: block; width: 100%; border-left: 1px solid rgba(0,0,0,0.15); padding: 15px 15px 15px 15px; background-color: rgba(255,255,255,0); }
+.tipp-radio-select > label { cursor: pointer; text-align: center; position: relative; display: block; width: 100%; border-left: 1px solid rgba(0,0,0,0.05); padding: 15px 15px 15px 15px; background-color: rgba(255,255,255,0); }
 .tipp-radio-select > label:first-of-type { border-left: none; }
-.tipp-radio-select > input:checked + label { background-color: rgba(0,0,0,0.2); }
+.tipp-radio-select > input:checked + label { background-color: #f4f4f4; }
 .tipp-radio-select > input:checked + label { border-left-color: transparent; }
 
 /* Search Suggestions */
 
 .tipp-searchselect { position: relative; display: block; width: 100%; margin-bottom: 10px; }
-.tipp-searchselect > input { margin-bottom: 0; padding: 15px 15px 15px 40px; border-left: none; }
+.tipp-searchselect > input { margin-bottom: 0; padding: 15px 15px 15px 40px; background: #fafafa; border: 1px solid #f4f4f4; }
 .tipp-searchselect > input:focus { border-radius: 4px 4px 0 0;}
-.tipp-searchselect .icon { position: absolute; display: block; left: 15px; top: 14px; width: 18px; height: 18px; background-color: rgba(0,0,0,0.25); background-size: cover; background-position: center; border-radius: 50%; }
-.tipp-searchselect > .suggestions { z-index: 100; position: relative; top: 100%; left: 0; width: 100%; background:rgb(0, 20, 44); overflow: hidden; border-radius: 4px; max-height: 0; opacity: 1;}
-.tipp-searchselect > input:focus + .suggestions { border-radius: 0 0 4px 4px; max-height: 160px; opacity: 1;}
-.tipp-searchselect > .suggestions > span { cursor: pointer; position: relative; display: block; padding: 10px 15px 10px 40px; background: rgba(0,0,0,0); color: #fff; line-height: 20px; height: 40px;}
-.tipp-searchselect > .suggestions > span:hover { background: rgba(0,0,0,0.15); }
+.tipp-searchselect .icon { z-index: +2; position: absolute; display: block; left: 15px; top: 14px; width: 18px; height: 18px; background-color: #f4f4f4; background-size: cover; background-position: center; border-radius: 50%; }
+.tipp-searchselect > .suggestions { z-index: 100; position: relative; top: 100%; left: 0; width: 100%; background: #fafafa; border: 1px solid #f4f4f4; border-top: none; overflow: hidden; display: none; border-radius: 4px; max-height: 0; opacity: 1;}
+.tipp-searchselect > input:focus + .suggestions { border-radius: 0 0 4px 4px; max-height: 160px; opacity: 1; display: block;}
+.tipp-searchselect > .suggestions > span { cursor: pointer; position: relative; display: block; padding: 10px 15px 10px 40px; background: rgba(0,0,0,0); color: #000; line-height: 20px; height: 40px;}
+.tipp-searchselect > .suggestions > span:hover { background: #f4f4f4; }
 .tipp-searchselect > .suggestions > span > .icon { position: absolute; left: 15px; top: 11px; }
 
 /* Input Date */
 .tipp-date-input { position: relative; display: flex; flex-wrap: nowrap; flex-direction: row; width: 100%; margin-bottom: 10px; }
-.tipp-date-input > select { position: relative; margin-left: 5px; text-align: center; border: 1px solid transparent; }
+.tipp-date-input > select { position: relative; margin-left: 5px; text-align: center; background: #fafafa; border: 1px solid #f4f4f4;  }
 .tipp-date-input.invalid > select { border-color: rgb(255, 61, 61) }
 .tipp-date-input > select:first-of-type { margin-left: 0;}
 .tipp-date-input > select.hour { margin-left: 15px; }
 
 /* Profile view */
-.tipp-profile-header { position: relative; display: block; width: 100%; padding: 15px 130px 15px 15px; margin: 0 0 15px 0; background: rgba(0,0,0,0.15); border-radius: 4px;}
+.tipp-profile-header { position: relative; display: block; width: 100%; padding: 15px 130px 15px 15px; margin: 0 0 15px 0; background: #fafafa; border: 1px solid #f4f4f4; border-radius: 4px;}
 .tipp-profile-header > .short { position: relative; display: block; font-size: 60px; line-height: 65px;  font-weight: bold; }
 .tipp-profile-header > .name { position: relative; display: block; font-size: 12px; }
 .tipp-profile-header > .points { position: absolute; top: 50%; right: 20px; display: inline-block; transform: translateY(-50%); width: 95px; text-align: right; font-size: 30px; font-weight: bold; }
-.tipp-profile-header > .tags { position: relative; display: block; font-size: 12px; margin-top: 5px; }
-.tipp-profile-header > .tags > span { position: relative; display: inline-block; opacity: 0.75; background-color: rgba(0,0,0,0.25); padding: 2px 8px; border-radius: 10px; margin: 5px 5px 0 0;}
-.tipp-profile-header > .tags > span > .material-icons { vertical-align: sub; }
 
 /* Tipp Inline Flag */
-.tflag { position: relative; display: inline-block; margin-top: 1px; width: 1em; height: 1em; background: rgba(0,0,0,0.25); background-size: cover; background-position: center; border-radius: 50%; vertical-align: text-top; }
+.tflag { position: relative; display: inline-block; margin-top: 1px; width: 1em; height: 1em; background: #f4f4f4; background-size: cover; background-position: center; border-radius: 50%; vertical-align: text-top; }
 
 .tflag[data-t='aut'] { background-image: url(/img/flag/aut.png); }
 .tflag[data-t='bel'] { background-image: url(/img/flag/bel.png); }
@@ -316,4 +348,8 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
     .game-prompt-wrapper { flex-wrap: wrap; }
     .game-prompt-wrapper > .tipp-box { margin-left: 0;}
     .game-prompt-wrapper > .tipp-box:nth-child(1) { margin-bottom: 10px; }
+
+    .tipp-notification { top: 0; right: 0; width: 100%; border-radius: 0; border-top: none; border-left: 0; border-right: 0; }
+
+    .tipp-section-wrapper > section { padding-top: 66px;}
 }

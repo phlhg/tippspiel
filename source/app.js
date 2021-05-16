@@ -10,14 +10,13 @@ import Groups from './models/groups/model'
 import Players from './models/players/model'
 import Teams from './models/teams/model'
 import Users from './models/users/model'
+import Notification from './helper/notification';
 
 export default class Application {
 
     constructor(){
         this.socket = new H2RFP_Socket('wss://wetterfrosch.internet-box.ch',SERVER_PORT);
         Debugger.log(this, "Connecting to server on port "+SERVER_PORT)()
-        this.socket.onConnect = () => { Debugger.log(this, "Connected to server")() }
-        this.socket.onDisconnect = () => { Debugger.log(this, "Disconnected from server") }
 
         this.client = new Client();
         this.router = new Router();
@@ -54,6 +53,15 @@ export default class Application {
 
     /** Adds global event listeners */
     setGlobalEvents(){
+
+        this.socket.onConnect = () => { 
+            Debugger.log(this, "Connected to server")() 
+        }
+
+        this.socket.onDisconnect = () => { 
+            Notification.error("Lost connection to the server");
+            Debugger.log(this, "Disconnected from server") 
+        }
 
         document.querySelector("header .heading strong").innerText = Lang.get("name");
 

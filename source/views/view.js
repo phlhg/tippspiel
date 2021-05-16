@@ -15,9 +15,9 @@ export default class View {
         this._events[e] = callback;
     }
 
-    event(e,...args){
+    async event(e,...args){
         if(this._events.hasOwnProperty(e)){
-            return this._events[e](...args);
+            return await this._events[e](...args);
         } else {
             Debugger.error(this,`Unknown event "${e}" was called`)();
             return false;
@@ -30,8 +30,9 @@ export default class View {
 
     _show(){
         this.show();
-        clearTimeout(this._timeout)
-        this._timeout = setTimeout(() => { this.root.classList.add("active") },250);
+        /*clearTimeout(this._timeout)
+        this._timeout = setTimeout(() => { this.root.classList.add("active") },250);*/
+        this.root.classList.add("active")
     }
 
     show(){
@@ -40,8 +41,9 @@ export default class View {
 
     _hide(){
         this.root.classList.remove("active");
-        clearTimeout(this._timeout)
-        this._timeout = setTimeout(() => { this.hide(); },250)
+        /*clearTimeout(this._timeout)
+        this._timeout = setTimeout(() => { this.hide(); },250)*/
+        this.hide();
     }
 
     hide(){

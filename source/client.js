@@ -30,11 +30,15 @@ export default class Client {
             eventReport: false,
             gameAnnounce: false,
             gameReport: false,
+            groupCreate: false,
             console: false
         }
         
-        /** @type {array} Groups of the client */
+        /** @type {number[]} Groups of the client */
         this.groups = []
+
+        /** @type {number[]} List of active groups */
+        this.groupsActive = [];
 
         /** @type {array} EventTipps of the client */
         this.eventTipps = []
@@ -86,6 +90,8 @@ export default class Client {
         this.active = true;
         this.token = token;
 
+        this.groupsActive = JSON.parse(localStorage.getItem("tipp-active-groups") ?? "[]");
+
         var r2 = await this.getMe();
         if(!r2.success){ 
             this.active = false;
@@ -125,7 +131,7 @@ export default class Client {
      * @async
      * @param {string} name Name of the new client
      * @param {string} email E-Mail of the new client
-     * @return {object} Response object
+     * @return {Request} Response object
      */
     async singUp(name, email){
         var r = new Request("signup", { name: name, email: email });
@@ -137,6 +143,12 @@ export default class Client {
         return r;
     }
 
+
+    /**
+     * Recover an account by email
+     * @param {string} email E-Mail of the account to recover
+     * @returns {Request} Response object
+     */
     async recoverToken(email){
         var r = new Request("restoreToken", { email: email });
         if(this.active){ return r.error("Please sign out first"); }
@@ -144,6 +156,9 @@ export default class Client {
         return r;
     }
 
+    /**
+     * Signs out the client
+     */
     signout(){
         localStorage.setItem("tipp-dev-iskown","true")
         localStorage.removeItem("tipp-dev-token")
@@ -151,6 +166,18 @@ export default class Client {
         setTimeout(() => { window.location = "/" },500);
     }
 
+    isGroupActive(id){
+        return this.groupsActive.includes(id);
+    }
 
+    addGroup(id){
+        if(!this.groupsActive.includes(id)){ this.groupsActive.push(id); }
+        localStorage.setItem("tipp-active-groups",JSON.stringify(this.groupsActive))
+    }
+
+    removeGroup(id){
+        if(this.groupsActive.includes(id)){ this.groupsActive.splice(this.groupsActive.indexOf(id), 1); }
+        localStorage.setItem("tipp-active-groups",JSON.stringify(this.groupsActive))
+    }
 
 }

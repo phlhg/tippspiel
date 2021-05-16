@@ -35,7 +35,8 @@ export default class Controller {
 
     _unload(){
         this.view._hide()
-        setTimeout(() => { this.unload() }, 250);
+        this.unload()
+        //setTimeout(() => { this.unload() }, 250);
         this._active = false;
     }
 
