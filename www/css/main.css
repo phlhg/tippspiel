@@ -200,8 +200,8 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .tipp-notification.active { transform: translateY(0); }
 .tipp-notification > .icon { display: block; position: absolute; top: 0; left: 0; height: 100%; width: 60px; line-height: 60px; text-align: center; font-size: 20px !important; }
 
-.tipp-notification.error { background: #e00; border-color: #e00; }
-.tipp-notification.success { background: #20c000; border-color: #1fbb00; }
+.tipp-notification.error { background: #e00; border-color: #e00; color: #fff; }
+.tipp-notification.success { background: #20c000; border-color: #1fbb00; color: #fff; }
 
 /* Game View */
 .game-stream { position: relative; display: none; background: #000; width: 100%; padding-bottom: calc(100% * (9 / 16)); overflow: hidden; border-radius: 4px; margin-bottom: 10px; }
@@ -338,7 +338,7 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
     .tipp-section-wrapper > section.fullscreen { padding-left: 20px; padding-right: 20px; }
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 800px){
     .tipp-tile { width: 100%;}
 
     .game-tipp-button > span { display: block;}
@@ -348,7 +348,8 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
     .game-prompt-wrapper > .tipp-box { margin-left: 0;}
     .game-prompt-wrapper > .tipp-box:nth-child(1) { margin-bottom: 10px; }
 
-    .tipp-notification { top: 0; right: 0; width: 100%; border-radius: 0; border-top: none; border-left: 0; border-right: 0; }
+    .tipp-notification { top: 0; right: 0; width: 100%; border-radius: 0; border-top: none; border-left: 0; border-right: 0; transform: translateY(-100%); }
+    .tipp-notification.active { transform: translateY(0); }
 
     .tipp-section-wrapper > section { padding-top: 70px;}
 }

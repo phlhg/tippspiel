@@ -276,9 +276,9 @@ __LANG["en"] = {
             join: "Join group",
             messages: {
                 left: "You've left the group",
-                invitation_copied: "Inviation link was copied to clipboard",
+                invitation_copied: "The inviation link was copied to the clipboard",
                 created: "The group was created",
-                already_member: "You are already a member of the group",
+                alreadymember: "You're already a member of that group",
                 joined: "You've joined the group"
             }
         },

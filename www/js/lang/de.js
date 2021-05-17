@@ -279,7 +279,7 @@ __LANG["de"] = {
                 left: "Du hast die Gruppe verlassen",
                 invitation_copied: "Der Einladungslink wurde in die Zwischenablage kopiert",
                 created: "Die Gruppe wurde erstellt",
-                already_member: "Du bist bereits Mitglied dieser Gruppe",
+                alreadymember: "Du bist bereits Mitglied dieser Gruppe",
                 joined: "Du bist der Gruppe beigetreten"
             }
         },

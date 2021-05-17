@@ -62,7 +62,7 @@ export default class Settings extends View {
             }
         }
 
-        this.themeSelect.value = localStorage.getItem("tipp-theme-dark");
+        this.themeSelect.value = localStorage.getItem("tipp-theme-dark") ?? "0";
 
         this.themeSelect.onchange = e => {
             if(this.themeSelect.value == "1"){

@@ -19,7 +19,7 @@ export default class GroupJoin extends Controller {
         var g = await App.model.groups.get(this.params.id);
 
         if(App.client.groups.includes(parseInt(this.params.id))){ 
-            Notification.info(Lang.get("section/group/messages/already_member"));
+            Notification.info(Lang.get("section/groups/messages/alreadymember"));
             App.router.forward(g.url); 
             return false; 
         }
@@ -29,7 +29,7 @@ export default class GroupJoin extends Controller {
             if(!r.success){
                 Notification.error(r.message);
             } else {
-                Notification.success(Lang.get("section/group/messages/joined"));
+                Notification.success(Lang.get("section/groups/messages/joined"));
                 App.router.forward(g.url);
             }
         })

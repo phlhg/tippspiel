@@ -48,4 +48,6 @@ input.inline { background: rgba(255,255,255,0.04); }
 
 .tipp-searchselect > .suggestions > span { color: #fff; }
 
+.tipp-notification { background: #fff; color: #000; }
+
 .tflag { background-color: #1c1c1c; }

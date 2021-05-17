@@ -31,14 +31,14 @@ export default class Application {
         this.model.teams = new Teams()
         this.model.users = new Users()
 
+        // Dark Mode
+        if(localStorage.getItem("tipp-theme-dark") === null){ localStorage.setItem("tipp-theme-dark", window.matchMedia("(prefers-color-scheme: dark)").matches ? "1" : "0") }
+        if(localStorage.getItem("tipp-theme-dark") == "0"){ this.disabledDarkTheme(); }
+
         this.setGlobalEvents()
     }
 
     async run(){
-
-        // Dark Mode
-        if(localStorage.getItem("tipp-theme-dark") === null){ localStorage.setItem("tipp-theme-dark", window.matchMedia("(prefers-color-scheme: dark)").matches ? "1" : "0") }
-        if(localStorage.getItem("tipp-theme-dark") == "0"){ this.disabledDarkTheme(); }
 
         this.socket.open().then(() => {
             this.socket.listen("Ping", (data,respond) => { respond() });
