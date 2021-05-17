@@ -1,4 +1,4 @@
-import Notification from '../../helper/notification';
+import TippNotification from '../../helper/notification';
 import GroupJoinView from '../../views/groups/join';
 import Controller from '../controller'
 
@@ -19,7 +19,7 @@ export default class GroupJoin extends Controller {
         var g = await App.model.groups.get(this.params.id);
 
         if(App.client.groups.includes(parseInt(this.params.id))){ 
-            Notification.info(Lang.get("section/groups/messages/alreadymember"));
+            TippNotification.info(Lang.get("section/groups/messages/alreadymember"));
             App.router.forward(g.url); 
             return false; 
         }
@@ -27,9 +27,9 @@ export default class GroupJoin extends Controller {
         this.view.on("join", async () => {
             var r = await App.model.groups.join(token);
             if(!r.success){
-                Notification.error(r.message);
+                TippNotification.error(r.message);
             } else {
-                Notification.success(Lang.get("section/groups/messages/joined"));
+                TippNotification.success(Lang.get("section/groups/messages/joined"));
                 App.router.forward(g.url);
             }
         })

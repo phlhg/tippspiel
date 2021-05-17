@@ -1,4 +1,4 @@
-import Notification from "../../helper/notification";
+import TippNotification from "../../helper/notification";
 import UserTile from "../components/usertile";
 import View from "../view";
 
@@ -45,7 +45,7 @@ export default class GroupDetailView extends View {
             input.select();
             document.execCommand("copy");
             input.remove();
-            Notification.success(Lang.get("section/groups/messages/invitation_copied"));
+            TippNotification.success(Lang.get("section/groups/messages/invitation_copied"));
         }
 
         this.memberList = this.root.querySelector(".member-list");

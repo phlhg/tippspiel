@@ -1,4 +1,4 @@
-import Notification from '../../helper/notification';
+import TippNotification from '../../helper/notification';
 import GroupCreateView from '../../views/groups/create';
 import Controller from '../controller'
 
@@ -16,7 +16,7 @@ export default class GroupCreate extends Controller {
             if(!r.success){
                 this.view.form.error(r.message);
             } else {
-                Notification.success(Lang.get("section/groups/messages/created"));
+                TippNotification.success(Lang.get("section/groups/messages/created"));
                 var g = await App.model.groups.get(parseInt(r.data.id));
                 App.router.forward(g.url);
             }

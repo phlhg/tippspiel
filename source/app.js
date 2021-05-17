@@ -10,7 +10,7 @@ import Groups from './models/groups/model'
 import Players from './models/players/model'
 import Teams from './models/teams/model'
 import Users from './models/users/model'
-import Notification from './helper/notification';
+import TippNotification from './helper/notification';
 
 export default class Application {
 
@@ -67,7 +67,7 @@ export default class Application {
         }
 
         this.socket.onDisconnect = () => { 
-            Notification.error("Lost connection to the server");
+            TippNotification.error("Lost connection to the server");
             Debugger.log(this, "Disconnected from server") 
         }
 
@@ -119,7 +119,7 @@ export default class Application {
         var standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone || localStorage.getItem("tipp-is-pwa") == "true"
 
         if(!standalone && (safari || android)){
-            Notification.create(
+            TippNotification.create(
                 safari ? Lang.get("pwa_info/ios") : Lang.get("pwa_info/android"),
                 15*1000,
                 safari ? "phone_iphone" : "phone_android",

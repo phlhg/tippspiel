@@ -1,4 +1,4 @@
-class Notification {
+class TippNotification {
     
     constructor(text, duration, icon, type){
         this.text = text;
@@ -22,12 +22,12 @@ class Notification {
 
 
     show(){
-        Notification.queue.push(this);
-        if(Notification.queue.length == 1){ this._show(); }
+        TippNotification.queue.push(this);
+        if(TippNotification.queue.length == 1){ setTimeout(() => { this._show(); }, 20); }
     }
 
     _show(){
-        setTimeout(() => { this.dom.root.classList.add("active"); }, 20);
+        this.dom.root.classList.add("active");
         this.timeout = setTimeout(() => {
             this.hide();
         }, this.duration);
@@ -37,8 +37,8 @@ class Notification {
         destroy = destroy ?? true
         this.dom.root.classList.remove("active");
         clearTimeout(this.timeout);
-        Notification.queue.shift(); // Remove me from the queue 
-        if(Notification.queue.length > 0){ setTimeout(() => {  Notification.queue[0]._show(); },250) } //Show the next Notification
+        TippNotification.queue.shift(); // Remove me from the queue 
+        if(TippNotification.queue.length > 0){ setTimeout(() => {  TippNotification.queue[0]._show(); },250) } //Show the next Notification
         if(destroy){ this.destroy(); }
     }
 
@@ -48,28 +48,30 @@ class Notification {
 
 }
 
-Notification.queue = [];
+TippNotification.queue = [];
 
-Notification.info = function(text){
-    var n = new Notification(text, 3000, "info", "info");
+TippNotification.info = function(text){
+    var n = new TippNotification(text, 3000, "info", "info");
     n.show();
     return n;
 }
 
-Notification.error = function(text){
-    var n = new Notification(text, 3000, "warning", "error");
+TippNotification.error = function(text){
+    var n = new TippNotification(text, 3000, "warning", "error");
     n.show();
     return n;
 }
 
-Notification.success = function(text){
-    var n = new Notification(text, 3000, "done", "success");
+TippNotification.success = function(text){
+    var n = new TippNotification(text, 3000, "done", "success");
     n.show();
     return n;
 }
 
-Notification.create = function(text, duration, icon, type){
-    return new Notification(text, duration, icon, type);
+TippNotification.create = function(text, duration, icon, type){
+    return new TippNotification(text, duration, icon, type);
 }
 
-export default Notification;
+window.TippNotification = TippNotification;
+
+export default TippNotification;

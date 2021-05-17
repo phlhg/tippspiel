@@ -1,4 +1,3 @@
-import Notification from "../../helper/notification";
 import UserTile from "../components/usertile";
 import View from "../view";
 

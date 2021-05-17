@@ -1,4 +1,4 @@
-import Notification from '../../helper/notification';
+import TippNotification from '../../helper/notification';
 import GroupAdvancedView from '../../views/groups/advanced';
 import Controller from '../controller'
 
@@ -21,22 +21,22 @@ export default class GroupAdvanced extends Controller {
 
         this.view.on("resettoken", async () => {
             var r = await g.resetToken(); 
-            if(!r.success){ Notification.error(r.message); }
+            if(!r.success){ TippNotification.error(r.message); }
             App.router.forward(g.url);
         })
 
 
         this.view.on("rename", async data => {
             var r = await g.rename(data.name);
-            if(!r.success){ Notification.error(r.message); }
+            if(!r.success){ TippNotification.error(r.message); }
         })
 
         this.view.on("leave", async () => {
             var r = await g.leave();
             if(!r.success){ 
-                Notification.error(r.message); 
+                TippNotification.error(r.message); 
             } else {
-                Notification.info(Lang.get("section/groups/messages/left")); 
+                TippNotification.create(Lang.get("section/groups/messages/left"), 3000, "logout", "error").show(); 
                 App.router.forward("/groups/");
             }
         })
