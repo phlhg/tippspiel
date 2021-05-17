@@ -35,7 +35,7 @@ export default class GroupAdvanced extends Controller {
             if(!r.success){ 
                 Notification.error(r.message); 
             } else {
-                Notification.info(Lang.get("section/group/messages/left")); 
+                Notification.info(Lang.get("section/groups/messages/left")); 
                 App.router.forward("/groups/");
             }
         })

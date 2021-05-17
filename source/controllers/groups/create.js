@@ -15,7 +15,7 @@ export default class GroupCreate extends Controller {
             if(!r.success){
                 this.view.form.error(r.message);
             } else {
-                Notification.success(Lang.get("section/group/messages/created"));
+                Notification.success(Lang.get("section/groups/messages/created"));
                 var g = await App.model.groups.get(parseInt(r.data.id));
                 App.router.forward(g.url);
             }
