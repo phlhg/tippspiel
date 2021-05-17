@@ -315,5 +315,9 @@ __LANG["de"] = {
             meta1: "Falls du keinen Zugriff auf deine E-Mail hast oder deine E-Mail nicht mehr weisst, nimm bitte {a}.",
             meta2: "Kontakt mit uns auf"
         }
+    },
+    pwa_info: {
+        ios: '<strong>Tippspiel App</strong><br/>Willst du Tippspiel auf dem Startbildschirm?<br/>- Klicke auf <span class="material-icons">ios_share</span><br/>- Wähle <i>zum Startbildschirm hinzufügen</i> aus<br/>- Fertig!',
+        android: '<strong>Tippspiel App</strong><br/>Willst du Tippspiel auf dem Startbildschirm?<br/>- Klicke auf <span class="material-icons">more_vert</span><br/>- Wähle <span class="material-icons">add_to_home_screen</span> <i>Add to Homescreen</i> oder <i>Install</i> aus<br/>- Fertig!',
     }
 }

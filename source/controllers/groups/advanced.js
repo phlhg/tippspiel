@@ -1,3 +1,4 @@
+import Notification from '../../helper/notification';
 import GroupAdvancedView from '../../views/groups/advanced';
 import Controller from '../controller'
 

@@ -2,7 +2,7 @@
   "name": "Tippspiel 21",
   "short_name": "Tippspiel",
   "scope": "/",
-  "start_url": "/",
+  "start_url": "/?pwa",
   "display": "standalone",
   "background_color": "#00315e",
   "description": "by TobiCreations & PHLHG",

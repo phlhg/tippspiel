@@ -35,10 +35,14 @@ export default class Application {
         if(localStorage.getItem("tipp-theme-dark") === null){ localStorage.setItem("tipp-theme-dark", window.matchMedia("(prefers-color-scheme: dark)").matches ? "1" : "0") }
         if(localStorage.getItem("tipp-theme-dark") == "0"){ this.disabledDarkTheme(); }
 
+        if(window.location.href.indexOf('?pwa') > -1){ window.location.hash = ""; localStorage.setItem("tipp-is-pwa", "true"); }
+
         this.setGlobalEvents()
     }
 
     async run(){
+
+        setTimeout(() => { this.pwaInfo() },10*1000);
 
         this.socket.open().then(() => {
             this.socket.listen("Ping", (data,respond) => { respond() });
@@ -105,6 +109,23 @@ export default class Application {
         this.model.users.update(data.User ?? [])
 
         if((data.User ?? []).includes(this.client.id)){ this.client.getMe(); }
+
+    }
+
+    pwaInfo(){
+
+        var safari = ['iPad', 'iPhone', 'iPod'].includes(navigator.platform) || (navigator.userAgent.includes("Mac") && "ontouchend" in document);
+        var android = /android/i.test(navigator.userAgent) && /mobile/i.test(navigator.userAgent)
+        var standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone || localStorage.getItem("tipp-is-pwa") == "true"
+
+        if(!standalone && (safari || android)){
+            Notification.create(
+                safari ? Lang.get("pwa_info/ios") : Lang.get("pwa_info/android"),
+                15*1000,
+                safari ? "phone_iphone" : "phone_android",
+                "popup"
+            ).show()
+        }
 
     }
 

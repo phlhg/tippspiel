@@ -198,12 +198,16 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 
 /* Notification */
 
-.tipp-notification { position: fixed; display: inline-block; z-index: 500; top: 20px; right: 20px; min-width: 200px; padding: 20px 20px 20px 60px; border-radius: 2px; overflow: hidden; background: #111; color: #fff; border: 1px solid #151515; transform: translateY(calc(-100%  - 20px)); box-shadow: 0 0 10px rgba(0,0,0,0.25); }
+.tipp-notification { position: fixed; display: inline-block; z-index: 500; top: 20px; right: 20px; min-width: 200px; padding: 17px 20px 17px 60px; line-height: 25px; border-radius: 2px; overflow: hidden; background: #111; color: #fff; border: 1px solid #151515; transform: translateY(calc(-100%  - 20px)); box-shadow: 0 0 10px rgba(0,0,0,0.25); }
 .tipp-notification.active { transform: translateY(0); }
 .tipp-notification > .icon { display: block; position: absolute; top: 0; left: 0; height: 100%; width: 60px; line-height: 60px; text-align: center; font-size: 20px !important; }
 
+.tipp-notification .material-icons { vertical-align: text-top; }
+
 .tipp-notification.error { background: #e00; border-color: #e00; color: #fff; }
 .tipp-notification.success { background: #20c000; border-color: #1fbb00; color: #fff; }
+.tipp-notification.popup { bottom: 20px; top: unset; transform: translateY(calc(100%  + 20px));  }
+.tipp-notification.popup.active { transform: translateY(0); }
 
 /* Game View */
 .game-stream { position: relative; display: none; background: #000; width: 100%; padding-bottom: calc(100% * (9 / 16)); overflow: hidden; border-radius: 4px; margin-bottom: 10px; }
@@ -352,6 +356,9 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 
     .tipp-notification { top: 0; right: 0; width: 100%; border-radius: 0; border-top: none; border-left: 0; border-right: 0; transform: translateY(-100%); }
     .tipp-notification.active { transform: translateY(0); }
+
+    .tipp-notification.popup.active { transform: translateY(0); }
+    .tipp-notification.popup { bottom: 0; transform: translateY(100%);  }
 
     .tipp-section-wrapper > section { padding-top: 70px;}
 }
