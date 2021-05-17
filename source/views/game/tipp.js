@@ -21,9 +21,9 @@ export default class GameIndex extends View {
         <form class="tipp-form" style="margin-bottom: 200px">
             <h4>${Lang.get("section/game/tipp/form/result")}</h4>
             <div class="tipp-score">
-                <input required class="t1" name="score1" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
+                <input required class="t1" name="score1" placeholder="0" min="0" max="99" step="1" value="0" inputmode="numeric" type="number" />
                 <span class="seperator">:</span>
-                <input required class="t2" name="score2" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
+                <input required class="t2" name="score2" placeholder="0" min="0" max="99" step="1" value="0" inputmode="numeric" type="number" />
             </div>
             <h4>${Lang.get("section/game/tipp/form/winner")} <small> ${Lang.get("section/game/tipp/form/winner_notice")}</small></h4>
             <div class="tipp-winner">

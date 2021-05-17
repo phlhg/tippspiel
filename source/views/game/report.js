@@ -27,18 +27,18 @@ export default class GameReportView extends View {
             </select>
             <h4>${Lang.get("section/game/report/result/normal")}</h4>
             <div class="tipp-score">
-                <input required class="t1" name="score1" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
+                <input required class="t1" name="score1" placeholder="0" min="0" max="99" step="1" value="0" inputmode="numeric" type="number" />
                 <span class="seperator">:</span>
-                <input required class="t2" name="score2" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
+                <input required class="t2" name="score2" placeholder="0" min="0" max="99" step="1" value="0" inputmode="numeric" type="number" />
             </div>
             <h4>${Lang.get("section/game/report/scorers/name")} <small>${Lang.get("section/game/report/scorers/hint")}</small></h4>
             <div class="tipp-player" style="position: relative; display: block; margin-bottom: 10px;" ></div>
             <span class="penalty-section" style="display: none" >
                 <h4>${Lang.get("section/game/report/result/penalty")}</h4>
                 <div class="tipp-score">
-                    <input required class="t1" name="penalty1" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
+                    <input required class="t1" name="penalty1" placeholder="0" min="0" max="99" step="1" value="0" inputmode="numeric" type="number" />
                     <span class="seperator">:</span>
-                    <input required class="t2" name="penalty2" placeholder="0" min="0" max="99" step="1" value="0" type="number" />
+                    <input required class="t2" name="penalty2" placeholder="0" min="0" max="99" step="1" value="0" inputmode="numeric" type="number" />
                 </div>
             </span>
             <input type="submit" value="${Lang.get("section/game/report/submit")}" style="margin: 10px 0 0 15px;"/>
