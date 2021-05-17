@@ -220,6 +220,12 @@ __LANG["de"] = {
                 heading: "Meine Tipps"
             },
         },
+        stats: {
+            tabs: {
+                all: "Alle",
+                groups: "Deine Gruppen"
+            }
+        },
         tipp: {
             team: {
                 name: "Richtiges Team",

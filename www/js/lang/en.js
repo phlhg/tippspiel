@@ -210,6 +210,12 @@ __LANG["en"] = {
                 desc: "You need your access code to sign in again"
             },
         },
+        stats: {
+            tabs: {
+                all: "All",
+                groups: "Your groups"
+            }
+        },
         profile: {
             newgame: {
                 name: "New game",

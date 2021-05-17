@@ -30,4 +30,8 @@ export default class User extends Element {
         this.groups = Array.from(data.groups ?? this.groups).map(id => parseInt(id))
     }
 
+    isInGroup(){
+        return App.client.groupsActive.filter(g =>  this.groups.indexOf(g) > -1).length > 0;
+    }
+
 }

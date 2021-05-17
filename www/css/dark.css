@@ -36,6 +36,8 @@ input.inline { background: rgba(255,255,255,0.04); }
 .tipp-date-input > select,
 .tipp-profile-header { background: #111; border-color: #1c1c1c; } 
 
+.rank-tile.self { background: #1c1c1c; border-color: #141414;}
+
 .game-timeline > span,
 .group-tile > label { background: rgba(255,255,255,0.02); }
 

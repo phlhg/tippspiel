@@ -24,6 +24,7 @@ export default class USerTile extends Component {
     }
 
     async update(){
+        if(this.obj.id == App.client.id){ this.view.root.classList.add("self") }
         this.view.name.innerText = this.obj.name;
         this.view.points.innerText = `+${this.obj.points}`
     }

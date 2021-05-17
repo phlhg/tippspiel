@@ -160,6 +160,8 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .rank-tile > .rank { position: absolute; display: block; top: 12px; right: calc(100% - 45px); min-width: 30px; max-width: 40px; padding: 0 5px; height: 30px; overflow: hidden; text-overflow: clip; text-align: center; background: rgba(0,0,0,0.15); line-height: 30px; font-size: 14px; border-radius: 15px; font-weight: bold; }
 .rank-tile > .rank:empty { display: none; }
 
+.rank-tile.self { background: #f4f4f4; border-color: #f0f0f0;}
+
 .rank-list.rank .rank-tile[data-rank="1"] > .rank { background: radial-gradient(circle at 25% 25%, #f8eba0, #8d702c); color: #8d702c; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
 .rank-list.rank .rank-tile[data-rank="2"] > .rank { background: radial-gradient(circle at 25% 25%, #e0e0e0, #505050); ; color: #505050; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
 .rank-list.rank .rank-tile[data-rank="3"] > .rank { background: radial-gradient(circle at 25% 25%, #e4b98d, #53300c); color: #53300c; text-shadow: 0 0 5px rgba(0,0,0,0.15); }
