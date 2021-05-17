@@ -34,7 +34,7 @@ export default class Profile extends View {
     setClient(client){
         this.header.name.innerText = client.name;
         this.header.short.innerText = client.name.split(/\s/ig).slice(0,2).map(s => s.charAt(0)).join("") + ".";
-        this.header.points.innerText = `${client.points}+`
+        this.header.points.innerText = `+${client.points}`
         this.createGame.style.display = client.permission.gameAnnounce ? "block" : "none";
     }
 
