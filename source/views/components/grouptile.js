@@ -16,12 +16,10 @@ export default class GroupTile extends Component {
         this.view.root.classList.add("group-tile")
         this.view.root.classList.add("loading")
 
-        this.view.root.innerHTML = 
-        `<a>
-            <span class="icon"><span class="material-icons">groups</span></span>
-            <span class="name"></span>
-            <span class="meta"></span>
-        </a>
+        this.view.root.innerHTML = `<a href=""></a>
+        <span class="icon"><span class="material-icons">groups</span></span>
+        <span class="name"></span>
+        <span class="meta"></span>
         <label>
             <input type="checkbox" />
             <span class="indicator">
