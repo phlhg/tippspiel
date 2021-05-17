@@ -10,13 +10,18 @@ export default class TippIndexView extends View {
     init(){
         this.root.innerHTML = `
             <div class="tipp-radio-select">
-                    <input type="radio" id="statsview_all" name="statsviewtype" required checked="" />
-                    <label for="statsview_all">${Lang.get("section/stats/tabs/all")}</label>
-                    <input type="radio" id="statsview_groups" name="statsviewtype" />
-                    <label for="statsview_groups">${Lang.get("section/stats/tabs/groups")}</label>
-                </div>
+                <input type="radio" id="statsview_all" name="statsviewtype" required checked="" />
+                <label for="statsview_all">${Lang.get("section/stats/tabs/all")}</label>
+                <input type="radio" id="statsview_groups" name="statsviewtype" />
+                <label for="statsview_groups">${Lang.get("section/stats/tabs/groups")}</label>
+            </div>
             <div class="rank-list rank rank_all"></div>
-            <div class="rank-list rank rank_group" style="display: none" ></div>`
+            <div class="rank-list rank rank_group" style="display: none" ></div>
+            <a href="/groups/" class="tipp-box nogroups" style="display: none; border-color: #009ffa; background: #00a2ff; color: #fff;">
+                <span class="icon"><span class="material-icons">info</span></span>
+                <span class="title">${Lang.get("section/stats/nogroups/title")}</span>
+                <span class="meta">${Lang.get("section/stats/nogroups/meta")}</span>
+            </a>`
 
 
         this.radio = {}
@@ -26,14 +31,18 @@ export default class TippIndexView extends View {
         this.list_all = this.root.querySelector(".rank_all");
         this.list_group = this.root.querySelector(".rank_group");
 
+        this.emptyListInfo = this.root.querySelector(".tipp-box");
+
         [this.radio.all, this.radio.group].forEach(i => {
             i.onchange = e => {
                 if(this.radio.all.checked){
                     this.list_all.style.display = "block";
                     this.list_group.style.display = "none";
+                    this.emptyListInfo.style.display = "none";
                 } else {
                     this.list_all.style.display = "none";
                     this.list_group.style.display = "block";
+                    this.emptyListInfo.style.display = this.list_group.innerHTML.trim() == "" ? "block" : "none";
                 }
             }
         })
@@ -56,6 +65,7 @@ export default class TippIndexView extends View {
         this.radio.all.checked = true;
         this.list_all.style.display = "block";
         this.list_group.style.display = "none";
+        this.emptyListInfo.style.display = "none";
         this.list_all.innerHTML = ``
         this.list_group.innerHTML = ``
     }

@@ -224,6 +224,10 @@ __LANG["de"] = {
             tabs: {
                 all: "Alle",
                 groups: "Deine Gruppen"
+            },
+            nogroups: {
+                title: "Keine Gruppen ausgewählt",
+                meta: "Wähle zuerst deine Gruppen aus"
             }
         },
         tipp: {

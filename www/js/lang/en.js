@@ -214,6 +214,10 @@ __LANG["en"] = {
             tabs: {
                 all: "All",
                 groups: "Your groups"
+            },
+            nogroups: {
+                title: "No groups selected",
+                meta: "Select your groups first"
             }
         },
         profile: {
