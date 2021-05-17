@@ -54,6 +54,7 @@ export default class TippIndexView extends View {
 
     clear(){
         this.radio.all.checked = true;
+        this.list_all.style.display = "block";
         this.list_group.style.display = "none";
         this.list_all.innerHTML = ``
         this.list_group.innerHTML = ``
