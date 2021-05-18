@@ -98,14 +98,17 @@ export default class Client {
         this.active = true;
         this.token = token;
 
-        this.groupsActive = JSON.parse(localStorage.getItem("tipp-active-groups") ?? "[]");
-
         var r2 = await this.getMe();
         if(!r2.success){ 
             this.active = false;
             this.token = "";
             return r2; 
         }
+
+
+        if(localStorage.getItem("tipp-active-groups") === null){ localStorage.setItem("tipp-active-groups", JSON.stringify(this.groups)) }
+        this.groupsActive = JSON.parse(localStorage.getItem("tipp-active-groups")).filter(g => this.groups.includes(g));
+
 
         localStorage.setItem("tipp-dev-iskown","true")
         localStorage.setItem("tipp-dev-token",this.token)

@@ -17,7 +17,9 @@ export default class Groups extends Manager {
     async create(name){
         var r = new Request("group_create",{ name: name })
         if(!(await r.run())){ return r; }
-        App.client.groups.push(parseInt(r.data.id))
+        var id = parseInt(r.data.id)
+        App.client.groups.push(id)
+        App.client.addGroup(id)
         return r;
     }
 
@@ -33,6 +35,7 @@ export default class Groups extends Manager {
         if(!(await r.run())){ return r; }
         var id = parseInt(r.data.id)
         if(!App.client.groups.includes(id)){ App.client.groups.push(id) }
+        App.client.addGroup(id)
         await App.model.groups.update([id]);
         return r;
     }
