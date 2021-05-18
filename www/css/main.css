@@ -333,6 +333,27 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .tflag[data-t='tur'] { background-image: url(/img/flag/tur.png); }
 .tflag[data-t='ukr'] { background-image: url(/img/flag/ukr.png); }
 .tflag[data-t='wal'] { background-image: url(/img/flag/wal.png); }
+.tflag[data-t='aze'] { background-image: url(/img/flag/aze.png); }
+.tflag[data-t='smr'] { background-image: url(/img/flag/smr.png); }
+.tflag[data-t='svn'] { background-image: url(/img/flag/svn.png); }
+.tflag[data-t='usa'] { background-image: url(/img/flag/usa.png); }
+.tflag[data-t='nir'] { background-image: url(/img/flag/nir.png); }
+.tflag[data-t='arm'] { background-image: url(/img/flag/arm.png); }
+.tflag[data-t='bul'] { background-image: url(/img/flag/bul.png); }
+.tflag[data-t='lie'] { background-image: url(/img/flag/lie.png); }
+.tflag[data-t='mda'] { background-image: url(/img/flag/mda.png); }
+.tflag[data-t='gre'] { background-image: url(/img/flag/gre.png); }
+.tflag[data-t='est'] { background-image: url(/img/flag/est.png); }
+.tflag[data-t='cyp'] { background-image: url(/img/flag/cyp.png); }
+.tflag[data-t='alb'] { background-image: url(/img/flag/alb.png); }
+.tflag[data-t='rou'] { background-image: url(/img/flag/rou.png); }
+.tflag[data-t='bih'] { background-image: url(/img/flag/bih.png); }
+.tflag[data-t='lux'] { background-image: url(/img/flag/lux.png); }
+.tflag[data-t='geo'] { background-image: url(/img/flag/geo.png); }
+.tflag[data-t='lva'] { background-image: url(/img/flag/lva.png); }
+.tflag[data-t='isl'] { background-image: url(/img/flag/isl.png); }
+.tflag[data-t='irl'] { background-image: url(/img/flag/irl.png); }
+.tflag[data-t='isr'] { background-image: url(/img/flag/isr.png); }
 
 @keyframes star {
     0% { transform: rotateY(0deg); }
