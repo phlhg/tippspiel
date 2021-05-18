@@ -44,7 +44,7 @@ export default class Event extends Element {
      */
     set(data){
         this.name = data.name ?? this.name
-        this.short = data.hasOwnProperty("name") ? data.name.toLowerCase().replace(" ","-").replace(/[^a-z0-9-_]/g,'') : this.short;
+        this.short = data.hasOwnProperty("name") ? data.name.toLowerCase().replace(/ /ig,"-").replace(/[^a-z0-9-_]/ig,'') : this.short;
         this.description = data.description ?? this.description
         this.deadline = data.hasOwnProperty("deadline") ? new Date(parseInt(data.deadline)*1000) : this.deadline
         this.status = parseInt(data.status ?? this.status)
