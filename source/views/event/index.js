@@ -15,14 +15,14 @@ export default class EventIndexView extends View {
             <span class="title">Event-Name</span>
             <span class="meta">0 Tipps</span>
         </div>
-        <a class="tipp-tile fullwidth myTipp">
+        <a class="tipp-tile fullwidth myTipp" style="opacity: 0.75">
             <span class="tflag" data-t=""></span>
             <span class="name">${Lang.get("section/event/tipp/your")}</span>
             <span class="meta">${Lang.get("general/loading")}</span>
             <span class="reward"></span>
         </a>
         <h3>${Lang.get("section/event/games/heading")}</h3>
-        <a class="tipp-box createGame" href="/game/create/" target="_blank" style="display: none">
+        <a class="tipp-box createGame" href="" target="_blank" style="display: none">
             <span class="icon"><span class="material-icons">add_circle_outline</span></span>
             <span class="title">${Lang.get("section/event/addgame/name")}</span>
             <span class="meta">${Lang.get("section/event/addgame/desc")}</span>
@@ -57,6 +57,8 @@ export default class EventIndexView extends View {
 
         this.header.name.innerText = this.event.name;
         this.header.meta.innerText = this.event.tipps.length == 1 ? Lang.get("section/event/tipp/single") : Lang.get("section/event/tipp/multi",{n: this.event.tipps.length})
+
+        this.createGame.setAttribute("href","/event/"+this.event.id+"/add/");
 
         var deadline = Lang.get("date/general",{
             day: ("0"+this.event.deadline.getDate()).slice(-2),

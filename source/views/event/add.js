@@ -3,8 +3,9 @@ import Form from '../helpers/form'
 import SearchSelect from '../helpers/searchselect'
 import SearchInput from '../helpers/searchinput'
 import DateInput from '../helpers/dateinput'
+import EventTile from '../components/eventtile'
 
-export default class GameCreate extends View {
+export default class EventGameAddView extends View {
 
     constructor(...args){
         super(...args)
@@ -13,6 +14,11 @@ export default class GameCreate extends View {
 
     init(){
         this.root.innerHTML = `
+            <a class="event-tile">
+                <span class="icon"><span class="material-icons">emoji_events</span></span>
+                <span class="name"></span>
+                <span class="meta">${Lang.get("section/event/addgame/name")}</span>
+            </a>
             <form class="tipp-form" style="margin-bottom: 200px">
                 <h4>${Lang.get("section/game/create/team1/name")}</h4>
                 <div class="tipp-team1-select"></div>
@@ -30,6 +36,8 @@ export default class GameCreate extends View {
         this.team2 = new SearchSelect("team2",Lang.get("section/game/create/team2/placeholder"));
         this.location = new SearchInput("location",Lang.get("section/game/create/location/placeholder"), "/img/graphics/location.png");
         this.kickoff = new DateInput();
+
+        this.header = this.root.querySelector(".event-tile")
 
         this.teams = [];
         this.locations = [];
@@ -87,6 +95,11 @@ export default class GameCreate extends View {
             name: l, 
             normalized: Lang.normalize(l)
         }});
+    }
+
+    setEvent(e){
+        this.header.setAttribute("href",e.url);
+        this.header.querySelector(".name").innerText = e.name;
     }
 
     clear(){

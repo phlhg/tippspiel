@@ -21,4 +21,21 @@ export default class Events extends Manager {
         }))
     }
 
+    async addGame(event, team1, team2, time, location){
+        var r = new Request("createGame", {
+            location: location,
+            time: time,
+            name: "",
+            stream: "",
+            event: event,
+            team1: team1,
+            team2: team2,
+        })
+        if(!(await r.run())){ return r; }
+        var id = parseInt(r.data.id);
+        var e = await App.model.events.get(1);
+        if(!e.games.includes(id)){ e.games.push(id) }
+        return r.return(id)
+    }
+
 }

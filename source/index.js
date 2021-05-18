@@ -9,7 +9,6 @@ import Home from './controllers/home'
 
 import Game from './controllers/game/index'
 import GameTipp from './controllers/game/tipp'
-import GameCreate from './controllers/game/create'
 import GameReport from './controllers/game/report'
 
 import Profile from './controllers/profile'
@@ -22,6 +21,7 @@ import TippIndex from './controllers/tipp'
 import StatsIndex from './controllers/stats'
 import GroupsIndex from './controllers/groups/index'
 import EventIndex from './controllers/event'
+import EventGameAdd from './controllers/event/add'
 import Recover from './controllers/recover'
 import GroupDetail from './controllers/groups/detail'
 import GroupAdvanced from './controllers/groups/advanced'
@@ -56,11 +56,11 @@ window.addEventListener("DOMContentLoaded", function(){
 
     App.router.add("/",new Home)
 
-    App.router.add("/game/create/",new GameCreate)
     App.router.add("/game/{id}/tipp/",new GameTipp).where({ id: 'NUMBER' })
     App.router.add("/game/{id}/report/",new GameReport).where({ id: 'NUMBER' })
     App.router.add("/game/{id}/{t1}-{t2}/",new Game).where({ id: 'NUMBER', t1: 'TEXT',t2: 'TEXT' })
 
+    App.router.add("/event/{id}/add/",new EventGameAdd)
     App.router.add("/event/{id}/{name}/",new EventIndex).where({ id: 'NUMBER', name: 'TEXT' })
 
     App.router.add("/tipp/{id}/",new TippIndex).where({id: 'NUMBER'})

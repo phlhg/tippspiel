@@ -64,4 +64,8 @@ export default class Event extends Element {
         return App.model.games.getAll(this.games);
     }
 
+    addGame(team1, team2, time, location){
+        return App.model.events.addGame(this.id, team1, team2, time, location);
+    }
+
 }
