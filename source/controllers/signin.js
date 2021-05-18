@@ -24,7 +24,7 @@ export default class SignIn extends Controller {
             return false;
         } else {
             TippNotification.create("You're now logged in", 3000, "login").show();
-            App.router.load(window.location.pathname);
+            App.router.load(window.location.pathname.indexOf("/signin/") < 0 ? window.location.pathname : "/");
             return true;
         }
     }

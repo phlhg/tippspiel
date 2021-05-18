@@ -85,6 +85,14 @@ export default class Client {
      */
     async singIn(token){
         var r = new Request("signin", { token: token, retry: false });
+        
+        // Signout client if active
+        if(this.active){ 
+            window.history.replaceState({}, '', "/signin/"+encodeURIComponent(token)+"/");
+            this.signout();
+            return r.error(""); 
+        }
+
         if(!(await r.run())){ return r; }
 
         this.active = true;
@@ -163,7 +171,7 @@ export default class Client {
         localStorage.setItem("tipp-dev-iskown","true")
         localStorage.removeItem("tipp-dev-token")
         document.body.classList.add("loading"); 
-        setTimeout(() => { window.location = "/" },500);
+        setTimeout(() => { window.location.reload() },500);
     }
 
     isGroupActive(id){
