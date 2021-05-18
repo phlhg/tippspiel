@@ -17,7 +17,7 @@ section form input { background: #111; border-color: #1c1c1c; color: #fff; }
 section form + .meta { color: rgba(255,255,255,0.75); }
 section form .additional { color: rgba(255,255,255,0.75); }
 
-section form .loader:after { border-color: #fff; }
+section form .loader:after { border-color: #fff;  border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent;   }
 section form .loader:before { border-color: #fff; }
 
 input.inline { background: rgba(255,255,255,0.04); }
