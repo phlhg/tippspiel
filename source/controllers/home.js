@@ -15,6 +15,7 @@ export default class Home extends Controller {
         if(App.socket.state != SocketState.OPEN){ return App.router.overwrite("/noconnection/"); }
         
         this.view.addEvent(App.model.events.get(1))
+        this.view.addEvent(App.model.events.get(2))
 
         App.model.games.getHot().then(data => {
           data.upcoming.forEach(game => { this.view.addUpcoming(game) })

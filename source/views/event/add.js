@@ -90,16 +90,16 @@ export default class EventGameAddView extends View {
     }
 
     async show(){
-        this.teams = await Promise.all(App.model.teams.getAll([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]));
         this.locations = (await App.model.games.getSuggestedLocations()).map(l => { return {
             name: l, 
             normalized: Lang.normalize(l)
         }});
     }
 
-    setEvent(e){
+    async setEvent(e){
         this.header.setAttribute("href",e.url);
         this.header.querySelector(".name").innerText = e.name;
+        this.teams = await Promise.all(e.getTeams());
     }
 
     clear(){

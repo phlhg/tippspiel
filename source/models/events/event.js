@@ -27,6 +27,9 @@ export default class Event extends Element {
         /** @property {number[]} tipps EventTipps of the event */
         this.tipps = [];
 
+        /** @property {number[]} teams Teams taking part in the event */
+        this.teams = []
+
         /** @property {number} winner Team, which won the event */
         this.winner = 0;
 
@@ -50,6 +53,7 @@ export default class Event extends Element {
         this.status = parseInt(data.status ?? this.status)
         this.games = Array.from(data.games ?? this.games).map(i => parseInt(i))
         this.tipps = Array.from(data.tipps ?? this.tipps).map(i => parseInt(i))
+        this.teams = Array.from(data.teams ?? this.teams).map(i => parseInt(i))
         this.winner = parseInt(data.winner ?? this.winner)
         this.topscorer = parseInt(data.topscorer ?? this.topscorer)
 
@@ -62,6 +66,10 @@ export default class Event extends Element {
 
     getGames(){
         return App.model.games.getAll(this.games);
+    }
+
+    getTeams(){
+        return App.model.teams.getAll(this.teams);
     }
 
     addGame(team1, team2, time, location){

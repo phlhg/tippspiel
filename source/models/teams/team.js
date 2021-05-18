@@ -27,9 +27,15 @@ export default class Team extends Element {
      */
     set(data){
         this.short = data.short ?? this.short
-        this.name = data.hasOwnProperty("short") ? Lang.get("teams/"+data.short.toLowerCase()) : this.name
+        this.name = this._getName(data);
         this.games = Array.from(data.games ?? this.games).map(i => parseInt(i))
         this.players = Array.from(data.players ?? this.players).map(i => parseInt(i))
+    }
+
+    _getName(data){
+        var teams = Lang.getRaw("teams")
+        if(data.hasOwnProperty("short") && teams.hasOwnProperty(data.short.toLowerCase())){ return teams[data.short.toLowerCase()]; }
+        return data.name ?? "unknown";
     }
 
 }
