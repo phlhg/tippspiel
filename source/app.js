@@ -71,6 +71,10 @@ export default class Application {
             Debugger.log(this, "Disconnected from server") 
         }
 
+        window.onbeforeunload = () => {
+            this.socket.onDisconnect = () => {}
+        }
+
         document.querySelector("header .heading strong").innerText = Lang.get("name");
 
         this.setEvents(document.body);
