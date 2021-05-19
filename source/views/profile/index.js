@@ -26,13 +26,21 @@ export default class Profile extends View {
 
     setClient(client){
         this.header.name.innerText = client.name;
-        this.header.short.innerText = client.name.split(/\s/ig).slice(0,2).map(s => s.charAt(0)).join("") + ".";
+        this.header.short.innerText = this.shortName(client.name);
         this.header.points.innerText = `+${client.points}`
     }
 
-    setGames(list){
-        list.forEach(data => {
-            let g = new GameTile(data);
+    shortName(name){
+        var s = name.split(/\s/ig);
+        if(s >= 2){ return s.map(s => s.charAt(0)).join("") + "."; }
+        return name.replace(/\s/ig,'').slice(0,2).toUpperCase()+".";
+    }
+
+    async setGames(list){
+        var games = (await Promise.all(list)).filter(g => g !== null)
+        games.sort((a,b) => a.start - b.start);
+        games.forEach(data => {
+            let g = new GameTile(new Promise(r => { r(data) }));
             this.gamelist.appendChild(g.getHtml())
         });
     }
