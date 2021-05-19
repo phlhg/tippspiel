@@ -28,6 +28,8 @@ import GroupAdvanced from './controllers/groups/advanced'
 import GroupJoin from './controllers/groups/join'
 import GroupCreate from './controllers/groups/create'
 
+import PWASetup from './controllers/pwa'
+
 Debugger.active = true;
 
 window.onerror = function(msg, src, line, col, error){
@@ -80,6 +82,8 @@ window.addEventListener("DOMContentLoaded", function(){
     App.router.add("/recover/",new Recover)
 
     App.router.add("/settings/", new Settings)
+
+    App.router.add("/pwa/",new PWASetup)
 
     App.run()
 

@@ -35,8 +35,6 @@ export default class Application {
         if(localStorage.getItem("tipp-theme-dark") === null){ localStorage.setItem("tipp-theme-dark", window.matchMedia("(prefers-color-scheme: dark)").matches ? "1" : "0") }
         if(localStorage.getItem("tipp-theme-dark") == "0"){ this.disabledDarkTheme(); }
 
-        if(window.location.href.indexOf('?pwa') > -1){ window.location.hash = ""; localStorage.setItem("tipp-is-pwa", "true"); }
-
         this.setGlobalEvents()
     }
 
@@ -130,7 +128,8 @@ export default class Application {
 
         var safari = ['iPad', 'iPhone', 'iPod'].includes(navigator.platform) || (navigator.userAgent.includes("Mac") && "ontouchend" in document);
         var android = /android/i.test(navigator.userAgent) && /mobile/i.test(navigator.userAgent)
-        var standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone || localStorage.getItem("tipp-is-pwa") == "true"
+        var firefox = /firefox/i.test(navigator.userAgent) && android
+        var standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone || (firefox && window.screenTop < 50) || localStorage.getItem("tipp-is-pwa") == "true"
 
         if(!standalone && (safari || android)){
             TippNotification.create(
