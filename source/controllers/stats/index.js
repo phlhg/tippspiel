@@ -28,21 +28,21 @@ export default class StatsIndex extends Controller {
         users.filter(u => u !== null).forEach(u => {
 
             var v1 = this.view.addUserAll(new Promise(resolve => { resolve(u) }))
-            v1.setRank(counter_all);
             if(prev_all == -1){ prev_all = u.points }
             if(prev_all > u.points){ 
                 prev_all = u.points
                 counter_all++;
             }
+            v1.setRank(counter_all);
 
             if(u.isInGroup()){
                 var v2 = this.view.addUserGroup(new Promise(resolve => { resolve(u) }))
-                v2.setRank(counter_group);
                 if(prev_group == -1){ prev_group = u.points }
                 if(prev_group > u.points){ 
                     prev_group = u.points
                     counter_group++;
                 }
+                v2.setRank(counter_group);
             }
         })
 
