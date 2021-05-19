@@ -94,6 +94,10 @@ __LANG["en"] = {
     general: {
         loading: "Loading..."
     },
+    notifications: {
+        postSignIn: "Your signed in now",
+        postSignUp: "Your account was created - Check your inbox for an email from us."
+    },
     section: {
         home: {
             pastgames: "Finished"

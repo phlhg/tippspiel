@@ -50,20 +50,23 @@ class TippNotification {
 
 TippNotification.queue = [];
 
-TippNotification.info = function(text){
-    var n = new TippNotification(text, 3000, "info", "info");
+TippNotification.info = function(text, duration){
+    duration = duration ?? 3000
+    var n = new TippNotification(text, duration, "info", "info");
     n.show();
     return n;
 }
 
-TippNotification.error = function(text){
-    var n = new TippNotification(text, 3000, "warning", "error");
+TippNotification.error = function(text, duration){
+    duration = duration ?? 3000
+    var n = new TippNotification(text, duration, "warning", "error");
     n.show();
     return n;
 }
 
-TippNotification.success = function(text){
-    var n = new TippNotification(text, 3000, "done", "success");
+TippNotification.success = function(text, duration){
+    duration = duration ?? 3000
+    var n = new TippNotification(text, duration, "done", "success");
     n.show();
     return n;
 }

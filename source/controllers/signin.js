@@ -23,7 +23,7 @@ export default class SignIn extends Controller {
             this.view.form.error(r.message);
             return false;
         } else {
-            TippNotification.create("You're now logged in", 3000, "login").show();
+            TippNotification.create(Lang.get("notifications/postSignIn"), 3000, "login", "success").show();
             App.router.load(window.location.pathname.indexOf("/signin/") < 0 ? window.location.pathname : "/");
             return true;
         }

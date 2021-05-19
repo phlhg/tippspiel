@@ -95,6 +95,10 @@ __LANG["de"] = {
     general: {
         loading: "Laden..."
     },
+    notifications: {
+        postSignIn: "Du bist jetzt angemeldet",
+        postSignUp: "Dein Account wurde erstellt - Schaue in deiner Mailbox nach einer E-Mail von uns."
+    },
     section: {
         home: {
             pastgames: "Beendet"
