@@ -24,7 +24,8 @@ export default class GroupCreate extends Controller {
     }
 
     async load(){
-        if(!App.client.active){ return App.client.prompt() };
+        if(!App.promptConnection()){ return false; }
+        if(!App.client.promptLogin()){ return false; }
     }
 
     unload(){

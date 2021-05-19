@@ -12,7 +12,9 @@ export default class Profile extends Controller {
     }
 
     async load(){
-        if(!App.client.active){ return App.client.prompt() };
+        if(!App.promptConnection()){ return false; }
+        if(!App.client.promptLogin()){ return false; }
+        
         this.view.setClient(App.client);
         
         var tipps = await Promise.all(App.model.gameTipps.getAll(App.client.gameTipps));

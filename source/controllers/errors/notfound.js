@@ -9,10 +9,7 @@ export default class NotFound extends Controller {
 
     init(){
         this.setView(NotFoundView);
-        this.view.button.onclick = e => {
-            e.preventDefault();
-            App.router.load("/");
-        }
+        this.view.on("click",() => { App.router.load("/"); })
     }
 
 

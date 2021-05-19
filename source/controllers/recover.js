@@ -23,4 +23,8 @@ export default class Recover extends Controller {
         
     }
 
+    load(){
+        if(!App.promptConnection()){ return false; }
+    }
+
 }

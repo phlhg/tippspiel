@@ -33,7 +33,7 @@ export default class Events extends Manager {
         })
         if(!(await r.run())){ return r; }
         var id = parseInt(r.data.id);
-        var e = await App.model.events.get(1);
+        var e = await App.model.events.get(event);
         if(!e.games.includes(id)){ e.games.push(id) }
         return r.return(id)
     }

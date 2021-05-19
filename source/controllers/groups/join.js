@@ -13,7 +13,8 @@ export default class GroupJoin extends Controller {
     }
 
     async load(){
-        if(!App.client.active){ return App.client.prompt() };
+        if(!App.promptConnection()){ return false; }
+        if(!App.client.promptLogin()){ return false; }
         
         var token = this.params.id + "-" + this.params.token;
         var g = await App.model.groups.get(this.params.id);

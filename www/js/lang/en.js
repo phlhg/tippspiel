@@ -106,7 +106,8 @@ __LANG["en"] = {
             },
             noconnection: {
                 title: "Whoops...",
-                desc: "There is currently no connection to the server"
+                desc: "There is currently no connection to the server",
+                btn: "Try again"
             }
         },
         game: {

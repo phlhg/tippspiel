@@ -116,6 +116,16 @@ export default class Application {
 
     }
 
+    hasConnection(){
+        return App.socket.state == SocketState.OPEN
+    }
+
+    promptConnection(){
+        if(this.hasConnection()){ return true; }
+        App.router.overwrite("/noconnection/");
+        return false;
+    }
+
     pwaInfo(){
 
         var safari = ['iPad', 'iPhone', 'iPod'].includes(navigator.platform) || (navigator.userAgent.includes("Mac") && "ontouchend" in document);

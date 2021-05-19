@@ -12,6 +12,7 @@ export default class EventIndex extends Controller {
     }
 
     async load(){
+        if(!App.promptConnection()){ return false; }
         var e = await App.model.events.get(this.params.id);
         this.view.setEvent(e);
     }

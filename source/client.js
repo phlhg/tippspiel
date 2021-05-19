@@ -68,7 +68,8 @@ export default class Client {
     /**
      * Shows the sign-in, if the user is known, otherwise the sign-up
      */
-    prompt(){
+    promptLogin(){
+        if(this.active){ return true; }
         if(this.isknown){
             App.router.overwrite("/signin/")
         } else {

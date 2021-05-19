@@ -12,7 +12,9 @@ export default class StatsIndex extends Controller {
     }
 
     async load(){
-        if(!App.client.active){ return App.client.prompt() };
+        if(!App.promptConnection()){ return false; }
+        if(!App.client.promptLogin()){ return false; }
+        
         var r = await App.model.events.getRanking(1);
         if(!r.success) return
 

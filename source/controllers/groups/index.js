@@ -12,7 +12,8 @@ export default class GroupsIndex extends Controller {
     }
 
     async load(){
-        if(!App.client.active){ return App.client.prompt() };
+        if(!App.promptConnection()){ return false; }
+        if(!App.client.promptLogin()){ return false; }
 
         var data = await App.model.groups.getClientGroups();
         data.forEach(group => { this.view.addGroup(group) })

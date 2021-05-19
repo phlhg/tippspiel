@@ -12,7 +12,7 @@ export default class Home extends Controller {
     }
 
     load(){
-        if(App.socket.state != SocketState.OPEN){ return App.router.overwrite("/noconnection/"); }
+        if(!App.promptConnection()){ return false; }
         
         this.view.addEvent(App.model.events.get(1))
         this.view.addEvent(App.model.events.get(2))

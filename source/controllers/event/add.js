@@ -12,7 +12,8 @@ export default class EventGameAdd extends Controller {
     }
 
     async load(){
-        if(!App.client.active){ return App.client.prompt() };
+        if(!App.promptConnection()){ return false; }
+        if(!App.client.promptLogin()){ return false; }
 
         if(!App.client.permission.gameAnnounce){  return App.router.forward(`/`); }
 

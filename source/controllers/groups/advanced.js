@@ -13,7 +13,8 @@ export default class GroupAdvanced extends Controller {
     }
 
     async load(){
-        if(!App.client.active){ return App.client.prompt() };
+        if(!App.promptConnection()){ return false; }
+        if(!App.client.promptLogin()){ return false; }
         if(!App.client.groups.includes(parseInt(this.params.id))){ App.router.forward("/groups/"); return false; }
 
         var g = await App.model.groups.get(this.params.id);

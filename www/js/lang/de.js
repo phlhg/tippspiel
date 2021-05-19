@@ -107,7 +107,8 @@ __LANG["de"] = {
             },
             noconnection: {
                 title: "Hoppla...",
-                desc: "Es besteht zurzeit keine Verbindung mit dem Server"
+                desc: "Es besteht zurzeit keine Verbindung mit dem Server",
+                btn: "Erneut versuchen"
             }
         },
         game: {

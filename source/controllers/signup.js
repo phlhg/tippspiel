@@ -21,4 +21,8 @@ export default class SignUp extends Controller {
         })
     }
 
+    load(){
+        if(!App.promptConnection()){ return false; }
+    }
+
 }

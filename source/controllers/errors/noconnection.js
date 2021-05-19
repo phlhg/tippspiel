@@ -9,6 +9,7 @@ export default class NoConnection extends Controller {
 
     init(){
         this.setView(NoConnections);
+        this.view.on("click", () => { App.router.load(location.pathname); })
     }
 
 
