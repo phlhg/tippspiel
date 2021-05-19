@@ -3,13 +3,8 @@ import Component from './component'
 export default class GroupTile extends Component {
     
     constructor(promise){
-        super("group","div");
+        super("group","div", promise);
         this.init();
-        promise.then(event => {
-            this.set(event)
-        },e => {
-            this.remove();
-        })
     }
 
     init(){

@@ -17,6 +17,7 @@ export default class GroupDetail extends Controller {
         if(!App.client.groups.includes(parseInt(this.params.id))){ App.router.forward("/groups/"); return false; }
         
         var e = await App.model.groups.get(this.params.id);
+        if(e === null){ return App.router.showError(); }
         this.view.setGroup(e);
     }
 

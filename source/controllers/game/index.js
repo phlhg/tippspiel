@@ -15,6 +15,7 @@ export default class GameIndex extends Controller {
     async load(){
         if(!App.promptConnection()){ return false; }
         var g = await App.model.games.get(this.params.id);
+        if(g === null){ return App.router.showError(); }
         this.view.setGame(g);
     }
 

@@ -18,6 +18,7 @@ export default class GroupJoin extends Controller {
         
         var token = this.params.id + "-" + this.params.token;
         var g = await App.model.groups.get(this.params.id);
+        if(g === null){ return App.router.showError(); }
 
         if(App.client.groups.includes(parseInt(this.params.id))){ 
             TippNotification.info(Lang.get("section/groups/messages/alreadymember"));

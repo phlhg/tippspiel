@@ -18,6 +18,7 @@ export default class GroupAdvanced extends Controller {
         if(!App.client.groups.includes(parseInt(this.params.id))){ App.router.forward("/groups/"); return false; }
 
         var g = await App.model.groups.get(this.params.id);
+        if(g === null){ return App.router.showError(); }
         this.view.setGroup(g);
 
         this.view.on("resettoken", async () => {

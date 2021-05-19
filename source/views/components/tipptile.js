@@ -3,13 +3,8 @@ import Component from './component'
 export default class TippTile extends Component {
     
     constructor(promise){
-        super("GameTipp","a");
+        super("GameTipp","a", promise);
         this.init();
-        promise.then(tipp => {
-            this.set(tipp)
-        },e => {
-            this.remove();
-        })
     }
 
     init(){

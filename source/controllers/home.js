@@ -11,7 +11,7 @@ export default class Home extends Controller {
         this.setView(HomeView);
     }
 
-    load(){
+    async load(){
         if(!App.promptConnection()){ return false; }
         
         this.view.addEvent(App.model.events.get(1))

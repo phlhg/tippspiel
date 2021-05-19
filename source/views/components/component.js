@@ -1,11 +1,19 @@
 export default class Component {
 
-    constructor(type, element){
+    constructor(type, element, promise){
         this._type = type;
         this._id = -1;
         this.obj = null;
         this.view = {}
         this.view.root = document.createElement(element);
+
+        promise.then(data => {
+            if(data === null){
+                this.remove()
+            } else {
+                this.set(data)
+            }
+        })
     }
 
     set(obj){

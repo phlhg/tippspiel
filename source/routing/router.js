@@ -20,18 +20,21 @@ export default class Router {
         return this.error;
     }
 
+    showError(){
+        this.routes.forEach(r => r.unload())
+        this.error.unload()
+        this.error.load()
+    }
+
     find(path){
         this.routes.forEach(r => r.unload())
         this.error.unload()
         let route = this.routes.find(r => r.matches(path));
         if(route == undefined){
-            /*Debugger.warn(this,`Did not find "${path}" - Serving error page`)()
-            setTimeout(() => { this.error.load() }, 100);*/
             this.error.load()
         } else {
             Debugger.log(this,`Loading "${path}"`)()
-           // setTimeout(() => { route.take(path) }, 100);
-           route.take(path)
+            route.take(path)
         }
     }
 

@@ -25,7 +25,7 @@ export default class StatsIndex extends Controller {
 
         var users = await Promise.all(App.model.users.getAll(r.data.map(u => u.user)));
 
-        users.forEach(u => {
+        users.filter(u => u !== null).forEach(u => {
 
             var v1 = this.view.addUserAll(new Promise(resolve => { resolve(u) }))
             v1.setRank(counter_all);

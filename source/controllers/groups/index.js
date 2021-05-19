@@ -16,7 +16,7 @@ export default class GroupsIndex extends Controller {
         if(!App.client.promptLogin()){ return false; }
 
         var data = await App.model.groups.getClientGroups();
-        data.forEach(group => { this.view.addGroup(group) })
+        data.forEach(group => { if(group !== null){ this.view.addGroup(group) }})
         if(data.length < 1){ this.view.noGroupsFound(); }
 
     }

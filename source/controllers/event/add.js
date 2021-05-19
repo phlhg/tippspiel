@@ -17,14 +17,8 @@ export default class EventGameAdd extends Controller {
 
         if(!App.client.permission.gameAnnounce){  return App.router.forward(`/`); }
 
-        try{
-            var event = await App.model.events.get(this.params.id);
-        } catch {
-            return App.router.forward(`/`);
-        }
-
-        // TODO: Check if event exists
-
+        var event = await App.model.events.get(this.params.id);
+        if(event === null){ return App.router.showError(); }
         this.view.setEvent(event);
 
         this.view.on("submit", async data => {

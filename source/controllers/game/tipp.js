@@ -17,6 +17,7 @@ export default class GameTipp extends Controller {
         if(!App.client.promptLogin()){ return false; }
 
         this.game = await App.model.games.get(this.params.id);
+        if(this.game === null){ return App.router.showError(); }
 
         if(this.game.status != GameStatus.UPCOMING){ 
             return App.router.forward(`/`);

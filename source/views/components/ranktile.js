@@ -3,13 +3,8 @@ import Component from './component'
 export default class USerTile extends Component {
     
     constructor(promise){
-        super("user","div");
+        super("user","div", promise);
         this.init();
-        promise.then(tipp => {
-            this.set(tipp)
-        },e => {
-            this.remove();
-        })
     }
 
     init(){

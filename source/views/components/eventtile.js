@@ -3,13 +3,8 @@ import Component from './component'
 export default class EventTile extends Component {
     
     constructor(promise){
-        super("event","a");
+        super("event","a", promise);
         this.init();
-        promise.then(event => {
-            this.set(event)
-        },e => {
-            this.remove();
-        })
     }
 
     init(){

@@ -14,6 +14,7 @@ export default class TippIndex extends Controller {
     async load(){
         if(!App.promptConnection()){ return false; }
         var t = await App.model.gameTipps.get(this.params.id);
+        if(t === null){ return App.router.showError(); }
         this.view.setTipp(t);
     }
 

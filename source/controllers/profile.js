@@ -17,7 +17,7 @@ export default class Profile extends Controller {
         
         this.view.setClient(App.client);
         
-        var tipps = await Promise.all(App.model.gameTipps.getAll(App.client.gameTipps));
+        var tipps = (await Promise.all(App.model.gameTipps.getAll(App.client.gameTipps))).filter(t => t !== null);
         this.view.setGames(App.model.games.getAll(tipps.map(t => t.game)))
     }
 

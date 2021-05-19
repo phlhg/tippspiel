@@ -5,14 +5,8 @@ import Component from './component'
 export default class GameTile extends Component {
     
     constructor(promise){
-        super("game","a");
+        super("game","a", promise);
         this.init();
-        promise.then(game => {
-            this.set(game)
-        },e => {
-            console.log("LOL");
-            this.remove();
-        })
     }
 
     init(){

@@ -144,7 +144,7 @@ export default class Model {
                 if(this.list.hasOwnProperty(id) && this.list[id] != null){
                     resolve(this.list[id]);
                 } else { 
-                    reject()
+                    resolve(null)
                 }
             });
         })
