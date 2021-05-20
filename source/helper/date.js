@@ -50,7 +50,7 @@ TippDate.toString = function(date){
             })
         } else if(delta < 60 * 60 * 24 * 3){
             return Lang.get("date/future_day",{
-                day: Lang.getRaw("date/days")[date.getDay()],
+                d: Lang.getRaw("date/days")[date.getDay()],
                 h: ("0"+date.getHours()).slice(-2), 
                 m: ("0"+date.getMinutes()).slice(-2)
             })
