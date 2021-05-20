@@ -11,6 +11,7 @@ import Players from './models/players/model'
 import Teams from './models/teams/model'
 import Users from './models/users/model'
 import TippNotification from './helper/notification';
+import Device from './device';
 
 export default class Application {
 
@@ -18,6 +19,7 @@ export default class Application {
         this.socket = new H2RFP_Socket('wss://wetterfrosch.internet-box.ch',SERVER_PORT);
         Debugger.log(this, "Connecting to server on port "+SERVER_PORT)()
 
+        this.device = new Device();
         this.client = new Client();
         this.router = new Router();
 
@@ -40,14 +42,15 @@ export default class Application {
 
     async run(){
 
-        setTimeout(() => { this.pwaInfo() },10*1000);
+        if(this.device.supportsPWA()){ setTimeout(() => { this.pwaInfo() },10*1000); }
+
+        this.socket.listen("Ping", (data,respond) => { respond() });
+        this.socket.listen("Update", this.updateModel.bind(this));
 
         this.socket.open().then(() => {
-            this.socket.listen("Ping", (data,respond) => { respond() });
-            this.socket.listen("Update", this.updateModel.bind(this));
             this.client.restoreSession();
         }).catch((e) => {
-            Debugger.warn(this, "Could not connect to server:",e)();
+            this.reconnect(false);
         }).finally(() => {
             setTimeout(() => { 
                 this.router.find(window.location.pathname);
@@ -65,8 +68,8 @@ export default class Application {
         }
 
         this.socket.onDisconnect = () => { 
-            TippNotification.error("Lost connection to the server");
-            Debugger.log(this, "Disconnected from server") 
+            this.reconnect(true);
+            Debugger.log(this, "Disconnected from server")()
         }
 
         window.onbeforeunload = () => {
@@ -99,6 +102,36 @@ export default class Application {
         })
     }
 
+    async reconnect(retry){
+
+        var msg = TippNotification.create(retry ? Lang.get("notifications/reconnecting") : Lang.get("notifications/connecting") ,-1,"wifi_off","error");
+        msg.show();
+        
+        if(retry){
+            await new Promise(r => { setTimeout(r, 100); })
+            Debugger.log(this, "Trying to connect")()
+            try{ await this.socket.open(); } catch(e) {}
+        }
+
+        while(App.socket.state == SocketState.CLOSED){
+            await new Promise(r => { setTimeout(r, 5000); })
+            Debugger.log(this, "Trying to connect")()
+            try{ await this.socket.open(); } catch(e) {}
+        }
+
+        if(!retry){ 
+            await this.client.restoreSession(); 
+        } else {
+            var r = await this.client.restoreConnection(); 
+            if(!r){ Debugger.warn(this, "Should actually reload (upToDate=false)")() }
+        }
+
+        TippNotification.create(retry ? Lang.get("notifications/reconnected") : Lang.get("notifications/connected"), 3000, "wifi", "success").show();
+        App.router.load(location.pathname);
+        msg.hide();
+
+    }
+
     updateModel(data){
 
         this.model.events.update(data.event ?? [])
@@ -126,16 +159,18 @@ export default class Application {
 
     pwaInfo(){
 
-        var safari = ['iPad', 'iPhone', 'iPod'].includes(navigator.platform) || (navigator.userAgent.includes("Mac") && "ontouchend" in document);
-        var android = /android/i.test(navigator.userAgent) && /mobile/i.test(navigator.userAgent)
-        var firefox = /firefox/i.test(navigator.userAgent) && android
-        var standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone || (firefox && window.screenTop < 50) || localStorage.getItem("tipp-is-pwa") == "true"
-
-        if(!standalone && (safari || android)){
+        if(this.device.os.android){
             TippNotification.create(
-                safari ? Lang.get("pwa_info/ios") : Lang.get("pwa_info/android"),
+                Lang.get("pwa_info/android"),
                 15*1000,
-                safari ? "phone_iphone" : "phone_android",
+                "phone_android",
+                "popup"
+            ).show()
+        } else if(this.device.os.ios){
+            TippNotification.create(
+                Lang.get("pwa_info/ios"),
+                15*1000,
+                "phone_iphone",
                 "popup"
             ).show()
         }

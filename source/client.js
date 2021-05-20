@@ -84,11 +84,14 @@ export default class Client {
      * @param {string} token Token of the client
      * @return {object} Response object
      */
-    async singIn(token){
-        var r = new Request("signin", { token: token, retry: false });
-        
+    async singIn(token,retry){
+
+        retry = retry ?? false;
+
+        var r = new Request("signin", { token: token, retry: retry });
+
         // Signout client if active
-        if(this.active){ 
+        if(!retry && this.active){ 
             window.history.replaceState({}, '', "/signin/"+encodeURIComponent(token)+"/");
             this.signout();
             return r.error(""); 
@@ -115,6 +118,13 @@ export default class Client {
         localStorage.setItem("tipp-dev-token",this.token)
 
         return r;
+    }
+
+    async restoreConnection(){
+        if(!this.active){ return true; }
+        var r = await this.singIn(localStorage.getItem("tipp-dev-token"),true);
+        if(r.success){ return false; }
+        return r.data.upToDate == "true";
     }
 
     /**

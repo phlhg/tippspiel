@@ -28,9 +28,11 @@ class TippNotification {
 
     _show(){
         this.dom.root.classList.add("active");
-        this.timeout = setTimeout(() => {
-            this.hide();
-        }, this.duration);
+        if(this.duration > -1){
+            this.timeout = setTimeout(() => {
+                this.hide();
+            }, this.duration);
+        }
     }
 
     hide(destroy){

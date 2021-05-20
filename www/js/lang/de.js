@@ -97,7 +97,11 @@ __LANG["de"] = {
     },
     notifications: {
         postSignIn: "Du bist jetzt angemeldet",
-        postSignUp: "Dein Account wurde erstellt - Schaue in deiner Mailbox nach einer E-Mail von uns."
+        postSignUp: "Dein Account wurde erstellt - Schaue in deiner Mailbox nach einer E-Mail von uns.",
+        reconnecting: "Verbinden...",
+        connecting: "Verbinden...",
+        reconnected: "Verbunden",
+        connected: "Verbunden",
     },
     section: {
         home: {

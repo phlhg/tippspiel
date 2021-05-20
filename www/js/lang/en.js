@@ -96,7 +96,11 @@ __LANG["en"] = {
     },
     notifications: {
         postSignIn: "Your signed in now",
-        postSignUp: "Your account was created - Check your inbox for an email from us."
+        postSignUp: "Your account was created - Check your inbox for an email from us.",
+        reconnecting: "Reconnecting...",
+        connecting: "Connecting...",
+        reconnected: "Reconnected",
+        connected: "Connected",
     },
     section: {
         home: {
