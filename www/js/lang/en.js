@@ -95,7 +95,7 @@ __LANG["en"] = {
         loading: "Loading..."
     },
     notifications: {
-        postSignIn: "Your signed in now",
+        postSignIn: "You're signed in now",
         postSignUp: "Your account was created - Check your inbox for an email from us.",
         reconnecting: "Reconnecting...",
         connecting: "Connecting...",
