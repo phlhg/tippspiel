@@ -344,7 +344,7 @@ __LANG["de"] = {
         },
         recover: {
             title: "Zugangscode verloren",
-            desc: "Irgendwie deinen Zugansgcode verloren? Git die E-Mail mit der du dich Registriert hast ein und wir senden dir einen Neuen.",
+            desc: "Irgendwie deinen Zugansgcode verloren? Gib die E-Mail mit der du dich Registriert hast ein und wir senden dir einen Neuen.",
             placeholder: "Deine E-Mail: z.B. max.mustermann@beispiel.de",
             submit: "Senden",
             meta1: "Falls du keinen Zugriff auf deine E-Mail hast oder deine E-Mail nicht mehr weisst, nimm bitte {a}.",
@@ -353,6 +353,6 @@ __LANG["de"] = {
     },
     pwa_info: {
         ios: '<strong>Tippspiel App</strong><br/>Willst du Tippspiel auf dem Startbildschirm?<br/>- Klicke auf <span class="material-icons">ios_share</span><br/>- Wähle <i>zum Startbildschirm hinzufügen</i> aus<br/>- Fertig!',
-        android: '<strong>Tippspiel App</strong><br/>Willst du Tippspiel auf dem Startbildschirm?<br/>- Klicke auf <span class="material-icons">more_vert</span><br/>- Wähle <span class="material-icons">add_to_home_screen</span> <i>Add to Homescreen</i> oder <i>Install</i> aus<br/>- Fertig!',
+        android: '<strong>Tippspiel App</strong><br/>Willst du Tippspiel auf dem Startbildschirm?<br/>- Klicke auf <span class="material-icons">more_vert</span><br/>- Wähle <span class="material-icons">add_to_home_screen</span> <i>Zum Startbildschirm hinzufügen</i> oder <i>Installieren</i> aus<br/>- Fertig!',
     }
 }

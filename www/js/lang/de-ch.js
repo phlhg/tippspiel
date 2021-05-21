@@ -41,14 +41,36 @@ __LANG["de-ch"] = {
         "ned": "Holland",
         "pol": "Pole",
         "por": "Portugal",
-        "rus": "Russland",
+        "rus": "Rusland",
         "sco": "Schottland",
         "sui": "Schwiiz",
         "svk": "Slowakei",
         "swe": "Schwede",
         "tur": "Türkei",
         "ukr": "Ukraine",
-        "wal": "Wales"
+        "wal": "Wales",
+        "bhr": "Bahrain",
+        "aze": "Aserbaidschan",
+        "smr": "San Marino",
+        "svn": "Slowenie",
+        "usa": "USA",
+        "nir": "Nordirland",
+        "arm": "Armenie",
+        "bul": "Bulgarie",
+        "lie": "Liechtestei",
+        "mda": "Moldavie",
+        "gre": "Griecheland",
+        "est": "Estland",
+        "cyp": "Zypere",
+        "alb": "Albanie",
+        "rou": "Rumänie",
+        "bih": "Bosnie",
+        "lux": "Luxeburg",
+        "geo": "Georgie",
+        "lva": "Lettland",
+        "isl": "Island",
+        "irl": "Irland",
+        "isr": "Israel"
     },
     date: {
         days: ["Sunntig","Mentig","Ziistig","Mittwuch","Dunnstig","Friitig","Samstig"],
@@ -62,9 +84,24 @@ __LANG["de-ch"] = {
         future_tomorrow: "Morn {h}:{m}",
         future_day: "{d} {h}:{m}",
         general: "{day}.{month}.{year} {h}:{m}",
+        name: {
+            day: "Tag",
+            month: "Monet",
+            year: "Jahr",
+            hour: "Stund",
+            minute: "Minute"
+        }
     },
     general: {
         loading: "Lade..."
+    },
+    notifications: {
+        postSignIn: "Du bisch jetzt ahgmeldet",
+        postSignUp: "Din Account isch erstellt worde - Lueg ih dinere Mailbox nach eme Mail vo eus.",
+        reconnecting: "Verbinde...",
+        connecting: "Verbinde...",
+        reconnected: "Verbunde",
+        connected: "Verbunde",
     },
     section: {
         home: {
@@ -78,7 +115,8 @@ __LANG["de-ch"] = {
             },
             noconnection: {
                 title: "Hoppla...",
-                desc: "S het momentan kei Verbindig mit em Server"
+                desc: "S het momentan kei Verbindig mit em Server",
+                btn: "Numal probiere"
             }
         },
         game: {
@@ -95,7 +133,14 @@ __LANG["de-ch"] = {
                 location: {
                     name: "Standort",
                     placeholder: "Stadt & Stadion wo s Spil stattfindet",
-                }
+                },
+                errors: {
+                    missingteam: "Bitte wähl zwei Mannschafte us",
+                    invaliddate: "Bitte gib es gültigs Datum & e gültigi Ziit ih",
+                    missinglocation: "Bitte wähl en Standort für s Spiel",
+                    notcreated: "S'Spiel het ned chene erstellt werde - Versuechs spöter numal"
+                },
+                submit: "Spiil erstelle"
             },
             tipp: {
                 your: "Din Tipp",
@@ -111,7 +156,37 @@ __LANG["de-ch"] = {
             },
             tipps: {
                 single: "1 Tipp",
-                multi: "{n} Tipps"
+                multi: "{n} Tipps",
+                list: "Tipps"
+            },
+            prompt: {
+                ended: {
+                    name: "S'Spiil beände?",
+                    desc: "Meld s resultat"
+                },
+                continues: {
+                    name: "S'Spil gaht wiiter?",
+                    extension: "Spiil-Verlängerig melden",
+                    penalty: "Penaltyschüsse melde"
+                }
+            },
+            report: {
+                phase: {
+                    name: "Spiil-Endi",
+                    0: "Beändet nach 90 Minute",
+                    1: "Beändet nach Verlängerig",
+                    2: "Beändet nach Penaltyschüsse"
+                },
+                result: {
+                    normal: "Resultat",
+                    penalty: "Resultat vom Penaltyschüsse"
+                },
+                scorers: {
+                    name: "Torschütz",
+                    hint: "(Chronologisch, ohni Penaltyschüsse)",
+                    select: "Wähl en Spieler"
+                },
+                submit: "Spiel beände"
             }
         },
         signUp: {
@@ -133,12 +208,20 @@ __LANG["de-ch"] = {
             },
             action: "Ahmelde",
             signUpInstead: "Falls du no kein Account hesch, {a}",
-            signUpLink: "registrier dich"
+            signUpLink: "registrier dich",
+            recover: "Falls du din Zugangscode verlore hesch, chasch {a}.",
+            recoverLink: "en Neue ahfordere"
         },
         settings: {
             lang: {
                 title: "Sprach",
-                desc: "Änderet d'Sprach vom Tippspiel"
+                desc: "Wähl dini gwünschti Sprach"
+            },
+            theme: {
+                title: "Design",
+                desc: "Wähl dis gwünschte Design",
+                light: "Hell",
+                dark: "Dunkel"
             },
             report: {
                 title: "Fehler melde",
@@ -150,12 +233,123 @@ __LANG["de-ch"] = {
             },
             console: {
                 title: "Konsole"
+            },
+            logout: {
+                name: "Abmelde",
+                desc: "Du bruchsch din Zuegangscode zum dich wieder ahmelde"
             }
         },
         profile: {
+            newgame: {
+                name: "Neus Spiil",
+                desc: "Erstell es neus Spiil"
+            },
             tipps: {
                 heading: "Mini Tipps"
             }
+        },
+        stats: {
+            tabs: {
+                all: "Alli",
+                groups: "Dini Gruppe"
+            },
+            nogroups: {
+                title: "Kei Gruppe usgwählt",
+                meta: "Wähl zerst dini Gruppe us"
+            }
+        },
+        tipp: {
+            team: {
+                name: "Richtigs Team",
+                desc: "S'tippte Team het s'Spil gwunne."
+            },
+            delta: {
+                name: "Richtigi Tordifferenz",
+                desc: "Differenz vode Tor isch so wie tippt."
+            },
+            exact: {
+                name: "Exakts Resultat",
+                desc: "Es isch exkate Resultat vom Spiil tippt worde."
+            },
+            scorer: {
+                name: "Torschütz",
+                desc: "De gewählti Torschütz het {n} Tor gschosse."
+            },
+            penalty: {
+                name: "Penaltyschüsse",
+                desc: "Es isch uf es Penaltyschüsse tippt worde unds tippte Team het gwunne."
+            },
+            total: {
+                name: "Total"
+            }
+        },
+        groups: {
+            none: {
+                title: "Kei Gruppe",
+                meta: "Erstell e Gruppe oder tritt einere bii"
+            },
+            new: {
+                title: "Neui Gruppe",
+                meta: "Erstell e neui Gruppe"
+            },
+            invitation: {
+                link: "Ihladigslink",
+                newlink: "Neue Ihladigslink",
+                newlinkmeta: "Erstell en neue Ihladigslink"
+            },
+            more: {
+                title: "Meh",
+                meta: "Umbenenne, Neue Ihladigslink, Verlah"
+            },
+            members: "Mitglieder",
+            header: {
+                by: "vo {name}",
+                members_multi: "{n} Mitglieder",
+                members_single: "1 Mitglied"
+            },
+            create: {
+                placeholder: "Gruppename",
+                submit: "Gruppe erstelle"
+            },
+            leave: "Gruppe verlah",
+            join: "Gruppe biitrete",
+            messages: {
+                left: "Du hesch d Gruppe verlah",
+                invitation_copied: "De Ihladigslink isch id Zwüscheablg kopiert worde",
+                created: "D'Gruppe isch erstellt worde",
+                alreadymember: "Du bisch scho Mitglied vo dere Gruppe",
+                joined: "Du bisch de Gruppe biitrete"
+            }
+        },
+        event: {
+            tipp: {
+                single: "1 Tipp",
+                multi: "{n} Tipps",
+                your: "Diin Tipp",
+                deadline: "Offe bis {d}"
+            },
+            addgame: {
+                name: "Spiil hinzuefüege",
+                desc: "Füeg em Event es neues Spiil hinzue",
+            },
+            games: {
+                heading: "Spiil"
+            },
+            tile: {
+                desc: "Event"
+            }
+        },
+        recover: {
+            title: "Zuegangscode verlore",
+            desc: "Irgendwie diin Zuegangscode verlore? Gib d'E-Mail wo dich regstriert hesch ih und mer sendet dir en Neue.",
+            placeholder: "Dini E-Mail: z.B. max.mustermah@bispiil.ch",
+            submit: "Sende",
+            meta1: "Falls kei Zuegriff uf dini E-Mail hesch oder dini E-Mail nüme weisch, nimm bitte {a}.",
+            meta2: "Kontakt mit eus uuf"
         }
+    },
+    pwa_info: {
+        ios: '<strong>Tippspiel App</strong><br/>Wetsch s\'Tippspiel uf em Startbildschirm?<br/>- Klick uf <span class="material-icons">ios_share</span><br/>- Wähl <i>zum Startbildschirm hinzufügen</i> us<br/>- Fertig!',
+        android: '<strong>Tippspiel App</strong><br/>>Wetsch s\'Tippspiel uf em Startbildschirm?<br/>- Klick uf <span class="material-icons">more_vert</span><br/>- Wähl <span class="material-icons">add_to_home_screen</span> <i>Zum Startbildschirm hinzufügen</i> oder <i>Installieren</i> us<br/>- Fertig!',
     }
 }
