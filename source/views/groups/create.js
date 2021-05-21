@@ -9,11 +9,15 @@ export default class GroupCreateView extends View {
     }
 
     init(){
-        this.root.innerHTML = `
+        this.root.classList.add("tipp-login-page");
+
+        this.root.innerHTML = `<div class="inner">
+            <h3>${Lang.get("section/groups/new/title")}</h3>
             <form class="tipp-form" style="margin-top: 10px">
                 <input type="text" required="" name="name" value="" placeholder="${Lang.get("section/groups/create/placeholder")}" />
-                <input type="submit" value="${Lang.get("section/groups/create/submit")}" style="margin: 5px 0 0 15px;"/>
-            </form>`
+                <input type="submit" value="${Lang.get("section/groups/create/submit")}"/>
+            </form>
+        </div>`
 
         this.form = new Form(this.root.querySelector("form"));
         
