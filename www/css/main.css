@@ -41,12 +41,20 @@ nav a img,
 
 /* Header */
 header { position: fixed; display: block; background: #fafafa; border-bottom: 1px solid #f4f4f4; z-index: 5; top: 0; left: 0; width: 100%; height: 60px; opacity: 1; transform: translateY(0); }
-header .inner { position: relative; display: block; width: 100%; height: 100%; max-width: 800px; margin: 0 auto; padding: 0 50px 0 60px; }
-header .logo { position: absolute; display: block; top: 0; left: 0; width: 60px; height: 60px; } 
-header .logo > img { position: absolute; top: 18px; left: 20px; width: 25px; height: 25px; padding: 5px; background: linear-gradient(45deg,#061c36, #00315e); border-radius: 50%; }
+header .inner { position: relative; display: block; width: 100%; height: 100%; max-width: 800px; margin: 0 auto; padding: 0 50px 0 20px; }
+header .logo { position: relative; display: inline-block; width: 25px; height: 25px; margin-right: 10px; vertical-align: bottom; } 
+header .logo > img { position: absolute; top: 0; left: 0; width: 25px; height: 25px; padding: 5px; background: linear-gradient(45deg,#061c36, #00315e); border-radius: 50%; }
 header .settings { position: absolute; display: block; top: 0; right: 0; width: 50px; height: 60px; } 
 header .settings > img { position: absolute; top: 20px; right: 20px; width: 20px;  filter: invert(1); }
 header .heading { position: relative; display: block; width: 100%; top: 50%; transform: translateY(-50%); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 25px; font-size: 22px; font-weight: normal; }
+
+header .back { position: absolute; display: none; top: 0; left: 0; width: 60px; height: 60px; font-size: 20px; z-index: +2; }
+header .back > .material-icons { position: absolute; display: inline-block; top: 50%; left: 50%; transform: translate(-50%,-50%); line-height: 30px; vertical-align: middle; text-align: center; }
+
+body.ios header .back { display: block; }
+body.ios header .logo { margin-right: 5px; }
+body.ios header .heading { text-align: center; }
+body.ios header .inner { padding-left: 50px;}
 
 /* Navigation */
 nav { position: fixed; display: block; z-index: 5; bottom: 0; left: 0; width: 100%; height: 50px; background: #fafafa; border-top: 1px solid #f4f4f4; opacity: 1; transform: translateY(0);  }

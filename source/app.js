@@ -80,8 +80,17 @@ export default class Application {
 
         this.setEvents(document.body);
 
+        if(this.device.os.ios && this.device.standalone){ document.body.classList.add("ios"); }
+
+        document.querySelector("header .back").onclick = e => {
+            e.preventDefault();
+            window.history.go(-1)
+            setTimeout(() => { window.history.go(-1) },100); // weird behaviour of safari
+        }
+
         window.addEventListener("popstate", e => {
             this.router.find(window.location.pathname);
+            console.log(history.length);
         })
 
         document.addEventListener("DOMNodeRemoved", e => {
