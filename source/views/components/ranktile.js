@@ -20,6 +20,7 @@ export default class USerTile extends Component {
 
     async update(){
         if(this.obj.id == App.client.id){ this.view.root.classList.add("self") }
+        if(this.obj.banned){ this.view.root.classList.add("banned") } else { this.view.root.classList.remove("banned") }
         this.view.name.innerText = this.obj.name;
         this.view.points.innerText = `+${this.obj.points}`
     }

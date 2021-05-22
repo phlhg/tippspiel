@@ -90,7 +90,6 @@ export default class Application {
 
         window.addEventListener("popstate", e => {
             this.router.find(window.location.pathname);
-            console.log(history.length);
         })
 
         document.addEventListener("DOMNodeRemoved", e => {

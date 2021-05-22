@@ -16,6 +16,8 @@ export default class User extends Element {
 
         this.groups = [];
 
+        this.banned = false;
+
         this.set(data)
     }
 
@@ -28,6 +30,7 @@ export default class User extends Element {
         this.short = data.hasOwnProperty("name") ? data.name.split(/\s/ig).slice(0,2).map(s => s.charAt(0)).join("").toUpperCase() : this.short;
         this.points = parseInt(data.points ?? this.points)
         this.groups = Array.from(data.groups ?? this.groups).map(id => parseInt(id))
+        this.banned = (data.banned ?? "false") == "true"
     }
 
     isInGroup(){
