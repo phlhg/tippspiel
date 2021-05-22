@@ -303,7 +303,7 @@ __LANG["de-ch"] = {
             },
             members: "Mitglieder",
             header: {
-                by: "vo {name}",
+                by: "von {name}",
                 members_multi: "{n} Mitglieder",
                 members_single: "1 Mitglied"
             },
@@ -315,7 +315,7 @@ __LANG["de-ch"] = {
             join: "Gruppe biitrete",
             messages: {
                 left: "Du hesch d Gruppe verlah",
-                invitation_copied: "De Ihladigslink isch id Zwüscheablg kopiert worde",
+                invitation_copied: "De Ihladigslink isch id Zwüscheablag kopiert worde",
                 created: "D'Gruppe isch erstellt worde",
                 alreadymember: "Du bisch scho Mitglied vo dere Gruppe",
                 joined: "Du bisch de Gruppe biitrete"
