@@ -6,8 +6,8 @@ A small _realtime_ appliciation for betting on sports with friends.
 
 ## Screenshots
 
-<img src="./screenshot.png" height="400"/>
-<img src="./screenshot2.png" height="400"/>
+<span><img src="./screenshot.png" height="400"/></span>
+<span><img src="./screenshot2.png" height="400"/></span>
 
 ## More
 
