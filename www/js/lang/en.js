@@ -258,6 +258,10 @@ __LANG["en"] = {
             },
             tipps: {
                 heading: "My bets"
+            },
+            nobets: {
+                title: "No bets yet",
+                meta: "Make your first bet now!"
             }
         }, 
         tipp: {

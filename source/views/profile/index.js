@@ -14,7 +14,12 @@ export default class Profile extends View {
             <span class="points"></span>
         </div>
         <h4>${Lang.get("section/profile/tipps/heading")}</h4>
-        <div class="tipp-game-list"></div>`;
+        <div class="tipp-game-list"></div>
+        <a href="/" class="tipp-box nobets" style="display: none; border-color: #0061d4; background: #0066de; color: #fff;">
+            <span class="icon"><span class="material-icons">info</span></span>
+            <span class="title">${Lang.get("section/profile/nobets/title")}</span>
+            <span class="meta">${Lang.get("section/profile/nobets/meta")}</span>
+        </a>`;
 
         this.header = {};
         this.header.short = this.root.querySelector(".tipp-profile-header .short")
@@ -22,6 +27,8 @@ export default class Profile extends View {
         this.header.points = this.root.querySelector(".tipp-profile-header .points")
 
         this.gamelist = this.root.querySelector(".tipp-game-list");
+
+        this.nobets = this.root.querySelector(".nobets");
     }
 
     setClient(client){
@@ -43,6 +50,7 @@ export default class Profile extends View {
             let g = new GameTile(new Promise(r => { r(data) }));
             this.gamelist.appendChild(g.getHtml())
         });
+        this.nobets.style.display = list.length > 0 ? "none" : "block";
     }
 
     hide(){

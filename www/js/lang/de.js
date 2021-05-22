@@ -250,6 +250,10 @@ __LANG["de"] = {
             tipps: {
                 heading: "Meine Tipps"
             },
+            nobets: {
+                title: "Noch keine Tipps",
+                meta: "Mach jetzt deinen ersten Tipp!"
+            }
         },
         stats: {
             tabs: {

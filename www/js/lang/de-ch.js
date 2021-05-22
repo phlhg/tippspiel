@@ -246,6 +246,10 @@ __LANG["de-ch"] = {
             },
             tipps: {
                 heading: "Mini Tipps"
+            },
+            nobets: {
+                title: "No Kei Tipps",
+                meta: "Mach jetzt din erste Tipp!"
             }
         },
         stats: {

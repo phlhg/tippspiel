@@ -17,12 +17,11 @@ export default class TippIndexView extends View {
             </div>
             <div class="rank-list rank rank_all"></div>
             <div class="rank-list rank rank_group" style="display: none" ></div>
-            <a href="/groups/" class="tipp-box nogroups" style="display: none; border-color: #009ffa; background: #00a2ff; color: #fff;">
+            <a href="/groups/" class="tipp-box nogroups" style="display: none; border-color: #0061d4; background: #0066de; color: #fff;">
                 <span class="icon"><span class="material-icons">info</span></span>
                 <span class="title">${Lang.get("section/stats/nogroups/title")}</span>
                 <span class="meta">${Lang.get("section/stats/nogroups/meta")}</span>
             </a>`
-
 
         this.radio = {}
         this.radio.all = this.root.querySelector("#statsview_all")

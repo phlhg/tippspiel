@@ -10,7 +10,7 @@ export default class GroupsIndexView extends View {
     init(){
         this.root.innerHTML = 
         `
-        <div class="tipp-box nogroups" style="display: none; border-color: #009ffa; background: #00a2ff; color: #fff;">
+        <div class="tipp-box nogroups" style="display: none; border-color: #0061d4; background: #0066de; color: #fff;">
             <span class="icon"><span class="material-icons">info</span></span>
             <span class="title">${Lang.get("section/groups/none/title")}</span>
             <span class="meta">${Lang.get("section/groups/none/meta")}</span>

@@ -12,12 +12,13 @@ export default class Home extends View {
         this.root.innerHTML = 
         `<div class="tipp_home_event" style="margin-bottom: 20px;"></div>
         <div class="tipp_home_upcoming"></div>
-        <h3>${Lang.get("section/home/pastgames")}</h3>
+        <h3 class="over_heading" style="display: none;">${Lang.get("section/home/pastgames")}</h3>
         <div class="tipp_home_over"></div>`
 
         this.events = this.root.querySelector(".tipp_home_event");
         this.upcoming = this.root.querySelector(".tipp_home_upcoming");
         this.over = this.root.querySelector(".tipp_home_over");
+        this.over_heading = this.root.querySelector(".over_heading");
     }
 
     addUpcoming(game){
@@ -28,6 +29,7 @@ export default class Home extends View {
     addOver(game){
         let g = new GameTile(game);
         this.over.appendChild(g.getHtml())
+        this.over_heading.style.display = "block";
     }
 
     addEvent(event){
@@ -39,6 +41,7 @@ export default class Home extends View {
         this.upcoming.innerHTML = '';
         this.over.innerHTML = '';
         this.events.innerHTML = '';
+        this.over_heading.style.display = "none";
     }
 
 }
