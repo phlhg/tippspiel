@@ -287,6 +287,16 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .game-prompt-wrapper > .tipp-box { display: block; width: 100%; margin: 0; margin-left: 10px; }
 .game-prompt-wrapper > .tipp-box:nth-child(1){ margin-left: 0; }
 
+
+.game-tipp-stats { line-height: 20px; position: relative; display: block; width: 100%; padding: 15px; border: 1px solid #f4f4f4; background: #fafafa; height: 50px; border-radius: 4px; margin-bottom: 10px; text-decoration: none; overflow: hidden; }
+.game-tipp-stats > .flag1, .game-tipp-stats > .flag2 { position: absolute; display: inline-block; top: 15px;}
+.game-tipp-stats > .flag1 { left: 15px; }
+.game-tipp-stats > .flag2 { right: 15px; }
+.game-tipp-stats > .avg { position: absolute; display: inline-block; top: 15px; left: 50%; transform: translateX(-50%); font-weight: bold; opacity: 0.8; font-size: 25px; }
+.game-tipp-stats > .bar1, .game-tipp-stats > .bar2 { position: absolute; top: 0; background: #ececec; width: 55px; height: 100%; }
+.game-tipp-stats > .bar1 { left: 0; }
+.game-tipp-stats > .bar2 { right: 0; }
+
 .game-tipps, .game-mytipp { position: relative; display: block; width: 100%; }
 .game-tipps.hidden, .game-mytipp.hidden { display: none; }
 

@@ -59,6 +59,13 @@ export default class GameIndex extends View {
         </div>
         <div class="game-tipps">
             <h3>${Lang.get("section/game/tipps/list")}</h3>
+            <div class="game-tipp-stats">
+                <span class="bar1"></span>
+                <span class="bar2"></span>
+                <span class="flag1"><span class="tflag" data-t="" ></span></span>
+                <span class="avg">0:0</span>
+                <span class="flag2"><span class="tflag" data-t="" ></span></span>
+            </div>
             <div class="tipp-list"></div>
         </div>`
 
@@ -99,6 +106,14 @@ export default class GameIndex extends View {
         this.prompt.penalty = this.prompt.wrapper.querySelector(".penalty")
 
         this.tipps = {}
+
+        this.tipps.stats = {}
+        this.tipps.stats.flag1 = this.root.querySelector(".game-tipp-stats .flag1 > .tflag")
+        this.tipps.stats.flag2 = this.root.querySelector(".game-tipp-stats .flag2 > .tflag")
+        this.tipps.stats.bar1 = this.root.querySelector(".game-tipp-stats .bar1")
+        this.tipps.stats.bar2 = this.root.querySelector(".game-tipp-stats .bar2")
+        this.tipps.stats.avg = this.root.querySelector(".game-tipp-stats .avg")
+
         this.tipps.root = this.root.querySelector(".game-tipps")
         this.tipps.list = this.tipps.root.querySelector(".tipp-list")
 
@@ -122,7 +137,7 @@ export default class GameIndex extends View {
         this.update();
     }
 
-    update(){
+    async update(){
 
         // Stream
         if((this.game.status == GameStatus.RUNNING || this.game.status == GameStatus.PENDING) && this.game.stream != ""){
@@ -233,12 +248,46 @@ export default class GameIndex extends View {
         // Tipps
         this.tipps.root.classList.add("hidden");
         this.tipps.list.innerHTML = "";
+
+        this.tipps.stats.flag1.setAttribute("data-t",this.game.team1.short.toLowerCase())
+        this.tipps.stats.flag2.setAttribute("data-t",this.game.team2.short.toLowerCase())
+
         if(this.game.status != GameStatus.UPCOMING){ 
             this.tipps.root.classList.remove("hidden");
-            this.game.getTipps().forEach(tipp => {
-                var t = new TippTile(tipp);
+            var tipps = await Promise.all(this.game.getTipps());
+
+            var countTeam1 = 0;
+            var countTeam2 = 0;
+            var sumTeam1 = 0;
+            var sumTeam2 = 0;
+            var count = 0;
+
+            tipps.forEach(tipp => {
+                var t = new TippTile(new Promise(r => r(tipp)));
                 this.tipps.list.appendChild(t.getHtml())
+
+                countTeam1 += tipp.bet1 > tipp.bet2 ? 1 : 0;
+                countTeam2 += tipp.bet1 < tipp.bet2 ? 1 : 0;
+                sumTeam1 += tipp.bet1;
+                sumTeam2 += tipp.bet2;
+                count++;
+
             })
+
+            if(count > 0){
+
+                this.tipps.stats.bar1.style.width = ((countTeam1 / count)*100)+"%";
+                this.tipps.stats.bar2.style.width = ((countTeam2 / count)*100)+"%";
+                this.tipps.stats.avg.innerText = (Math.round((sumTeam1 / count)*10)/10) + " : " + (Math.round((sumTeam2 / count)*10)/10);
+
+            } else {
+
+                this.tipps.stats.bar1.style.width = "0%";
+                this.tipps.stats.bar2.style.width = "0%";
+                this.tipps.stats.avg.innerText = "0 : 0";
+
+            }
+
         }
     }
 
