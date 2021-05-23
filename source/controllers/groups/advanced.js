@@ -1,4 +1,5 @@
 import TippNotification from '../../helper/notification';
+import TippPrompt from '../../helper/prompt';
 import GroupAdvancedView from '../../views/groups/advanced';
 import Controller from '../controller'
 
@@ -22,9 +23,11 @@ export default class GroupAdvanced extends Controller {
         this.view.setGroup(g);
 
         this.view.on("resettoken", async () => {
-            var r = await g.resetToken(); 
-            if(!r.success){ TippNotification.error(r.message); }
-            App.router.forward(g.url);
+            if(await TippPrompt.make(Lang.get("section/groups/prompt/newlink/text"), Lang.get("section/groups/prompt/newlink/confirm"), Lang.get("section/groups/prompt/newlink/deny"))){
+                var r = await g.resetToken(); 
+                if(!r.success){ TippNotification.error(r.message); }
+                App.router.forward(g.url);
+            }
         })
 
 
@@ -34,12 +37,14 @@ export default class GroupAdvanced extends Controller {
         })
 
         this.view.on("leave", async () => {
-            var r = await g.leave();
-            if(!r.success){ 
-                TippNotification.error(r.message); 
-            } else {
-                TippNotification.create(Lang.get("section/groups/messages/left"), 3000, "logout", "error").show(); 
-                App.router.forward("/groups/");
+            if(await TippPrompt.danger(Lang.get("section/groups/prompt/leave/text"), Lang.get("section/groups/prompt/leave/confirm"), Lang.get("section/groups/prompt/leave/deny"))){
+                var r = await g.leave();
+                if(!r.success){ 
+                    TippNotification.error(r.message); 
+                } else {
+                    TippNotification.create(Lang.get("section/groups/messages/left"), 3000, "logout", "error").show(); 
+                    App.router.forward("/groups/");
+                }
             }
         })
     }

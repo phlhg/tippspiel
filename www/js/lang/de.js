@@ -170,6 +170,11 @@ __LANG["de"] = {
                     name: "Spiel geht weiter?",
                     extension: "Spiel-Verlängerung melden",
                     penalty: "Penaltyschiessens melden"
+                },
+                extension: {
+                    text: "Bitte bestätige, dass das Spiel weiter geht",
+                    confirm: "Spiel geht weiter",
+                    deny: "Abbrechen"
                 }
             },
             report: {
@@ -239,7 +244,9 @@ __LANG["de"] = {
             },
             logout: {
                 name: "Abmelden",
-                desc: "Du benötgst deinen Zuganscode um dich wieder anzumelden"
+                desc: "Möchtest du dich wirklich abmelden? Du benötgst deinen Zuganscode um dich wieder anzumelden.",
+                confirm: "Abmelden",
+                deny: "Abbrechen"
             }
         },
         profile: {
@@ -326,6 +333,18 @@ __LANG["de"] = {
                 created: "Die Gruppe wurde erstellt",
                 alreadymember: "Du bist bereits Mitglied dieser Gruppe",
                 joined: "Du bist der Gruppe beigetreten"
+            },
+            prompt: {
+                newlink: {
+                    text: "Durch Erstellen eines neuen Einladungslinks wird der <strong>alte Einladungslink ungültig</strong>",
+                    confirm: "Fortfahren",
+                    deny: "Abbrechen"
+                },
+                leave: {
+                    text: "Möchtest du die Gruppe wirklich verlassen?",
+                    confirm: "Verlassen",
+                    deny: "Abbrechen"
+                }
             }
         },
         event: {

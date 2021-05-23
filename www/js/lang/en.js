@@ -169,6 +169,11 @@ __LANG["en"] = {
                     name: "Match continues?",
                     extension: "Report match extension",
                     penalty: "Report penalty shootout"
+                },
+                extension: {
+                    text: "Please confirm, that the match continues",
+                    confirm: "Match continues",
+                    deny: "Cancel"
                 }
             },
             report: {
@@ -238,7 +243,9 @@ __LANG["en"] = {
             },
             logout: {
                 name: "Sign out",
-                desc: "You need your access code to sign in again"
+                desc: "Do you really want to sign out? You need your access code to sign in again.",
+                confirm: "Sign out",
+                deny: "Cancel"
             },
         },
         stats: {
@@ -325,6 +332,18 @@ __LANG["en"] = {
                 created: "The group was created",
                 alreadymember: "You're already a member of that group",
                 joined: "You've joined the group"
+            },
+            prompt: {
+                newlink: {
+                    text: "By creating a new inviation link the <strong>old invitation link gets invalid</strong>",
+                    confirm: "Continue",
+                    deny: "Cancel"
+                },
+                leave: {
+                    text: "Do you really want to leave the group?",
+                    confirm: "Leave",
+                    deny: "Cancel"
+                }
             }
         },
         event: {

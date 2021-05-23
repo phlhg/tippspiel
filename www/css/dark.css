@@ -52,4 +52,9 @@ input.inline { background: rgba(255,255,255,0.04); }
 
 .tipp-notification { background: #fff; color: #000; }
 
+.tipp-prompt { background: #1f1f1f; color: #fff; }
+
+.tipp-prompt .actions span { background: #1a1a1a; }
+.tipp-prompt .actions span:hover { background: #151515; }
+
 .tflag { background-color: #1c1c1c; }

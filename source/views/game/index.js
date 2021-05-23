@@ -3,6 +3,7 @@ import { GamePhase, GameStatus } from '../../models/games/enums'
 import TippDate from '../../helper/date'
 import TippTile from '../components/tipptile'
 import Game from '../../models/games/game'
+import TippPrompt from '../../helper/prompt'
 
 export default class GameIndex extends View {
 
@@ -193,8 +194,10 @@ export default class GameIndex extends View {
             this.prompt.wrapper.classList.remove("hidden");
             this.prompt.ended.setAttribute("href","/game/"+this.game.id+"/report/");
             this.prompt.extension.onclick = async () => {
-                await this.game.nextPhase()
-                this.update();
+                if(await TippPrompt.confirm(Lang.get("section/game/prompt/extension/text"),Lang.get("section/game/prompt/extension/confirm"),Lang.get("section/game/prompt/extension/deny"))){
+                    await this.game.nextPhase()
+                    this.update();
+                }
             }
             this.prompt.penalty.onclick = this.prompt.extension.onclick;
         } else {

@@ -1,4 +1,5 @@
 import View from '../view'
+import TippPrompt from '../../helper/prompt'
 
 export default class Settings extends View {
 
@@ -36,10 +37,9 @@ export default class Settings extends View {
             <span class="icon"><span class="material-icons">code</span></span>
             <span class="title">${Lang.get("section/settings/console/title")}</span>
         </a>
-        <a class="tipp-box signout-button">
+        <a class="tipp-box signout-button" style="background: #e00; border-color: #e00;" >
             <span class="icon"><span class="material-icons">logout</span></span>
             <span class="title">${Lang.get("section/settings/logout/name")}</span>
-            <span class="meta">${Lang.get("section/settings/logout/desc")}</span>
         </a>
         `
 
@@ -76,7 +76,11 @@ export default class Settings extends View {
         this.consoleButton.onclick = () => { window.open ("/console/","Tippspiel-Console","resizable=1,width=720,height=450"); }
 
         this.signOutButton = this.root.querySelector(".signout-button");
-        this.signOutButton.onclick = () => { App.client.signout(); }
+        this.signOutButton.onclick = async () => { 
+            if(await TippPrompt.danger(Lang.get("section/settings/logout/desc"),Lang.get("section/settings/logout/confirm"),Lang.get("section/settings/logout/deny"))){
+                App.client.signout(); 
+            }
+        }
 
     }
 

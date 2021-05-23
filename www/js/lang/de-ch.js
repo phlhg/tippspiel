@@ -168,6 +168,11 @@ __LANG["de-ch"] = {
                     name: "S'Spil gaht wiiter?",
                     extension: "Spiil-Verlängerig melden",
                     penalty: "Penaltyschüsse melde"
+                },
+                extension: {
+                    text: "Bitte duen bestätige, dass s'Spiil wiiter gaht",
+                    confirm: "Spiil gaht wiiter",
+                    deny: "Abbreche"
                 }
             },
             report: {
@@ -236,7 +241,9 @@ __LANG["de-ch"] = {
             },
             logout: {
                 name: "Abmelde",
-                desc: "Du bruchsch din Zuegangscode zum dich wieder ahmelde"
+                desc: "Wetsch dich wük abmelde? Du bruchsch din Zuegangscode zum dich wieder ahmelde",
+                confirm: "Abmelde",
+                deny: "Abbreche"
             }
         },
         profile: {
@@ -323,6 +330,18 @@ __LANG["de-ch"] = {
                 created: "D'Gruppe isch erstellt worde",
                 alreadymember: "Du bisch scho Mitglied vo dere Gruppe",
                 joined: "Du bisch de Gruppe biitrete"
+            },
+            prompt: {
+                newlink: {
+                    text: "Mit em Erstelle vo eme neue Ihladigslink wird de <strong>alti Ihladigslink ungültig</strong>",
+                    confirm: "Fortfahre",
+                    deny: "Abbreche"
+                },
+                leave: {
+                    text: "Wetsch du die Gruppe wük verlah?",
+                    confirm: "Verlah",
+                    deny: "Abbreche"
+                }
             }
         },
         event: {
