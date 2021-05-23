@@ -37,7 +37,7 @@ export default class Settings extends View {
             <span class="icon"><span class="material-icons">code</span></span>
             <span class="title">${Lang.get("section/settings/console/title")}</span>
         </a>
-        <a class="tipp-box signout-button" style="background: #e00; border-color: #e00;" >
+        <a class="tipp-box signout-button" style="background: #e00; border-color: #e00; color: #fff;" >
             <span class="icon"><span class="material-icons">logout</span></span>
             <span class="title">${Lang.get("section/settings/logout/name")}</span>
         </a>
