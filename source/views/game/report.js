@@ -89,11 +89,7 @@ export default class GameReportView extends View {
         }
 
         this.result.phase.onchange = e => {
-            if(this.result.phase.value == 2){
-                this.penaltyWrapper.style.display = "block";
-            } else {
-                this.penaltyWrapper.style.display = "none";
-            }
+            this.penaltyWrapper.style.display = this.result.phase.value == 2 ? "block" : "none";
         }
 
         [this.result.score1, this.result.score2].forEach(i => {
@@ -156,6 +152,9 @@ export default class GameReportView extends View {
 
         this.playerAll = await Promise.all(await this.game.getSuggestedPlayers())
         this.playerAll.sort((a,b) => a.name.localeCompare(b.name))
+
+        this.result.phase.value = this.game.phase;
+        this.penaltyWrapper.style.display = this.result.phase.value == 2 ? "block" : "none";
 
     }
 
