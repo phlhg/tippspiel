@@ -324,6 +324,16 @@ socket.listen("Update", (data, respond) => {
 
 ```
 
+### HotGames
+
+```js
+
+socket.listen("HotGames", ()=>{
+    ...
+});
+
+```
+
 ### Ping
 
 Erhält die Verbindung am Leben
