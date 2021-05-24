@@ -61,7 +61,7 @@ export default class Game extends Element {
         this.team2.score = parseInt(data.score2 ?? this.team2.score);
         this.team2.penalty = parseInt(data.penaltyScore2 ?? this.team2.penalty);
         
-        this.scorers = Array.from(data.scorers ?? this.scorers).map(id => parseInt(id));
+        this.scorers = Array.from(data.scorers ?? this.scorers.reverse()).map(id => parseInt(id)).reverse(); //Fix order
         this.tipps = Array.from(data.tipps ?? this.tipps).map(id => parseInt(id))
 
         this.short = this.team1.short.toLowerCase() + "-" + this.team2.short.toLowerCase()
