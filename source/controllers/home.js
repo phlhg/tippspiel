@@ -9,6 +9,12 @@ export default class Home extends Controller {
 
     init(){
         this.setView(HomeView);
+
+        App.socket.listen("HotGames", () => {
+            if(this._active){
+                App.router.forward(window.location.pathname)
+            }
+        })
     }
 
     async load(){
