@@ -1,3 +1,4 @@
+import GameList from '../../helper/gamelist'
 import GameTile from '../components/gametile'
 import View from '../view'
 
@@ -26,8 +27,7 @@ export default class EventIndexView extends View {
             <span class="icon"><span class="material-icons">add_circle_outline</span></span>
             <span class="title">${Lang.get("section/event/addgame/name")}</span>
             <span class="meta">${Lang.get("section/event/addgame/desc")}</span>
-        </a>
-        <div class="game-list"></div>`
+        </a>`
 
         this.header = {}
         this.header.name = this.root.querySelector(".event-header .title");
@@ -40,7 +40,8 @@ export default class EventIndexView extends View {
 
         this.createGame = this.root.querySelector(".createGame");
 
-        this.gameList = this.root.querySelector(".game-list");
+        this.gameList = new GameList();
+        this.root.appendChild(this.gameList.getHTML());
 
     }
 
@@ -69,13 +70,10 @@ export default class EventIndexView extends View {
         });
         this.myTip.meta.innerText = Lang.get("section/event/tipp/deadline",{d: deadline})
 
-        this.gameList.innerHTML = "";
+        this.gameList.clear();
         var games = await Promise.all(this.event.getGames());
         games.sort((a,b) => a.start - b.start);
-        games.forEach(p => {
-            var g = new GameTile(new Promise((resolve) => { resolve(p) }))
-            this.gameList.appendChild(g.getHtml())
-        })
+        this.gameList.insert(games);
 
     }
 

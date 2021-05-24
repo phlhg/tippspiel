@@ -3,7 +3,7 @@ class TippDate { }
 TippDate.toString = function(date){
     var now = new Date();
     var delta = Math.abs(now - date) / 1000
-    if(now - date > 0){
+    if(delta > 0){
         // Past
         if(delta < 60){
             return Lang.get("date/past_sec")
@@ -64,6 +64,37 @@ TippDate.toString = function(date){
             })
         }
     }  
+}
+
+TippDate.toDate = function(date){
+    var now = new Date();
+    var delta = Math.abs(now - date) / 1000
+
+    if(delta > 0){
+        if(delta < 60 * 60 * (24 - date.getHours())){
+            return Lang.get("date/today");
+        } else if(delta < 60 * 60 * (48 - date.getHours())){
+            return Lang.get("date/yesterday");
+        } else {
+            return Lang.get("date/date_only", {
+                day: ("0"+date.getDate()).slice(-2),
+                month: ("0"+(date.getMonth()+1)).slice(-2),
+                year: date.getFullYear()
+            })
+        }
+    } else {
+        if(delta < 60 * 60 * date.getHours()){
+            return Lang.get("date/today");
+        } else if(delta < 60 * 60 * (date.getHours() + 24)){
+            return Lang.get("date/tomorrow");
+        } else {
+            return Lang.get("date/date_only", {
+                day: ("0"+date.getDate()).slice(-2),
+                month: ("0"+(date.getMonth()+1)).slice(-2),
+                year: date.getFullYear()
+            })
+        }
+    }
 }
 
 export default TippDate;

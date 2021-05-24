@@ -82,7 +82,11 @@ __LANG["en"] = {
         future_today: "Today {h}:{m}",
         future_tomorrow: "Tomorrow {h}:{m}",
         future_day: "{d} {h}:{m}",
-        general: "{day}/{month}/{year} {h}:{m}",
+        general: "{day}.{month}.{year} {h}:{m}",
+        date_only: "{day}.{month}.{year}",
+        tomorrow: "Tomorrow",
+        today: "Today",
+        yesterday: "Yesterday",
         name: {
             day: "Day",
             month: "Month",
