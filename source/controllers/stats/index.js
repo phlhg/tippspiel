@@ -15,7 +15,7 @@ export default class StatsIndex extends Controller {
         if(!App.promptConnection()){ return false; }
         if(!App.client.promptLogin()){ return false; }
         
-        var r = await App.model.events.getRanking(1);
+        var r = await App.model.events.getRanking(2);
         if(!r.success) return
 
         var counter_all = 1;
