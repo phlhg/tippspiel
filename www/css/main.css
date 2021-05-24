@@ -92,7 +92,7 @@ section form { position: relative; display: block; width: 100%;}
 section form input { line-height: 15px; position: relative; display: block; width: 100%; margin: 0 0 10px 0; padding: 10px 15px 10px 15px; background: #fafafa; border: 1px solid #f4f4f4; outline: none; border-radius: 4px; color: #000; }
 section form input:invalid { border-left-color: rgba(255,0,0,1); box-shadow: none; }
 section form input:placeholder-shown:required { border-left-color: rgba(255,0,0,0); }
-section form input[type='submit'] { cursor: pointer; background: rgb(6, 28, 55); color: #fff; display: inline-block; width: unset; padding: 10px 15px; border-radius: 30px; border: none; }
+section form input[type='submit'] { cursor: pointer; background: #061c37; color: #fff; display: inline-block; width: unset; padding: 10px 15px; border-radius: 30px; border: none; }
 section form + .meta { position: relative; display: block; font-size: 12px; margin-top: 20px; color: rgba(0,0,0,0.75); }
 section form + .meta a { text-decoration: underline; }
 section form span.info, section form span.error { position: relative; display: block; padding: 8px 15px; margin-bottom: 10px; font-size: 12px; background-color: #fafafa; border: 1px solid #f4f4f4; border-radius: 4px; overflow: hidden; max-height: 500px; }
@@ -252,7 +252,7 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .game-header > .top .team2 { position: absolute; display: inline-block; right: 0; top: 0; }
 .game-header > .live { font-weight: bold; z-index: 20; position: absolute; display: inline-block; top: 17px; left: 50%; transform: translateX(-50%); padding: 2px 20px 2px 5px; font-size: 14px; background: #fff; color: #000; text-transform: uppercase; border-radius: 2px; }
 .game-header > .live:after { position: absolute; display: block; content: ''; top: 6px; right: 5px; width: 10px; height: 10px; border-radius: 50%; background: #f00; animation: live 2s linear infinite normal; }
-.game-header > .flag1, .game-header > .flag2 { --blur: 25px; position: absolute; display: block; min-width: calc(50% + var(--blur) * 2); min-height: calc(100% + var(--blur) * 2); filter: saturate(2) blur(var(--blur)); opacity: 0.6; transform: translateY(-50%); }
+.game-header > .flag1, .game-header > .flag2 { --blur: 50px; position: absolute; display: block; min-width: calc(50% + var(--blur) * 2); min-height: calc(100% + var(--blur) * 2); filter: saturate(2) blur(var(--blur)); opacity: 0.6; transform: translateY(-50%); }
 .game-header > .flag1 { top: 50%; right: calc(50% - var(--blur)); }
 .game-header > .flag2 { top: 50%; left: calc(50% - var(--blur)); }
 .game-header > .score { z-index: +2; position: relative; display: block; }
@@ -262,7 +262,7 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .game-header > .score > span.penalty.active { display: block; }
 .game-header > .score > span.penalty span { font-size: 30px; line-height: 30px; letter-spacing: 10px; display: block; text-align: center; font-weight: bold; margin-top: 8px; font-style: normal; }
 .game-header > .meta { z-index: +2; position: relative; display: block; text-align: center; font-size: 12px; line-height: 12px; margin-top: 20px; }
-.game-header:after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.75;
+.game-header:after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.8;
     background: radial-gradient(ellipse at center top, 
     rgba(0, 0, 0, 1.00) 0%,
     rgba(0, 0, 0, 0.90) 50%,
@@ -273,7 +273,7 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
     );
 }
 
-.game-timeline { position: relative; display: block; width: 100%; padding: 10px 10px; background: #fafafa; border: 1px solid #f4f4f4;; border-radius: 4px; margin-bottom: 10px;}
+.game-timeline { position: relative; display: block; width: 100%; padding: 10px 10px; background: #fafafa; border: 1px solid #f4f4f4; border-radius: 4px; margin-bottom: 10px;}
 .game-timeline:empty { display: none; margin-bottom: 0; }
 .game-timeline > span { position: relative; display: block; width: 60%; background: rgba(0,0,0,0.05); padding: 7px 10px; border-radius: 4px; margin-bottom: 5px; }
 .game-timeline > span.left { padding-left: 36px; }
@@ -288,14 +288,14 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .game-prompt-wrapper > .tipp-box:nth-child(1){ margin-left: 0; }
 
 
-.game-tipp-stats { line-height: 20px; position: relative; display: block; width: 100%; padding: 15px; border: 1px solid #f4f4f4; background: #fafafa; height: 50px; border-radius: 4px; margin-bottom: 10px; text-decoration: none; overflow: hidden; }
+.game-tipp-stats { line-height: 20px; background: #fafafa; border: 1px solid #f4f4f4; position: relative; display: block; width: 100%; padding: 15px; height: 50px; border-radius: 4px; margin-bottom: 10px; text-decoration: none; overflow: hidden; }
 .game-tipp-stats > .flag1, .game-tipp-stats > .flag2 { position: absolute; display: inline-block; top: 15px;}
 .game-tipp-stats > .flag1 { left: 15px; }
 .game-tipp-stats > .flag2 { right: 15px; }
 .game-tipp-stats > .avg { position: absolute; display: inline-block; top: 15px; left: 50%; transform: translateX(-50%); font-weight: bold; opacity: 0.8; font-size: 25px; }
-.game-tipp-stats > .bar1, .game-tipp-stats > .bar2 { position: absolute; top: 0; background: #ececec; width: 55px; height: 100%; }
-.game-tipp-stats > .bar1 { left: 0; }
-.game-tipp-stats > .bar2 { right: 0; }
+.game-tipp-stats > .bar1, .game-tipp-stats > .bar2 { position: absolute; top: 5px; background: #f0f0f0; width: 55px; height: 38px; border-radius: 4px; }
+.game-tipp-stats > .bar1 { left: 5px; }
+.game-tipp-stats > .bar2 { right: 5px; }
 
 .game-tipps, .game-mytipp { position: relative; display: block; width: 100%; }
 .game-tipps.hidden, .game-mytipp.hidden { display: none; }
@@ -427,4 +427,6 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
     .tipp-prompt{ max-width: calc(100% - 20px); min-width: 80%; }
 
     .tipp-section-wrapper > section { padding-top: 70px;}
+
+    .game-header > .flag1, .game-header > .flag2 { --blur: 20px; }
 }

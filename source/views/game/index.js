@@ -276,8 +276,8 @@ export default class GameIndex extends View {
 
             if(count > 0){
 
-                this.tipps.stats.bar1.style.width = ((countTeam1 / count)*100)+"%";
-                this.tipps.stats.bar2.style.width = ((countTeam2 / count)*100)+"%";
+                this.tipps.stats.bar1.style.width = "calc("+((countTeam1 / count)*100)+"% - 7px)";
+                this.tipps.stats.bar2.style.width = "calc("+((countTeam2 / count)*100)+"% - 7px)";
                 this.tipps.stats.avg.innerText = (Math.round((sumTeam1 / count)*10)/10) + " : " + (Math.round((sumTeam2 / count)*10)/10);
 
             } else {
