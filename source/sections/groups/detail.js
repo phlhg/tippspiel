@@ -1,6 +1,7 @@
 import TippNotification from "../../helper/notification";
 import UserTile from "../../components/tiles/usertile";
 import Section from "../section";
+import Debugger from "../../debugger";
 
 export default class GroupDetail extends Section {
 
@@ -52,6 +53,13 @@ export default class GroupDetail extends Section {
 
         this.view.memberList = this.view.root.querySelector(".member-list");
 
+        window.addEventListener("datachange",e => {
+            if(this._active && this.group != null && e.detail.type == "group" && e.detail.id == this.group.id){
+                Debugger.log(this,"Section was updated remotely")()
+                this.update();
+            }
+        });
+
     }
 
     async load(){
@@ -87,6 +95,10 @@ export default class GroupDetail extends Section {
             this.view.memberList.appendChild(new UserTile(p).getHtml())
         })
 
+    }
+
+    async unload(){
+        this.view.memberList.innerHTML = "";
     }
 
 }

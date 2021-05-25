@@ -3,6 +3,7 @@ import { GamePhase, GameStatus } from '../../models/games/enums'
 import TippDate from '../../helper/date'
 import TippTile from '../../components/tiles/tipptile'
 import TippPrompt from '../../helper/prompt'
+import Debugger from '../../debugger'
 
 export default class GameIndex extends Section {
 
@@ -127,6 +128,7 @@ export default class GameIndex extends Section {
 
         window.addEventListener("datachange",e => {
             if(this._active && this.game != null && e.detail.type == "game" && e.detail.id == this.game.id){
+                Debugger.log(this,"Section was updated remotely")()
                 this.update();
             }
         });

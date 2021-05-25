@@ -1,4 +1,5 @@
 import GameList from '../../components/gamelist'
+import Debugger from '../../debugger';
 import Section from '../section'
 
 export default class EventIndex extends Section {
@@ -8,6 +9,9 @@ export default class EventIndex extends Section {
     }
 
     init(){
+
+        this.event = null;
+
         this.view.root.innerHTML = 
         `<div class="tipp-box event-header">
             <span class="icon"><span class="material-icons">emoji_events</span></span>
@@ -41,6 +45,13 @@ export default class EventIndex extends Section {
         this.gameList = new GameList();
         this.view.root.appendChild(this.gameList.getHTML());
 
+        window.addEventListener("datachange",e => {
+            if(this._active && this.event != null && e.detail.type == "event" && e.detail.id == this.event.id){
+                Debugger.log(this,"Section was updated remotely")()
+                this.update();
+            }
+        });
+
     }
 
     async load(){
@@ -49,6 +60,12 @@ export default class EventIndex extends Section {
 
         this.event = await App.model.events.get(this._params.id);
         if(this.event === null){ return App.router.showError(); }
+
+        await this.update()
+
+    }
+
+    async update(){
 
         // Header
         this.view.header.name.innerText = this.event.name;

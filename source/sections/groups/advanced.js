@@ -1,3 +1,4 @@
+import Debugger from "../../debugger";
 import TippNotification from "../../helper/notification";
 import Section from "../section";
 
@@ -61,6 +62,13 @@ export default class GroupAdvanced extends Section {
                 }
             }
         }
+
+        window.addEventListener("datachange",e => {
+            if(this._active && this.group != null && e.detail.type == "group" && e.detail.id == this.group.id){
+                Debugger.log(this,"Section was updated remotely")()
+                this.update();
+            }
+        });
 
     }
 

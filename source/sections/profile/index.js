@@ -1,3 +1,4 @@
+import Debugger from '../../debugger';
 import GameList from '../../components/gamelist';
 import Section from '../section';
 
@@ -30,12 +31,23 @@ export default class Profile extends Section {
         this.view.root.querySelector(".tipp-game-list").appendChild(this.gamelist.getHTML());
 
         this.view.nobets = this.view.root.querySelector(".nobets");
+
+        window.addEventListener("datachange",e => {
+            if(this._active && e.detail.type == "user" && e.detail.id == App.client.id){
+                Debugger.log(this,"Section was updated remotely")()
+                this.update();
+            }
+        });
     }
 
     async load(){
         if(!App.promptConnection()){ return false; }
         if(!App.client.promptLogin()){ return false; }
         
+        await this.update();
+    }
+
+    async update(){
         // Header
         this.view.header.name.innerText = App.client.name;
         this.view.header.short.innerText = this.shortName(App.client.name);

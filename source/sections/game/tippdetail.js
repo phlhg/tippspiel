@@ -1,3 +1,4 @@
+import Debugger from '../../debugger';
 import Section from '../section';
 
 export default class TippDetail extends Section {
@@ -7,6 +8,9 @@ export default class TippDetail extends Section {
     }
 
     init(){
+
+        this.tipp = null;
+
         this.view.root.innerHTML = `<div class="tipp-tile fullwidth">
             <span class="tflag" data-t=""></span>
             <span class="name"></span>
@@ -75,6 +79,13 @@ export default class TippDetail extends Section {
         this.view.total.root = tb[5];
         this.view.total.icon = this.view.total.root.querySelector(".icon")
 
+        window.addEventListener("datachange",e => {
+            if(this._active && this.tipp != null && e.detail.type == "gametipp" && e.detail.id == this.tipp.id){
+                Debugger.log(this,"Section was updated remotely")()
+                this.update();
+            }
+        });
+
     }
 
     async load(){
@@ -83,6 +94,10 @@ export default class TippDetail extends Section {
         this.tipp = await App.model.gameTipps.get(this._params.id);
         if(this.tipp === null){ return App.router.showError(); }
 
+        await this.update();
+    }
+
+    async update(){
         var user = await this.tipp.getUser();
         var winner = await this.tipp.getWinner();
         var player = await (this.tipp.topscorer > 0 ? this.tipp.getPlayer() : { name: "" })

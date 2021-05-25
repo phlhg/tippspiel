@@ -109,10 +109,11 @@ export default class Client {
             return r2; 
         }
 
+        /** FIX: Load own user into cache to enable user update events */
+        App.model.users.get(this.id)
 
         if(localStorage.getItem("tipp-active-groups") === null){ localStorage.setItem("tipp-active-groups", JSON.stringify(this.groups)) }
         this.groupsActive = JSON.parse(localStorage.getItem("tipp-active-groups")).filter(g => this.groups.includes(g));
-
 
         localStorage.setItem("tipp-dev-iskown","true")
         localStorage.setItem("tipp-dev-token",this.token)

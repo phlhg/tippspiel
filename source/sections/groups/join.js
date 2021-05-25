@@ -1,4 +1,5 @@
 import UserTile from "../../components/tiles/usertile";
+import Debugger from "../../debugger";
 import Section from "../section";
 export default class GroupJoinView extends Section {
 
@@ -40,6 +41,13 @@ export default class GroupJoinView extends Section {
         }
 
         this.view.memberList = this.view.root.querySelector(".member-list");
+
+        window.addEventListener("datachange",e => {
+            if(this._active && this.group != null && e.detail.type == "group" && e.detail.id == this.group.id){
+                Debugger.log(this,"Section was updated remotely")()
+                this.update();
+            }
+        });
 
     }
 

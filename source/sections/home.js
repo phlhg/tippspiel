@@ -23,7 +23,7 @@ export default class Home extends Section {
 
         App.socket.listen("HotGames", async ()=>{ 
             if(this._active){
-                Debugger.log(this,"HotGames was updated remotely")()
+                Debugger.log(this,"Section was updated remotely")()
                 await this.loadHotGames() 
             }
         })
