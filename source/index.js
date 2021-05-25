@@ -2,33 +2,40 @@ import Application from './app'
 import Debugger from './debugger'
 import Language from './language'
 
-import NotFound from './controllers/errors/notfound'
-import NoConnection from './controllers/errors/noconnection'
+//Errors
+import NotFound from './sections/errors/notfound'
+import NoConnection from './sections/errors/noconnection'
 
-import Home from './controllers/home'
+//Home
+import Home from './sections/home'
 
-import Game from './controllers/game/index'
-import GameTipp from './controllers/game/tipp'
-import GameReport from './controllers/game/report'
+// Account
+import SignUp from './sections/account/signup'
+import SignIn from './sections/account/signin'
+import Recover from './sections/account/recover'
 
-import Profile from './controllers/profile'
+// Game
+import Game from './sections/game/index'
+import GameReport from './sections/game/report'
+import GameTipp from './sections/game/tipp'
+import TippDetail from './sections/game/tippdetail'
 
-import SignUp from './controllers/signup'
-import SignIn from './controllers/signin'
+// Event
+import EventIndex from './sections/event/index'
+import EventGameAdd from './sections/event/add'
 
-import Settings from './controllers/settings/index'
-import TippIndex from './controllers/tipp'
-import StatsIndex from './controllers/stats'
-import GroupsIndex from './controllers/groups/index'
-import EventIndex from './controllers/event'
-import EventGameAdd from './controllers/event/add'
-import Recover from './controllers/recover'
-import GroupDetail from './controllers/groups/detail'
-import GroupAdvanced from './controllers/groups/advanced'
-import GroupJoin from './controllers/groups/join'
-import GroupCreate from './controllers/groups/create'
+// Groups
+import GroupsIndex from './sections/groups/index'
+import GroupDetail from './sections/groups/detail'
+import GroupAdvanced from './sections/groups/advanced'
+import GroupJoin from './sections/groups/join'
+import GroupCreate from './sections/groups/create'
 
-import PWASetup from './controllers/pwa'
+// More
+import StatsIndex from './sections/stats/index'
+import Profile from './sections/profile/index'
+import Settings from './sections/settings/index'
+import PWASetup from './sections/special/pwasetup'
 
 Debugger.active = true;
 
@@ -53,36 +60,39 @@ window.addEventListener("DOMContentLoaded", function(){
 
     window.App = new Application()
 
+    // Errors
     App.router.setErrorHandler(new NotFound)
     App.router.add("/noconnection/", new NoConnection)
 
+    // Home
     App.router.add("/",new Home)
 
+    // Account
+    App.router.add("/signin/",new SignIn).alias("/signin/{token}/");
+    App.router.add("/signup/",new SignUp)
+    App.router.add("/recover/",new Recover)
+
+    //Game
+    App.router.add("/game/{id}/{t1}-{t2}/",new Game).where({ id: 'NUMBER', t1: 'TEXT',t2: 'TEXT' })
     App.router.add("/game/{id}/tipp/",new GameTipp).where({ id: 'NUMBER' })
     App.router.add("/game/{id}/report/",new GameReport).where({ id: 'NUMBER' })
-    App.router.add("/game/{id}/{t1}-{t2}/",new Game).where({ id: 'NUMBER', t1: 'TEXT',t2: 'TEXT' })
+    App.router.add("/tipp/{id}/",new TippDetail).where({id: 'NUMBER'})
 
+    //Event
     App.router.add("/event/{id}/add/",new EventGameAdd)
     App.router.add("/event/{id}/{name}/",new EventIndex).where({ id: 'NUMBER', name: 'TEXT' })
 
-    App.router.add("/tipp/{id}/",new TippIndex).where({id: 'NUMBER'})
-
-    App.router.add("/profile/",new Profile)
-
-    App.router.add("/stats/",new StatsIndex)
-
+    // Groups
     App.router.add("/groups/",new GroupsIndex)
     App.router.add("/groups/{id}/{name}/",new GroupDetail).where({ id: 'NUMBER', name: 'TEXT' })
     App.router.add("/groups/advanced/{id}/{name}/",new GroupAdvanced).where({ id: 'NUMBER', name: 'TEXT' })
     App.router.add("/groups/join/{id}-{token}/", new GroupJoin)
     App.router.add("/groups/create/", new GroupCreate)
 
-    App.router.add("/signin/",new SignIn).alias("/signin/{token}/");
-    App.router.add("/signup/",new SignUp)
-    App.router.add("/recover/",new Recover)
-
+    // More
+    App.router.add("/stats/",new StatsIndex)
+    App.router.add("/profile/",new Profile)
     App.router.add("/settings/", new Settings)
-
     App.router.add("/pwa/",new PWASetup)
 
     App.run()

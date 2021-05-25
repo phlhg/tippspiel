@@ -1,4 +1,4 @@
-import GameTile from "../views/components/gametile";
+import GameTile from "../components/gametile";
 import TippDate from "./date";
 
 export default class GameList {
@@ -12,6 +12,7 @@ export default class GameList {
     }
 
     insert(list){
+        this.clear()
         var prevDate = '';
         list.forEach(game => {
             if(prevDate != TippDate.toDate(game.start)){
