@@ -126,7 +126,7 @@ __LANG["en"] = {
             penalty: "Penalty shootout",
             tipp: {
                 your: "Your bet",
-                notyet: "You haven't betted yet",
+                notyet: "Klick here to make your bet",
                 none: "You haven't betted",
                 form: {
                     result: "Result",

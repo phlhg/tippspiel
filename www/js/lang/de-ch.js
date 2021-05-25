@@ -144,7 +144,8 @@ __LANG["de-ch"] = {
             },
             tipp: {
                 your: "Din Tipp",
-                notyet: "Du hesch nonig tippt",
+                notyet: "Klick da zum din tipp abgeh",
+                none: "Du hesch ned tippt",
                 form: {
                     result: "Resultat",
                     winner: "Gwünner",

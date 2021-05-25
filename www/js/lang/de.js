@@ -146,7 +146,7 @@ __LANG["de"] = {
             },
             tipp: {
                 your: "Dein Tipp",
-                notyet: "Du hast noch nicht getippt",
+                notyet: "Klicke hier um deinen Tipp abzugeben",
                 none: "Du hast nicht getippt",
                 form: {
                     result: "Resultat",
