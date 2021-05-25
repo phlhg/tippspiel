@@ -20,33 +20,38 @@ export default class Router {
         return this.error;
     }
 
-    showError(){
-        this.routes.forEach(r => r.unload())
-        this.error.unload()
-        this.error.load()
+    async showError(){
+        for(var r of this.routes){ await r.unload() }
+        await this.error.unload()
+        await this.error.load()
     }
 
-    find(path){
-        this.routes.forEach(r => r.unload())
-        this.error.unload()
+    async find(path){
+        for(var r of this.routes){ await r.unload() }
+        await this.error.unload()
         let route = this.routes.find(r => r.matches(path));
         if(route == undefined){
-            this.error.load()
+            await this.error.load()
         } else {
             Debugger.log(this,`Loading "${path}"`)()
-            route.take(path)
+            try{
+                await route.take(path)
+            } catch(e){
+                Debugger.error(route.section,"Exception:",e)()
+                await this.error.load()
+            }
         }
     }
 
-    forward(path){
+    async forward(path){
         Debugger.log(this,`Forwarding to "${path}"`)();
         window.history.replaceState({}, '', path);
-        return this.find(path);
+        return await this.find(path);
     }
 
-    overwrite(path){
+    async overwrite(path){
         Debugger.log(this,`Overwriting to "${path}"`)();
-        return this.find(path);
+        return await this.find(path);
     }
 
     back(fallback){
@@ -58,9 +63,9 @@ export default class Router {
         }
     }
 
-    load(path){
+    async load(path){
         window.history.pushState({}, '', path);
-        return this.find(path);
+        return await this.find(path);
     }
 
 }

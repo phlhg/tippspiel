@@ -33,9 +33,11 @@ export default class Section {
     async load(){ }
 
     async _unload(){
-        this.view.root.classList.remove("active");
-        this.unload()
-        this._active = false;
+        if(this._active){
+            this.view.root.classList.remove("active");
+            await this.unload()
+            this._active = false;
+        }
     }
 
     async unload(){ }

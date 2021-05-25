@@ -24,20 +24,20 @@ export default class Route {
         return this.pattern.test(path);
     }
 
-    take(path){
+    async take(path){
         if(!this.matches(path)){ return false; }
         var match = this.pattern.exec(path);
-        return this.load(Object.assign({}, match.groups ? match.groups : {}));
+        return await this.load(Object.assign({}, match.groups ? match.groups : {}));
     }
 
-    load(params){
+    async load(params){
         params = params ?? {}
-        this.section._load(params);
+        await this.section._load(params);
         return true;
     }
 
-    unload(){
-        this.section._unload();
+    async unload(){
+        await this.section._unload();
     }
 
     where(params){
