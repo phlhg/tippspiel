@@ -1,5 +1,5 @@
-import GameTile from "../components/gametile";
-import TippDate from "./date";
+import GameTile from "./tiles/gametile";
+import TippDate from "../helper/date";
 
 export default class GameList {
 

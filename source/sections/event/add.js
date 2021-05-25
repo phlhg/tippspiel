@@ -1,7 +1,7 @@
-import Form from '../../helper/form'
-import SearchSelect from '../../helper/searchselect'
-import SearchInput from '../../helper/searchinput'
-import DateInput from '../../helper/dateinput'
+import Form from '../../components/form'
+import SearchSelect from '../../components/searchselect'
+import SearchInput from '../../components/searchinput'
+import DateInput from '../../components/dateinput'
 import Section from '../section'
 
 export default class EventGameAddView extends Section {

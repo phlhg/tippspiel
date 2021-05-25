@@ -1,6 +1,6 @@
-import Component from './component'
+import Tile from './tile';
 
-export default class TippTile extends Component {
+export default class TippTile extends Tile {
     
     constructor(promise){
         super("GameTipp","a", promise);

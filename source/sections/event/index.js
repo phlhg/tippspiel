@@ -1,4 +1,4 @@
-import GameList from '../../helper/gamelist'
+import GameList from '../../components/gamelist'
 import Section from '../section'
 
 export default class EventIndex extends Section {

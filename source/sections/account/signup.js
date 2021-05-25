@@ -1,5 +1,5 @@
 import Section from '../section'
-import Form from '../../helper/form';
+import Form from '../../components/form';
 
 export default class SignUp extends Section {
 

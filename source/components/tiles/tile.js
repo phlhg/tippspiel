@@ -1,4 +1,4 @@
-export default class Component {
+export default class Tile {
 
     constructor(type, element, promise){
         this._type = type;

@@ -1,6 +1,7 @@
-import GameTile from '../components/gametile'
-import EventTile from '../components/eventtile';
+import GameTile from '../components/tiles/gametile'
+import EventTile from '../components/tiles/eventtile';
 import Section from './section';
+import Debugger from '../debugger';
 
 export default class Home extends Section {
 
@@ -22,6 +23,7 @@ export default class Home extends Section {
 
         App.socket.listen("HotGames", async ()=>{ 
             if(this._active){
+                Debugger.log(this,"HotGames was updated remotely")()
                 await this.loadHotGames() 
             }
         })
@@ -42,9 +44,6 @@ export default class Home extends Section {
     }
 
     async loadHotGames(){
-
-        this.view.upcomingList.innerHTML = '';
-        this.view.finishedList.innerHTML = '';
 
         var hotGames = await App.model.games.getHot();
 

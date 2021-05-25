@@ -1,8 +1,8 @@
-import TippDate from '../helper/date';
-import { GameStatus } from '../models/games/enums';
-import Component from './component'
+import TippDate from '../../helper/date';
+import { GameStatus } from '../../models/games/enums';
+import Tile from './tile';
 
-export default class GameTile extends Component {
+export default class GameTile extends Tile {
     
     constructor(promise){
         super("game","a", promise);

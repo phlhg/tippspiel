@@ -1,7 +1,7 @@
 import Section from '../section'
 import { GamePhase, GameStatus } from '../../models/games/enums'
 import TippDate from '../../helper/date'
-import TippTile from '../../components/tipptile'
+import TippTile from '../../components/tiles/tipptile'
 import TippPrompt from '../../helper/prompt'
 
 export default class GameIndex extends Section {

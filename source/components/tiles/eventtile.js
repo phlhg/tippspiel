@@ -1,6 +1,6 @@
-import Component from './component'
+import Tile from './tile';
 
-export default class EventTile extends Component {
+export default class EventTile extends Tile {
     
     constructor(promise){
         super("event","a", promise);

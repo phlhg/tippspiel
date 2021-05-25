@@ -1,4 +1,4 @@
-import Form from '../../helper/form'
+import Form from '../../components/form'
 import Section from '../section';
 
 export default class GroupCreateView extends Section {

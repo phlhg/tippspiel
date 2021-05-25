@@ -1,4 +1,4 @@
-import GroupTile from '../../components/grouptile';
+import GroupTile from '../../components/tiles/grouptile';
 import Section from '../section'
 
 export default class Groups extends Section {

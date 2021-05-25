@@ -1,6 +1,6 @@
-import Component from './component'
+import Tile from './tile';
 
-export default class GroupTile extends Component {
+export default class GroupTile extends Tile {
     
     constructor(promise){
         super("group","div", promise);

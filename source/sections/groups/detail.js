@@ -1,5 +1,5 @@
 import TippNotification from "../../helper/notification";
-import UserTile from "../../components/usertile";
+import UserTile from "../../components/tiles/usertile";
 import Section from "../section";
 
 export default class GroupDetail extends Section {

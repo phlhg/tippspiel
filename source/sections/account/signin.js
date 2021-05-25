@@ -1,4 +1,4 @@
-import Form from '../../helper/form';
+import Form from '../../components/form';
 import TippNotification from '../../helper/notification';
 import Section from '../section';
 

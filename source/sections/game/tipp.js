@@ -1,5 +1,5 @@
-import Form from '../../helper/form'
-import SearchSelect from '../../helper/searchselect'
+import Form from '../../components/form'
+import SearchSelect from '../../components/searchselect'
 import { GameStatus } from '../../models/games/enums';
 import Section from '../section'
 
