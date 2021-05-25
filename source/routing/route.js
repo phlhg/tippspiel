@@ -1,10 +1,10 @@
 export default class Route {
 
-    constructor(pattern, controller){
+    constructor(pattern, section){
         this.raw = pattern;
         this.pattern = null;
         this.params = {}
-        this.controller = controller;
+        this.section = section;
         this.bakePattern()
     }
 
@@ -32,12 +32,12 @@ export default class Route {
 
     load(params){
         params = params ?? {}
-        this.controller._load(params);
+        this.section._load(params);
         return true;
     }
 
     unload(){
-        this.controller._unload();
+        this.section._unload();
     }
 
     where(params){
@@ -54,7 +54,7 @@ export default class Route {
     }
 
     alias(pattern){
-        return App.router.add(pattern, this.controller);
+        return App.router.add(pattern, this.section);
     }
 
 }

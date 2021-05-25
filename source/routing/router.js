@@ -10,13 +10,13 @@ export default class Router {
         this.handler = []
     }
 
-    add(pattern, controller){
-        this.routes.push(new Route(pattern, controller));
+    add(pattern, section){
+        this.routes.push(new Route(pattern, section));
         return this.routes[this.routes.length-1]
     }
 
-    setErrorHandler(controller){
-        this.error = new Route('errorHandler', controller);
+    setErrorHandler(section){
+        this.error = new Route('errorHandler', section);
         return this.error;
     }
 

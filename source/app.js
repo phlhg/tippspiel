@@ -142,16 +142,18 @@ export default class Application {
 
     updateModel(data){
 
-        this.model.events.update(data.event ?? [])
-        this.model.eventTipps.update(data.EventTipp ?? [])
-        this.model.games.update(data.Game ?? [])
-        this.model.gameTipps.update(data.GameTipp ?? [])
-        this.model.groups.update(data.Group ?? [])
-        this.model.players.update(data.Player ?? [])
-        this.model.teams.update(data.Team ?? [])
-        this.model.users.update(data.User ?? [])
+        if(Array.from(data.User ?? []).map(i => parseInt(i)).includes(this.client.id)){ 
+            this.client.getMe(); 
+        }
 
-        if((data.User ?? []).includes(this.client.id)){ this.client.getMe(); }
+        this.model.events.update(Array.from(data.Event ?? []).map(i => parseInt(i)))
+        this.model.eventTipps.update(Array.from(data.EventTipp ?? []).map(i => parseInt(i)))
+        this.model.games.update(Array.from(data.Game ?? []).map(i => parseInt(i)))
+        this.model.gameTipps.update(Array.from(data.GameTipp ?? []).map(i => parseInt(i)))
+        this.model.groups.update(Array.from(data.Group ?? []).map(i => parseInt(i)))
+        this.model.players.update(Array.from(data.Player ?? []).map(i => parseInt(i)))
+        this.model.teams.update(Array.from(data.Team ?? []).map(i => parseInt(i)))
+        this.model.users.update(Array.from(data.User ?? []).map(i => parseInt(i)))
 
     }
 
