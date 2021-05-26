@@ -309,7 +309,7 @@ __LANG["de"] = {
             },
             invitation: {
                 link: "Gruppen-Einladung",
-                newlink: "Neuer Gruppen-Einladung",
+                newlink: "Neue Gruppen-Einladung",
                 newlinkmeta: "Erstelle einen neuen Einladungslink"
             },
             more: {
