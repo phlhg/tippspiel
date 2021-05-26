@@ -83,6 +83,7 @@ export default class SearchSelect {
     reset(){
         this.selected = { value: -1, text: "", img: "" }
         this.dom.search.value = "";
+        this.dom.icon.style.backgroundImage = "";
         this.dom.suggestions.innerHTML = "";
     }
 
