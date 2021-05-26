@@ -84,6 +84,9 @@ __LANG["de-ch"] = {
         future_tomorrow: "Morn {h}:{m}",
         future_day: "{d} {h}:{m}",
         general: "{day}.{month}.{year} {h}:{m}",
+        tomorrow: "Morn",
+        today: "Hüt",
+        yesterday: "Gester",
         name: {
             day: "Tag",
             month: "Monet",

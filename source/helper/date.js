@@ -3,7 +3,7 @@ class TippDate { }
 TippDate.toString = function(date){
     var now = new Date();
     var delta = Math.abs(now - date) / 1000
-    if(delta > 0){
+    if(now - date > 0){
         // Past
         if(delta < 60){
             return Lang.get("date/past_sec")
@@ -70,7 +70,7 @@ TippDate.toDate = function(date){
     var now = new Date();
     var delta = Math.abs(now - date) / 1000
 
-    if(delta > 0){
+    if(now - date > 0){
         if(delta < 60 * 60 * (24 - date.getHours())){
             return Lang.get("date/today");
         } else if(delta < 60 * 60 * (48 - date.getHours())){
