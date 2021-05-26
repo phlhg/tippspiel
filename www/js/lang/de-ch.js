@@ -305,8 +305,8 @@ __LANG["de-ch"] = {
                 meta: "Erstell e neui Gruppe"
             },
             invitation: {
-                link: "Ihladigslink",
-                newlink: "Neue Ihladigslink",
+                link: "Gruppe-Ihladig",
+                newlink: "Neui Gruppe-Ihaldig",
                 newlinkmeta: "Erstell en neue Ihladigslink"
             },
             more: {

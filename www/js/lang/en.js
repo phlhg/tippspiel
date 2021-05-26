@@ -310,8 +310,8 @@ __LANG["en"] = {
                 meta: "Create a new group"
             },
             invitation: {
-                link: "Invitation link",
-                newlink: "New inviation link",
+                link: "Group invitation",
+                newlink: "New group inviation",
                 newlinkmeta: "Create a new inviation link"
             },
             more: {
