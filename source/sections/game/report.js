@@ -132,7 +132,7 @@ export default class GameReport extends Section {
 
             var r = await this.game.report(d);
             if(!r.success){
-                this.view.form.error(r.message);
+                this.form.error(r.message);
             } else {
                 App.router.forward(this.game.url); 
             }

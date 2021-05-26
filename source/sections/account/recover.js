@@ -27,7 +27,7 @@ export default class Recover extends Section {
         this.form.onSubmit = async data => {
             var r = await App.client.recoverToken(data.email);
             if(!r.success){
-                this.view.form.error(r.message);
+                this.form.error(r.message);
             } else {
                 this.form.reset()
                 App.router.load("/signin/");

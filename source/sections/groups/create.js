@@ -24,7 +24,7 @@ export default class GroupCreateView extends Section {
         this.form.onSubmit = async (data) => {
             var r = await App.model.groups.create(data.name);
             if(!r.success){
-                this.view.form.error(r.message);
+                this.form.error(r.message);
             } else {
                 TippNotification.success(Lang.get("section/groups/messages/created"));
                 var g = await App.model.groups.get(parseInt(r.data.id));

@@ -42,7 +42,7 @@ export default class SignIn extends Section {
         this.form.onSubmit = async (data) => {
             let match = data.token.match(this.tokenPattern);
             if(match === null || match.length < 2){ 
-                this.info("Bitte gib einen Zugangslink oder Zugangscode ein");
+                this.form.info("Bitte gib einen Zugangslink oder Zugangscode ein");
             } else {
                 var r = await this.signIn(match[1]);
                 if(r){ this.form.reset(); }

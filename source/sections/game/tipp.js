@@ -142,7 +142,7 @@ export default class GameTipp extends Section {
             })
 
             if(!r.success){
-                this.view.form.error(r.message);
+                this.form.error(r.message);
             } else {
                 App.router.forward(this.game.url)
             }
