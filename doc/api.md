@@ -47,11 +47,17 @@ socket.exec("signin",{ token: String, retry: Boolean })
 Erstellt einen neuen Benutzer
 
 ```js
-socket.exec("signup",{ name: String, email: String })
+socket.exec("signup",{ 
+    name: String, 
+    email: String,
+    lang: String
+})
 ```
 `name` Name des Nutzers
 
 `email` E-Mail des Nutzers
+
+`lang` Gewünschte Sprache des Benutzers (Wie `de`, `de-ch`, `en`, `fr`, ...)
 
 ```js
 { state, error, data: {} }
@@ -62,11 +68,13 @@ socket.exec("signup",{ name: String, email: String })
 Erstellt ein Neues Token für einen Account
 
 ```js
-socket.exec("restoreToken",{email: String})
-socket.exec("restoreToken")
+socket.exec("restoreToken",{ lang: String, email: String })
+socket.exec("restoreToken",{ lang: String })
 ```
 
 `email` Email des betroffenen Accounts. Alternativ kann eine eingeloggte session verwendet werden
+
+`lang` Gewünschte Sprache des Benutzers (Wie `de`, `de-ch`, `en`, `fr`, ...)
 
 ### Me
 

@@ -157,7 +157,12 @@ export default class Client {
      * @return {Request} Response object
      */
     async singUp(name, email){
-        var r = new Request("signup", { name: name, email: email });
+        var r = new Request("signup", { 
+            name: name, 
+            email: email,
+            lang: Lang.id ?? "en"
+        });
+        
         if(!(await r.run())){ return r; }
 
         this.isknown = true;
@@ -173,7 +178,7 @@ export default class Client {
      * @returns {Request} Response object
      */
     async recoverToken(email){
-        var r = new Request("restoreToken", { email: email });
+        var r = new Request("restoreToken", { email: email, lang: Lang.id ?? "en" });
         if(this.active){ return r.error("Please sign out first"); }
         if(!(await r.run())){ return r; }
         return r;
