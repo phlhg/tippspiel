@@ -146,6 +146,9 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .game-tile .meta > .live-indicator:after { position: absolute; display: block; content: ''; top: 3px; right: 3px; width: 8px; height: 8px; border-radius: 50%; background: #fff; animation: live 2s linear infinite normal;}
 .game-tile.live .meta > .live-indicator { opacity: 1; visibility: visible; }
 
+.game-tile:after { content: ''; position: absolute; display: none; top: -4px; right: -4px; width: 12px; height: 12px; background: #0066de; border-radius: 50%; }
+.game-tile.nobet:after { display: block; }
+
 @keyframes live {
     0% { opacity: 0; }
     50% { opacity: 1; }
@@ -160,6 +163,9 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .tipp-tile > .meta { display: block; font-size: 14px; }
 .tipp-tile > .reward { position: absolute; display: inline-block; top: 15px; right: 15px; line-height: 20px; font-size: 20px; font-weight: bold; }
 .tipp-tile.fullwidth { width: 100%; }
+
+.tipp-tile:after { content: ''; position: absolute; display: none; top: -4px; right: -4px; width: 12px; height: 12px; background: #0066de; border-radius: 50%; }
+.tipp-tile.nobet:after { display: block; }
 
 
 /* User-List */

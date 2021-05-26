@@ -118,6 +118,7 @@ export default class GameIndex extends Section {
 
         this.view.mytipp = {}
         this.view.mytipp.root = this.view.root.querySelector(".game-mytipp")
+        this.view.mytipp.tile = this.view.mytipp.root.querySelector(".tipp-tile")
         this.view.mytipp.a = this.view.mytipp.root.querySelector("a")
         this.view.mytipp.title = this.view.mytipp.root.querySelector(".name")
         this.view.mytipp.meta = this.view.mytipp.root.querySelector(".meta")
@@ -245,6 +246,7 @@ export default class GameIndex extends Section {
         }
 
         if(this.game.hasOwnTipp()){
+            this.view.mytipp.tile.classList.remove("nobet");
             this.view.mytipp.meta.innerText = Lang.get("general/loading")
             this.game.getOwnTipp().then(async tipp => {
                 var winner = await tipp.getWinner();
@@ -258,6 +260,7 @@ export default class GameIndex extends Section {
                 this.view.mytipp.reward.innerText = tipp.reward > 0 ? '+'+tipp.reward : '';
             })
         } else {
+            if(App.client.active && this.game.status == GameStatus.UPCOMING){ this.view.mytipp.tile.classList.add("nobet"); }
             this.view.mytipp.reward.innerText = '';
             this.view.mytipp.flag.setAttribute("data-t","");
             this.view.mytipp.meta.innerText = this.game.status == GameStatus.UPCOMING ? Lang.get("section/game/tipp/notyet") : Lang.get("section/game/tipp/none")

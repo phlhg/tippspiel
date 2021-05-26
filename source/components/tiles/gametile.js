@@ -52,6 +52,12 @@ export default class GameTile extends Tile {
             this.view.root.classList.remove("live")
         }
 
+        if(this.obj.status != GameStatus.UPCOMING || !App.client.active || this.obj.hasOwnTipp()){
+            this.view.root.classList.remove("notbet")
+        } else {
+            this.view.root.classList.add("nobet")
+        }
+
         this.view.root.classList.remove("loading")
 
     }
