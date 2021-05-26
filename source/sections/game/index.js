@@ -174,7 +174,11 @@ export default class GameIndex extends Section {
         this.view.header.team1.bg.src = '/img/flag/' + this.game.team1.short.toLowerCase() + '.png';
         this.view.header.team2.bg.src = '/img/flag/' + this.game.team2.short.toLowerCase() + '.png';
 
-        this.view.header.score.normal.innerText = this.game.team1.score + ":" + this.game.team2.score;
+        if(this.game.status == GameStatus.ENDED){
+            this.view.header.score.normal.innerText = this.game.team1.score + ":" + this.game.team2.score;
+        } else {
+            this.view.header.score.normal.innerText = "- : -";
+        }
 
         this.view.header.meta.time.innerText = TippDate.toString(this.game.start);
         this.view.header.meta.location.innerText = this.game.location;
