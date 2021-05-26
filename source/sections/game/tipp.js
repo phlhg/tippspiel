@@ -156,10 +156,14 @@ export default class GameTipp extends Section {
 
         this.game = await App.model.games.get(this._params.id);
         if(this.game === null){ return App.router.showError(); }
-
         if(this.game.status != GameStatus.UPCOMING){  return App.router.forward(`/`); }
 
         this.tipp = this.game.hasOwnTipp() ? await this.game.getOwnTipp() : null;
+
+        await this.update()
+    }
+
+    async update(){
 
         this.view.header.root.setAttribute("href",`/game/${this.game.id}/${this.game.team1.short.toLowerCase()}-${this.game.team2.short.toLowerCase()}/`)
 
@@ -204,6 +208,13 @@ export default class GameTipp extends Section {
                 this.searchselect.reset();
             }
         
+        } else {
+
+            this.setResult(0,0)
+            this.view.winner.team1.checked = false;
+            this.view.winner.team2.checked = false;
+            this.searchselect.reset();
+
         }
 
     }
@@ -234,7 +245,7 @@ export default class GameTipp extends Section {
         this.view.winner.team1.disabled = false;
         this.view.winner.team2.disabled = false;
         this.view.winner.team1.checked = false;
-        this.view.winner.team1.checked = false;
+        this.view.winner.team2.checked = false;
         this.view.searchselect.reset();
         this.view.player_suggestions = [];
     }
