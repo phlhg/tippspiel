@@ -42,6 +42,14 @@ socket.exec("signin",{ token: String, retry: Boolean })
 { state, error, data: { upToDate: Boolean } }
 ```
 
+### Signout
+
+```js
+await socket.exec("signout");
+```
+
+HINWEIS: Signout wird erst durchgeführt, wenn alle Session-Tasks beendet sind. Hierzu gehören zum beispiel ausstehende update- oder ping-Antworten.
+
 ### SignUp
 
 Erstellt einen neuen Benutzer
