@@ -16,7 +16,7 @@ __LANG["de"] = {
             8: "Dieser Prozess läuft bereits.",
             9: "Es existiert keinen Account mit dieser E-Mail",
             10: "Dieser Account wurde gesperrt - Nimm mit uns Kontakt auf",
-            11: "Diese Funktion ist nur begrenzt aufrufbar. Versuche es später noch ein Mal.",
+            11: "Diese Funktion ist für {time} gesperrt.",
             12: "Zu diesem Zugangscode existiert keine Gruppe. Eventuell wurde dieser Zugang zurückgesetzt."
         },
         local: {
@@ -85,6 +85,9 @@ __LANG["de"] = {
         future_day: "{d} {h}:{m}",
         general: "{day}.{month}.{year} {h}:{m}",
         date_only: "{day}.{month}.{year}",
+        tomorrow: "Morgen",
+        today: "Heute",
+        yesterday: "Gestern",
         name: {
             day: "Tag",
             month: "Monat",
@@ -98,7 +101,10 @@ __LANG["de"] = {
     },
     notifications: {
         postSignIn: "Du bist jetzt angemeldet",
-        postSignUp: "Dein Account wurde erstellt - Schaue in deiner Mailbox nach einer E-Mail von uns.",
+        postSignOut: "Du wurdest abgemeldet",
+        postSignUp: "Dein Account wurde erstellt - Schau in deiner Mailbox nach einer E-Mail von uns.",
+        postRecover: "Wir haben dir einen neuen Zugangscode gesendet - Schau in deine Mailbox",
+        postSwitch: "Du hast zu einem anderen Account gewechselt",
         reconnecting: "Verbinden...",
         connecting: "Verbinden...",
         reconnected: "Verbunden",
@@ -146,7 +152,7 @@ __LANG["de"] = {
             },
             tipp: {
                 your: "Dein Tipp",
-                notyet: "Du hast noch nicht getippt",
+                notyet: "Klicke hier um zu tippen",
                 none: "Du hast nicht getippt",
                 form: {
                     result: "Resultat",
@@ -228,6 +234,7 @@ __LANG["de"] = {
             theme: {
                 title: "Design",
                 desc: "Wähle dein gewünschtes Design",
+                auto: "Automatisch",
                 light: "Hell",
                 dark: "Dunkel"
             },
@@ -308,8 +315,8 @@ __LANG["de"] = {
                 meta: "Erstelle eine neue Gruppe"
             },
             invitation: {
-                link: "Einladungslink",
-                newlink: "Neuer Einladungslink",
+                link: "Gruppen-Einladung",
+                newlink: "Neue Gruppen-Einladung",
                 newlinkmeta: "Erstelle einen neuen Einladungslink"
             },
             more: {

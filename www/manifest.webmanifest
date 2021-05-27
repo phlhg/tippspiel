@@ -1,12 +1,19 @@
 {
   "name": "Tippspiel 21",
   "short_name": "Tippspiel",
-  "scope": "/",
-  "start_url": "/pwa/",
-  "display": "standalone",
-  "background_color": "#00315e",
   "description": "by TobiCreations & PHLHG",
+  "scope": "/",
+  "scope_url": "/",
+  "start_url": "/pwa/",
+  "theme_color": "#111",
+  "background_color": "#111",
+  "display": "standalone",
   "orientation": "portrait",
+  "intent_filters": {
+    "scope_url_scheme": "https",
+    "scope_url_host": "tipp.phlhg.ch",
+    "scope_url_path": "/"
+  },
   "icons": [
     {
       "src": "/img/favicon512.png",

@@ -15,7 +15,7 @@ __LANG["en"] = {
             8: "This request is already running.",
             9: "There is no account associated with this email",
             10: "This account has been banned - Get in touch with us",
-            11: "This Request cannot be executed indefinitely. Try again later.",
+            11: "This Request is disabled for {time}.",
             12: "There is no group corresponding to this access code. The access might have been reset by the group admin."
         },
         local: {
@@ -100,7 +100,10 @@ __LANG["en"] = {
     },
     notifications: {
         postSignIn: "You're signed in now",
-        postSignUp: "Your account was created - Check your inbox for an email from us.",
+        postSignOut: "You were signed out",
+        postSignUp: "Your account was created - Check your inbox for an email by us.",
+        postRecover: "We sent you a new access code - Check your inbox",
+        postSwitch: "You've switched to a different account",
         reconnecting: "Reconnecting...",
         connecting: "Connecting...",
         reconnected: "Reconnected",
@@ -126,7 +129,7 @@ __LANG["en"] = {
             penalty: "Penalty shootout",
             tipp: {
                 your: "Your bet",
-                notyet: "You haven't betted yet",
+                notyet: "Klick here to make your bet",
                 none: "You haven't betted",
                 form: {
                     result: "Result",
@@ -230,6 +233,7 @@ __LANG["en"] = {
             theme: {
                 title: "Theme",
                 desc: "Choose your prefered theme",
+                auto: "Automatic",
                 light: "Light",
                 dark: "Dark"
             },
@@ -310,8 +314,8 @@ __LANG["en"] = {
                 meta: "Create a new group"
             },
             invitation: {
-                link: "Invitation link",
-                newlink: "New inviation link",
+                link: "Group invitation",
+                newlink: "New group inviation",
                 newlinkmeta: "Create a new inviation link"
             },
             more: {

@@ -27,7 +27,6 @@ export default class User extends Element {
      */
     set(data){
         this.name = data.name ?? this.name
-        this.short = data.hasOwnProperty("name") ? data.name.split(/\s/ig).slice(0,2).map(s => s.charAt(0)).join("").toUpperCase() : this.short;
         this.points = parseInt(data.points ?? this.points)
         this.groups = Array.from(data.groups ?? this.groups).map(id => parseInt(id))
         this.banned = (data.banned ?? "false") == "true"

@@ -16,7 +16,7 @@ __LANG["de-ch"] = {
             8: "Die Aafrag isch scho am laufe.",
             9: "Es git kein account mit de Email {email}",
             10: "Dä Account isch gsperrt worde.",
-            11: "Die Funktion chan mer nöd unbegräntzt uufrüefe. Probiers spöter namal.",
+            11: "Die Funktion isch für {time} gsperrt.",
             12: "Es git kei Gruppe für dä Zuegangscode. Eventuell isch dä Zuegang zrugg gsetzt worde."
         },
         local: {
@@ -84,6 +84,9 @@ __LANG["de-ch"] = {
         future_tomorrow: "Morn {h}:{m}",
         future_day: "{d} {h}:{m}",
         general: "{day}.{month}.{year} {h}:{m}",
+        tomorrow: "Morn",
+        today: "Hüt",
+        yesterday: "Gester",
         name: {
             day: "Tag",
             month: "Monet",
@@ -97,7 +100,10 @@ __LANG["de-ch"] = {
     },
     notifications: {
         postSignIn: "Du bisch jetzt ahgmeldet",
+        postSignOut: "Du bisch abgemeldet worde",
         postSignUp: "Din Account isch erstellt worde - Lueg ih dinere Mailbox nach eme Mail vo eus.",
+        postRecover: "Mer hend der en neue Zuegangscode gschickt - Lueg ih dini Mailbox",
+        postSwitch: "Du hesch zu eme andere Account gwechslet",
         reconnecting: "Verbinde...",
         connecting: "Verbinde...",
         reconnected: "Verbunde",
@@ -144,7 +150,8 @@ __LANG["de-ch"] = {
             },
             tipp: {
                 your: "Din Tipp",
-                notyet: "Du hesch nonig tippt",
+                notyet: "Klick da zum tippe",
+                none: "Du hesch ned tippt",
                 form: {
                     result: "Resultat",
                     winner: "Gwünner",
@@ -225,6 +232,7 @@ __LANG["de-ch"] = {
             theme: {
                 title: "Design",
                 desc: "Wähl dis gwünschte Design",
+                auto: "Automatisch",
                 light: "Hell",
                 dark: "Dunkel"
             },
@@ -304,8 +312,8 @@ __LANG["de-ch"] = {
                 meta: "Erstell e neui Gruppe"
             },
             invitation: {
-                link: "Ihladigslink",
-                newlink: "Neue Ihladigslink",
+                link: "Gruppe-Ihladig",
+                newlink: "Neui Gruppe-Ihaldig",
                 newlinkmeta: "Erstell en neue Ihladigslink"
             },
             more: {

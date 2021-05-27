@@ -4,7 +4,7 @@ export default class Language {
 
     constructor(){
 
-        this.id = "de" //Default language
+        this.id = "en" //Default language
         this.ref = {};
 
         this.available = Object.keys(__LANG);
@@ -12,15 +12,17 @@ export default class Language {
         this.available.sort((a,b) => __LANG[a]._name.localeCompare(__LANG[b]._name))
 
         if(localStorage.getItem("tipp-lang") != null){
-            if(!this.setLanguage(localStorage.getItem("tipp-lang"))){
-                this.setLanguage("de")
-            }
+            if(!this.setLanguage(localStorage.getItem("tipp-lang"))){ this.setLanguage("en") }
         } else {
-            var matching = navigator.languages.map(l => l.toLowerCase()).filter(l => this.available.includes(l) && l != "de-ch")
+            var matching = navigator.languages.map(l => l.toLowerCase()).filter(l => this.available.includes(l))
             if(matching.length > 0){ 
-                this.setLanguage(matching[0]) 
+                if(matching[0] == "de-ch"){
+                    this.setLanguage("de") 
+                } else {
+                    this.setLanguage(matching[0]) 
+                }
             } else {
-                this.setLanguage("de")
+                this.setLanguage("en")
             }
         }
 

@@ -1,10 +1,10 @@
 export default class Route {
 
-    constructor(pattern, controller){
+    constructor(pattern, section){
         this.raw = pattern;
         this.pattern = null;
         this.params = {}
-        this.controller = controller;
+        this.section = section;
         this.bakePattern()
     }
 
@@ -24,20 +24,20 @@ export default class Route {
         return this.pattern.test(path);
     }
 
-    take(path){
+    async take(path){
         if(!this.matches(path)){ return false; }
         var match = this.pattern.exec(path);
-        return this.load(Object.assign({}, match.groups ? match.groups : {}));
+        return await this.load(Object.assign({}, match.groups ? match.groups : {}));
     }
 
-    load(params){
+    async load(params){
         params = params ?? {}
-        this.controller._load(params);
+        await this.section._load(params);
         return true;
     }
 
-    unload(){
-        this.controller._unload();
+    async unload(){
+        await this.section._unload();
     }
 
     where(params){
@@ -54,7 +54,7 @@ export default class Route {
     }
 
     alias(pattern){
-        return App.router.add(pattern, this.controller);
+        return App.router.add(pattern, this.section);
     }
 
 }

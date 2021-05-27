@@ -42,16 +42,30 @@ socket.exec("signin",{ token: String, retry: Boolean })
 { state, error, data: { upToDate: Boolean } }
 ```
 
+### Signout
+
+```js
+await socket.exec("signout");
+```
+
+HINWEIS: Signout wird erst durchgeführt, wenn alle Session-Tasks beendet sind. Hierzu gehören zum beispiel ausstehende update- oder ping-Antworten.
+
 ### SignUp
 
 Erstellt einen neuen Benutzer
 
 ```js
-socket.exec("signup",{ name: String, email: String })
+socket.exec("signup",{ 
+    name: String, 
+    email: String,
+    lang: String
+})
 ```
 `name` Name des Nutzers
 
 `email` E-Mail des Nutzers
+
+`lang` Gewünschte Sprache des Benutzers (Wie `de`, `de-ch`, `en`, `fr`, ...)
 
 ```js
 { state, error, data: {} }
@@ -62,11 +76,13 @@ socket.exec("signup",{ name: String, email: String })
 Erstellt ein Neues Token für einen Account
 
 ```js
-socket.exec("restoreToken",{email: String})
-socket.exec("restoreToken")
+socket.exec("restoreToken",{ lang: String, email: String })
+socket.exec("restoreToken",{ lang: String })
 ```
 
 `email` Email des betroffenen Accounts. Alternativ kann eine eingeloggte session verwendet werden
+
+`lang` Gewünschte Sprache des Benutzers (Wie `de`, `de-ch`, `en`, `fr`, ...)
 
 ### Me
 
@@ -320,6 +336,16 @@ Teilt mit, welche Einträge im client veraltet sind.
 socket.listen("Update", (data, respond) => {
     ...
     respond();
+});
+
+```
+
+### HotGames
+
+```js
+
+socket.listen("HotGames", ()=>{
+    ...
 });
 
 ```

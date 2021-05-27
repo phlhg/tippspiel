@@ -11,10 +11,12 @@ export default class Device {
         this.os.linux = /linux/i.test(navigator.platform) && !this.os.window && !this.os.macos && !this.os.ios && !this.os.android
         
         this.browser = {}
-        this.browser.firefox = /firefox/i.test(navigator.userAgent)
-        this.browser.chrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+        this.browser.firefox = /firefox/i.test(navigator.userAgent) && !/seamonkey/i.test(navigator.userAgent)
+        this.browser.chromium = !!window.chrome || /DuckDuckGo/i.test(navigator.userAgent);
+        this.browser.chrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor) && !this.browser.chromium;
         this.browser.safari = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
-        this.browser.edge = /edge?/i.test(navigator.platform)
+        this.browser.opera = /OPR/.test(navigator.userAgent) || /Opera/.test(navigator.userAgent);
+        this.browser.edge = /edg(e)?/i.test(navigator.userAgent)
 
         this.standalone =   window.matchMedia('(display-mode: standalone)').matches || // Chrome
                             navigator.standalone || // Safari 
@@ -27,7 +29,7 @@ export default class Device {
 
         return  !this.standalone && // is not a PWA
                 ((this.os.ios && this.browser.safari) || // iOS Safari
-                (this.os.android && this.browser.chrome) || // Android Chrome
+                (this.os.android && this.browser.chrome && !this.chromium) || // Android Chrome
                 (this.os.android && this.browser.firefox)) // Android Firefox
 
     }
