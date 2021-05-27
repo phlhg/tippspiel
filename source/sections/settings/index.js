@@ -85,6 +85,7 @@ export default class Settings extends Section {
                 if(!r.success){
                     TippNotification.error(r.message);
                 } else {
+                    TippNotification.create(Lang.get("notifications/postSignOut"),3000, "logout", "error").show() 
                     App.router.load("/");
                 }
             }
