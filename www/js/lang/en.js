@@ -100,7 +100,10 @@ __LANG["en"] = {
     },
     notifications: {
         postSignIn: "You're signed in now",
-        postSignUp: "Your account was created - Check your inbox for an email from us.",
+        postSignOut: "You were signed out",
+        postSignUp: "Your account was created - Check your inbox for an email by us.",
+        postRecover: "We sent you a new access code - Check your inbox",
+        postSwitch: "You've switched to a different account",
         reconnecting: "Reconnecting...",
         connecting: "Connecting...",
         reconnected: "Reconnected",
@@ -230,6 +233,7 @@ __LANG["en"] = {
             theme: {
                 title: "Theme",
                 desc: "Choose your prefered theme",
+                auto: "Automatic",
                 light: "Light",
                 dark: "Dark"
             },

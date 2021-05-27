@@ -11,7 +11,7 @@ export default class NoConnections extends Section {
         this.view.root.innerHTML = `<div class="inner"><h3>${Lang.get("section/errors/noconnection/title")}</h3><p>${Lang.get("section/errors/noconnection/desc")}</p><a class="button">${Lang.get("section/errors/noconnection/btn")}</a></div>`;
 
         this.view.btn = this.view.root.querySelector(".button");
-        this.view.btn.onclick = () => { App.router.load(location.pathname); }
+        this.view.btn.onclick = () => { App.router.reload(); }
     }
 
 }

@@ -100,7 +100,10 @@ __LANG["de-ch"] = {
     },
     notifications: {
         postSignIn: "Du bisch jetzt ahgmeldet",
+        postSignOut: "Du bisch abgemeldet worde",
         postSignUp: "Din Account isch erstellt worde - Lueg ih dinere Mailbox nach eme Mail vo eus.",
+        postRecover: "Mer hend der en neue Zuegangscode gschickt - Lueg ih dini Mailbox",
+        postSwitch: "Du hesch zu eme andere Account gwechslet",
         reconnecting: "Verbinde...",
         connecting: "Verbinde...",
         reconnected: "Verbunde",
@@ -147,7 +150,7 @@ __LANG["de-ch"] = {
             },
             tipp: {
                 your: "Din Tipp",
-                notyet: "Klick da zum din tipp abgeh",
+                notyet: "Klick da zum tippe",
                 none: "Du hesch ned tippt",
                 form: {
                     result: "Resultat",
@@ -229,6 +232,7 @@ __LANG["de-ch"] = {
             theme: {
                 title: "Design",
                 desc: "Wähl dis gwünschte Design",
+                auto: "Automatisch",
                 light: "Hell",
                 dark: "Dunkel"
             },

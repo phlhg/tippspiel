@@ -101,7 +101,10 @@ __LANG["de"] = {
     },
     notifications: {
         postSignIn: "Du bist jetzt angemeldet",
-        postSignUp: "Dein Account wurde erstellt - Schaue in deiner Mailbox nach einer E-Mail von uns.",
+        postSignOut: "Du wurdest abgemeldet",
+        postSignUp: "Dein Account wurde erstellt - Schau in deiner Mailbox nach einer E-Mail von uns.",
+        postRecover: "Wir haben dir einen neuen Zugangscode gesendet - Schau in deine Mailbox",
+        postSwitch: "Du hast zu einem anderen Account gewechselt",
         reconnecting: "Verbinden...",
         connecting: "Verbinden...",
         reconnected: "Verbunden",
@@ -149,7 +152,7 @@ __LANG["de"] = {
             },
             tipp: {
                 your: "Dein Tipp",
-                notyet: "Klicke hier um deinen Tipp abzugeben",
+                notyet: "Klicke hier um zu tippen",
                 none: "Du hast nicht getippt",
                 form: {
                     result: "Resultat",
@@ -231,6 +234,7 @@ __LANG["de"] = {
             theme: {
                 title: "Design",
                 desc: "Wähle dein gewünschtes Design",
+                auto: "Automatisch",
                 light: "Hell",
                 dark: "Dunkel"
             },

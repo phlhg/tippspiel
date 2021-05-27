@@ -52,7 +52,7 @@ export default class SignIn extends Section {
     }
 
     async signIn(token){
-        var r = await App.client.singIn(token)
+        var r = await App.client.signIn(token)
         if(!r.success){
             this.form.error(r.message);
             return false;

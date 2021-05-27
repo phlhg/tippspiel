@@ -1,16 +1,20 @@
 import Debugger from './debugger';
+import TippNotification from './helper/notification';
 import Request from './models/request';
 
 /** Class representing the client */
 export default class Client {
 
     constructor(){
+        this.clear()
+    }
 
+    clear(){
         /** @type {boolean} Indicates if the client is signed in or not */
         this.active = false;
 
         /** @type {boolean} Indicates if the client was already logged in once  */
-        this.isknown = false;
+        this.isknown = localStorage.getItem("tipp-dev-iskown") !== null;
 
         /** @type {string} Token of the client */
         this.token = "";
@@ -45,37 +49,21 @@ export default class Client {
 
         /** @type {array} GameTipps of the client */
         this.gameTipps = []
-
     }
 
     /**
      * Restore a possible previous session of the client
      */
     async restoreSession(){
-        this.isknown = (localStorage.getItem("tipp-dev-iskown") !== null)
         if(localStorage.getItem("tipp-dev-token") !== null){
-            var r = await this.singIn(localStorage.getItem("tipp-dev-token"));
+            var r = await this.signIn(localStorage.getItem("tipp-dev-token"));
             if(!r.success){
                 Debugger.warn(this, `Could not restore session (${Lang.getError(r.message)})`)()
                 localStorage.removeItem("tipp-dev-token")
-                App.router.forward("/signin/")
             } else {
                 Debugger.log(this, "Session was restored")()
             }
         }
-    }
-
-    /**
-     * Shows the sign-in, if the user is known, otherwise the sign-up
-     */
-    promptLogin(){
-        if(this.active){ return true; }
-        if(this.isknown){
-            App.router.overwrite("/signin/")
-        } else {
-            App.router.overwrite("/signup/")
-        }
-        return false;
     }
 
     /**
@@ -84,48 +72,94 @@ export default class Client {
      * @param {string} token Token of the client
      * @return {object} Response object
      */
-    async singIn(token,retry){
+    async signIn(token){
 
-        retry = retry ?? false;
-
-        var r = new Request("signin", { token: token, retry: retry });
-
-        // Signout client if active
-        if(!retry && this.active){ 
-            window.history.replaceState({}, '', "/signin/"+encodeURIComponent(token)+"/");
-            this.signout();
-            return r.error(""); 
+        if(this.active){  
+            var r0 = await this._signOut();  
+            if(!r0.success){ return r0; }
         }
 
-        if(!(await r.run())){ return r; }
-
-        this.active = true;
-        this.token = token;
-
-        var r2 = await this.getMe();
-        if(!r2.success){ 
-            this.active = false;
-            this.token = "";
-            return r2; 
-        }
-
-        /** FIX: Load own user into cache to enable user update events */
-        App.model.users.get(this.id)
-
-        if(localStorage.getItem("tipp-active-groups") === null){ localStorage.setItem("tipp-active-groups", JSON.stringify(this.groups)) }
-        this.groupsActive = JSON.parse(localStorage.getItem("tipp-active-groups")).filter(g => this.groups.includes(g));
+        var r1 = await this._signIn(token, false)
+        if(!r1.success){ return r1; }
 
         localStorage.setItem("tipp-dev-iskown","true")
         localStorage.setItem("tipp-dev-token",this.token)
 
+        return r1;
+    }
+
+    /**
+     * Sign in a client again - e.g. after a disconnect
+     */
+    async signInAgain(){
+        if(!this.active){ return true; }
+        var r = await this._signIn(this.token,true);
+        console.log(r)
+        if(!r.success){ return false; }
+        return true;
+    }
+
+    /** 
+     * Internal method to sign in the client
+     */
+    async _signIn(token, retry){
+        retry = retry ?? false;
+
+        var r1 = new Request("signin", { token: token, retry: retry });
+        if(!retry && this.active){ return r1.error("Already signed in"); }
+        if(!(await r1.run())){ console.log(r1); return r1; }
+
+        var r2 = await this.getMe();
+        if(!r2.success){ return r2; }
+
+        this.active = true;
+        this.token = token;
+
+        // Handle missed updates on reconnect
+        if(retry){
+            if((r1.data.upToDate ?? "true") == "true" && (r1.data.updates ?? "") !== ""){
+                App.model.update(r1.data.updates)
+            } else {
+                App.model.clear(); 
+            }
+        }
+
+        Debugger.log(this, "Client is now signed in")()
+
+        return r1;
+    }
+
+    /**
+     * Signs the client out - Manipulates the LocalStorage
+     */
+     async signOut(){
+        var r = await this._signOut()
+        if(!r.success){ return r; }
+
+        // Remove token
+        localStorage.setItem("tipp-dev-iskown","true")
+        localStorage.removeItem("tipp-dev-token")
+
+        // Redirect
+        App.router.load("/");
+
         return r;
     }
 
-    async restoreConnection(){
-        if(!this.active){ return true; }
-        var r = await this.singIn(localStorage.getItem("tipp-dev-token"),true);
-        if(r.success){ return false; }
-        return r.data.upToDate == "true";
+    /**
+     * Internal signOut - Ignores the LocalStorage
+     */
+    async _signOut(){
+        var r = new Request("signout");
+        if(!this.active){ return r.error("Not signed in"); }
+        if(!(await r.run())){ return r }
+
+        App.model.clear()
+        App.client.clear()
+
+        Debugger.log(this, "Client is now signed out")()
+
+        return r;
     }
 
     /**
@@ -145,6 +179,9 @@ export default class Client {
         this.groups = Array.from(r.data.groups).map(i => parseInt(i))
         this.gameTipps = Array.from(r.data.gameTipps).map(i => parseInt(i))
         this.eventTipps = Array.from(r.data.eventTipps).map(i => parseInt(i))
+
+        if(localStorage.getItem("tipp-active-groups") === null){ localStorage.setItem("tipp-active-groups", JSON.stringify(this.groups)) }
+        this.groupsActive = JSON.parse(localStorage.getItem("tipp-active-groups")).filter(g => this.groups.includes(g));
 
         return r;
     }
@@ -185,14 +222,69 @@ export default class Client {
     }
 
     /**
-     * Signs out the client
+     * Shows the sign-in, if the user is known, otherwise the sign-up
      */
-    signout(){
-        localStorage.setItem("tipp-dev-iskown","true")
-        localStorage.removeItem("tipp-dev-token")
-        document.body.classList.add("loading"); 
-        setTimeout(() => { window.location.reload() },500);
+    promptLogin(){
+        if(this.active){ return true; }
+        if(this.isknown){
+            App.router.overwrite("/signin/")
+        } else {
+            App.router.overwrite("/signup/")
+        }
+        return false;
     }
+
+    async handleServerUpdate(){
+        if(!this.active){ return false; }
+        var r = await this.getMe();
+        if(!r.success){ Debugger.warn(this,r.message); }
+        Debugger.log(this,"Updated client")()
+        window.dispatchEvent(new CustomEvent("datachange",{ detail: { type: "user", id: this.id } }))
+        return true;
+    }
+
+    async handleStorageUpdate(){
+        
+        if(this.token != localStorage.getItem("tipp-dev-token")){
+            if(this.active){
+                // Locally signed In
+                var r0 = await this._signOut();
+                if(r0.success){
+                    if(localStorage.getItem("tipp-dev-token") != null){
+                        // Remotely signed in
+                        var r = await this._signIn(localStorage.getItem("tipp-dev-token"), false)
+                        if(r.success){ 
+                            TippNotification.create(Lang.get("notifications/postSwitch"),3000, "swap_horiz", "success").show() 
+                        } else {
+                            Debugger.warn(this, r.message);
+                        }
+                    } else {
+                        // Remotely signed out
+                        TippNotification.create(Lang.get("notifications/postSignOut"),3000, "logout", "error").show() 
+                    }
+                } else {
+                    Debugger.warn(this, r0.message);
+                }
+            } else {
+                // Locally Signed Out
+                if(localStorage.getItem("tipp-dev-token") != null && this.token != localStorage.getItem("tipp-dev-token")){
+                    // Remotely signed in
+                    var r = await this._signIn(localStorage.getItem("tipp-dev-token"), false)
+                    if(r.success){ 
+                        TippNotification.create(Lang.get("notifications/postSignIn"),3000, "login", "success").show() 
+                    } else {
+                        Debugger.warn(this, r.message);
+                    }
+                }
+            }
+            App.router.reload()
+        }
+
+        this.groupsActive = JSON.parse(localStorage.getItem("tipp-active-groups")).filter(g => this.groups.includes(g));
+        window.dispatchEvent(new CustomEvent("datachange",{ detail: { type: "user", id: this.id } }))
+    }
+
+    // GROUPS
 
     isGroupActive(id){
         return this.groupsActive.includes(id);

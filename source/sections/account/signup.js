@@ -1,5 +1,6 @@
 import Section from '../section'
 import Form from '../../components/form';
+import TippNotification from '../../helper/notification';
 
 export default class SignUp extends Section {
 
@@ -32,8 +33,8 @@ export default class SignUp extends Section {
                 this.form.error(r.message);
                 return false;
             } else {
-                TippNotification.success(Lang.get("notifications/postSignUp"),8000);
-                App.router.load(window.location.pathname);
+                TippNotification.create(Lang.get("notifications/postSignUp"),8000,"email","success").show();
+                App.router.reload();
                 this.form.reset();
             }
 
