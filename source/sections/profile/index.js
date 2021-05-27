@@ -63,7 +63,7 @@ export default class Profile extends Section {
 
     shortName(name){
         var s = name.split(/\s/ig);
-        if(s >= 2){ return s.map(s => s.charAt(0)).join("") + "."; }
+        if(s.length >= 2 && s.length <= 10){ return s.map(s => s.charAt(0)).join("") + "."; }
         return name.replace(/\s/ig,'').slice(0,2).toUpperCase()+".";
     }
 

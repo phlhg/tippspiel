@@ -16,7 +16,7 @@ export default class GroupDetail extends Section {
         this.view.root.innerHTML = 
         `<div class="tipp-box event-header">
             <span class="icon"><span class="material-icons">group</span></span>
-            <span class="title"></span>
+            <span class="title nowrap"></span>
             <span class="meta"></span>
         </div>
         <a class="tipp-box invite" style="display: none;">
