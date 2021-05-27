@@ -15,7 +15,7 @@ __LANG["en"] = {
             8: "This request is already running.",
             9: "There is no account associated with this email",
             10: "This account has been banned - Get in touch with us",
-            11: "This Request cannot be executed indefinitely. Try again later.",
+            11: "This Request is disabled for {time}.",
             12: "There is no group corresponding to this access code. The access might have been reset by the group admin."
         },
         local: {
