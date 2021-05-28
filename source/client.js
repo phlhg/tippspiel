@@ -107,7 +107,7 @@ export default class Client {
 
         var r1 = new Request("signin", { token: token, retry: retry });
         if(!retry && this.active){ return r1.error("Already signed in"); }
-        if(!(await r1.run())){ console.log(r1); return r1; }
+        if(!(await r1.run())){ return r1; }
 
         var r2 = await this.getMe();
         if(!r2.success){ return r2; }
