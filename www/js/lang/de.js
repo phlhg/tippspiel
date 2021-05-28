@@ -212,14 +212,16 @@ __LANG["de"] = {
             },
             action: "Registrieren",
             signInInstead: "Falls du schon einen Account hast, {a}",
-            signInLink: "melde dich an"
+            signInLink: "melde dich an",
+            nameTooLong: "Bitte wähle einen kürzeren Namen"
         },
         signIn: {
             title: "Anmelden",
-            desc: "Gib deinen Zugangscode oder den Link <i>aus der E-Mail</i>, die wir dir gesendet haben, ein.",
+            desc: "Gib deinen Zugangscode aus der E-Mail, die wir dir gesendet haben, ein.",
             placeholder : {
                 code: "Zugangscode: z.B. 0-1a2b3c4d5e",
             },
+            notAToken: "Bitte gib einen korrekten Zuganscode ein",
             action: "Anmelden",
             signUpInstead: "Falls du noch keinen Account hast, {a}",
             signUpLink: "registriere dich",
@@ -312,7 +314,8 @@ __LANG["de"] = {
             },
             new: {
                 title: "Neue Gruppe",
-                meta: "Erstelle eine neue Gruppe"
+                meta: "Erstelle eine neue Gruppe",
+                desc: "Mit Gruppen behältst du den Überblick - Erstelle eine Gruppe mit deinen Freunden, mit deinen Arbeitskollegen oder mit wem immer du willst!"
             },
             invitation: {
                 link: "Gruppen-Einladung",
@@ -330,7 +333,7 @@ __LANG["de"] = {
                 members_single: "1 Mitglied"
             },
             create: {
-                placeholder: "Gruppenname",
+                placeholder: "Gruppenname: z.B. Gruppe von Max",
                 submit: "Gruppe erstellen"
             },
             leave: "Gruppe verlassen",

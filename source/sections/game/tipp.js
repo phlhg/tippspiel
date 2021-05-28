@@ -40,7 +40,7 @@ export default class GameTipp extends Section {
             </div>
             <h4>${Lang.get("section/game/tipp/form/topscorer")}</h4>
             <div class="tipp-player"></div>
-            <input type="submit" value="${Lang.get("section/game/tipp/form/submit")}" style="margin: 10px 0 0 15px;"/>
+            <input type="submit" value="${Lang.get("section/game/tipp/form/submit")}"/>
         </form>
         `
 

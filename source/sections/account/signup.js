@@ -28,6 +28,11 @@ export default class SignUp extends Section {
 
         this.form.onSubmit = async data => {
 
+            if(data.name.length > 50){
+                this.form.error(Lang.get("section/signUp/nameTooLong"));
+                return false;
+            }
+
             var r = await App.client.singUp(data.name, data.email)
             if(!r.success){
                 this.form.error(r.message);

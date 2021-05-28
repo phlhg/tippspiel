@@ -29,7 +29,7 @@ export default class EventGameAddView extends Section {
                 <div class="tipp-kickoff-select"></div>
                 <h4>${Lang.get("section/game/create/location/name")}</h4>
                 <div class="tipp-location-select"></div>
-                <input type="submit" value="${Lang.get("section/game/create/submit")}" style="margin: 10px 0 0 15px;"/>
+                <input type="submit" value="${Lang.get("section/game/create/submit")}"/>
             </form>`
 
         this.form = new Form(this.view.root.querySelector("form"));

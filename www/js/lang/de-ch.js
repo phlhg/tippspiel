@@ -210,14 +210,16 @@ __LANG["de-ch"] = {
             },
             action: "Registriere",
             signInInstead: "Falls du scho en Account hesch, {a}",
-            signInLink: "meld dich ah"
+            signInLink: "meld dich ah",
+            nameTooLong: "Bitte nimm en chürzere Name"
         },
         signIn: {
             title: "Ahmelde",
-            desc: "Gib din Zugangscode oder de Link <i>us de E-Mail</i>, wo mer dir gschickt hend, ih.",
+            desc: "Gib din Zugangscode us de E-Mail, wo mer dir gschickt hend, ih.",
             placeholder : {
                 code: "Zugangscode: z.B. 0-1a2b3c4d5e",
             },
+            notAToken: "Bitte gib en richtige Zuegangscode ih",
             action: "Ahmelde",
             signUpInstead: "Falls du no kein Account hesch, {a}",
             signUpLink: "registrier dich",
@@ -309,7 +311,8 @@ __LANG["de-ch"] = {
             },
             new: {
                 title: "Neui Gruppe",
-                meta: "Erstell e neui Gruppe"
+                meta: "Erstell e neui Gruppe",
+                desc: "Mit Gruppe bhaltisch de Überblick - Erstell e Gruppe mit Fründe, Arbeitskollege oder mit wem immer du wetsch!"
             },
             invitation: {
                 link: "Gruppe-Ihladig",
@@ -327,7 +330,7 @@ __LANG["de-ch"] = {
                 members_single: "1 Mitglied"
             },
             create: {
-                placeholder: "Gruppename",
+                placeholder: "Gruppename: z.B. Gruppe vom Max",
                 submit: "Gruppe erstelle"
             },
             leave: "Gruppe verlah",

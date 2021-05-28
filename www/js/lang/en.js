@@ -211,14 +211,16 @@ __LANG["en"] = {
             },
             action: "Sign up",
             signInInstead: "If you already have an account: {a}",
-            signInLink: "Sign in instead"
+            signInLink: "Sign in instead",
+            nameTooLong: "Please select a shorter name"
         },
         signIn: {
             title: "Sign in",
-            desc: "Please enter your access code or the link, <i>from the e-mail</i> we sent you.",
+            desc: "Please enter your access code from the e-mail we've sent you.",
             placeholder : {
                 code: "Access code: e.g. 0-1a2b3c4d5e",
             },
+            notAToken: "Please enter a valid access code",
             action: "Sign in",
             signUpInstead: "If you don't have an account yet, {a}",
             signUpLink: "sign up instead",
@@ -311,7 +313,8 @@ __LANG["en"] = {
             },
             new: {
                 title: "New Group",
-                meta: "Create a new group"
+                meta: "Create a new group",
+                desc: "Groups let you keep track - Create a group with your friends, with your work colleagues or with whoever you want."
             },
             invitation: {
                 link: "Group invitation",
@@ -329,7 +332,7 @@ __LANG["en"] = {
                 members_single: "1 Member"
             },
             create: {
-                placeholder: "Groupname",
+                placeholder: "Groupname: e.g. Tom's Group",
                 submit: "Create group"
             },
             leave: "Leave group",
