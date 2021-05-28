@@ -19,11 +19,12 @@ export default class Request {
 
         if(this._response.state != ResponseState.SUCCESS){
             if(parseInt(this._response.error) >= 0){
+                if(parseInt(this._response.error) == 0){ Debugger.error(this,`Encountered unknown error while executing "${this._command}": `, this._response)() }
                 return this._error(Lang.getError(this._response.error,this._response.data));
             } else if(this._response.data.hasOwnProperty("info")){
                 return this._error(this._response.data.info);
             } else {
-                Debugger.error(this,`Encountered unknown error while executing "${this.command}": `, this._response)()
+                Debugger.error(this,`Encountered unknown error while executing "${this._command}": `, this._response)()
                 return this._error(Lang.get("errors/local/unknown"));
             }
         }
