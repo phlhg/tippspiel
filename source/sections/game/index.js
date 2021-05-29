@@ -249,7 +249,10 @@ export default class GameIndex extends Section {
             this.view.mytipp.tile.classList.remove("nobet");
 
             var tipp = await this.game.getOwnTipp()
-            this.view.mytipp.a.setAttribute("href","/tipp/"+tipp.id+"/");
+
+            if(this.game.status != GameStatus.UPCOMING){
+                this.view.mytipp.a.setAttribute("href","/tipp/"+tipp.id+"/");
+            }
 
             var winner = await tipp.getWinner()
             this.view.mytipp.flag.setAttribute("data-t",winner.short.toLowerCase());
