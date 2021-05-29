@@ -143,9 +143,10 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px; lin
 .game-tile.loading { color: transparent; }
 .game-tile.loading .tflag { opacity: 0; }
 
-.game-tile > .name { white-space: nowrap; position: absolute; display: block; font-size: 20px; line-height: 22px; font-weight: bold; top: 15px; width: 45%; overflow: hidden; text-overflow: ellipsis; }
-.game-tile > .t1.name { left: 0; padding-left: 55px; text-align: left; }
-.game-tile > .t2.name { right: 0; padding-right: 55px; text-align: right;}
+.game-tile > .name, .game-tile > .short { white-space: nowrap; position: absolute; display: block; font-size: 20px; line-height: 22px; font-weight: bold; top: 15px; width: 45%; overflow: hidden; text-overflow: ellipsis; }
+.game-tile > .t1.name, .game-tile > .t1.short { left: 0; padding-left: 55px; text-align: left; }
+.game-tile > .t2.name, .game-tile > .t2.short  { right: 0; padding-right: 55px; text-align: right;}
+.game-tile > .short { display: none; }
 .game-tile > .tflag ,.game-tile > .tflag { position: absolute; top: 15; font-size: 25px; line-height: 25px; }
 .game-tile > .t1.tflag { left: 15px; }
 .game-tile > .t2.tflag { right: 15px; }
@@ -447,4 +448,9 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px; lin
     .tipp-section-wrapper > section { padding-top: 70px;}
 
     .game-header > .flag1, .game-header > .flag2 { --blur: 20px; }
+}
+
+@media screen and (max-width: 500px) {
+    .game-tile > .short { display: block; }
+    .game-tile > .name { display: none; }
 }

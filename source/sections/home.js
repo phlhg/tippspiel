@@ -56,6 +56,7 @@ export default class Home extends Section {
 
         this.view.finishedHeading.style.display = hotGames.over.length > 0 ? "block" : "none";
 
+        hotGames.over.reverse();
         hotGames.over.forEach(game => { 
             this.view.finishedList.appendChild(new GameTile(game).getHtml())
         })

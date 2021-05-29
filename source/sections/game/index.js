@@ -247,18 +247,22 @@ export default class GameIndex extends Section {
 
         if(this.game.hasOwnTipp()){
             this.view.mytipp.tile.classList.remove("nobet");
-            this.view.mytipp.meta.innerText = Lang.get("general/loading")
-            this.game.getOwnTipp().then(async tipp => {
-                var winner = await tipp.getWinner();
-                this.view.mytipp.flag.setAttribute("data-t",winner.short.toLowerCase());
-                if(tipp.topscorer > 0){
-                    var player = await tipp.getPlayer()
-                    this.view.mytipp.meta.innerText = `${tipp.bet1} : ${tipp.bet2} / ${player.name}`
-                } else {
-                    this.view.mytipp.meta.innerText = `${tipp.bet1} : ${tipp.bet2} / `;
-                }
-                this.view.mytipp.reward.innerText = tipp.reward > 0 ? '+'+tipp.reward : '';
-            })
+
+            var tipp = await this.game.getOwnTipp()
+            this.view.mytipp.a.setAttribute("href","/tipp/"+tipp.id+"/");
+
+            var winner = await tipp.getWinner()
+            this.view.mytipp.flag.setAttribute("data-t",winner.short.toLowerCase());
+
+            if(tipp.topscorer > 0){
+                var player = await tipp.getPlayer()
+                this.view.mytipp.meta.innerText = `${tipp.bet1} : ${tipp.bet2} / ${player.name}`
+            } else {
+                this.view.mytipp.meta.innerText = `${tipp.bet1} : ${tipp.bet2}`;
+            }
+
+            this.view.mytipp.reward.innerText = tipp.reward > 0 ? '+'+tipp.reward : '';
+
         } else {
             if(App.client.active && this.game.status == GameStatus.UPCOMING){ this.view.mytipp.tile.classList.add("nobet"); }
             this.view.mytipp.reward.innerText = '';
@@ -276,6 +280,7 @@ export default class GameIndex extends Section {
         if(this.game.status != GameStatus.UPCOMING){ 
             this.view.tipps.root.classList.remove("hidden");
             var tipps = await Promise.all(this.game.getTipps());
+            tipps.sort((a,b) => b.reward - a.reward);
 
             var countTeam1 = 0;
             var countTeam2 = 0;

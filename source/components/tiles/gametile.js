@@ -17,11 +17,15 @@ export default class GameTile extends Tile {
         <span class="t2 tflag"></span>
         <span class="t1 name"></span>
         <span class="t2 name"></span>
+        <span class="t1 short"></span>
+        <span class="t2 short"></span>
         <div class="result"></div>
         <div class="meta"><span class="date"></span><span class="live-indicator">live</span><span class="tipps"></span></div>`;
 
         this.view.team1 = this.view.root.querySelector(".t1.name")
         this.view.team2 = this.view.root.querySelector(".t2.name")
+        this.view.short1 = this.view.root.querySelector(".t1.short")
+        this.view.short2 = this.view.root.querySelector(".t2.short")
         this.view.flag1 = this.view.root.querySelector(".t1.tflag")
         this.view.flag2 = this.view.root.querySelector(".t2.tflag")
         this.view.result = this.view.root.querySelector(".result");
@@ -35,6 +39,8 @@ export default class GameTile extends Tile {
 
         this.view.team1.innerText = this.obj.team1.name;
         this.view.team2.innerText = this.obj.team2.name;
+        this.view.short1.innerText = this.obj.team1.short.toUpperCase();
+        this.view.short2.innerText = this.obj.team2.short.toUpperCase();
         this.view.flag1.setAttribute("data-t",this.obj.team1.short.toLowerCase());
         this.view.flag2.setAttribute("data-t",this.obj.team2.short.toLowerCase());
         this.view.date.innerText = TippDate.toString(this.obj.start)
