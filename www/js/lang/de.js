@@ -109,6 +109,7 @@ __LANG["de"] = {
         connecting: "Verbinden...",
         reconnected: "Verbunden",
         connected: "Verbunden",
+        linkCopied: "Der Link wurde in die Zwischenablage kopiert"
     },
     section: {
         home: {
@@ -201,6 +202,11 @@ __LANG["de"] = {
                     select: "Wähle eine Spieler"
                 },
                 submit: "Spiel beenden"
+            },
+            share: {
+                title: "Teilen",
+                desc: "Teile dieses Spiel mit Anderen",
+                text: "Spiel {team1} - {team2}"
             }
         },
         signUp: {
@@ -346,7 +352,6 @@ __LANG["de"] = {
             join: "Gruppe beitreten",
             messages: {
                 left: "Du hast die Gruppe verlassen",
-                invitation_copied: "Der Einladungslink wurde in die Zwischenablage kopiert",
                 created: "Die Gruppe wurde erstellt",
                 alreadymember: "Du bist bereits Mitglied dieser Gruppe",
                 joined: "Du bist der Gruppe beigetreten"
@@ -362,6 +367,10 @@ __LANG["de"] = {
                     confirm: "Verlassen",
                     deny: "Abbrechen"
                 }
+            },
+            share: {
+                title: "Gruppen-Einladung",
+                text: "Gruppen-Einladung zu {name}"
             }
         },
         event: {

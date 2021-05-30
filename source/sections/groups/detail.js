@@ -42,13 +42,11 @@ export default class GroupDetail extends Section {
         this.view.more = this.view.root.querySelector(".more");
 
         this.view.invite.onclick = () => {
-            var input = document.createElement("input");
-            input.value = `https://tipp.phlhg.ch/groups/join/${this.group.token}/`;
-            document.body.appendChild(input);
-            input.select();
-            document.execCommand("copy");
-            input.remove();
-            TippNotification.success(Lang.get("section/groups/messages/invitation_copied"));
+            App.device.share({
+                title: Lang.get("section/groups/share/title"),
+                text: Lang.get("section/groups/share/text", { name: this.group.name }),
+                url: `${window.location.protocol}//${window.location.hostname}/groups/join/${this.group.token}/`
+            })
         }
 
         this.view.memberList = this.view.root.querySelector(".member-list");

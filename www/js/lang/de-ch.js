@@ -108,6 +108,7 @@ __LANG["de-ch"] = {
         connecting: "Verbinde...",
         reconnected: "Verbunde",
         connected: "Verbunde",
+        linkCopied: "De Link isch ih d'Zwüscheablag kopiert worde"
     },
     section: {
         home: {
@@ -199,6 +200,11 @@ __LANG["de-ch"] = {
                     select: "Wähl en Spieler"
                 },
                 submit: "Spiel beände"
+            },
+            share: {
+                title: "Teile",
+                desc: "Teil das Spil mit Andere",
+                text: "Spiil {team1} - {team2}"
             }
         },
         signUp: {
@@ -343,7 +349,6 @@ __LANG["de-ch"] = {
             join: "Gruppe biitrete",
             messages: {
                 left: "Du hesch d Gruppe verlah",
-                invitation_copied: "De Ihladigslink isch id Zwüscheablag kopiert worde",
                 created: "D'Gruppe isch erstellt worde",
                 alreadymember: "Du bisch scho Mitglied vo dere Gruppe",
                 joined: "Du bisch de Gruppe biitrete"
@@ -359,6 +364,10 @@ __LANG["de-ch"] = {
                     confirm: "Verlah",
                     deny: "Abbreche"
                 }
+            },
+            share: {
+                title: "Gruppe-Ihladig",
+                text: "Gruppe-Ihladig für {name}"
             }
         },
         event: {

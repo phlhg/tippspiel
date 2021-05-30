@@ -1,3 +1,25 @@
+<?php 
+
+    $title = "Tippspiel";
+    $description = "by TobiCreations & PHLHG";
+
+    $langs = array_map(function($a){
+        return strToLower(explode(";",$a)[0]);
+    },explode(",",$_SERVER['HTTP_ACCEPT_LANGUAGE']));
+
+    $lang = (in_array("de",$langs) && array_search("de",$langs) < array_search("en",$langs)) ? "de" : "en";
+
+    if(preg_match("/^\/game\/\d+\/(\w{2,10})-(\w{2,10})\/$/i",$_SERVER["REQUEST_URI"], $matches, PREG_UNMATCHED_AS_NULL)){
+        $team1 = isset($matches[1]) ? htmlentities(strToUpper($matches[1])) : "TEAM1";
+        $team2 = isset($matches[2]) ? htmlentities(strToUpper($matches[2])) : "TEAM2";
+        $title = ($lang == "de") ? "Spiel $team1 - $team2" : "Match $team1 - $team2";
+        $description = ($lang == "de") ? "Gib jetzt deinen Tipp im Tippspiel ab" : "Make your bet now on Tippspiel";
+    } else if(preg_match("/^\/groups\/join\/(\d)+-(\w{2,20})\/$/i",$_SERVER["REQUEST_URI"], $matches, PREG_UNMATCHED_AS_NULL)){
+        $title = ($lang == "de") ? "Gruppeneinladung" : "Group invitation";
+        $description = ($lang == "de") ? "Trete der Gruppe im Tippspiel bei" : "Join the group on Tippspiel";
+    }
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,20 +38,20 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <!--// SEO //-->
-        <meta name="description"  content="by TobiCreations & PHLHG" />
+        <meta name="description"  content="<?=$description?>" />
         <meta name="keywords" content="fussball, tippen, europameisterschaft" />
         <meta name="page-topic" content="Entertainment" />
         <meta name="language" content="Deutsch" />
         <!-- OPENGRAPH -->
-        <meta property="og:title" content="Tippspiel" />
-        <meta property="og:description" content="by TobiCreations & PHLHG" />
+        <meta property="og:title" content="<?=$title?>" />
+        <meta property="og:description" content="<?=$description?>" />
         <meta property="og:image" content="/img/favicon.png" />
         <meta property="og:url" content="https://tipp.phlhg.ch" />
         <meta property="og:type" content="Entertainment" />
         <!-- TWITTER -->
         <meta name="twitter:card" content="summary_large_image"></meta>
-        <meta property="og:title" content="Tippspiel" />
-        <meta property="og:description" content="by TobiCreations & PHLHG" />
+        <meta property="og:title" content="<?=$title?>" />
+        <meta property="og:description" content="<?=$description?>" />
         <meta property="og:image" content="/img/favicon.png" />
         <!--// LINKS //-->
         <link rel="canonical" href="https://tipp.phlhg.ch"/>
@@ -38,7 +60,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
         <link rel="apple-touch-icon" href="/img/favicon.png" />
         <!-- STYLESHEETS -->
-        <link rel="stylesheet" href="/css/main.css" />
+        <link rel="stylesheet" href="/css/main.css?t=<?=time()?>" />
         <link rel="stylesheet" href="/css/dark.css" />
         <!-- FONTS -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" />
@@ -48,7 +70,7 @@
         <script src="/js/lang/en.js"></script>
         <script src="/js/lang/de.js"></script>
         <script src="/js/lang/de-ch.js"></script>
-        <script src="/js/lang/fr.js"></script>
+        <!--<script src="/js/lang/fr.js"></script>-->
         <script src="/js/h2rfp.js"></script>
         <script src="/js/enum.js"></script>
         <script src="/js/main.js"></script>

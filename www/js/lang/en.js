@@ -108,6 +108,7 @@ __LANG["en"] = {
         connecting: "Connecting...",
         reconnected: "Reconnected",
         connected: "Connected",
+        linkCopied: "The link was copied to clipboard"
     },
     section: {
         home: {
@@ -200,6 +201,11 @@ __LANG["en"] = {
                     select: "Select a player"
                 },
                 submit: "End game"
+            },
+            share: {
+                title: "Share",
+                desc: "Share this match with others",
+                text: "Match {team1} - {team2}"
             }
         },
         signUp: {
@@ -345,7 +351,6 @@ __LANG["en"] = {
             join: "Join group",
             messages: {
                 left: "You've left the group",
-                invitation_copied: "The inviation link was copied to the clipboard",
                 created: "The group was created",
                 alreadymember: "You're already a member of that group",
                 joined: "You've joined the group"
@@ -361,6 +366,10 @@ __LANG["en"] = {
                     confirm: "Leave",
                     deny: "Cancel"
                 }
+            },
+            share: {
+                title: "Group invitation",
+                text: "Group invitation to {name}"
             }
         },
         event: {
