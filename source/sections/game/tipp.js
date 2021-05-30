@@ -87,9 +87,7 @@ export default class GameTipp extends Section {
 
         this.searchselect = new SearchSelect("player",Lang.get("section/game/tipp/form/search"));
         this.searchselect.getSuggestions = async (input) => {
-            return await Promise.all(this.player_suggestions.filter(p => {
-                return p.normalized.indexOf(input.toLowerCase()) > -1
-            }).sort((a,b) => {
+            return await Promise.all(this.player_suggestions.filter(p => p.matchText(input)).sort((a,b) => {
                 return -a.normalized.localeCompare(input.toLowerCase())
             }).map(async p => { 
                 var t = await p.getTeam();

@@ -12,6 +12,7 @@ RewriteCond %{REQUEST_URI} ^/tipp/ [NC]
 RewriteRule .* https://tipp.phlhg.ch [L,QSA,R=301]
 
 # Redirect to https://
+RewriteCond %{HTTP_HOST} !^tipp\.phlhg\.vs
 RewriteCond %{HTTPS} off 
 RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,QSA,R=301]
 

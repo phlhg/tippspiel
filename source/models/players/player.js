@@ -33,4 +33,8 @@ export default class Player extends Element {
         return App.model.teams.get(this.team);
     }
 
+    matchText(text){
+        return this.normalized.includes(text.toLowerCase()) || this.name.toLowerCase().includes(text.toLowerCase())
+    }
+
 }
