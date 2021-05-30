@@ -227,6 +227,12 @@ __LANG["de-ch"] = {
             recoverLink: "en Neue ahfordere"
         },
         settings: {
+            push: {
+                title: "Benachrichtigunge",
+                desc: "Wird über Resultat informiert",
+                on: "Ah",
+                off: "Ab"
+            },
             lang: {
                 title: "Sprach",
                 desc: "Wähl dini gwünschti Sprach"

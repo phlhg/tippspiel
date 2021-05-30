@@ -9,7 +9,16 @@ export default class Settings extends Section {
     }
 
     init(){
-        this.view.root.innerHTML = `<div class="tipp-box language">
+        this.view.root.innerHTML = `<div class="tipp-box push">
+            <span class="icon"><span class="material-icons">notifications</span></span>
+            <span class="title">${Lang.get("section/settings/push/title")}</span>
+            <span class="meta">${Lang.get("section/settings/push/desc")}</span>
+            <select name="push" style="margin-top: 10px">
+                <option value="1">${Lang.get("section/settings/push/on")}</option>
+                <option value="0">${Lang.get("section/settings/push/off")}</option>
+            </select>
+        </div>
+        <div class="tipp-box language">
             <span class="icon"><span class="material-icons">translate</span></span>
             <span class="title">${Lang.get("section/settings/lang/title")}</span>
             <span class="meta">${Lang.get("section/settings/lang/desc")}</span>
@@ -44,6 +53,28 @@ export default class Settings extends Section {
             <span class="title">${Lang.get("section/settings/logout/name")}</span>
         </a>
         `
+
+        // Push
+
+
+        this.view.pushBox = this.view.root.querySelector(".push")
+        this.view.pushSelect = this.view.root.querySelector(".push select")
+
+        if(App.push.isSupported()){ 
+
+            this.view.pushSelect.onchange = async () => {
+                if(this.view.pushSelect.value == "1"){
+                    if(!(await App.push.enable())){ 
+                        this.view.pushSelect.value = "0"
+                    }
+                } else {
+                    if(!(await App.push.disable())){
+                        this.view.pushSelect.value = "1"
+                    }
+                }
+            }
+
+        }
 
         // Language
 
@@ -94,6 +125,8 @@ export default class Settings extends Section {
     }
 
     async load(){
+        this.view.pushBox.style.display = App.push.isAvailable() ? "block" : "none";
+        App.push.isEnabled().then(r => { this.view.pushSelect.value = r ? "1" : "0" })
         this.view.themeSelect.value = App.theme;
         this.view.consoleButton.style.display = App.client.permission.console ? "block" : "none"
         this.view.signOutButton.style.display = App.client.active ? "block" : "none"

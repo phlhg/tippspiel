@@ -228,6 +228,12 @@ __LANG["en"] = {
             recoverLink: "get a new one"
         },
         settings: {
+            push: {
+                title: "Notifications",
+                desc: "Get informed about results",
+                on: "On",
+                off: "Off"
+            },
             lang: {
                 title: "Language",
                 desc: "Choose your prefered language"

@@ -6,6 +6,7 @@ import Model from './models';
 import Router from './routing/router'
 
 import TippNotification from './helper/notification';
+import TippPush from './push';
 
 export default class Application {
 
@@ -16,6 +17,7 @@ export default class Application {
         this.device = new Device();
         this.client = new Client();
         this.model = new Model();
+        this.push = new TippPush()
         this.router = new Router();
 
         this.setup()
@@ -184,6 +186,8 @@ export default class Application {
         }
 
     }
+    
+    // Theme
 
     loadTheme(){
         if(this.theme == "dark" || (this.theme == "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches)){
