@@ -15,7 +15,7 @@ export default class GroupJoinView extends Section {
         this.view.root.innerHTML = 
         `<div class="tipp-box event-header">
             <span class="icon"><span class="material-icons">group</span></span>
-            <span class="title"></span>
+            <span class="title nowrap"></span>
             <span class="meta"></span>
         </div>
         <div class="tipp-box join" style="cursor: pointer; background: #00b50c; border-color: #00b00c; color: #fff;">

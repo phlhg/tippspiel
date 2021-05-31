@@ -56,14 +56,29 @@ export default class Profile extends Section {
         // Tipps
         var tipps = (await Promise.all(App.model.gameTipps.getAll(App.client.gameTipps))).filter(t => t !== null);
         var games = (await Promise.all(App.model.games.getAll(tipps.map(t => t.game)))).filter(t => t !== null);
-        games.sort((a,b) => b.start - a.start);
+        var now = Date.now() - 1000 * 60 * 60 * 24
+        games.sort((a,b) => {
+            if(a.start > now){
+                if(b.start > now){
+                    return a.start - b.start;
+                } else {
+                    return b.start - a.start;
+                }
+            } else {
+                if(b.start > now){
+                    return b.start - a.start;
+                } else {
+                    return a.start - b.start;
+                }
+            }
+        })
         this.gamelist.insert(games);
         this.view.nobets.style.display = games.length > 0 ? "none" : "block";
     }
 
     shortName(name){
         var s = name.split(/\s/ig);
-        if(s >= 2){ return s.map(s => s.charAt(0)).join("") + "."; }
+        if(s.length >= 2 && s.length <= 10){ return s.map(s => s.charAt(0)).join("") + "."; }
         return name.replace(/\s/ig,'').slice(0,2).toUpperCase()+".";
     }
 

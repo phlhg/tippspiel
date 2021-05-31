@@ -13,6 +13,7 @@ export default class GroupCreateView extends Section {
         this.view.root.classList.add("tipp-login-page");
         this.view.root.innerHTML = `<div class="inner">
             <h3>${Lang.get("section/groups/new/title")}</h3>
+            <p>${Lang.get("section/groups/new/desc")}</p>
             <form class="tipp-form" style="margin-top: 10px">
                 <input type="text" required="" name="name" value="" placeholder="${Lang.get("section/groups/create/placeholder")}" />
                 <input type="submit" value="${Lang.get("section/groups/create/submit")}"/>
@@ -22,6 +23,12 @@ export default class GroupCreateView extends Section {
         this.form = new Form(this.view.root.querySelector("form"));
         
         this.form.onSubmit = async (data) => {
+
+            if(data.name.length > 50){
+                this.form.error(Lang.get("section/signUp/nameTooLong"));
+                return false;
+            }
+
             var r = await App.model.groups.create(data.name);
             if(!r.success){
                 this.form.error(r.message);

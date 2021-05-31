@@ -100,11 +100,15 @@ __LANG["en"] = {
     },
     notifications: {
         postSignIn: "You're signed in now",
-        postSignUp: "Your account was created - Check your inbox for an email from us.",
+        postSignOut: "You were signed out",
+        postSignUp: "Your account was created - Check your inbox for an email by us.",
+        postRecover: "We sent you a new access code - Check your inbox",
+        postSwitch: "You've switched to a different account",
         reconnecting: "Reconnecting...",
         connecting: "Connecting...",
         reconnected: "Reconnected",
         connected: "Connected",
+        linkCopied: "The link was copied to clipboard"
     },
     section: {
         home: {
@@ -197,6 +201,11 @@ __LANG["en"] = {
                     select: "Select a player"
                 },
                 submit: "End game"
+            },
+            share: {
+                title: "Share",
+                desc: "Share this match with others",
+                text: "Match {team1} - {team2}"
             }
         },
         signUp: {
@@ -208,14 +217,16 @@ __LANG["en"] = {
             },
             action: "Sign up",
             signInInstead: "If you already have an account: {a}",
-            signInLink: "Sign in instead"
+            signInLink: "Sign in instead",
+            nameTooLong: "Please select a shorter name"
         },
         signIn: {
             title: "Sign in",
-            desc: "Please enter your access code or the link, <i>from the e-mail</i> we sent you.",
+            desc: "Please enter your access code from the e-mail we've sent you.",
             placeholder : {
                 code: "Access code: e.g. 0-1a2b3c4d5e",
             },
+            notAToken: "Please enter a valid access code",
             action: "Sign in",
             signUpInstead: "If you don't have an account yet, {a}",
             signUpLink: "sign up instead",
@@ -223,6 +234,12 @@ __LANG["en"] = {
             recoverLink: "get a new one"
         },
         settings: {
+            push: {
+                title: "Notifications",
+                desc: "Get informed about results",
+                on: "On",
+                off: "Off"
+            },
             lang: {
                 title: "Language",
                 desc: "Choose your prefered language"
@@ -230,6 +247,7 @@ __LANG["en"] = {
             theme: {
                 title: "Theme",
                 desc: "Choose your prefered theme",
+                auto: "Automatic",
                 light: "Light",
                 dark: "Dark"
             },
@@ -307,7 +325,8 @@ __LANG["en"] = {
             },
             new: {
                 title: "New Group",
-                meta: "Create a new group"
+                meta: "Create a new group",
+                desc: "Groups let you keep track - Create a group with your friends, with your work colleagues or with whoever you want."
             },
             invitation: {
                 link: "Group invitation",
@@ -325,14 +344,13 @@ __LANG["en"] = {
                 members_single: "1 Member"
             },
             create: {
-                placeholder: "Groupname",
+                placeholder: "Groupname: e.g. Tom's Group",
                 submit: "Create group"
             },
             leave: "Leave group",
             join: "Join group",
             messages: {
                 left: "You've left the group",
-                invitation_copied: "The inviation link was copied to the clipboard",
                 created: "The group was created",
                 alreadymember: "You're already a member of that group",
                 joined: "You've joined the group"
@@ -348,6 +366,10 @@ __LANG["en"] = {
                     confirm: "Leave",
                     deny: "Cancel"
                 }
+            },
+            share: {
+                title: "Group invitation",
+                text: "Group invitation to {name}"
             }
         },
         event: {

@@ -56,6 +56,11 @@ export default class GameIndex extends Section {
                 <span class="reward"></span>
             </a>
         </div>
+        <a class="tipp-box share">
+            <span class="icon"><span class="material-icons">share</span></span>
+            <span class="title">${Lang.get("section/game/share/title")}</span>
+            <span class="meta">${Lang.get("section/game/share/desc")}</span>
+        </a>
         <div class="game-tipps">
             <h3>${Lang.get("section/game/tipps/list")}</h3>
             <div class="game-tipp-stats">
@@ -125,7 +130,17 @@ export default class GameIndex extends Section {
         this.view.mytipp.flag = this.view.mytipp.root.querySelector(".tflag")
         this.view.mytipp.reward = this.view.mytipp.root.querySelector(".reward")
 
+        this.view.share = this.view.root.querySelector(".share")
+
         this.game = null;
+
+        this.view.share.onclick = () => {
+            App.device.share({
+                title: Lang.get("section/game/share/text",{ team1: this.game.team1.name, team2: this.game.team2.name}),
+                text: Lang.get("section/game/share/text",{ team1: this.game.team1.name, team2: this.game.team2.name}),
+                url: `${window.location.protocol}//${window.location.hostname}${this.game.url}`
+            })
+        }
 
         window.addEventListener("datachange",e => {
             if(this._active && this.game != null && e.detail.type == "game" && e.detail.id == this.game.id){
@@ -247,18 +262,25 @@ export default class GameIndex extends Section {
 
         if(this.game.hasOwnTipp()){
             this.view.mytipp.tile.classList.remove("nobet");
-            this.view.mytipp.meta.innerText = Lang.get("general/loading")
-            this.game.getOwnTipp().then(async tipp => {
-                var winner = await tipp.getWinner();
-                this.view.mytipp.flag.setAttribute("data-t",winner.short.toLowerCase());
-                if(tipp.topscorer > 0){
-                    var player = await tipp.getPlayer()
-                    this.view.mytipp.meta.innerText = `${tipp.bet1} : ${tipp.bet2} / ${player.name}`
-                } else {
-                    this.view.mytipp.meta.innerText = `${tipp.bet1} : ${tipp.bet2} / `;
-                }
-                this.view.mytipp.reward.innerText = tipp.reward > 0 ? '+'+tipp.reward : '';
-            })
+
+            var tipp = await this.game.getOwnTipp()
+
+            if(this.game.status != GameStatus.UPCOMING){
+                this.view.mytipp.a.setAttribute("href","/tipp/"+tipp.id+"/");
+            }
+
+            var winner = await tipp.getWinner()
+            this.view.mytipp.flag.setAttribute("data-t",winner.short.toLowerCase());
+
+            if(tipp.topscorer > 0){
+                var player = await tipp.getPlayer()
+                this.view.mytipp.meta.innerText = `${tipp.bet1} : ${tipp.bet2} / ${player.name}`
+            } else {
+                this.view.mytipp.meta.innerText = `${tipp.bet1} : ${tipp.bet2}`;
+            }
+
+            this.view.mytipp.reward.innerText = tipp.reward > 0 ? '+'+tipp.reward : '';
+
         } else {
             if(App.client.active && this.game.status == GameStatus.UPCOMING){ this.view.mytipp.tile.classList.add("nobet"); }
             this.view.mytipp.reward.innerText = '';
@@ -276,6 +298,7 @@ export default class GameIndex extends Section {
         if(this.game.status != GameStatus.UPCOMING){ 
             this.view.tipps.root.classList.remove("hidden");
             var tipps = await Promise.all(this.game.getTipps());
+            tipps.sort((a,b) => b.reward - a.reward);
 
             var countTeam1 = 0;
             var countTeam2 = 0;

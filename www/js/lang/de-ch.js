@@ -100,11 +100,15 @@ __LANG["de-ch"] = {
     },
     notifications: {
         postSignIn: "Du bisch jetzt ahgmeldet",
+        postSignOut: "Du bisch abgemeldet worde",
         postSignUp: "Din Account isch erstellt worde - Lueg ih dinere Mailbox nach eme Mail vo eus.",
+        postRecover: "Mer hend der en neue Zuegangscode gschickt - Lueg ih dini Mailbox",
+        postSwitch: "Du hesch zu eme andere Account gwechslet",
         reconnecting: "Verbinde...",
         connecting: "Verbinde...",
         reconnected: "Verbunde",
         connected: "Verbunde",
+        linkCopied: "De Link isch ih d'Zwüscheablag kopiert worde"
     },
     section: {
         home: {
@@ -147,7 +151,7 @@ __LANG["de-ch"] = {
             },
             tipp: {
                 your: "Din Tipp",
-                notyet: "Klick da zum din tipp abgeh",
+                notyet: "Klick da zum tippe",
                 none: "Du hesch ned tippt",
                 form: {
                     result: "Resultat",
@@ -196,6 +200,11 @@ __LANG["de-ch"] = {
                     select: "Wähl en Spieler"
                 },
                 submit: "Spiel beände"
+            },
+            share: {
+                title: "Teile",
+                desc: "Teil das Spil mit Andere",
+                text: "Spiil {team1} - {team2}"
             }
         },
         signUp: {
@@ -207,14 +216,16 @@ __LANG["de-ch"] = {
             },
             action: "Registriere",
             signInInstead: "Falls du scho en Account hesch, {a}",
-            signInLink: "meld dich ah"
+            signInLink: "meld dich ah",
+            nameTooLong: "Bitte nimm en chürzere Name"
         },
         signIn: {
             title: "Ahmelde",
-            desc: "Gib din Zugangscode oder de Link <i>us de E-Mail</i>, wo mer dir gschickt hend, ih.",
+            desc: "Gib din Zugangscode us de E-Mail, wo mer dir gschickt hend, ih.",
             placeholder : {
                 code: "Zugangscode: z.B. 0-1a2b3c4d5e",
             },
+            notAToken: "Bitte gib en richtige Zuegangscode ih",
             action: "Ahmelde",
             signUpInstead: "Falls du no kein Account hesch, {a}",
             signUpLink: "registrier dich",
@@ -222,6 +233,12 @@ __LANG["de-ch"] = {
             recoverLink: "en Neue ahfordere"
         },
         settings: {
+            push: {
+                title: "Benachrichtigunge",
+                desc: "Wird über Resultat informiert",
+                on: "Ah",
+                off: "Ab"
+            },
             lang: {
                 title: "Sprach",
                 desc: "Wähl dini gwünschti Sprach"
@@ -229,6 +246,7 @@ __LANG["de-ch"] = {
             theme: {
                 title: "Design",
                 desc: "Wähl dis gwünschte Design",
+                auto: "Automatisch",
                 light: "Hell",
                 dark: "Dunkel"
             },
@@ -305,7 +323,8 @@ __LANG["de-ch"] = {
             },
             new: {
                 title: "Neui Gruppe",
-                meta: "Erstell e neui Gruppe"
+                meta: "Erstell e neui Gruppe",
+                desc: "Mit Gruppe bhaltisch de Überblick - Erstell e Gruppe mit Fründe, Arbeitskollege oder mit wem immer du wetsch!"
             },
             invitation: {
                 link: "Gruppe-Ihladig",
@@ -323,14 +342,13 @@ __LANG["de-ch"] = {
                 members_single: "1 Mitglied"
             },
             create: {
-                placeholder: "Gruppename",
+                placeholder: "Gruppename: z.B. Gruppe vom Max",
                 submit: "Gruppe erstelle"
             },
             leave: "Gruppe verlah",
             join: "Gruppe biitrete",
             messages: {
                 left: "Du hesch d Gruppe verlah",
-                invitation_copied: "De Ihladigslink isch id Zwüscheablag kopiert worde",
                 created: "D'Gruppe isch erstellt worde",
                 alreadymember: "Du bisch scho Mitglied vo dere Gruppe",
                 joined: "Du bisch de Gruppe biitrete"
@@ -346,6 +364,10 @@ __LANG["de-ch"] = {
                     confirm: "Verlah",
                     deny: "Abbreche"
                 }
+            },
+            share: {
+                title: "Gruppe-Ihladig",
+                text: "Gruppe-Ihladig für {name}"
             }
         },
         event: {

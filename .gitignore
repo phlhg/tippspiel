@@ -1,6 +1,7 @@
 www/js/main.js
 www/js/main.js.map
 www/*.php
+!www/index.php
 www/log/*
 
 # Created by https://www.toptal.com/developers/gitignore/api/vscode,node

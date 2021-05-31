@@ -103,7 +103,7 @@ export default class TippDetail extends Section {
         var player = await (this.tipp.topscorer > 0 ? this.tipp.getPlayer() : { name: "" })
 
         this.view.header.name.innerText = user.name;
-        this.view.header.meta.innerText = `${this.tipp.bet1} : ${this.tipp.bet2} /  ${player.name}`;
+        this.view.header.meta.innerText = this.tipp.topscorer > 0 ? `${this.tipp.bet1} : ${this.tipp.bet2} /  ${player.name}` : `${this.tipp.bet1} : ${this.tipp.bet2}`;
         this.view.header.flag.setAttribute("data-t",winner.short.toLowerCase());
 
         this.view.team.icon.innerText = this.tipp.tippkat > 0 ? 1 : 0;

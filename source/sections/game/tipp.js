@@ -40,7 +40,7 @@ export default class GameTipp extends Section {
             </div>
             <h4>${Lang.get("section/game/tipp/form/topscorer")}</h4>
             <div class="tipp-player"></div>
-            <input type="submit" value="${Lang.get("section/game/tipp/form/submit")}" style="margin: 10px 0 0 15px;"/>
+            <input type="submit" value="${Lang.get("section/game/tipp/form/submit")}"/>
         </form>
         `
 
@@ -87,9 +87,7 @@ export default class GameTipp extends Section {
 
         this.searchselect = new SearchSelect("player",Lang.get("section/game/tipp/form/search"));
         this.searchselect.getSuggestions = async (input) => {
-            return await Promise.all(this.player_suggestions.filter(p => {
-                return p.normalized.indexOf(input.toLowerCase()) > -1
-            }).sort((a,b) => {
+            return await Promise.all(this.player_suggestions.filter(p => p.matchText(input)).sort((a,b) => {
                 return -a.normalized.localeCompare(input.toLowerCase())
             }).map(async p => { 
                 var t = await p.getTeam();

@@ -68,4 +68,8 @@ export default class Router {
         return await this.find(path);
     }
 
+    async reload(){
+        return await this.find(window.location.pathname)
+    }
+
 }

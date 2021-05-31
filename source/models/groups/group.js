@@ -33,8 +33,14 @@ export default class Group extends Element {
         this.users = Array.from(data.users ?? this.users).map(i => parseInt(i))
         this.token = data.token ?? this.token
 
-        this.url = `/groups/${this.id}/${encodeURIComponent(this.name.toLowerCase().replace(/ /ig,"-").replace(/[^a-z0-9-_]/ig,''))}/`;
-        this.url2 = `/groups/advanced/${this.id}/${encodeURIComponent(this.name.toLowerCase().replace(/ /ig,"-").replace(/[^a-z0-9-_]/ig,''))}/`;
+        this.url = `/groups/${this.id}/${this._url(this.name)}/`;
+        this.url2 = `/groups/advanced/${this.id}/${this._url(this.name)}/`;
+    }
+
+    _url(name){
+        var r = encodeURIComponent(name.toLowerCase().replace(/ /ig,"-").replace(/[^a-z0-9-_]/ig,''))
+        if(r == ""){ return "-"; }
+        return r;
     }
 
     getUsers(){

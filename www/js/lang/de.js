@@ -101,11 +101,15 @@ __LANG["de"] = {
     },
     notifications: {
         postSignIn: "Du bist jetzt angemeldet",
-        postSignUp: "Dein Account wurde erstellt - Schaue in deiner Mailbox nach einer E-Mail von uns.",
+        postSignOut: "Du wurdest abgemeldet",
+        postSignUp: "Dein Account wurde erstellt - Schau in deiner Mailbox nach einer E-Mail von uns.",
+        postRecover: "Wir haben dir einen neuen Zugangscode gesendet - Schau in deine Mailbox",
+        postSwitch: "Du hast zu einem anderen Account gewechselt",
         reconnecting: "Verbinden...",
         connecting: "Verbinden...",
         reconnected: "Verbunden",
         connected: "Verbunden",
+        linkCopied: "Der Link wurde in die Zwischenablage kopiert"
     },
     section: {
         home: {
@@ -149,7 +153,7 @@ __LANG["de"] = {
             },
             tipp: {
                 your: "Dein Tipp",
-                notyet: "Klicke hier um deinen Tipp abzugeben",
+                notyet: "Klicke hier um zu tippen",
                 none: "Du hast nicht getippt",
                 form: {
                     result: "Resultat",
@@ -198,6 +202,11 @@ __LANG["de"] = {
                     select: "Wähle eine Spieler"
                 },
                 submit: "Spiel beenden"
+            },
+            share: {
+                title: "Teilen",
+                desc: "Teile dieses Spiel mit Anderen",
+                text: "Spiel {team1} - {team2}"
             }
         },
         signUp: {
@@ -209,14 +218,16 @@ __LANG["de"] = {
             },
             action: "Registrieren",
             signInInstead: "Falls du schon einen Account hast, {a}",
-            signInLink: "melde dich an"
+            signInLink: "melde dich an",
+            nameTooLong: "Bitte wähle einen kürzeren Namen"
         },
         signIn: {
             title: "Anmelden",
-            desc: "Gib deinen Zugangscode oder den Link <i>aus der E-Mail</i>, die wir dir gesendet haben, ein.",
+            desc: "Gib deinen Zugangscode aus der E-Mail, die wir dir gesendet haben, ein.",
             placeholder : {
                 code: "Zugangscode: z.B. 0-1a2b3c4d5e",
             },
+            notAToken: "Bitte gib einen korrekten Zuganscode ein",
             action: "Anmelden",
             signUpInstead: "Falls du noch keinen Account hast, {a}",
             signUpLink: "registriere dich",
@@ -224,6 +235,12 @@ __LANG["de"] = {
             recoverLink: "einen Neuen anfordern"
         },
         settings: {
+            push: {
+                title: "Benachrichtigungen",
+                desc: "Werde über Resultate informiert",
+                on: "An",
+                off: "Aus"
+            },
             lang: {
                 title: "Sprache",
                 desc: "Wähle deine gewünschte Sprache"
@@ -231,6 +248,7 @@ __LANG["de"] = {
             theme: {
                 title: "Design",
                 desc: "Wähle dein gewünschtes Design",
+                auto: "Automatisch",
                 light: "Hell",
                 dark: "Dunkel"
             },
@@ -308,7 +326,8 @@ __LANG["de"] = {
             },
             new: {
                 title: "Neue Gruppe",
-                meta: "Erstelle eine neue Gruppe"
+                meta: "Erstelle eine neue Gruppe",
+                desc: "Mit Gruppen behältst du den Überblick - Erstelle eine Gruppe mit deinen Freunden, mit deinen Arbeitskollegen oder mit wem immer du willst!"
             },
             invitation: {
                 link: "Gruppen-Einladung",
@@ -326,14 +345,13 @@ __LANG["de"] = {
                 members_single: "1 Mitglied"
             },
             create: {
-                placeholder: "Gruppenname",
+                placeholder: "Gruppenname: z.B. Gruppe von Max",
                 submit: "Gruppe erstellen"
             },
             leave: "Gruppe verlassen",
             join: "Gruppe beitreten",
             messages: {
                 left: "Du hast die Gruppe verlassen",
-                invitation_copied: "Der Einladungslink wurde in die Zwischenablage kopiert",
                 created: "Die Gruppe wurde erstellt",
                 alreadymember: "Du bist bereits Mitglied dieser Gruppe",
                 joined: "Du bist der Gruppe beigetreten"
@@ -349,6 +367,10 @@ __LANG["de"] = {
                     confirm: "Verlassen",
                     deny: "Abbrechen"
                 }
+            },
+            share: {
+                title: "Gruppen-Einladung",
+                text: "Gruppen-Einladung zu {name}"
             }
         },
         event: {

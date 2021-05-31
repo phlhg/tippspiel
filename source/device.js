@@ -1,3 +1,5 @@
+import TippNotification from "./helper/notification"
+
 export default class Device {
 
     constructor(){
@@ -31,6 +33,28 @@ export default class Device {
                 ((this.os.ios && this.browser.safari) || // iOS Safari
                 (this.os.android && this.browser.chrome && !this.chromium) || // Android Chrome
                 (this.os.android && this.browser.firefox)) // Android Firefox
+
+    }
+
+    async share(data){
+
+        var data = {
+            url: data.url ?? window.location.hostname,
+            title: data.title ?? "",
+            text: data.text ?? ""
+        }
+
+        if('share' in navigator && navigator.canShare && navigator.canShare(data)){
+            await navigator.share(data)
+        } else {
+            var input = document.createElement("input");
+            input.value = data.url;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand("copy");
+            input.remove();
+            TippNotification.create(Lang.get("notifications/linkCopied"), 3000, "content_copy", "success").show()
+        }
 
     }
 

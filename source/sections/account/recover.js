@@ -1,4 +1,5 @@
 import Form from '../../components/form';
+import TippNotification from '../../helper/notification';
 import Section from '../section';
 
 export default class Recover extends Section {
@@ -29,6 +30,7 @@ export default class Recover extends Section {
             if(!r.success){
                 this.form.error(r.message);
             } else {
+                TippNotification.create(Lang.get("notifications/postRecover"), 3000, "mail", "success").show();
                 this.form.reset()
                 App.router.load("/signin/");
             }

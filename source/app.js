@@ -1,17 +1,12 @@
-import Router from './routing/router'
-import Client from './client';
 import Debugger from './debugger';
 
-import Events from './models/events/model'
-import EventTipps from './models/eventtipps/model'
-import Games from './models/games/model'
-import GameTipps from './models/gametipps/model'
-import Groups from './models/groups/model'
-import Players from './models/players/model'
-import Teams from './models/teams/model'
-import Users from './models/users/model'
-import TippNotification from './helper/notification';
 import Device from './device';
+import Client from './client';
+import Model from './models';
+import Router from './routing/router'
+
+import TippNotification from './helper/notification';
+import TippPush from './push';
 
 export default class Application {
 
@@ -21,31 +16,31 @@ export default class Application {
 
         this.device = new Device();
         this.client = new Client();
+        this.model = new Model();
+        this.push = new TippPush()
         this.router = new Router();
 
-        this.model = {}
-        this.model.events = new Events()
-        this.model.eventTipps = new EventTipps()
-        this.model.games = new Games()
-        this.model.gameTipps = new GameTipps()
-        this.model.groups = new Groups()
-        this.model.players = new Players()
-        this.model.teams = new Teams()
-        this.model.users = new Users()
-
-        // Dark Mode
-        if(localStorage.getItem("tipp-theme-dark") === null){ localStorage.setItem("tipp-theme-dark", window.matchMedia("(prefers-color-scheme: dark)").matches ? "1" : "0") }
-        if(localStorage.getItem("tipp-theme-dark") == "0"){ this.disabledDarkTheme(); }
-
+        this.setup()
         this.setGlobalEvents()
+    }
+
+    setup(){
+
+        // Backbutton
+        if(this.device.os.ios && this.device.standalone){ document.body.classList.add("ios"); }
+
+        // Title
+        document.querySelector("header .heading strong").innerText = Lang.get("name");
+
+        // Theme
+        this.theme = localStorage.getItem("tipp-theme") ?? "auto";
+        this.loadTheme();
+
     }
 
     async run(){
 
         if(this.device.supportsPWA()){ setTimeout(() => { this.pwaInfo() },10*1000); }
-
-        this.socket.listen("Ping", (data,respond) => { respond() });
-        this.socket.listen("Update", this.updateModel.bind(this));
 
         this.socket.open().then(() => {
             this.client.restoreSession();
@@ -72,33 +67,56 @@ export default class Application {
             Debugger.log(this, "Disconnected from server")()
         }
 
+        this.socket.listen("Ping", (data,respond) => { respond() });
+
+        this.socket.listen("Update", data => { this.model.update(data) });
+
         window.onbeforeunload = () => {
             this.socket.onDisconnect = () => {}
         }
 
-        document.querySelector("header .heading strong").innerText = Lang.get("name");
+        window.addEventListener("storage",() => {
 
-        this.setEvents(document.body);
+            // Theme
+            this.theme = localStorage.getItem("tipp-theme") ?? "auto";
+            this.loadTheme();
 
-        if(this.device.os.ios && this.device.standalone){ document.body.classList.add("ios"); }
+            //Client
+            this.client.handleStorageUpdate();
 
-        document.querySelector("header .back").onclick = e => {
-            e.preventDefault();
-            window.history.go(-1)
-            setTimeout(() => { window.history.go(-1) },100); // weird behaviour of safari
-        }
+            //Language
+            if(localStorage.getItem("tipp-lang") != null && localStorage.getItem("tipp-lang") != Lang.id){
+                if(Lang.setLanguage(localStorage.getItem("tipp-lang"))){
+                    document.body.classList.add("loading");
+                    setTimeout(() => window.location.reload(),500);
+                }
+            }
+
+        })
 
         window.addEventListener("popstate", e => {
             this.router.find(window.location.pathname);
         })
 
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",() => {
+            this.loadTheme();
+        })
+
         document.addEventListener("DOMNodeRemoved", e => {
             e.target.dispatchEvent(new Event("removed"));
         });
+
+        this.setEvents(document.body);
+
+        document.querySelector("header .back").onclick = e => {
+            e.preventDefault();
+            setTimeout(() => { window.history.go(-1) },100); // weird behaviour of safari
+        }
     }
 
     setEvents(root){
-        Array.from(root.parentElement.querySelectorAll("a")).forEach(a => {
+
+        Array.from((root.parentElement ?? root).querySelectorAll("a")).forEach(a => {
             if(a.hasAttribute("href")){
                 a.onclick = e => {
                     if(a.hasAttribute("href") && a.getAttribute("href").indexOf("http") != 0 && a.getAttribute("href").indexOf("//") != 0){
@@ -130,30 +148,12 @@ export default class Application {
         if(!retry){ 
             await this.client.restoreSession(); 
         } else {
-            var r = await this.client.restoreConnection(); 
-            if(!r){ Debugger.warn(this, "Should actually reload (upToDate=false)")() }
+            await this.client.signInAgain();
         }
 
         TippNotification.create(retry ? Lang.get("notifications/reconnected") : Lang.get("notifications/connected"), 3000, "wifi", "success").show();
         App.router.load(location.pathname);
         msg.hide();
-
-    }
-
-    updateModel(data){
-
-        if(Array.from(data.User ?? []).map(i => parseInt(i)).includes(this.client.id)){ 
-            this.client.getMe(); 
-        }
-
-        this.model.events.update(Array.from(data.Event ?? []).map(i => parseInt(i)))
-        this.model.eventTipps.update(Array.from(data.EventTipp ?? []).map(i => parseInt(i)))
-        this.model.games.update(Array.from(data.Game ?? []).map(i => parseInt(i)))
-        this.model.gameTipps.update(Array.from(data.GameTipp ?? []).map(i => parseInt(i)))
-        this.model.groups.update(Array.from(data.Group ?? []).map(i => parseInt(i)))
-        this.model.players.update(Array.from(data.Player ?? []).map(i => parseInt(i)))
-        this.model.teams.update(Array.from(data.Team ?? []).map(i => parseInt(i)))
-        this.model.users.update(Array.from(data.User ?? []).map(i => parseInt(i)))
 
     }
 
@@ -186,18 +186,28 @@ export default class Application {
         }
 
     }
+    
+    // Theme
 
-    enableDarkTheme(){
-        localStorage.setItem("tipp-theme-dark", "1")
-        var l = document.createElement("link");
-        l.rel = "stylesheet"
-        l.href = "/css/dark.css"
-        document.head.append(l)
-    } 
+    loadTheme(){
+        if(this.theme == "dark" || (this.theme == "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches)){
+            if(document.querySelector("link[href='/css/dark.css']") == null){
+                var l = document.createElement("link");
+                l.rel = "stylesheet"
+                l.href = "/css/dark.css"
+                document.head.append(l)
+            }
+        } else {
+            var l = document.querySelector("link[href='/css/dark.css']")
+            if(l !== null){ l.remove(); }
+        }
+    }
 
-    disabledDarkTheme(){
-        localStorage.setItem("tipp-theme-dark", "0")
-        document.querySelector("link[href='/css/dark.css']").remove();
+    setTheme(name){
+        if(!["dark","light","auto"].includes(name)){ return false; }
+        this.theme = name;
+        localStorage.setItem("tipp-theme",this.theme)
+        this.loadTheme();
     }
 
 }

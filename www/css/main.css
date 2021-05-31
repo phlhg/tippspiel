@@ -1,12 +1,21 @@
 * { padding: 0; margin: 0; font-family: inherit; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 html, body { color: #000; background: #fff; font-family: 'Montserrat', sans-serif; padding: 0; margin: 0; width: 100%; height: 100%; }
-body, html { overflow-x: hidden;}
+body, html { overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
 
 a { color: inherit; cursor: pointer;}
 
 .material-icons { font-size: inherit !important;}
 
 input { -webkit-appearance: none; }
+
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
 /* Transitions */
 .tipp-prompt-wrapper,
@@ -83,26 +92,29 @@ section a.button, section span.button { position: relative; display: inline-bloc
 section .tipp-box { text-decoration: none;  position: relative; display: block; padding: 15px 15px 15px 55px; background: #fafafa; border: 1px solid #f4f4f4;  margin-bottom: 10px; border-radius: 4px; }
 section .tipp-box .icon { position: absolute; left: 15px; top: 15px; display: inline-block; text-align: center; width: 25px; font-size: 24px; line-height: 24px; font-weight: bold; }
 section .tipp-box .title { position: relative; display: block; font-weight: bold; font-size: 20px; }
+section .tipp-box .title.nowrap { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 section .tipp-box .meta { position: relative; display: block; font-size: 14px; margin-top: 5px; }
 
 select { cursor: pointer; appearance: none; -webkit-appearance: none; position: relative; display: block; width: 100%; padding: 10px; border-radius: 4px; background: rgba(0,0,0,0.05); color: #000; border: none; outline: none; }
 select > option { background: #fff; color: #111; }
 
 section form { position: relative; display: block; width: 100%;}
-section form input { line-height: 15px; position: relative; display: block; width: 100%; margin: 0 0 10px 0; padding: 10px 15px 10px 15px; background: #fafafa; border: 1px solid #f4f4f4; outline: none; border-radius: 4px; color: #000; }
+section form input { line-height: 15px; font-size: 14px; position: relative; display: block; width: 100%; margin: 0 0 10px 0; padding: 14px 15px; background: #fafafa; border: 1px solid #f4f4f4; outline: none; border-radius: 4px; color: #000; }
 section form input:invalid { border-left-color: rgba(255,0,0,1); box-shadow: none; }
 section form input:placeholder-shown:required { border-left-color: rgba(255,0,0,0); }
-section form input[type='submit'] { cursor: pointer; background: #061c37; color: #fff; display: inline-block; width: unset; padding: 10px 15px; border-radius: 30px; border: none; }
+section form input[type='submit'] { display: none; }
 section form + .meta { position: relative; display: block; font-size: 12px; margin-top: 20px; color: rgba(0,0,0,0.75); }
 section form + .meta a { text-decoration: underline; }
-section form span.info, section form span.error { position: relative; display: block; padding: 8px 15px; margin-bottom: 10px; font-size: 12px; background-color: #fafafa; border: 1px solid #f4f4f4; border-radius: 4px; overflow: hidden; max-height: 500px; }
-section form span.info { border-color: #0061d4; background: #0066de; color: #fff; }
-section form span.error { background: #f00;  border-color: #e70000; color: #fff; }
-section form span.info:empty, section form span.error:empty { opacity: 0; display: none; }
-section form .loader { position: relative; display: inline-block; width: 35px; height: 35px; vertical-align: middle; margin-left: 5px; opacity: 0; }
+section form span.info, section form span.error { position: relative; display: block; padding: 14px 15px; margin-bottom: 10px; opacity: 1; font-size: 14px; background-color: #fafafa; border: 1px solid #f4f4f4; font-weight: bold;  border-radius: 4px; overflow: hidden; max-height: 500px; }
+section form span.info { background: #0066de; border-color: #0061d4; color: #fff; }
+section form span.error { background: #e00; border-color: #d00; color: #fff; }
+section form span.info:empty, section form span.error:empty { opacity: 0; max-height: 0; border-width: 0; padding: 0 15px; margin-bottom: 0; opacity: 0; }
+
+section form .submit { position: relative; display: block; cursor: pointer; background: #061c37; border: 1px solid #061c36; color: #fff; font-weight: bold;  width: 100%; font-size: 16px; padding: 14px 15px; margin: 10px 0 10px 0; border-radius: 4px; text-align: center;  }
+section form .loader { position: absolute; display: block; width: 24px; height: 24px; top: 50%; right: 10px; transform: translateY(-50%); opacity: 0; }
 section form .loader.active { opacity: 1; }
-section form .loader:after { animation: loader 1000ms linear infinite normal; content: ''; position: absolute; display: block; top: 5px; left: 5px; width: 19px; height: 19px; border: 3px solid #111; border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent;  border-radius: 50%; }
-section form .loader:before { content: ''; position: absolute; display: block; top: 5px; left: 5px; width: 19px; height: 19px; border: 3px solid #111; opacity: 0.25;; border-radius: 50%; }
+section form .loader:after { box-sizing: border-box; animation: loader 600ms linear infinite normal; content: ''; position: absolute; display: block; top: 0; left: 0; width: 100%; height: 100%; border: 3px solid #fff; border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent;  border-radius: 50%; }
+
 section form .additional { display: block; font-size: 12px; color: rgba(0,0,0,0.75); padding: 0 15px; text-align: right; }
 
 input.inline { display: block; width: 100%; color: inherit; font-size: inherit; font-weight: inherit; border: 0; outline: 0; padding: 5px; margin: -5px; background: rgba(0,0,0,0.05); border-radius: 4px;}
@@ -124,16 +136,17 @@ section.tipp-login-page { height: 100vh; padding-left: 20px; padding-right: 20px
 section.tipp-login-page.active { height: 100vh}
 section.tipp-login-page > .inner { position: relative; display: block; left: 0; top: 50%; transform: translateY(-50%); }
 section.tipp-login-page > .inner > h3 { font-size: 40px; margin-bottom: 5px; padding: 0; }
-section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
+section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px; line-height: 25px; }
 
 /* Game Tile */
 .game-tile { position: relative; display: block; padding: 15px 55px 15px 55px; border: 1px solid #f4f4f4; background: #fafafa; border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; }
 .game-tile.loading { color: transparent; }
 .game-tile.loading .tflag { opacity: 0; }
 
-.game-tile > .name { white-space: nowrap; position: absolute; display: block; font-size: 20px; line-height: 22px; font-weight: bold; top: 15px; width: 45%; overflow: hidden; text-overflow: ellipsis; }
-.game-tile > .t1.name { left: 0; padding-left: 55px; text-align: left; }
-.game-tile > .t2.name { right: 0; padding-right: 55px; text-align: right;}
+.game-tile > .name, .game-tile > .short { white-space: nowrap; position: absolute; display: block; font-size: 20px; line-height: 22px; font-weight: bold; top: 15px; width: 45%; overflow: hidden; text-overflow: ellipsis; }
+.game-tile > .t1.name, .game-tile > .t1.short { left: 0; padding-left: 55px; text-align: left; }
+.game-tile > .t2.name, .game-tile > .t2.short  { right: 0; padding-right: 55px; text-align: right;}
+.game-tile > .short { display: none; }
 .game-tile > .tflag ,.game-tile > .tflag { position: absolute; top: 15; font-size: 25px; line-height: 25px; }
 .game-tile > .t1.tflag { left: 15px; }
 .game-tile > .t2.tflag { right: 15px; }
@@ -205,7 +218,7 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 
 .group-tile { text-decoration: none; position: relative; display: block; padding: 15px 55px 15px 55px; border: 1px solid #f4f4f4; background: #fafafa; margin-bottom: 10px; border-radius: 4px; }
 .group-tile .icon { position: absolute; left: 15px; top: 15px; display: inline-block; text-align: center; width: 25px; font-size: 24px; line-height: 24px; font-weight: bold; }
-.group-tile .name { position: relative; display: block; font-weight: bold; font-size: 20px; }
+.group-tile .name { position: relative; display: block; font-weight: bold; font-size: 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .group-tile .meta { position: relative; display: block; font-size: 14px; margin-top: 5px; }
 .group-tile > a { z-index: +2; text-decoration: none; position: absolute; display: block; top: 0; left: 0; height: 100%; width: calc(100% - 55px); cursor: pointer; }
 .group-tile > label { position: absolute; display: block; cursor: pointer; right: 0; top: 0; width: 55px; height: 100%; background-color: rgba(0,0,0,0.05);  }
@@ -253,9 +266,10 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .game-stream > iframe { position: absolute; display: block; width: 100%; height: 100%; }
 
 .game-header { position: relative; display: block; padding: 15px 15px 15px 15px; background: rgba(0,0,0, 1.00); border-radius: 4px; overflow: hidden; margin-bottom: 10px; color: #fff; }
-.game-header > .top { z-index: +2; position: relative; display: block; height: 25px; width: 100%; line-height: 25px; font-size: 20px; }
-.game-header > .top .team1 { position: absolute; display: inline-block; left: 0; top: 0; }
-.game-header > .top .team2 { position: absolute; display: inline-block; right: 0; top: 0; }
+.game-header > .top { z-index: +2; position: relative; display: block; height: 25px; width: 100%; line-height: 25px; font-size: 20px; white-space: nowrap; }
+.game-header > .top .team1 { position: absolute; display: block; left: 0; top: 0; width: 50%; text-align: left;}
+.game-header > .top .team2 { position: absolute; display: block; right: 0; top: 0; width: 50%; text-align: right; }
+.game-header > .top .name  { position: relative; display: inline-block; white-space: nowrap; overflow: hidden; max-width: calc(100% - 30px); text-overflow: ellipsis; vertical-align: text-bottom; }
 .game-header > .live { font-weight: bold; z-index: 20; position: absolute; display: inline-block; top: 17px; left: 50%; transform: translateX(-50%); padding: 2px 20px 2px 5px; font-size: 14px; background: #fff; color: #000; text-transform: uppercase; border-radius: 2px; }
 .game-header > .live:after { position: absolute; display: block; content: ''; top: 6px; right: 5px; width: 10px; height: 10px; border-radius: 50%; background: #f00; animation: live 2s linear infinite normal; }
 .game-header > .flag1, .game-header > .flag2 { --blur: 50px; position: absolute; display: block; min-width: calc(50% + var(--blur) * 2); min-height: calc(100% + var(--blur) * 2); filter: saturate(2) blur(var(--blur)); opacity: 0.6; transform: translateY(-50%); }
@@ -333,7 +347,7 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
 .tipp-searchselect { position: relative; display: block; width: 100%; margin-bottom: 10px; }
 .tipp-searchselect > input { margin-bottom: 0; padding: 15px 15px 15px 40px; background: #fafafa; border: 1px solid #f4f4f4; }
 .tipp-searchselect > input:focus { border-radius: 4px 4px 0 0;}
-.tipp-searchselect .icon { z-index: +2; position: absolute; display: block; left: 15px; top: 14px; width: 18px; height: 18px; background-color: #f4f4f4; background-size: cover; background-position: center; border-radius: 50%; }
+.tipp-searchselect .icon { z-index: +2; position: absolute; display: block; left: 15px; top: 16px; width: 18px; height: 18px; background-color: #f4f4f4; background-size: cover; background-position: center; border-radius: 50%; }
 .tipp-searchselect > .suggestions { z-index: 100; position: relative; top: 100%; left: 0; width: 100%; background: #fafafa; border: 1px solid #f4f4f4; border-top: none; overflow: hidden; display: none; border-radius: 4px; max-height: 0; opacity: 1;}
 .tipp-searchselect > input:focus + .suggestions { border-radius: 0 0 4px 4px; max-height: 160px; opacity: 1; display: block;}
 .tipp-searchselect > input:focus + .suggestions:empty { display: none; }
@@ -435,4 +449,9 @@ section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px;  }
     .tipp-section-wrapper > section { padding-top: 70px;}
 
     .game-header > .flag1, .game-header > .flag2 { --blur: 20px; }
+}
+
+@media screen and (max-width: 500px) {
+    .game-tile > .short { display: block; }
+    .game-tile > .name { display: none; }
 }
