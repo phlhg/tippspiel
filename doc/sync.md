@@ -123,10 +123,15 @@ GameTipp {
     id: int,
     game: Game,
     user: User,
-    reward: int,
-    tippkat: int, // Preiskategorie siehe unten
-    goals: int, // der Torschütze hat so viel getroffen
-    bonus: bool // Bonus für korrektes Penaltyschiess (+1)
+    processed: bool,
+    reward: {
+        sum: int, // >= 0
+        team: bool, // +1
+        diff: bool, // +1
+        exact: bool, // +2
+        draw: bool, // +2
+        scorer: int // >= 0
+    }
     bet1: int,
     bet2: int,
     winner: Team,
@@ -134,10 +139,11 @@ GameTipp {
 }
 ```
 
-`tipkat`: Preiskategorie des Tipps
-```js
-0 TIPPKAT.WRONG // Komplett falsch getippt (+0)
-1 TIPPKAT.TEAM // Auf richtiges Team getippt (+1)
-2 TIPPKAT.DIFF // Richtige Tordifferenz (+2)
-3 TIPPKAT.EXACT // Exaktes Resulat (+4)
+```
+Punkteverteilung:
+    team: +1 wenn das getippte team gewonnen hat
+    diff: +1 wenn die punktedifferenz stimmt
+    exact: +2 wenn die punkte beider teams exakt stimmen
+    draw: +2 wenn unentschieden & team & exact
+    scorer: je +1 für ein tor des getippten Torschützen
 ```
