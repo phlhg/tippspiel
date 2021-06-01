@@ -36,9 +36,10 @@ export default class EventIndex extends Section {
         this.view.header.meta = this.view.root.querySelector(".event-header .meta");
 
         this.view.myTip = {}
-        this.view.myTip.flag = this.view.root.querySelector(".myTipp .tflag");
-        this.view.myTip.meta = this.view.root.querySelector(".myTipp .meta");
-        this.view.myTip.reward = this.view.root.querySelector(".myTipp .reward");
+        this.view.myTip.root = this.view.root.querySelector(".myTipp")
+        this.view.myTip.flag = this.view.myTip.root.querySelector(".tflag");
+        this.view.myTip.meta = this.view.myTip.root.querySelector(".meta");
+        this.view.myTip.reward = this.view.myTip.root.querySelector(".reward");
 
         this.view.createGame = this.view.root.querySelector(".createGame");
 
@@ -84,6 +85,8 @@ export default class EventIndex extends Section {
             m: ("0"+this.event.deadline.getMinutes()).slice(-2)
         });
         this.view.myTip.meta.innerText = Lang.get("section/event/tipp/deadline",{d: deadline})
+
+        this.view.myTip.root.style.display = this.event.deadline > Date.now() ? "block" : "none";
 
         // GameList
         var games = (await Promise.all(this.event.getGames())).filter(g => g !== null);
