@@ -144,6 +144,6 @@ Punkteverteilung:
     team: +1 wenn das getippte team gewonnen hat
     diff: +1 wenn die punktedifferenz stimmt
     exact: +2 wenn die punkte beider teams exakt stimmen
-    draw: +2 wenn unentschieden & team & exact
+    draw: +2 wenn penaltyphase erreicht & team & exact
     scorer: je +1 für ein tor des getippten Torschützen
 ```
