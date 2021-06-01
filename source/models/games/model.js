@@ -10,6 +10,7 @@ export default class Games extends Model {
     /** Creates a game model */
     constructor(){
         super(Game)
+        this.list[19] = null; // ToDo: Hid cancelled game
     }
 
     async getHot(){

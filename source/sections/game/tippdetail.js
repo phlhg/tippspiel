@@ -17,14 +17,18 @@ export default class TippDetail extends Section {
             <span class="meta"></span>
         </div>
         <div class="tipp-box">
+            <span class="icon">0</span>
+            <span class="title">${Lang.get("section/tipp/total/name")}</span>
+        </div>
+        <div class="tipp-box">
             <span class="icon">1</span>
             <span class="title">${Lang.get("section/tipp/team/name")}</span>
             <span class="meta">${Lang.get("section/tipp/team/desc")}</span>
         </div>
         <div class="tipp-box">
             <span class="icon">1</span>
-            <span class="title">${Lang.get("section/tipp/delta/name")}</span>
-            <span class="meta">${Lang.get("section/tipp/delta/desc")}</span>
+            <span class="title">${Lang.get("section/tipp/diff/name")}</span>
+            <span class="meta">${Lang.get("section/tipp/diff/desc")}</span>
         </div>
         <div class="tipp-box">
             <span class="icon">2</span>
@@ -32,18 +36,14 @@ export default class TippDetail extends Section {
             <span class="meta">${Lang.get("section/tipp/exact/desc")}</span>
         </div>
         <div class="tipp-box">
-            <span class="icon">1</span>
-            <span class="title">${Lang.get("section/tipp/scorer/name")}</span>
-            <span class="meta"></span>
-        </div>
-        <div class="tipp-box">
-            <span class="icon">1</span>
+            <span class="icon">2</span>
             <span class="title">${Lang.get("section/tipp/penalty/name")}</span>
             <span class="meta">${Lang.get("section/tipp/penalty/desc")}</span>
         </div>
         <div class="tipp-box">
-            <span class="icon">5</span>
-            <span class="title">${Lang.get("section/tipp/total/name")}</span>
+            <span class="icon">0</span>
+            <span class="title">${Lang.get("section/tipp/scorer/name")}</span>
+            <span class="meta"></span>
         </div>`
 
         this.view.header = {}
@@ -54,30 +54,26 @@ export default class TippDetail extends Section {
 
         var tb = this.view.root.querySelectorAll(".tipp-box");
 
+        this.view.total  = {}
+        this.view.total.root = tb[0];
+        this.view.total.icon = this.view.total.root.querySelector(".icon")
+
         this.view.team  = {}
-        this.view.team.root = tb[0];
-        this.view.team.icon = this.view.team.root.querySelector(".icon")
+        this.view.team.root = tb[1];
 
-        this.view.goals  = {}
-        this.view.goals.root = tb[1];
-        this.view.goals.icon = this.view.goals.root.querySelector(".icon")
+        this.view.diff  = {}
+        this.view.diff.root = tb[2];
 
-        this.view.result  = {}
-        this.view.result.root = tb[2];
-        this.view.result.icon = this.view.result.root.querySelector(".icon")
-
-        this.view.scorer  = {}
-        this.view.scorer.root = tb[3];
-        this.view.scorer.icon = this.view.scorer.root.querySelector(".icon")
-        this.view.scorer.meta = this.view.scorer.root.querySelector(".meta")
+        this.view.exact= {}
+        this.view.exact.root = tb[3];
 
         this.view.penalty  = {}
         this.view.penalty.root = tb[4];
-        this.view.penalty.icon = this.view.penalty.root.querySelector(".icon")
 
-        this.view.total  = {}
-        this.view.total.root = tb[5];
-        this.view.total.icon = this.view.total.root.querySelector(".icon")
+        this.view.scorer  = {}
+        this.view.scorer.root = tb[5];
+        this.view.scorer.icon = this.view.scorer.root.querySelector(".icon")
+        this.view.scorer.meta = this.view.scorer.root.querySelector(".meta")
 
         window.addEventListener("datachange",e => {
             if(this._active && this.tipp != null && e.detail.type == "gametipp" && e.detail.id == this.tipp.id){
@@ -106,14 +102,17 @@ export default class TippDetail extends Section {
         this.view.header.meta.innerText = this.tipp.topscorer > 0 ? `${this.tipp.bet1} : ${this.tipp.bet2} /  ${player.name}` : `${this.tipp.bet1} : ${this.tipp.bet2}`;
         this.view.header.flag.setAttribute("data-t",winner.short.toLowerCase());
 
-        this.view.team.icon.innerText = this.tipp.tippkat > 0 ? 1 : 0;
-        this.view.goals.icon.innerText = this.tipp.tippkat > 1 ? 1 : 0;
-        this.view.result.icon.innerText = this.tipp.tippkat > 2 ? 2 : 0;
-        this.view.scorer.icon.innerText = this.tipp.goals;
-        this.view.scorer.meta.innerText = Lang.get("section/tipp/scorer/desc",{n: this.tipp.goals})
-        this.view.penalty.icon.innerText = this.tipp.bonus == true ? 1 : 0;
+        this.view.total.root.style.opacity = this.tipp.proccessed ? 1 : 0.5;
+        this.view.total.icon.innerText = this.tipp.reward.sum;
 
-        this.view.total.icon.innerText = this.tipp.reward;
+        this.view.team.root.style.opacity = this.tipp.reward.team ? 1 : 0.5;
+        this.view.diff.root.style.opacity = this.tipp.reward.diff ? 1 : 0.5;
+        this.view.exact.root.style.opacity = this.tipp.reward.exact ? 1 : 0.5;
+        this.view.penalty.root.style.opacity = this.tipp.reward.draw ? 1 : 0.5;
+
+        this.view.scorer.root.style.opacity = this.tipp.reward.scorer > 0 ? 1 : 0.5;
+        this.view.scorer.icon.innerText = this.tipp.reward.scorer;
+        this.view.scorer.meta.innerText = Lang.get("section/tipp/scorer/desc",{n: this.tipp.reward.scorer})
     }
 
 }

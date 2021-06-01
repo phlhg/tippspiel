@@ -302,21 +302,21 @@ __LANG["de"] = {
                 name: "Richtiges Team",
                 desc: "Das getippte Team hat das Spiel gewonnen."
             },
-            delta: {
+            diff: {
                 name: "Richtige Tordifferenz",
-                desc: "Die Differenz der Tore ist gleich wie getippt."
+                desc: "Die Differenz der Tore (ohne Penalyschiessen) ist gleich wie getippt."
             },
             exact: {
                 name: "Exaktes Resultat",
-                desc: "Es wurde das exakte Resultat des Spiels getippt."
+                desc: "Es wurde das exakte Resultat des Spiels (ohne Penalyschiessen) getippt."
             },
             scorer: {
                 name: "Torschütze",
                 desc: "Der gewählte Torschütze hat {n} Tor(e) geschossen."
             },
             penalty: {
-                name: "Penaltyschiessen",
-                desc: "Es wurde auf ein Penaltyschiessen getippt und das getippte Team hat gewonnen."
+                name: "Penalty-Bonus",
+                desc: "Es wurde Unentschieden getippt und das Spiel wurde mit einem Penaltyschiessen beendet, welches das getippte Team gewonnen hat."
             },
             total: {
                 name: "Total"

@@ -296,13 +296,13 @@ __LANG["de-ch"] = {
                 name: "Richtigs Team",
                 desc: "S'tippte Team het s'Spil gwunne."
             },
-            delta: {
+            diff: {
                 name: "Richtigi Tordifferenz",
-                desc: "Differenz vode Tor isch so wie tippt."
+                desc: "Differenz vode Tor (ohni Penaltyschüsse) isch so wie tippt."
             },
             exact: {
                 name: "Exakts Resultat",
-                desc: "Es isch exkate Resultat vom Spiil tippt worde."
+                desc: "Es isch exkate Resultat vom Spiil (ohni Penaltyschüsse) tippt worde."
             },
             scorer: {
                 name: "Torschütz",
@@ -310,7 +310,7 @@ __LANG["de-ch"] = {
             },
             penalty: {
                 name: "Penaltyschüsse",
-                desc: "Es isch uf es Penaltyschüsse tippt worde unds tippte Team het gwunne."
+                desc: "Es isch es Unentschiede tipp worde und s'Spil het mit eme Penalyschüsse gendet, wo s'tippte Team gwunne het."
             },
             total: {
                 name: "Total"
