@@ -201,11 +201,6 @@ __LANG["en"] = {
                     select: "Select a player"
                 },
                 submit: "End game"
-            },
-            share: {
-                title: "Share",
-                desc: "Share this match with others",
-                text: "Match {team1} - {team2}"
             }
         },
         signUp: {

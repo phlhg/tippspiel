@@ -202,11 +202,6 @@ __LANG["de"] = {
                     select: "Wähle eine Spieler"
                 },
                 submit: "Spiel beenden"
-            },
-            share: {
-                title: "Teilen",
-                desc: "Teile dieses Spiel mit Anderen",
-                text: "Spiel {team1} - {team2}"
             }
         },
         signUp: {
