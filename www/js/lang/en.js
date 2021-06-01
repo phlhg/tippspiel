@@ -251,6 +251,14 @@ __LANG["en"] = {
                 light: "Light",
                 dark: "Dark"
             },
+            rules: {
+                title: "Rules",
+                desc: "How the scoring works"
+            },
+            share: {
+                title: "Share",
+                desc: "Show Tippspiel to your friends and colleagues"
+            },
             report: {
                 title: "Report an error",
                 desc: "Something doesn't work? Report it to us!"

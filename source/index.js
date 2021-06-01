@@ -35,6 +35,7 @@ import GroupCreate from './sections/groups/create'
 import StatsIndex from './sections/stats/index'
 import Profile from './sections/profile/index'
 import Settings from './sections/settings/index'
+import Rules from './sections/settings/rules'
 import PWASetup from './sections/special/pwasetup'
 
 Debugger.active = true;
@@ -93,6 +94,7 @@ window.addEventListener("DOMContentLoaded", function(){
     App.router.add("/stats/",new StatsIndex)
     App.router.add("/profile/",new Profile)
     App.router.add("/settings/", new Settings)
+    App.router.add("/settings/rules/", new Rules)
     App.router.add("/pwa/",new PWASetup)
 
     App.run()

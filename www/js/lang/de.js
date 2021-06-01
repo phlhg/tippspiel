@@ -252,6 +252,14 @@ __LANG["de"] = {
                 light: "Hell",
                 dark: "Dunkel"
             },
+            rules: {
+                title: "Regeln",
+                desc: "Wie die Punktevergabe funktioniert"
+            },
+            share: {
+                title: "Teilen",
+                desc: "Zeige Tippspiel deinen Freunden & Bekannten",
+            },
             report: {
                 title: "Fehler melden",
                 desc: "Etwas funktioniert nicht? Melde es uns"
