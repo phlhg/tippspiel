@@ -171,6 +171,7 @@ export default class Client {
 
         this.id = parseInt(r.data.id);
         this.name = r.data.name;
+        this.points = parseInt(r.data.points)
 
         for(var p in this.permission){
             this.permission[p] = (r.data.permission.hasOwnProperty(p) && r.data.permission[p] == 'true')
