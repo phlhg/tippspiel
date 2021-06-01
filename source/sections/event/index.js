@@ -86,7 +86,7 @@ export default class EventIndex extends Section {
         this.view.myTip.meta.innerText = Lang.get("section/event/tipp/deadline",{d: deadline})
 
         // GameList
-        var games = await Promise.all(this.event.getGames());
+        var games = (await Promise.all(this.event.getGames())).filter(g => g !== null);
         games.sort((a,b) => a.start - b.start);
         this.gameList.insert(games);
     }

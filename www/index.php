@@ -13,7 +13,7 @@
         $team1 = isset($matches[1]) ? htmlentities(strToUpper($matches[1])) : "TEAM1";
         $team2 = isset($matches[2]) ? htmlentities(strToUpper($matches[2])) : "TEAM2";
         $title = ($lang == "de") ? "Spiel $team1 - $team2" : "Match $team1 - $team2";
-        $description = ($lang == "de") ? "Gib jetzt deinen Tipp im Tippspiel ab" : "Make your bet now on Tippspiel";
+        $description = ($lang == "de") ? "Gib jetzt deinen Tipp im Tippspiel ab" : "Make your bet on Tippspiel now";
     } else if(preg_match("/^\/groups\/join\/(\d)+-(\w{2,20})\/$/i",$_SERVER["REQUEST_URI"], $matches, PREG_UNMATCHED_AS_NULL)){
         $title = ($lang == "de") ? "Gruppeneinladung" : "Group invitation";
         $description = ($lang == "de") ? "Trete der Gruppe im Tippspiel bei" : "Join the group on Tippspiel";

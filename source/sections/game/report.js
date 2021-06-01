@@ -77,7 +77,7 @@ export default class GameReport extends Section {
         this.playerSelects = [];
 
         this.playerSuggestion = async (input) => {
-            return await Promise.all(this.player_suggestions.filter(p => p.matchText(input)).sort((a,b) => {
+            return await Promise.all(this.playerAll.filter(p => p.matchText(input)).sort((a,b) => {
                 return -a.normalized.localeCompare(input.toLowerCase())
             }).map(async p => { 
                 var t = await p.getTeam();
