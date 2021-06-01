@@ -56,11 +56,6 @@ export default class GameIndex extends Section {
                 <span class="reward"></span>
             </a>
         </div>
-        <a class="tipp-box share">
-            <span class="icon"><span class="material-icons">share</span></span>
-            <span class="title">${Lang.get("section/game/share/title")}</span>
-            <span class="meta">${Lang.get("section/game/share/desc")}</span>
-        </a>
         <div class="game-tipps">
             <h3>${Lang.get("section/game/tipps/list")}</h3>
             <div class="game-tipp-stats">
@@ -130,17 +125,7 @@ export default class GameIndex extends Section {
         this.view.mytipp.flag = this.view.mytipp.root.querySelector(".tflag")
         this.view.mytipp.reward = this.view.mytipp.root.querySelector(".reward")
 
-        this.view.share = this.view.root.querySelector(".share")
-
         this.game = null;
-
-        this.view.share.onclick = () => {
-            App.device.share({
-                title: Lang.get("section/game/share/text",{ team1: this.game.team1.name, team2: this.game.team2.name}),
-                text: Lang.get("section/game/share/text",{ team1: this.game.team1.name, team2: this.game.team2.name}),
-                url: `${window.location.protocol}//${window.location.hostname}${this.game.url}`
-            })
-        }
 
         window.addEventListener("datachange",e => {
             if(this._active && this.game != null && e.detail.type == "game" && e.detail.id == this.game.id){
