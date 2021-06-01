@@ -260,6 +260,8 @@ export default class GameIndex extends Section {
             this.view.mytipp.a.removeAttribute("href");
         }
 
+        this.view.mytipp.root.style.display = App.client.active || this.game.status == GameStatus.UPCOMING ? "block" : "none";
+
         if(this.game.hasOwnTipp()){
             this.view.mytipp.tile.classList.remove("nobet");
 
