@@ -208,16 +208,36 @@ __LANG["de-ch"] = {
             }
         },
         signUp: {
-            title: "Registriere",
-            desc: "Bitte gib din Name und dini E-Mail ih - Mer sendet dir denn en Zugangscode",
+            email: {
+                title: "Registriere",
+                desc: "Bitte gib dini E-Mail-Adresse ah - Mir benutzed die, um dir en persönliche Zuegangscode z'schicke.",
+                action: "Wiiter",
+                meta: "Dini E-Mail-Adresse isch ned öffentlich, wird ned wiitergeh und wird ned für Werbig benutzt."
+            },
+            name: {
+                title: "Registriere",
+                desc: "Wähl din Name - Das chan din richtige Name, en Spitzname oder epis anders sii.",
+                action: "Registriere",
+                meta: "Benutz kei ahstössigi Näme - Näme sind öffentlich sichtbar."
+            },
+            welcome: {
+                title: "Willkomme!",
+                desc: "Du hesch erfolgriich en Account erstellt - Bitte lueg ih dinere Mailbox nachere E-Mail vo eus.",
+                action: "Ahmelde",
+                meta: "Wenn du kei E-Mail becho hesch, {a}.",
+                metaLink: "nimm Kontakt mit eus uuf" 
+            },
             placeholder : {
                 name: "Name: z.B. Max Mustermann",
                 email: "E-Mail: z.B. max.mustermann@beispiel.ch"
             },
-            action: "Registriere",
+            errors: {
+                nameTooLong: "Bitte nimm en chürzere Name",
+                noName: "Bitte gib en Namen ih",
+                noEmail: "Bitte gib e E-Mail-Addresse ih"
+            },
             signInInstead: "Falls du scho en Account hesch, {a}",
             signInLink: "meld dich ah",
-            nameTooLong: "Bitte nimm en chürzere Name"
         },
         signIn: {
             title: "Ahmelde",

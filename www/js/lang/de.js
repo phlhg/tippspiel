@@ -205,16 +205,36 @@ __LANG["de"] = {
             }
         },
         signUp: {
-            title: "Registrieren",
-            desc: "Gib deinen Namen und deine E-Mail ein und erhalte von uns einen Zugangscode",
-            placeholder : {
-                name: "Name: z.B. Max Mustermann",
-                email: "E-Mail: z.B. max.mustermann@beispiel.de"
+            email: {
+                title: "Registrieren",
+                desc: "Bitte gib deine E-Mail-Adresse an - Wir benutzen diese, um dir einen persönlichen Zugangscode zu senden",
+                action: "Weiter",
+                meta: "Deine E-Mail-Adresse ist nicht öffentlich, wird nicht weitergegeben und nicht für Werbung genutzt."
             },
-            action: "Registrieren",
+            name: {
+                title: "Registrieren",
+                desc: "Wähle deinen Namen - Dies kann dein richtiger Name, ein Spitzname oder etwas anders sein.",
+                action: "Registrieren",
+                meta: "Benutze keine anstössigen Namen - Namen sind öffentlich sichtbar."
+            },
+            welcome: {
+                title: "Willkommen!",
+                desc: "Du hast erfolgreich einen Account erstellt - Bitte schaue in deiner Mailbox nach einer E-Mail von uns.",
+                action: "Anmelden",
+                meta: "Falls du keine E-Mail erhalten hast, {a}.",
+                metaLink: "nimm Kontakt mit uns auf" 
+            },
+            placeholder : {
+                name: "Name: e.g. Max Nustermann",
+                email: "E-Mail: e.g. max.mustermann@beispiel.de"
+            },
+            errors: {
+                nameTooLong: "Bitte wähle einen kürzeren Namen",
+                noName: "Bitte gib einen Namen ein",
+                noEmail: "Bitte gib eine E-Mail-Addresse ein"
+            },
             signInInstead: "Falls du schon einen Account hast, {a}",
             signInLink: "melde dich an",
-            nameTooLong: "Bitte wähle einen kürzeren Namen"
         },
         signIn: {
             title: "Anmelden",

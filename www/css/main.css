@@ -108,7 +108,7 @@ section form input { line-height: 15px; font-size: 14px; position: relative; dis
 section form input:invalid { border-left-color: rgba(255,0,0,1); box-shadow: none; }
 section form input:placeholder-shown:required { border-left-color: rgba(255,0,0,0); }
 section form input[type='submit'] { display: none; }
-section form + .meta { position: relative; display: block; font-size: 12px; margin-top: 20px; color: rgba(0,0,0,0.75); }
+section form + .meta { position: relative; display: block; font-size: 14px; margin-top: 20px; color: rgba(0,0,0,0.65); }
 section form + .meta a { text-decoration: underline; }
 section form span.info, section form span.error { position: relative; display: block; padding: 14px 15px; margin-bottom: 10px; opacity: 1; font-size: 14px; background-color: #fafafa; border: 1px solid #f4f4f4; font-weight: bold;  border-radius: 4px; overflow: hidden; max-height: 500px; }
 section form span.info { background: #0066de; border-color: #0061d4; color: #fff; }

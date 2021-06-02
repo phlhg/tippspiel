@@ -22,15 +22,12 @@ export default class SignIn extends Section {
                 <input type="submit" value="${Lang.get("section/signIn/action")}"/>
             </form>
             <span class="meta">
-                ${Lang.get("section/signIn/signUpInstead", { a: `<a class="signUpLink">${Lang.get("section/signIn/signUpLink")}</a>` })}<br/><br/>
+                ${Lang.get("section/signIn/signUpInstead", { a: `<a href="/signup/">${Lang.get("section/signIn/signUpLink")}</a>` })}<br/><br/>
                 ${Lang.get("section/signIn/recover", { a: `<a href="/recover/">${Lang.get("section/signIn/recoverLink")}</a>` })}
             </span>
         </div>`
 
         this.form = new Form(this.view.root.querySelector("form"));
-
-        this.view.signUpLink = this.view.root.querySelector(".signUpLink");
-        this.view.signUpLink.onclick = e => { App.router.overwrite("/signup/"); }
         
         this.view.user = this.view.root.querySelector("input[name='username']")
         this.view.token = this.view.root.querySelector("input[name='token']");

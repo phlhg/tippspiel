@@ -10,9 +10,12 @@ import NoConnection from './sections/errors/noconnection'
 import Home from './sections/home'
 
 // Account
-import SignUp from './sections/account/signup'
 import SignIn from './sections/account/signin'
 import Recover from './sections/account/recover'
+
+import SignUp from './sections/account/signup/index'
+import SignUpName from './sections/account/signup/name'
+import SignUpWelcome from './sections/account/signup/welcome'
 
 // Game
 import Game from './sections/game/index'
@@ -70,8 +73,12 @@ window.addEventListener("DOMContentLoaded", function(){
 
     // Account
     App.router.add("/signin/",new SignIn).alias("/signin/{token}/");
-    App.router.add("/signup/",new SignUp)
     App.router.add("/recover/",new Recover)
+
+    App.router.add("/signup/",new SignUp)
+    App.router.add("/signup/2/",new SignUpName)
+    App.router.add("/signup/3/",new SignUpWelcome)
+
 
     //Game
     App.router.add("/game/{id}/{t1}-{t2}/",new Game).where({ id: 'NUMBER', t1: 'TEXT',t2: 'TEXT' })
