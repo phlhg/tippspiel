@@ -95,7 +95,7 @@ export default class Application {
         })
 
         window.addEventListener("popstate", e => {
-            this.router.find(window.location.pathname);
+            this.router.find(window.location.pathname,e.state);
         })
 
         window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",() => {

@@ -24,10 +24,11 @@ export default class Route {
         return this.pattern.test(path);
     }
 
-    async take(path){
+    async take(path, params){
+        params = params ?? {}
         if(!this.matches(path)){ return false; }
         var match = this.pattern.exec(path);
-        return await this.load(Object.assign({}, match.groups ? match.groups : {}));
+        return await this.load(Object.assign({}, params, match.groups ? match.groups : {}));
     }
 
     async load(params){
