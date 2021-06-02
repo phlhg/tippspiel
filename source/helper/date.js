@@ -2,7 +2,10 @@ class TippDate { }
 
 TippDate.toString = function(date){
     var now = new Date();
+    var tomorrow = new Date(now + 1000 * 60 * 60 * 24)
+    var yesterday = new Date(now - 1000 * 60 * 60 * 24)
     var delta = Math.abs(now - date) / 1000
+
     if(now - date > 0){
         // Past
         if(delta < 60){
@@ -11,12 +14,12 @@ TippDate.toString = function(date){
             return Lang.get("date/past_min",{
                 m: Math.floor(delta/60)
             })
-        } else if(delta < 60 * 60 * (24 - date.getHours())){
+        } else if(date.toDateString() == now.toDateString()){
             return Lang.get("date/past_today",{
                 h: ("0"+date.getHours()).slice(-2), 
                 m: ("0"+date.getMinutes()).slice(-2)
             })
-        } else if(delta < 60 * 60 * (48 - date.getHours())){
+        } else if(date.toDateString() == yesterday.toDateString()){
             return Lang.get("date/past_yesterday",{
                 h: ("0"+date.getHours()).slice(-2), 
                 m: ("0"+date.getMinutes()).slice(-2)
@@ -38,17 +41,17 @@ TippDate.toString = function(date){
             return Lang.get("date/future_min",{
                 m: Math.ceil(delta/60)
             })
-        } else if(delta < 60 * 60 * date.getHours()){
+        } else if(date.toDateString() == now.toDateString()){
             return Lang.get("date/future_today",{
                 h: ("0"+date.getHours()).slice(-2), 
                 m: ("0"+date.getMinutes()).slice(-2)
             })
-        } else if(delta < 60 * 60 * (date.getHours() + 24)){
+        } else if(date.toDateString() == tomorrow.toDateString()){
             return Lang.get("date/future_tomorrow",{
                 h: ("0"+date.getHours()).slice(-2), 
                 m: ("0"+date.getMinutes()).slice(-2)
             })
-        } else if(delta < 60 * 60 * 24 * 3){
+        } else if(delta < 60 * 60 * 24 * 4){
             return Lang.get("date/future_day",{
                 d: Lang.getRaw("date/days")[date.getDay()],
                 h: ("0"+date.getHours()).slice(-2), 
@@ -68,12 +71,13 @@ TippDate.toString = function(date){
 
 TippDate.toDate = function(date){
     var now = new Date();
-    var delta = Math.abs(now - date) / 1000
+    var tomorrow = new Date(now + 1000 * 60 * 60 * 24)
+    var yesterday = new Date(now - 1000 * 60 * 60 * 24)
 
     if(now - date > 0){
-        if(delta < 60 * 60 * (24 - date.getHours())){
+        if(date.toDateString() == now.toDateString()){
             return Lang.get("date/today");
-        } else if(delta < 60 * 60 * (48 - date.getHours())){
+        } else if(date.toDateString() == yesterday.toDateString()){
             return Lang.get("date/yesterday");
         } else {
             return Lang.get("date/date_only", {
@@ -83,9 +87,9 @@ TippDate.toDate = function(date){
             })
         }
     } else {
-        if(delta < 60 * 60 * date.getHours()){
+        if(date.toDateString() == now.toDateString()){
             return Lang.get("date/today");
-        } else if(delta < 60 * 60 * (date.getHours() + 24)){
+        } else if(date.toDateString() == tomorrow.toDateString()){
             return Lang.get("date/tomorrow");
         } else {
             return Lang.get("date/date_only", {

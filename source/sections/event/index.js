@@ -70,7 +70,7 @@ export default class EventIndex extends Section {
 
         // Header
         this.view.header.name.innerText = this.event.name;
-        this.view.header.meta.innerText = this.event.tipps.length == 1 ? Lang.get("section/event/tipp/single") : Lang.get("section/event/tipp/multi",{n: this.event.tipps.length})
+        this.view.header.meta.innerText = this.event.deadline > Date.now() ? (this.event.tipps.length == 1 ? Lang.get("section/event/tipp/single") : Lang.get("section/event/tipp/multi",{n: this.event.tipps.length})) : Lang.get("section/event/tile/desc");
 
         // Add Game
         this.view.createGame.style.display = App.client.permission.gameAnnounce ? "block" : "none";
