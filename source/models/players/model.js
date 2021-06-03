@@ -16,4 +16,12 @@ export default class Players extends Manager {
         return this.getAll(Array.from(r.data).map(i => parseInt(i)));
     }
 
+    async create(name, team){
+        team = parseInt(team);
+        var r = new Request("createPlayer",{ name: name, team: team })
+        if(!(await r.run())){ return r; }
+        await App.model.teams.update([team]);
+        return r;
+    }
+
 }

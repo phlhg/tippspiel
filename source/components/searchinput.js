@@ -66,6 +66,7 @@ export default class SearchInput {
     reset(){
         this.dom.input.value = "";
         this.dom.suggestions.innerHTML = "";
+        this.dom.icon.style.backgroundImage = `url(${this.img})`
     }
 
 }

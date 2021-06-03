@@ -7,7 +7,12 @@ export default class Router {
         this.app = app
         this.error = null;
         this.routes = [];
-        this.handler = []
+        this.handler = [];
+
+        this.lastRoute = null;
+        this.lastPath = null
+        this.lastParams = {};
+
     }
 
     add(pattern, section){
@@ -20,13 +25,15 @@ export default class Router {
         return this.error;
     }
 
-    async showError(){
+    async showError(params){
+        params = params ?? {}
         for(var r of this.routes){ await r.unload() }
         await this.error.unload()
-        await this.error.load()
+        await this.error.load(params)
     }
 
-    async find(path){
+    async find(path, params){
+        params = params ?? {}
         for(var r of this.routes){ await r.unload() }
         await this.error.unload()
         let route = this.routes.find(r => r.matches(path));
@@ -34,8 +41,11 @@ export default class Router {
             await this.error.load()
         } else {
             Debugger.log(this,`Loading "${path}"`)()
+            this.lastRoute = route;
+            this.lastPath = path;
+            this.lastParams = params;
             try{
-                await route.take(path)
+                await route.take(path, params)
             } catch(e){
                 Debugger.error(route.section,"Exception:",e)()
                 await this.error.load()
@@ -43,33 +53,40 @@ export default class Router {
         }
     }
 
-    async forward(path){
+    async forward(path, params){
+        params = params ?? {}
         Debugger.log(this,`Forwarding to "${path}"`)();
-        window.history.replaceState({}, '', path);
-        return await this.find(path);
+        window.history.replaceState(params, '', path);
+        return await this.find(path, params);
     }
 
-    async overwrite(path){
+    async overwrite(path, params){
+        params = params ?? {}
         Debugger.log(this,`Overwriting to "${path}"`)();
-        return await this.find(path);
+        return await this.find(path, params);
     }
 
-    back(fallback){
+    back(fallback, params){
         fallback = fallback ?? "/"
+        params = params ?? {}
         if(history.length > 0){
             history.back()
         } else {
-            this.load(fallback);
+            this.load(fallback, params);
         }
     }
 
-    async load(path){
-        window.history.pushState({}, '', path);
-        return await this.find(path);
+    async load(path, params){
+        params = params ?? {}
+        window.history.pushState(params, '', path);
+        return await this.find(path, params);
     }
 
     async reload(){
-        return await this.find(window.location.pathname)
+        if(this.lastRoute == null || this.lastPath == null){ return false; }
+        for(var r of this.routes){ await r.unload() }
+        await this.error.unload()
+        this.lastRoute.take(this.lastPath,this.lastParams)
     }
 
 }

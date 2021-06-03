@@ -23,6 +23,7 @@ export default class SearchSelect {
         this.dom.suggestions = this.root.querySelector(".suggestions");
 
         this.getSuggestions = async (input) => [];
+        this.onchange = () => {}
 
         this._setEvents();
     }
@@ -64,6 +65,7 @@ export default class SearchSelect {
         this.selected = element;
         this.dom.suggestions.innerHTML += "";
         this._update();
+        this.onchange();
     }
 
     _update(){

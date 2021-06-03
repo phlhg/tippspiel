@@ -85,21 +85,21 @@
         </div>
         <header>
             <div class="inner">
-                <div class="back"><span class="material-icons">arrow_back_ios_new</span></div>
+                <a class="back" title="Back"><span class="material-icons">arrow_back_ios_new</span></a>
                 <h1 class="heading">
-                    <a class="logo" href="/"><img src="/img/icon-transparent.png" /></a>
+                    <a class="logo" href="/" title="To Home"><img src="/img/icon-transparent.png" alt="Logo"/></a>
                     <strong>Tippspiel</strong> <span>21</span>
                 </h1>
-                <a href="/settings/" class="settings"><img src="/img/graphics/settings.svg" /></a>
+                <a href="/settings/" class="settings" title="Settings"><img src="/img/graphics/settings.svg" alt="Settings"/></a>
             </div>
         </header>
         <div class="tipp-section-wrapper"></div>
         <nav>
             <div class="tipp-nav-inner">
-                <a href="/"><img src="/img/graphics/home.svg"/></a>
-                <a href="/stats/"><img src="/img/graphics/stats.svg"/></a>
-                <a href="/groups/"><img src="/img/graphics/groups.svg"/></a>
-                <a href="/profile/"><img src="/img/graphics/profile.svg"/></a>
+                <a href="/" title="Home"><img src="/img/graphics/home.svg" alt="Home" /></a>
+                <a href="/stats/" title="Stats"><img src="/img/graphics/stats.svg" alt="Stats" /></a>
+                <a href="/groups/" title="Groups"><img src="/img/graphics/groups.svg" alt="Groups" /></a>
+                <a href="/profile/" title="Profile"><img src="/img/graphics/profile.svg" alt="Profile" /></a>
             </div>
         </nav>
         <script>
