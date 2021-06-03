@@ -102,15 +102,14 @@ export default class TippDetail extends Section {
         this.view.header.meta.innerText = this.tipp.topscorer > 0 ? `${this.tipp.bet1} : ${this.tipp.bet2} /  ${player.name}` : `${this.tipp.bet1} : ${this.tipp.bet2}`;
         this.view.header.flag.setAttribute("data-t",winner.short.toLowerCase());
 
-        this.view.total.root.style.opacity = this.tipp.proccessed ? 1 : 0.5;
         this.view.total.icon.innerText = this.tipp.reward.sum;
 
-        this.view.team.root.style.opacity = this.tipp.reward.team ? 1 : 0.5;
-        this.view.diff.root.style.opacity = this.tipp.reward.diff ? 1 : 0.5;
-        this.view.exact.root.style.opacity = this.tipp.reward.exact ? 1 : 0.5;
-        this.view.penalty.root.style.opacity = this.tipp.reward.draw ? 1 : 0.5;
+        this.view.team.root.style.opacity = this.tipp.reward.team ? 1 : 0.25;
+        this.view.diff.root.style.opacity = this.tipp.reward.diff ? 1 : 0.25;
+        this.view.exact.root.style.opacity = this.tipp.reward.exact ? 1 : 0.25;
+        this.view.penalty.root.style.opacity = this.tipp.reward.draw ? 1 : 0.25;
 
-        this.view.scorer.root.style.opacity = this.tipp.reward.scorer > 0 ? 1 : 0.5;
+        this.view.scorer.root.style.opacity = this.tipp.reward.scorer > 0 ? 1 : 0.25;
         this.view.scorer.icon.innerText = this.tipp.reward.scorer;
         this.view.scorer.meta.innerText = Lang.get("section/tipp/scorer/desc",{n: this.tipp.reward.scorer})
     }

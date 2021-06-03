@@ -44,12 +44,14 @@ export default class GameTipp extends Element {
      * @param {object} data - Properties of to update
      */
     set(data){
+
         this.game = parseInt(data.game ?? this.game);
         this.user = parseInt(data.user ?? this.user);
 
         this.bet1 = parseInt(data.bet1 ?? this.bet1);
         this.bet2 = parseInt(data.bet2 ?? this.bet2);
         this.winner = parseInt(data.winner ?? this.winner);
+        this.topscorer = parseInt(data.topscorer ?? this.topscorer);
 
         this.reward.sum = parseInt(data.reward?.sum ?? this.reward.sum);
         this.reward.team = data.reward?.team ? (data.reward?.team  ?? "false") == "true" : this.reward.team;
