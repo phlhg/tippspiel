@@ -206,21 +206,21 @@ __LANG["en"] = {
         signUp: {
             email: {
                 title: "Sign up",
-                desc: "Please provide your email address - We will use it to send you a personal access code.",
-                action: "Next",
+                desc: "Please provide your email address - We will send your personal access code to this address",
+                action: "Continue",
                 meta: "Your email address will not be public, will not be passed on and will no be used for advertising by us."
             },
             name: {
                 title: "Sign up",
                 desc: "Choose your name - This can be your real name, a nickname or something else.",
-                action: "Sign up",
-                meta: "Don't use offensive names - Names are publicly visible."
+                action: "Sign up!",
+                meta: "Please don't use offensive names - Names are publicly visible."
             },
             welcome: {
                 title: "Welcome!",
                 desc: "You've successfully created an Account - Please check your inbox for an email by us.",
                 action: "Sign in",
-                meta: "If you didn't get an email {a} with us.",
+                meta: "If you didn't get an email please {a} with us.",
                 metaLink: "get in touch" 
             },
             placeholder : {
@@ -232,8 +232,8 @@ __LANG["en"] = {
                 noName: "Please enter a name",
                 noEmail: "Please enter an email address"
             },
-            signInInstead: "If you already have an account: {a}",
-            signInLink: "Sign in instead"
+            signInInstead: "If you already have an account, {a}.",
+            signInLink: "sign in instead"
         },
         signIn: {
             title: "Sign in",

@@ -207,25 +207,25 @@ __LANG["de"] = {
         signUp: {
             email: {
                 title: "Registrieren",
-                desc: "Bitte gib deine E-Mail-Adresse an - Wir benutzen diese, um dir einen persönlichen Zugangscode zu senden",
+                desc: "Bitte gib deine E-Mail-Adresse an - An diese werden wir deinen persönlichen Zugangscode senden.",
                 action: "Weiter",
-                meta: "Deine E-Mail-Adresse ist nicht öffentlich, wird nicht weitergegeben und nicht für Werbung genutzt."
+                meta: "Die E-Mail-Adresse ist nicht öffentlich, wird nicht weitergegeben und nicht für Werbung genutzt."
             },
             name: {
                 title: "Registrieren",
                 desc: "Wähle deinen Namen - Dies kann dein richtiger Name, ein Spitzname oder etwas anders sein.",
-                action: "Registrieren",
-                meta: "Benutze keine anstössigen Namen - Namen sind öffentlich sichtbar."
+                action: "Registrieren!",
+                meta: "Bitte benutze keine anstössigen Namen - Namen sind öffentlich sichtbar."
             },
             welcome: {
                 title: "Willkommen!",
                 desc: "Du hast erfolgreich einen Account erstellt - Bitte schaue in deiner Mailbox nach einer E-Mail von uns.",
                 action: "Anmelden",
-                meta: "Falls du keine E-Mail erhalten hast, {a}.",
-                metaLink: "nimm Kontakt mit uns auf" 
+                meta: "Falls du keine E-Mail erhalten hast, nimm bitte {a}.",
+                metaLink: "Kontakt mit uns auf" 
             },
             placeholder : {
-                name: "Name: e.g. Max Nustermann",
+                name: "Name: e.g. Max Mustermann",
                 email: "E-Mail: e.g. max.mustermann@beispiel.de"
             },
             errors: {

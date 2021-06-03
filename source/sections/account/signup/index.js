@@ -24,10 +24,11 @@ export default class SignUp extends Section {
         </div>`;
 
         this.form = new Form(this.view.root.querySelector("form"));
+        this.view.email = this.form.root.querySelector("input[name='email']")
 
         this.form.onSubmit = async data => {
 
-            if(!("email" in data) || data.email.length < 1){
+            if(!("email" in data) || !this.view.email.checkValidity()){
                 this.form.info(Lang.get("section/signUp/errors/noEmail"));
                 return false;
             }

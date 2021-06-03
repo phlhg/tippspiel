@@ -92,7 +92,7 @@ section > .text { position: relative; display: block; padding: 0 15px 25px 15px 
 section > .text h3, section > .text h4 { padding: 0;}
 
 section > .text ul { display: block; position: relative; width: 100%; padding: 10px 0 10px 20px;}
-section > .text ul > li { list-style-type: square; padding: 10px 0; }
+section > .text ul > li { list-style-type: square; padding: 10px 0; text-align: left; }
 
 section .tipp-box { text-decoration: none;  position: relative; display: block; padding: 15px 15px 15px 55px; background: #fafafa; border: 1px solid #f4f4f4;  margin-bottom: 10px; border-radius: 4px; }
 section .tipp-box .icon { position: absolute; left: 15px; top: 15px; display: inline-block; text-align: center; width: 25px; font-size: 24px; line-height: 24px; font-weight: bold; }

@@ -210,22 +210,22 @@ __LANG["de-ch"] = {
         signUp: {
             email: {
                 title: "Registriere",
-                desc: "Bitte gib dini E-Mail-Adresse ah - Mir benutzed die, um dir en persönliche Zuegangscode z'schicke.",
+                desc: "Bitte gib dini E-Mail-Adresse ah - Ah die werde mer din persönliche Zuegangscode schicke.",
                 action: "Wiiter",
-                meta: "Dini E-Mail-Adresse isch ned öffentlich, wird ned wiitergeh und wird ned für Werbig benutzt."
+                meta: "D'E-Mail-Adresse isch ned öffentlich, wird ned wiitergeh und wird ned für Werbig benutzt."
             },
             name: {
                 title: "Registriere",
                 desc: "Wähl din Name - Das chan din richtige Name, en Spitzname oder epis anders sii.",
                 action: "Registriere",
-                meta: "Benutz kei ahstössigi Näme - Näme sind öffentlich sichtbar."
+                meta: "Bitte benutz kei ahstössigi Näme - Näme sind öffentlich sichtbar."
             },
             welcome: {
                 title: "Willkomme!",
                 desc: "Du hesch erfolgriich en Account erstellt - Bitte lueg ih dinere Mailbox nachere E-Mail vo eus.",
                 action: "Ahmelde",
-                meta: "Wenn du kei E-Mail becho hesch, {a}.",
-                metaLink: "nimm Kontakt mit eus uuf" 
+                meta: "Wenn du kei E-Mail becho hesch, nimm bitte {a}.",
+                metaLink: "Kontakt mit eus uuf" 
             },
             placeholder : {
                 name: "Name: z.B. Max Mustermann",
