@@ -2,9 +2,9 @@ class TippDate { }
 
 TippDate.toString = function(date){
     var now = new Date();
-    var tomorrow = new Date(now + 1000 * 60 * 60 * 24)
-    var yesterday = new Date(now - 1000 * 60 * 60 * 24)
-    var delta = Math.abs(now - date) / 1000
+    var tomorrow = new Date(now.getTime() + 1000 * 60 * 60 * 24)
+    var yesterday = new Date(now.getTime() - 1000 * 60 * 60 * 24)
+    var delta = Math.abs(now.getTime() - date.getTime()) / 1000
 
     if(now - date > 0){
         // Past
@@ -71,8 +71,8 @@ TippDate.toString = function(date){
 
 TippDate.toDate = function(date){
     var now = new Date();
-    var tomorrow = new Date(now + 1000 * 60 * 60 * 24)
-    var yesterday = new Date(now - 1000 * 60 * 60 * 24)
+    var tomorrow = new Date(now.getTime() + (1000 * 60 * 60 * 24))
+    var yesterday = new Date(now.getTime() - (1000 * 60 * 60 * 24));
 
     if(now - date > 0){
         if(date.toDateString() == now.toDateString()){
