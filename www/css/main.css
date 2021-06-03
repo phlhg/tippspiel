@@ -85,11 +85,12 @@ section h3 { font-size: 30px; font-weight: bold; }
 section h4 { font-size: 20px; font-weight: bold; }
 section h3 { padding: 0 15px; margin: 15px 0 10px 0; }
 section h4 { padding: 0 15px; margin: 15px 0 10px 0; }
+section p { padding:  0 15px;}
 h4 > small { font-size: 12px; font-weight: normal; opacity: 0.75; line-height: inherit; }
 section a.button, section span.button { position: relative; display: inline-block; padding: 10px 15px; margin: 10px 0; background: #f4f4f4; border-radius: 4px; font-size: 14px; color: #000; text-decoration: none;}
 
 section > .text { position: relative; display: block; padding: 0 15px 25px 15px ; line-height: 25px; }
-section > .text h3, section > .text h4 { padding: 0;}
+section > .text h3, section > .text h4, section > .text p { padding: 0;}
 
 section > .text ul { display: block; position: relative; width: 100%; padding: 10px 0 10px 20px;}
 section > .text ul > li { list-style-type: square; padding: 10px 0; text-align: left; }
@@ -141,7 +142,7 @@ section.tipp-login-page { height: 100vh; padding-left: 20px; padding-right: 20px
 section.tipp-login-page.active { height: 100vh}
 section.tipp-login-page > .inner { position: relative; display: block; left: 0; top: 50%; transform: translateY(-50%); }
 section.tipp-login-page > .inner > h3 { font-size: 40px; margin-bottom: 5px; padding: 0; }
-section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px; line-height: 25px; }
+section.tipp-login-page > .inner > p { font-size: 14px; margin-bottom: 10px; line-height: 25px; padding: 0; }
 
 /* Game Tile */
 .game-tile { position: relative; display: block; padding: 15px 55px 15px 55px; border: 1px solid #f4f4f4; background: #fafafa; border-radius: 4px; margin-bottom: 10px; text-decoration: none; opacity: 1; }

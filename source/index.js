@@ -40,6 +40,7 @@ import Profile from './sections/profile/index'
 import Settings from './sections/settings/index'
 import Rules from './sections/settings/rules'
 import PWASetup from './sections/special/pwasetup'
+import PlayerCreate from './sections/player/create'
 
 Debugger.active = true;
 
@@ -103,6 +104,8 @@ window.addEventListener("DOMContentLoaded", function(){
     App.router.add("/settings/", new Settings)
     App.router.add("/settings/rules/", new Rules)
     App.router.add("/pwa/",new PWASetup)
+
+    App.router.add("/player/create/", new PlayerCreate)
 
     App.run()
 

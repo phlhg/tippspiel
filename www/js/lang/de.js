@@ -421,6 +421,31 @@ __LANG["de"] = {
             submit: "Senden",
             meta1: "Falls du keinen Zugriff auf deine E-Mail hast oder deine E-Mail nicht mehr weisst, nimm bitte {a}.",
             meta2: "Kontakt mit uns auf"
+        },
+        createPlayer: {
+            title: "Erstelle einen Spieler",
+            desc: "Füge einem Team einen neuen / fehlenden Spieler hinzu.",
+            team: {
+                name: "Team",
+                placeholder: "z.B. Deutschland"
+            },
+            name: {
+                name: "Name",
+                placeholder: "z.B. Manuel Neuer"
+            },
+            action: "Spieler erstellen",
+            missingInfo: "Fehlenden Spieler gefunden?",
+            messages: {
+                noTeam: "Bitte wähle ein Team aus",
+                noName: "Bitte gib einen Namen ein",
+                existing: "Dieser Spieler existiert bereits",
+                success: "Der Spieler wurde hinzugefügt"
+            },
+            prompt: {
+                text: "Doppelte Spieler können Probleme bei der Spielauswertung verursachen! - Bitte füge nur Spieler hinzu, welche wirklich fehlen (Achte auf die Schreibweise, Alternative Namen, Reihenfolge, Team, etc.)",
+                confirm: "Hinzufügen",
+                deny: "Abbrechen"
+            }
         }
     },
     pwa_info: {

@@ -415,6 +415,31 @@ __LANG["de-ch"] = {
             submit: "Sende",
             meta1: "Falls kei Zuegriff uf dini E-Mail hesch oder dini E-Mail nüme weisch, nimm bitte {a}.",
             meta2: "Kontakt mit eus uuf"
+        },
+        createPlayer: {
+            title: "Erstell en Spiler",
+            desc: "Füeg eme Team ein neue / fehlende Spiler hinzue.",
+            team: {
+                name: "Team",
+                placeholder: "z.B. Schwiiz"
+            },
+            name: {
+                name: "Name",
+                placeholder: "z.B. Ricardo Rodríguez"
+            },
+            action: "Spiler erstelle",
+            missingInfo: "Fehlende Spiler gfunde?",
+            messages: {
+                noTeam: "Bitte wähl es Team us",
+                noName: "Bitte gib en Name iih",
+                existing: "De Spieler gits scho",
+                success: "De Spiler isch hinzuegfüegt worde"
+            },
+            prompt: {
+                text: "Doppleti Spieler chend zu Problem bide Spiiluswertig führe! - Bitte füeg nur Spieler hinzue, wo wük fehled (Acht uf d'Schriibwiis, alternativi Näme, Reihefolg, Team, etc.)",
+                confirm: "Hinzuefüege",
+                deny: "Abbreche"
+            }
         }
     },
     pwa_info: {

@@ -420,6 +420,31 @@ __LANG["en"] = {
             submit: "Senden",
             meta1: "If you don't have access to your e-mail or you don't know your email anymore, please {a}.",
             meta2: "get in touch with us"
+        },
+        createPlayer: {
+            title: "Create a player",
+            desc: "Add a new / missing player to a team",
+            team: {
+                name: "Team",
+                placeholder: "e.g. England"
+            },
+            name: {
+                name: "Name",
+                placeholder: "e.g. Harry Kane"
+            },
+            action: "Create player",
+            missingInfo: "Found a missing player?",
+            messages: {
+                noTeam: "Please select a team",
+                noName: "Please enter a name",
+                existing: "This player already exists",
+                success: "The player was added"
+            },
+            prompt: {
+                text: "Duplicate players can cause issues in the game evaluation! - Please only add players that are really missing (Pay attention to spelling, alternative names, ordering, team, etc.)",
+                confirm: "Add",
+                deny: "Cancel"
+            }
         }
     },
     pwa_info: {
