@@ -34,6 +34,16 @@ export default class Settings extends Section {
                 <option value="dark">${Lang.get("section/settings/theme/dark")}</option>
             </select>
         </div>
+        <a class="tipp-box share" >
+            <span class="icon"><span class="material-icons">share</span></span>
+            <span class="title">${Lang.get("section/settings/share/title")}</span>
+            <span class="meta">${Lang.get("section/settings/share/desc")}</span>
+        </a>
+        <a class="tipp-box" href="/settings/rules/" >
+            <span class="icon"><span class="material-icons">gavel</span></span>
+            <span class="title">${Lang.get("section/settings/rules/title")}</span>
+            <span class="meta">${Lang.get("section/settings/rules/desc")}</span>
+        </a>
         <a class="tipp-box" href="https://phlhg.ch/report/2/tippspiel/" target="_blank" >
             <span class="icon"><span class="material-icons">feedback</span></span>
             <span class="title">${Lang.get("section/settings/report/title")}</span>
@@ -100,6 +110,16 @@ export default class Settings extends Section {
         this.view.themeSelect = this.view.root.querySelector(".theme select");
         this.view.themeSelect.onchange = e => {
             App.setTheme(this.view.themeSelect.value)
+        }
+
+        // Share
+
+        this.view.share = this.view.root.querySelector(".share")
+        this.view.share.onclick = () => {
+            App.device.share({
+                url: window.location.protocol+"//"+window.location.hostname,
+                title: "Tippspiel"
+            })
         }
 
         // Console

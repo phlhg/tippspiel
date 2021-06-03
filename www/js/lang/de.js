@@ -202,24 +202,39 @@ __LANG["de"] = {
                     select: "Wähle eine Spieler"
                 },
                 submit: "Spiel beenden"
-            },
-            share: {
-                title: "Teilen",
-                desc: "Teile dieses Spiel mit Anderen",
-                text: "Spiel {team1} - {team2}"
             }
         },
         signUp: {
-            title: "Registrieren",
-            desc: "Gib deinen Namen und deine E-Mail ein und erhalte von uns einen Zugangscode",
-            placeholder : {
-                name: "Name: z.B. Max Mustermann",
-                email: "E-Mail: z.B. max.mustermann@beispiel.de"
+            email: {
+                title: "Registrieren",
+                desc: "Bitte gib deine E-Mail-Adresse an - An diese werden wir deinen persönlichen Zugangscode senden.",
+                action: "Weiter",
+                meta: "Die E-Mail-Adresse ist nicht öffentlich, wird nicht weitergegeben und nicht für Werbung genutzt."
             },
-            action: "Registrieren",
+            name: {
+                title: "Registrieren",
+                desc: "Wähle deinen Namen - Dies kann dein richtiger Name, ein Spitzname oder etwas anders sein.",
+                action: "Registrieren!",
+                meta: "Bitte benutze keine anstössigen Namen - Namen sind öffentlich sichtbar."
+            },
+            welcome: {
+                title: "Willkommen!",
+                desc: "Du hast erfolgreich einen Account erstellt - Bitte schaue in deiner Mailbox nach einer E-Mail von uns.",
+                action: "Anmelden",
+                meta: "Falls du keine E-Mail erhalten hast, nimm bitte {a}.",
+                metaLink: "Kontakt mit uns auf" 
+            },
+            placeholder : {
+                name: "Name: e.g. Max Mustermann",
+                email: "E-Mail: e.g. max.mustermann@beispiel.de"
+            },
+            errors: {
+                nameTooLong: "Bitte wähle einen kürzeren Namen",
+                noName: "Bitte gib einen Namen ein",
+                noEmail: "Bitte gib eine E-Mail-Addresse ein"
+            },
             signInInstead: "Falls du schon einen Account hast, {a}",
             signInLink: "melde dich an",
-            nameTooLong: "Bitte wähle einen kürzeren Namen"
         },
         signIn: {
             title: "Anmelden",
@@ -251,6 +266,14 @@ __LANG["de"] = {
                 auto: "Automatisch",
                 light: "Hell",
                 dark: "Dunkel"
+            },
+            rules: {
+                title: "Regeln",
+                desc: "Wie die Punktevergabe funktioniert"
+            },
+            share: {
+                title: "Teilen",
+                desc: "Zeige Tippspiel deinen Freunden & Bekannten",
             },
             report: {
                 title: "Fehler melden",
@@ -398,6 +421,31 @@ __LANG["de"] = {
             submit: "Senden",
             meta1: "Falls du keinen Zugriff auf deine E-Mail hast oder deine E-Mail nicht mehr weisst, nimm bitte {a}.",
             meta2: "Kontakt mit uns auf"
+        },
+        createPlayer: {
+            title: "Erstelle einen Spieler",
+            desc: "Füge einem Team einen neuen / fehlenden Spieler hinzu.",
+            team: {
+                name: "Team",
+                placeholder: "z.B. Deutschland"
+            },
+            name: {
+                name: "Name",
+                placeholder: "z.B. Manuel Neuer"
+            },
+            action: "Spieler erstellen",
+            missingInfo: "Fehlenden Spieler gefunden?",
+            messages: {
+                noTeam: "Bitte wähle ein Team aus",
+                noName: "Bitte gib einen Namen ein",
+                existing: "Dieser Spieler existiert bereits",
+                success: "Der Spieler wurde hinzugefügt"
+            },
+            prompt: {
+                text: "Doppelte Spieler können Probleme bei der Spielauswertung verursachen! - Bitte füge nur Spieler hinzu, welche wirklich fehlen (Achte auf die Schreibweise, Alternative Namen, Reihenfolge, Team, etc.)",
+                confirm: "Hinzufügen",
+                deny: "Abbrechen"
+            }
         }
     },
     pwa_info: {

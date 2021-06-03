@@ -208,16 +208,36 @@ __LANG["de-ch"] = {
             }
         },
         signUp: {
-            title: "Registriere",
-            desc: "Bitte gib din Name und dini E-Mail ih - Mer sendet dir denn en Zugangscode",
+            email: {
+                title: "Registriere",
+                desc: "Bitte gib dini E-Mail-Adresse ah - Ah die werde mer din persönliche Zuegangscode schicke.",
+                action: "Wiiter",
+                meta: "D'E-Mail-Adresse isch ned öffentlich, wird ned wiitergeh und wird ned für Werbig benutzt."
+            },
+            name: {
+                title: "Registriere",
+                desc: "Wähl din Name - Das chan din richtige Name, en Spitzname oder epis anders sii.",
+                action: "Registriere",
+                meta: "Bitte benutz kei ahstössigi Näme - Näme sind öffentlich sichtbar."
+            },
+            welcome: {
+                title: "Willkomme!",
+                desc: "Du hesch erfolgriich en Account erstellt - Bitte lueg ih dinere Mailbox nachere E-Mail vo eus.",
+                action: "Ahmelde",
+                meta: "Wenn du kei E-Mail becho hesch, nimm bitte {a}.",
+                metaLink: "Kontakt mit eus uuf" 
+            },
             placeholder : {
                 name: "Name: z.B. Max Mustermann",
                 email: "E-Mail: z.B. max.mustermann@beispiel.ch"
             },
-            action: "Registriere",
+            errors: {
+                nameTooLong: "Bitte nimm en chürzere Name",
+                noName: "Bitte gib en Namen ih",
+                noEmail: "Bitte gib e E-Mail-Addresse ih"
+            },
             signInInstead: "Falls du scho en Account hesch, {a}",
             signInLink: "meld dich ah",
-            nameTooLong: "Bitte nimm en chürzere Name"
         },
         signIn: {
             title: "Ahmelde",
@@ -395,6 +415,31 @@ __LANG["de-ch"] = {
             submit: "Sende",
             meta1: "Falls kei Zuegriff uf dini E-Mail hesch oder dini E-Mail nüme weisch, nimm bitte {a}.",
             meta2: "Kontakt mit eus uuf"
+        },
+        createPlayer: {
+            title: "Erstell en Spiler",
+            desc: "Füeg eme Team ein neue / fehlende Spiler hinzue.",
+            team: {
+                name: "Team",
+                placeholder: "z.B. Schwiiz"
+            },
+            name: {
+                name: "Name",
+                placeholder: "z.B. Ricardo Rodríguez"
+            },
+            action: "Spiler erstelle",
+            missingInfo: "Fehlende Spiler gfunde?",
+            messages: {
+                noTeam: "Bitte wähl es Team us",
+                noName: "Bitte gib en Name iih",
+                existing: "De Spieler gits scho",
+                success: "De Spiler isch hinzuegfüegt worde"
+            },
+            prompt: {
+                text: "Doppleti Spieler chend zu Problem bide Spiiluswertig führe! - Bitte füeg nur Spieler hinzue, wo wük fehled (Acht uf d'Schriibwiis, alternativi Näme, Reihefolg, Team, etc.)",
+                confirm: "Hinzuefüege",
+                deny: "Abbreche"
+            }
         }
     },
     pwa_info: {

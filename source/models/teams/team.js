@@ -38,4 +38,8 @@ export default class Team extends Element {
         return data.name ?? "unknown";
     }
 
+    getPlayers(){
+        return App.model.players.getAll(this.players);
+    }
+
 }

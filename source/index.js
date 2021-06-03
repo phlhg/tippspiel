@@ -10,9 +10,12 @@ import NoConnection from './sections/errors/noconnection'
 import Home from './sections/home'
 
 // Account
-import SignUp from './sections/account/signup'
 import SignIn from './sections/account/signin'
 import Recover from './sections/account/recover'
+
+import SignUp from './sections/account/signup/index'
+import SignUpName from './sections/account/signup/name'
+import SignUpWelcome from './sections/account/signup/welcome'
 
 // Game
 import Game from './sections/game/index'
@@ -35,7 +38,9 @@ import GroupCreate from './sections/groups/create'
 import StatsIndex from './sections/stats/index'
 import Profile from './sections/profile/index'
 import Settings from './sections/settings/index'
+import Rules from './sections/settings/rules'
 import PWASetup from './sections/special/pwasetup'
+import PlayerCreate from './sections/player/create'
 
 Debugger.active = true;
 
@@ -69,8 +74,12 @@ window.addEventListener("DOMContentLoaded", function(){
 
     // Account
     App.router.add("/signin/",new SignIn).alias("/signin/{token}/");
-    App.router.add("/signup/",new SignUp)
     App.router.add("/recover/",new Recover)
+
+    App.router.add("/signup/",new SignUp)
+    App.router.add("/signup/2/",new SignUpName)
+    App.router.add("/signup/3/",new SignUpWelcome)
+
 
     //Game
     App.router.add("/game/{id}/{t1}-{t2}/",new Game).where({ id: 'NUMBER', t1: 'TEXT',t2: 'TEXT' })
@@ -93,7 +102,10 @@ window.addEventListener("DOMContentLoaded", function(){
     App.router.add("/stats/",new StatsIndex)
     App.router.add("/profile/",new Profile)
     App.router.add("/settings/", new Settings)
+    App.router.add("/settings/rules/", new Rules)
     App.router.add("/pwa/",new PWASetup)
+
+    App.router.add("/player/create/", new PlayerCreate)
 
     App.run()
 

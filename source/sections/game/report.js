@@ -21,7 +21,7 @@ export default class GameReport extends Section {
             <img class="flag1" src="/img/flag/sui.png"/>
             <img class="flag2" src="/img/flag/esp.png"/>
         </a>
-        <form class="tipp-form" style="margin-bottom: 200px" >
+        <form class="tipp-form">
             <h4>${Lang.get("section/game/report/phase/name")}</h4>
             <select name="phase">
                 <option value="0" checked>${Lang.get("section/game/report/phase/0")}</option>
@@ -46,6 +46,7 @@ export default class GameReport extends Section {
             </span>
             <input type="submit" value="${Lang.get("section/game/report/submit")}" style="margin: 10px 0 0 15px;"/>
         </form>
+        <span class="meta" style="margin: 15px 15px 200px 15px;" ><a href="/player/create/">${Lang.get("section/createPlayer/missingInfo")}</a></span>
         `
 
         this.form = new Form(this.view.root.querySelector("form"));
@@ -77,7 +78,7 @@ export default class GameReport extends Section {
         this.playerSelects = [];
 
         this.playerSuggestion = async (input) => {
-            return await Promise.all(this.player_suggestions.filter(p => p.matchText(input)).sort((a,b) => {
+            return await Promise.all(this.playerAll.filter(p => p.matchText(input)).sort((a,b) => {
                 return -a.normalized.localeCompare(input.toLowerCase())
             }).map(async p => { 
                 var t = await p.getTeam();

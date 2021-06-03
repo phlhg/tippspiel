@@ -13,7 +13,7 @@
         $team1 = isset($matches[1]) ? htmlentities(strToUpper($matches[1])) : "TEAM1";
         $team2 = isset($matches[2]) ? htmlentities(strToUpper($matches[2])) : "TEAM2";
         $title = ($lang == "de") ? "Spiel $team1 - $team2" : "Match $team1 - $team2";
-        $description = ($lang == "de") ? "Gib jetzt deinen Tipp im Tippspiel ab" : "Make your bet now on Tippspiel";
+        $description = ($lang == "de") ? "Gib jetzt deinen Tipp im Tippspiel ab" : "Make your bet on Tippspiel now";
     } else if(preg_match("/^\/groups\/join\/(\d)+-(\w{2,20})\/$/i",$_SERVER["REQUEST_URI"], $matches, PREG_UNMATCHED_AS_NULL)){
         $title = ($lang == "de") ? "Gruppeneinladung" : "Group invitation";
         $description = ($lang == "de") ? "Trete der Gruppe im Tippspiel bei" : "Join the group on Tippspiel";
@@ -85,21 +85,21 @@
         </div>
         <header>
             <div class="inner">
-                <div class="back"><span class="material-icons">arrow_back_ios_new</span></div>
+                <a class="back" title="Back"><span class="material-icons">arrow_back_ios_new</span></a>
                 <h1 class="heading">
-                    <a class="logo" href="/"><img src="/img/icon-transparent.png" /></a>
+                    <a class="logo" href="/" title="To Home"><img src="/img/icon-transparent.png" alt="Logo"/></a>
                     <strong>Tippspiel</strong> <span>21</span>
                 </h1>
-                <a href="/settings/" class="settings"><img src="/img/graphics/settings.svg" /></a>
+                <a href="/settings/" class="settings" title="Settings"><img src="/img/graphics/settings.svg" alt="Settings"/></a>
             </div>
         </header>
         <div class="tipp-section-wrapper"></div>
         <nav>
             <div class="tipp-nav-inner">
-                <a href="/"><img src="/img/graphics/home.svg"/></a>
-                <a href="/stats/"><img src="/img/graphics/stats.svg"/></a>
-                <a href="/groups/"><img src="/img/graphics/groups.svg"/></a>
-                <a href="/profile/"><img src="/img/graphics/profile.svg"/></a>
+                <a href="/" title="Home"><img src="/img/graphics/home.svg" alt="Home" /></a>
+                <a href="/stats/" title="Stats"><img src="/img/graphics/stats.svg" alt="Stats" /></a>
+                <a href="/groups/" title="Groups"><img src="/img/graphics/groups.svg" alt="Groups" /></a>
+                <a href="/profile/" title="Profile"><img src="/img/graphics/profile.svg" alt="Profile" /></a>
             </div>
         </nav>
         <script>

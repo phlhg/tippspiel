@@ -36,9 +36,10 @@ export default class EventIndex extends Section {
         this.view.header.meta = this.view.root.querySelector(".event-header .meta");
 
         this.view.myTip = {}
-        this.view.myTip.flag = this.view.root.querySelector(".myTipp .tflag");
-        this.view.myTip.meta = this.view.root.querySelector(".myTipp .meta");
-        this.view.myTip.reward = this.view.root.querySelector(".myTipp .reward");
+        this.view.myTip.root = this.view.root.querySelector(".myTipp")
+        this.view.myTip.flag = this.view.myTip.root.querySelector(".tflag");
+        this.view.myTip.meta = this.view.myTip.root.querySelector(".meta");
+        this.view.myTip.reward = this.view.myTip.root.querySelector(".reward");
 
         this.view.createGame = this.view.root.querySelector(".createGame");
 
@@ -69,7 +70,7 @@ export default class EventIndex extends Section {
 
         // Header
         this.view.header.name.innerText = this.event.name;
-        this.view.header.meta.innerText = this.event.tipps.length == 1 ? Lang.get("section/event/tipp/single") : Lang.get("section/event/tipp/multi",{n: this.event.tipps.length})
+        this.view.header.meta.innerText = this.event.deadline > Date.now() ? (this.event.tipps.length == 1 ? Lang.get("section/event/tipp/single") : Lang.get("section/event/tipp/multi",{n: this.event.tipps.length})) : Lang.get("section/event/tile/desc");
 
         // Add Game
         this.view.createGame.style.display = App.client.permission.gameAnnounce ? "block" : "none";
@@ -85,8 +86,10 @@ export default class EventIndex extends Section {
         });
         this.view.myTip.meta.innerText = Lang.get("section/event/tipp/deadline",{d: deadline})
 
+        this.view.myTip.root.style.display = this.event.deadline > Date.now() ? "block" : "none";
+
         // GameList
-        var games = await Promise.all(this.event.getGames());
+        var games = (await Promise.all(this.event.getGames())).filter(g => g !== null);
         games.sort((a,b) => a.start - b.start);
         this.gameList.insert(games);
     }

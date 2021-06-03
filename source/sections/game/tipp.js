@@ -22,7 +22,7 @@ export default class GameTipp extends Section {
             <img class="flag1" src="/img/flag/sui.png"/>
             <img class="flag2" src="/img/flag/esp.png"/>
         </a>
-        <form class="tipp-form" style="margin-bottom: 200px">
+        <form class="tipp-form">
             <h4>${Lang.get("section/game/tipp/form/result")}</h4>
             <div class="tipp-score">
                 <input required class="t1" name="score1" placeholder="0" min="0" max="99" step="1" value="0" inputmode="numeric" type="number" />
@@ -42,6 +42,7 @@ export default class GameTipp extends Section {
             <div class="tipp-player"></div>
             <input type="submit" value="${Lang.get("section/game/tipp/form/submit")}"/>
         </form>
+        <span class="meta" style="margin: 15px 15px 200px 15px;" ><a href="/player/create/">${Lang.get("section/createPlayer/missingInfo")}</a></span>
         `
 
         this.form = new Form(this.view.root.querySelector("form"));
