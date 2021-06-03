@@ -9,16 +9,19 @@ access get {object}
 
 **Set** Setzt ein Objekt auf einen passenden Wert
 ```
+// ACHTUNG: Kann Datenbank beschädigen
 access set {object} {value}
 ```
 
 **Emplace** Fügt einer Liste einen Eintrag hinzu
 ```
+// ACHTUNG: Kann Datenbank beschädigen
 access emplace {list}
 ```
 
 **Erase** Löscht ein Element einer Liste
 ```
+// ACHTUNG: Kann Datenbank beschädigen
 access set {list}
 ```
 
@@ -87,3 +90,10 @@ listet laufende sessions auf
 
 ### pardon
 `guard pardon [id]` entbanne einen Nutzer mit bestimmter id
+
+## Modifications
+
+Diese Befehle können verwendet werden, ohne dass die Datenbank korrupt wird.
+
+### gameval
+`mod gameval [id]` evaluiere spiel mit bestimmter id (Punkte auswerten)
