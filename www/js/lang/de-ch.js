@@ -443,7 +443,7 @@ __LANG["de-ch"] = {
         }
     },
     pwa_info: {
-        ios: '<strong>Tippspiel App</strong><br/>Wetsch s\'Tippspiel uf em Startbildschirm?<br/>- Klick uf <span class="material-icons">ios_share</span><br/>- Wähl <i>zum Startbildschirm hinzufügen</i> us<br/>- Fertig!',
-        android: '<strong>Tippspiel App</strong><br/>>Wetsch s\'Tippspiel uf em Startbildschirm?<br/>- Klick uf <span class="material-icons">more_vert</span><br/>- Wähl <span class="material-icons">add_to_home_screen</span> <i>Zum Startbildschirm hinzufügen</i> oder <i>Installieren</i> us<br/>- Fertig!',
+        ios: '<strong>Wetsch s\'Tippspiel als App?</strong><br/>Klick uf <span class="material-icons">ios_share</span> und wähl <u>zum Startbildschirm hinzufügen</u> us.',
+        android: '<strong>Wetsch s\'Tippspiel als App?</strong><br/>Klick uf <span class="material-icons">more_vert</span> und wähl <u>Zum Startbildschirm hinzufügen</u> oder <u>Installieren</u> us.',
     }
 }

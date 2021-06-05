@@ -449,7 +449,7 @@ __LANG["de"] = {
         }
     },
     pwa_info: {
-        ios: '<strong>Tippspiel App</strong><br/>Willst du Tippspiel auf dem Startbildschirm?<br/>- Klicke auf <span class="material-icons">ios_share</span><br/>- Wähle <i>zum Startbildschirm hinzufügen</i> aus<br/>- Fertig!',
-        android: '<strong>Tippspiel App</strong><br/>Willst du Tippspiel auf dem Startbildschirm?<br/>- Klicke auf <span class="material-icons">more_vert</span><br/>- Wähle <span class="material-icons">add_to_home_screen</span> <i>Zum Startbildschirm hinzufügen</i> oder <i>Installieren</i> aus<br/>- Fertig!',
+        ios: '<strong>Willst du Tippspiel als App?</strong><br/>Klicke auf <span class="material-icons">ios_share</span> und wähle <u>zum Startbildschirm hinzufügen</u> aus.',
+        android: '<strong>Willst du Tippspiel als App?</strong><br/>Klicke auf <span class="material-icons">more_vert</span> und wähle <u>Zum Startbildschirm hinzufügen</u> oder <u>Installieren</u> aus.',
     }
 }

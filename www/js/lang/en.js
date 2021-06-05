@@ -448,7 +448,7 @@ __LANG["en"] = {
         }
     },
     pwa_info: {
-        ios: '<strong>Tippspiel App</strong><br/>Want Tippspiel on your homescreen?<br/>- Click on <span class="material-icons">ios_share</span><br/>- Select <i>Add to Homescreen</i><br/>- Done!',
-        android: '<strong>Tippspiel App</strong><br/>Want Tippspiel on your homescreen?<br/>- Click on <span class="material-icons">more_vert</span><br/>- Select <span class="material-icons">add_to_home_screen</span> <i>Add to Homescreen</i> or <i>Install</i><br/>- Done!',
+        ios: '<strong>Want Tippspiel as an app?</strong><br/>Click on <span class="material-icons">ios_share</span> and select <u>Add to Homescreen</u>.',
+        android: '<strong>Want Tippspiel as an app?</strong><br/>Click on <span class="material-icons">more_vert</span> and select <u>Add to Homescreen</u> or <u>Install</u>.',
     }
 }
