@@ -321,21 +321,21 @@ __LANG["en"] = {
                 name: "Correct team",
                 desc: "The betted team won the match."
             },
-            delta: {
+            diff: {
                 name: "Correct goal difference",
-                desc: "The difference between the goals is the same as betted."
+                desc: "The difference between the goals (without penalty shootout) is the same as guessed."
             },
             exact: {
                 name: "Exact result",
-                desc: "The exact result of the match was betted."
+                desc: "The exact result of the match (without penalty shootout) was guessed."
             },
             scorer: {
                 name: "Scorer",
                 desc: "The selected scorer scored {n} goal(s)."
             },
             penalty: {
-                name: "Penalty shootout",
-                desc: "It was betted on a penalty shootout and the betted team won."
+                name: "Penalty bonus",
+                desc: "It was betted for a draw and the game ended with a penalty shootout, which the betted team won. "
             },
             total: {
                 name: "Total"
@@ -448,7 +448,7 @@ __LANG["en"] = {
         }
     },
     pwa_info: {
-        ios: '<strong>Tippspiel App</strong><br/>Want Tippspiel on your homescreen?<br/>- Click on <span class="material-icons">ios_share</span><br/>- Select <i>Add to Homescreen</i><br/>- Done!',
-        android: '<strong>Tippspiel App</strong><br/>Want Tippspiel on your homescreen?<br/>- Click on <span class="material-icons">more_vert</span><br/>- Select <span class="material-icons">add_to_home_screen</span> <i>Add to Homescreen</i> or <i>Install</i><br/>- Done!',
+        ios: '<strong>Want Tippspiel as an app?</strong><br/>Click on <span class="material-icons">ios_share</span> and select <u>Add to Homescreen</u>.',
+        android: '<strong>Want Tippspiel as an app?</strong><br/>Click on <span class="material-icons">more_vert</span> and select <u>Add to Homescreen</u> or <u>Install</u>.',
     }
 }

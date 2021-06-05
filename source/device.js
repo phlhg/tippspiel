@@ -14,7 +14,7 @@ export default class Device {
         
         this.browser = {}
         this.browser.firefox = /firefox/i.test(navigator.userAgent) && !/seamonkey/i.test(navigator.userAgent)
-        this.browser.chromium = !!window.chrome || /DuckDuckGo/i.test(navigator.userAgent);
+        this.browser.chromium = !!window.chrome || /DuckDuckGo/i.test(navigator.userAgent) || /Instagram/i.test(navigator.userAgent);
         this.browser.chrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor) && !this.browser.chromium;
         this.browser.safari = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
         this.browser.opera = /OPR/.test(navigator.userAgent) || /Opera/.test(navigator.userAgent);

@@ -14,13 +14,13 @@ export default class Language {
         if(localStorage.getItem("tipp-lang") != null){
             if(!this.setLanguage(localStorage.getItem("tipp-lang"))){ this.setLanguage("en") }
         } else {
-            var matching = navigator.languages.map(l => l.toLowerCase()).filter(l => this.available.includes(l))
+            var matching = navigator.languages
+            .map(l => l.toLowerCase().split("-")[0]) // Remove region
+            .filter((v, i, a) => a.indexOf(v) == i) // Remove duplicates
+            .filter(l => this.available.includes(l)) // Filter available
+
             if(matching.length > 0){ 
-                if(matching[0] == "de-ch"){
-                    this.setLanguage("de") 
-                } else {
-                    this.setLanguage(matching[0]) 
-                }
+                this.setLanguage(matching[0])
             } else {
                 this.setLanguage("en")
             }
