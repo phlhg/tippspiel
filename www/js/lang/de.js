@@ -17,7 +17,8 @@ __LANG["de"] = {
             9: "Es existiert keinen Account mit dieser E-Mail",
             10: "Dieser Account wurde gesperrt - Nimm mit uns Kontakt auf",
             11: "Diese Funktion ist für {time} gesperrt.",
-            12: "Zu diesem Zugangscode existiert keine Gruppe. Eventuell wurde dieser Zugang zurückgesetzt."
+            12: "Zu diesem Zugangscode existiert keine Gruppe. Eventuell wurde dieser Zugang zurückgesetzt.",
+            13: "Auf diesen Anlass kann nicht mehr getippt werden."
         },
         local: {
             "unknown": "Es ist ein unbekannter Fehler aufgetreten",

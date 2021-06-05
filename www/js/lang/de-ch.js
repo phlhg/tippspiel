@@ -17,7 +17,8 @@ __LANG["de-ch"] = {
             9: "Es git kein account mit de Email {email}",
             10: "Dä Account isch gsperrt worde.",
             11: "Die Funktion isch für {time} gsperrt.",
-            12: "Es git kei Gruppe für dä Zuegangscode. Eventuell isch dä Zuegang zrugg gsetzt worde."
+            12: "Es git kei Gruppe für dä Zuegangscode. Eventuell isch dä Zuegang zrugg gsetzt worde.",
+            13: "Uf dä Aalass chasch nümme tippe."
         },
         local: {
             "unknown": "Es isch en unbekannte Fehler uftrete",

@@ -16,7 +16,8 @@ __LANG["en"] = {
             9: "There is no account associated with this email",
             10: "This account has been banned - Get in touch with us",
             11: "This Request is disabled for {time}.",
-            12: "There is no group corresponding to this access code. The access might have been reset by the group admin."
+            12: "There is no group corresponding to this access code. The access might have been reset by the group admin.",
+            13: "You can no longer bet on this event"
         },
         local: {
             "unknown": "An unkown error has occored",

@@ -195,6 +195,17 @@ socket.exec("nextPhase",{
 });
 ```
 
+### eventTipp
+
+make an event tipp
+
+```js
+socket.exec("eventTipp",{event:ID,winner:ID,topscorer:ID})
+```
+```js
+{state, error, data:{ }}
+```
+
 ### Console
 
 ```js
