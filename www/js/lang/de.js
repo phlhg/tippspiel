@@ -323,21 +323,21 @@ __LANG["de"] = {
                 name: "Richtiges Team",
                 desc: "Das getippte Team hat das Spiel gewonnen."
             },
-            delta: {
+            diff: {
                 name: "Richtige Tordifferenz",
-                desc: "Die Differenz der Tore ist gleich wie getippt."
+                desc: "Die Differenz der Tore (ohne Penalyschiessen) ist gleich wie getippt."
             },
             exact: {
                 name: "Exaktes Resultat",
-                desc: "Es wurde das exakte Resultat des Spiels getippt."
+                desc: "Es wurde das exakte Resultat des Spiels (ohne Penalyschiessen) getippt."
             },
             scorer: {
                 name: "Torschütze",
                 desc: "Der gewählte Torschütze hat {n} Tor(e) geschossen."
             },
             penalty: {
-                name: "Penaltyschiessen",
-                desc: "Es wurde auf ein Penaltyschiessen getippt und das getippte Team hat gewonnen."
+                name: "Penalty-Bonus",
+                desc: "Es wurde Unentschieden getippt und das Spiel wurde mit einem Penaltyschiessen beendet, welches das getippte Team gewonnen hat."
             },
             total: {
                 name: "Total"
@@ -450,7 +450,7 @@ __LANG["de"] = {
         }
     },
     pwa_info: {
-        ios: '<strong>Tippspiel App</strong><br/>Willst du Tippspiel auf dem Startbildschirm?<br/>- Klicke auf <span class="material-icons">ios_share</span><br/>- Wähle <i>zum Startbildschirm hinzufügen</i> aus<br/>- Fertig!',
-        android: '<strong>Tippspiel App</strong><br/>Willst du Tippspiel auf dem Startbildschirm?<br/>- Klicke auf <span class="material-icons">more_vert</span><br/>- Wähle <span class="material-icons">add_to_home_screen</span> <i>Zum Startbildschirm hinzufügen</i> oder <i>Installieren</i> aus<br/>- Fertig!',
+        ios: '<strong>Willst du Tippspiel als App?</strong><br/>Klicke auf <span class="material-icons">ios_share</span> und wähle <u>zum Startbildschirm hinzufügen</u> aus.',
+        android: '<strong>Willst du Tippspiel als App?</strong><br/>Klicke auf <span class="material-icons">more_vert</span> und wähle <u>Zum Startbildschirm hinzufügen</u> oder <u>Installieren</u> aus.',
     }
 }

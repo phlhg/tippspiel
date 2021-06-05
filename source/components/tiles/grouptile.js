@@ -12,7 +12,10 @@ export default class GroupTile extends Tile {
         this.view.root.classList.add("loading")
 
         this.view.root.innerHTML = `<a href=""></a>
-        <span class="icon"><span class="material-icons">groups</span></span>
+        <span class="icon">
+            <span class="material-icons">groups</span>
+            <span class="image"></span>
+        </span>
         <span class="name"></span>
         <span class="meta"></span>
         <label>
@@ -27,6 +30,9 @@ export default class GroupTile extends Tile {
         this.view.meta = this.view.root.querySelector(".meta")
         this.view.link = this.view.root.querySelector("a")
         this.view.checkbox = this.view.root.querySelector("input");
+
+        this.view.icon = this.view.root.querySelector(".icon");
+        this.view.image = this.view.icon.querySelector(".image");
 
         this.view.checkbox.onchange = () => {
             if(this.view.checkbox.checked){
@@ -45,6 +51,14 @@ export default class GroupTile extends Tile {
         this.view.meta.innerText = (this.obj.users.length == 1 ? Lang.get("section/groups/header/members_single") : Lang.get("section/groups/header/members_multi", {n: this.obj.users.length}))
 
         this.view.checkbox.checked = App.client.isGroupActive(this.obj.id);
+
+        if(this.obj.image != ""){
+            this.view.icon.classList.add("img");
+            this.view.image.style.backgroundImage = `url(${this.obj.image})`;
+        } else {    
+            this.view.icon.classList.remove("img");
+            this.view.image.style.backgroundImage = `none`
+        }
 
         this.view.root.classList.remove("loading")
 

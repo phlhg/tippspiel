@@ -22,7 +22,7 @@ export default class Rules extends Section {
                     </li>
                     <li>
                         <strong>Tor differenz ( +1 )</strong><br/>
-                        Dein getipptes Resulat und das tatsächliche Resultat haben die gleiche Differenz von Toren (ohne Penaltyschiessen)</br/>
+                        Die getippte Differenz und die tatsächliche Differenz der Tore (ohne Penaltyschiessen) ist gleich.</br/>
                     </li>
                     <li>
                         <strong>Exaktes Resultat ( +2 )</strong><br/>
@@ -65,7 +65,7 @@ export default class Rules extends Section {
                     </li>
                     <li>
                         <strong>Goal difference ( +1 )</strong><br/>
-                        Your guessed result and the actual result have the same difference of goals (without penalty shootout).</br/>
+                        Your guessed difference and the actual difference of goals (without penalty shootout) is equal.</br/>
                     </li>
                     <li>
                         <strong>Exact result ( +2 )</strong><br/>

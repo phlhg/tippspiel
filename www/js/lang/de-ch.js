@@ -317,13 +317,13 @@ __LANG["de-ch"] = {
                 name: "Richtigs Team",
                 desc: "S'tippte Team het s'Spil gwunne."
             },
-            delta: {
+            diff: {
                 name: "Richtigi Tordifferenz",
-                desc: "Differenz vode Tor isch so wie tippt."
+                desc: "Differenz vode Tor (ohni Penaltyschüsse) isch so wie tippt."
             },
             exact: {
                 name: "Exakts Resultat",
-                desc: "Es isch exkate Resultat vom Spiil tippt worde."
+                desc: "Es isch exkate Resultat vom Spiil (ohni Penaltyschüsse) tippt worde."
             },
             scorer: {
                 name: "Torschütz",
@@ -331,7 +331,7 @@ __LANG["de-ch"] = {
             },
             penalty: {
                 name: "Penaltyschüsse",
-                desc: "Es isch uf es Penaltyschüsse tippt worde unds tippte Team het gwunne."
+                desc: "Es isch es Unentschiede tipp worde und s'Spil het mit eme Penalyschüsse gendet, wo s'tippte Team gwunne het."
             },
             total: {
                 name: "Total"
@@ -444,7 +444,7 @@ __LANG["de-ch"] = {
         }
     },
     pwa_info: {
-        ios: '<strong>Tippspiel App</strong><br/>Wetsch s\'Tippspiel uf em Startbildschirm?<br/>- Klick uf <span class="material-icons">ios_share</span><br/>- Wähl <i>zum Startbildschirm hinzufügen</i> us<br/>- Fertig!',
-        android: '<strong>Tippspiel App</strong><br/>>Wetsch s\'Tippspiel uf em Startbildschirm?<br/>- Klick uf <span class="material-icons">more_vert</span><br/>- Wähl <span class="material-icons">add_to_home_screen</span> <i>Zum Startbildschirm hinzufügen</i> oder <i>Installieren</i> us<br/>- Fertig!',
+        ios: '<strong>Wetsch s\'Tippspiel als App?</strong><br/>Klick uf <span class="material-icons">ios_share</span> und wähl <u>zum Startbildschirm hinzufügen</u> us.',
+        android: '<strong>Wetsch s\'Tippspiel als App?</strong><br/>Klick uf <span class="material-icons">more_vert</span> und wähl <u>Zum Startbildschirm hinzufügen</u> oder <u>Installieren</u> us.',
     }
 }

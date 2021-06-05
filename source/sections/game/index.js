@@ -266,7 +266,7 @@ export default class GameIndex extends Section {
                 this.view.mytipp.meta.innerText = `${tipp.bet1} : ${tipp.bet2}`;
             }
 
-            this.view.mytipp.reward.innerText = tipp.reward > 0 ? '+'+tipp.reward : '';
+            this.view.mytipp.reward.innerText = tipp.reward.sum > 0 ? '+'+tipp.reward.sum : '';
 
         } else {
             if(App.client.active && this.game.status == GameStatus.UPCOMING){ this.view.mytipp.tile.classList.add("nobet"); }

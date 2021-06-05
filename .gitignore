@@ -3,6 +3,7 @@ www/js/main.js.map
 www/*.php
 !www/index.php
 www/log/*
+www/img/groups/*
 
 # Created by https://www.toptal.com/developers/gitignore/api/vscode,node
 # Edit at https://www.toptal.com/developers/gitignore?templates=vscode,node

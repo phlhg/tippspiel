@@ -24,14 +24,17 @@ export default class GameTipp extends Element {
         /** @property {number} topscorer Tipped scoring player */
         this.topscorer = 0;
 
-        /** @property {number} reward Received points for this tipp */
-        this.reward = 0;
+        /** @property {object} reward Rewards for this tipp */
+        this.reward = {
+            sum: 0,
+            team: false,
+            diff: false,
+            exact: false,
+            draw: false,
+            scorer: 0
+        }
 
-        this.tippkat = 0;
-
-        this.goals = 0;
-
-        this.bonus = false;
+        this.processed = false;
 
         this.set(data);
     }
@@ -41,16 +44,23 @@ export default class GameTipp extends Element {
      * @param {object} data - Properties of to update
      */
     set(data){
+
         this.game = parseInt(data.game ?? this.game);
         this.user = parseInt(data.user ?? this.user);
+
         this.bet1 = parseInt(data.bet1 ?? this.bet1);
         this.bet2 = parseInt(data.bet2 ?? this.bet2);
         this.winner = parseInt(data.winner ?? this.winner);
         this.topscorer = parseInt(data.topscorer ?? this.topscorer);
-        this.reward = parseInt(data.reward ?? this.reward);
-        this.tippkat = parseInt(data.tippkat ?? this.tippkat);
-        this.goals = parseInt(data.goals ?? this.goals);
-        this.bonus = data.hasOwnProperty("bonus") ? data.bonus == "true" : this.bonus;
+
+        this.reward.sum = parseInt(data.reward?.sum ?? this.reward.sum);
+        this.reward.team = data.reward?.team ? (data.reward?.team  ?? "false") == "true" : this.reward.team;
+        this.reward.diff = data.reward?.diff ? (data.reward?.diff  ?? "false") == "true" : this.reward.diff;
+        this.reward.exact = data.reward?.exact ? (data.reward?.exact  ?? "false") == "true" : this.reward.exact;
+        this.reward.draw = data.reward?.draw ? (data.reward?.draw  ?? "false") == "true" : this.reward.draw;
+        this.reward.scorer = parseInt(data.reward?.scorer ?? this.reward.scorer);
+
+        this.processed = data.processed ? (data.processed ?? "false") == "true" : this.processed;
     }
 
     getGame(){

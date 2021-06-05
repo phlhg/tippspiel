@@ -14,7 +14,10 @@ export default class GroupAdvanced extends Section {
 
         this.view.root.innerHTML = 
         `<div class="tipp-box event-header">
-            <span class="icon"><span class="material-icons">group</span></span>
+            <span class="icon">
+                <span class="material-icons">group</span>
+                <span class="image"></span>
+            </span>
             <span class="title"><input class="inline" type="text"></input></span>
             <span class="meta"></span>
         </div>
@@ -31,6 +34,10 @@ export default class GroupAdvanced extends Section {
         this.view.header = {}
         this.view.header.name = this.view.root.querySelector(".event-header .title input");
         this.view.header.meta = this.view.root.querySelector(".event-header .meta");
+
+        this.view.header.icon = this.view.root.querySelector(".event-header .icon")
+        this.view.header.image = this.view.header.icon.querySelector(".image")
+
 
         this.view.inviation = this.view.root.querySelector(".invite");
 
@@ -91,6 +98,14 @@ export default class GroupAdvanced extends Section {
 
         this.view.header.name.value = this.group.name;
         this.view.header.meta.innerText = Lang.get("section/groups/header/by",{name: admin.name})+" / "+ (this.group.users.length == 1 ? Lang.get("section/groups/header/members_single") : Lang.get("section/groups/header/members_multi", {n: this.group.users.length}))
+
+        if(this.group.image == ""){
+            this.view.header.icon.classList.remove("img");
+            this.view.header.image.style.backgroundImage = ``
+        } else {
+            this.view.header.icon.classList.add("img");
+            this.view.header.image.style.backgroundImage = `url(${this.group.image})`
+        }
 
     }
     
