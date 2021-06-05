@@ -36,7 +36,9 @@ Gruppen ermöglichen eine Separation von mehrern Nutzern. Dabei werden diesen Nu
 type Group
     User owner
     char 100 name
+    char 100 image
     char 100 token
+    User admin
     User [] users
 ```
 
