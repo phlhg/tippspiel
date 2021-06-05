@@ -15,7 +15,11 @@ export default class Group extends Element {
         /** @property {number[]} users - Lister of member IDs */
         this.users = []
 
+        /** @property {String} token - Token to join the group (Only available for the admin) */
         this.token = "";
+
+        /** @property {String} image - optional group image */
+        this.image = "";
 
         this.url = ""
         this.url2 = ""
@@ -32,6 +36,7 @@ export default class Group extends Element {
         this.admin = parseInt(data.admin ?? this.admin);
         this.users = Array.from(data.users ?? this.users).map(i => parseInt(i))
         this.token = data.token ?? this.token
+        this.image = data.image ?? this.image
 
         this.url = `/groups/${this.id}/${this._url(this.name)}/`;
         this.url2 = `/groups/advanced/${this.id}/${this._url(this.name)}/`;

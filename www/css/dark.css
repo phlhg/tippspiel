@@ -9,6 +9,7 @@ nav { background: #111; border-color: #1c1c1c; }
 nav a img { filter: none; }
 
 section .tipp-box { background: #111; border-color: #1c1c1c; } 
+section .tipp-box .icon .image { background-color: #1c1c1c;}
 
 select { background: rgba(255,255,255,0.02); color: #fff; }
 
@@ -40,6 +41,7 @@ input.inline { background: rgba(255,255,255,0.04); }
 
 .game-timeline > span,
 .group-tile > label { background: rgba(255,255,255,0.02); }
+.group-tile .icon .image { background-color: #1c1c1c; }
 
 .game-header:after { opacity: 1; }
 

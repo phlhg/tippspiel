@@ -14,7 +14,10 @@ export default class GroupJoinView extends Section {
 
         this.view.root.innerHTML = 
         `<div class="tipp-box event-header">
-            <span class="icon"><span class="material-icons">group</span></span>
+            <span class="icon">
+                <span class="material-icons">group</span>
+                <span class="image"></span>
+            </span>
             <span class="title nowrap"></span>
             <span class="meta"></span>
         </div>
@@ -28,6 +31,9 @@ export default class GroupJoinView extends Section {
         this.view.header = {}
         this.view.header.name = this.view.root.querySelector(".event-header .title");
         this.view.header.meta = this.view.root.querySelector(".event-header .meta");
+
+        this.view.header.icon = this.view.root.querySelector(".event-header .icon")
+        this.view.header.image = this.view.header.icon.querySelector(".image")
 
         this.view.join = this.view.root.querySelector(".join")
         this.view.join.onclick = async () => { 
@@ -76,6 +82,14 @@ export default class GroupJoinView extends Section {
         this.view.header.meta.innerText = Lang.get("section/groups/header/by",{name: admin.name})+" / "+ (this.group.users.length == 1 ? Lang.get("section/groups/header/members_single") : Lang.get("section/groups/header/members_multi", {n: this.group.users.length}))
 
         this.view.memberList.innerHTML = "";
+
+        if(this.group.image == ""){
+            this.view.header.icon.classList.remove("img");
+            this.view.header.image.style.backgroundImage = ``
+        } else {
+            this.view.header.icon.classList.add("img");
+            this.view.header.image.style.backgroundImage = `url(${this.group.image})`
+        }
 
         this.group.getUsers().forEach(p => {
             var g = new UserTile(p)
