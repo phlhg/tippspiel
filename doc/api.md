@@ -161,7 +161,7 @@ socket.exec("makeTipp",{
 ```
 
 ```js
-{state, error, data:{ }}
+{state, error, data:{ id: ID }}
 ```
 
 ### reportGame
@@ -203,7 +203,7 @@ make an event tipp
 socket.exec("eventTipp",{event:ID,winner:ID,topscorer:ID})
 ```
 ```js
-{state, error, data:{ }}
+{state, error, data:{ id: ID }}
 ```
 
 ### Console

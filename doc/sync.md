@@ -86,9 +86,14 @@ EventTipp {
     id: int,
     event: Event,
     user: User,
-    reward: int,
     winner: Team,
     topscorer: Player,
+    processed: bool,
+    reward: {
+        sum: int,
+        winner: bool,
+        topscorer: bool
+    }
 }
 ```
 
