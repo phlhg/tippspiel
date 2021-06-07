@@ -55,19 +55,9 @@ export default class Profile extends Section {
         var games = (await Promise.all(App.model.games.getAll(tipps.map(t => t.game)))).filter(t => t !== null);
         var now = Date.now() - 1000 * 60 * 60 * 24
         games.sort((a,b) => {
-            if(a.start > now){
-                if(b.start > now){
-                    return a.start - b.start;
-                } else {
-                    return b.start - a.start;
-                }
-            } else {
-                if(b.start > now){
-                    return b.start - a.start;
-                } else {
-                    return a.start - b.start;
-                }
-            }
+            return a.start - b.start;
+        }).sort((a,b) => {
+            return now - a.start;
         })
         this.gamelist.insert(games);
         this.view.nobets.style.display = games.length > 0 ? "none" : "block";
