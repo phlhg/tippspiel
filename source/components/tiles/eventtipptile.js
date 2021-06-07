@@ -25,8 +25,8 @@ export default class EventTippTile extends Tile {
 
         this.view.root.setAttribute("href",`/tipp/e/${this.obj.id}/`);
 
-        var user = await this.obj.getUser()
-        var winner = await this.obj.getWinner()
+        var user = (await this.obj.getUser()) ?? {name: ""}
+        var winner = (await this.obj.getWinner()) ?? {name: "", short: ""}
         var player = await this.obj.getTopscorer()
 
         this.view.name.innerText = user.name;

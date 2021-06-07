@@ -12,6 +12,7 @@ export default class EventIndex extends Section {
     init(){
 
         this.event = null;
+        this.timeout = -1;
 
         this.view.root.innerHTML = 
         `<div class="tipp-box event-header">
@@ -19,13 +20,13 @@ export default class EventIndex extends Section {
             <span class="title">Event-Name</span>
             <span class="meta">0 Tipps</span>
         </div>
-        <a class="tipp-tile fullwidth myTipp">
+        <a class="tipp-tile fullwidth myTipp" href="">
             <span class="tflag" data-t=""></span>
             <span class="name">${Lang.get("section/event/tipp/your")}</span>
             <span class="meta">${Lang.get("general/loading")}</span>
             <span class="reward"></span>
         </a>
-        <a class="tipp-box allTipps" href="/">
+        <a class="tipp-box allTipps" href="">
             <span class="icon"><span class="material-icons">subject</span></span>
             <span class="title">${Lang.get("section/event/tipps/name")}</span>
             <span class="meta">${Lang.get("section/event/tipps/desc")}</span>
@@ -101,45 +102,61 @@ export default class EventIndex extends Section {
             if(this.event.hasOwnTipp()){
                 this.view.myTip.meta.innerText = Lang.get("general/loading") + " " + Lang.get("section/event/tipp/deadline",{d: deadline})
                 this.event.getOwnTipp().then(async tipp => {
-                    var winner = await tipp.getWinner();
+                    var winner = (await tipp.getWinner()) ?? { name: "", short: "" };
                     var player = await tipp.getTopscorer();
                     this.view.myTip.flag.setAttribute("data-t",winner.short.toLowerCase());
                     this.view.myTip.reward.innerText = tipp.reward.sum > 0 ? "+"+tipp.reward.sum : ""
 
                     if(this.event.deadline.getTime() >= Date.now()){
-                        this.view.myTip.meta.innerText = winner.name + " & " + player.name + " " + Lang.get("section/event/tipp/deadline",{d: deadline});
+                        this.view.myTip.meta.innerText = (player != null ? Lang.get("section/event/tile/and",{team: winner.name, player: player.name}) : winner.name) + " " + Lang.get("section/event/tipp/deadline",{d: deadline});
                     } else {
-                        this.view.myTip.meta.innerText = winner.name + " & " + player.name
+                        this.view.myTip.meta.innerText = (player != null ? Lang.get("section/event/tile/and",{team: winner.name, player: player.name}) : winner.name)
+                    }
+
+                    this.view.myTip.root.style.display = "block"
+                    if(this.event.deadline.getTime() >= Date.now()){
+                        this.view.myTip.root.setAttribute("href",`/event/${this.event.id}/tipp/`)
+                    } else {
+                        this.view.myTip.root.setAttribute("href",`/tipp/e/${tipp.id}/`)
                     }
                 })
             } else {
                 if(this.event.deadline.getTime() >= Date.now()){
-                    this.view.myTip.meta.innerText = Lang.get("section/event/tipp/mytip/notyet") + " " + Lang.get("section/event/tipp/deadline",{d: deadline})
+                    this.view.myTip.meta.innerText = Lang.get("section/event/mytipp/notyet") + " " + Lang.get("section/event/tipp/deadline",{d: deadline})
+                    this.view.myTip.root.setAttribute("href",`/event/${this.event.id}/tipp/`)
                 } else {
-                    this.view.myTip.meta.innerText = Lang.get("section/event/tipp/mytip/nobet")
+                    this.view.myTip.root.style.display = App.client.active ? "block" : "none";
+                    this.view.myTip.meta.innerText = Lang.get("section/event/mytipp/nobet")
                 }
             }
 
-            if(this.event.deadline.getTime() >= Date.now()){
-                this.view.allTipps.style.display = "none"
-                this.view.myTip.root.setAttribute("href",`/event/${this.event.id}/tipp/`)
-            } else {
-                this.view.allTipps.style.display = "block"
-                this.view.myTip.root.setAttribute("href",`/tipp/e/${this.event.id}/`)
-            }
-
+            this.view.allTipps.style.display = this.event.deadline.getTime() >= Date.now() ? "none" : "block"
             this.view.allTipps.setAttribute("href",`/event/${this.event.id}/tipps/`)
 
         } else {
             // Tipps are disabled
             this.view.myTip.root.style.display = "none"
             this.view.allTipps.style.display = "none"
+            this.view.myTip.root.removeAttribute("href")
+        }
+
+        // Update when deadline is reached
+        clearTimeout(this.timeout)
+        if(Date.now() < this.event.deadline.getTime()){
+            this.timeout = setTimeout(() => {
+                this.update()
+            },(this.event.deadline.getTime() - Date.now()))
         }
 
         // GameList
         var games = (await Promise.all(this.event.getGames())).filter(g => g !== null);
         games.sort((a,b) => a.start - b.start);
         this.gameList.insert(games);
+    }
+
+    async unload(){
+        clearTimeout(this.timeout)
+        this.gameList.clear();
     }
 
 }

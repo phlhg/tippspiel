@@ -1,7 +1,7 @@
 import Debugger from '../../debugger';
 import Section from '../section';
 
-export default class GameTippDetail extends Section {
+export default class EventTippDetail extends Section {
 
     constructor(...args){
         super(...args)
@@ -66,8 +66,8 @@ export default class GameTippDetail extends Section {
 
     async update(){
 
-        var user = await this.tipp.getUser()
-        var winner = await this.tipp.getWinner()
+        var user = (await this.tipp.getUser()) ?? { name: "" }
+        var winner = (await this.tipp.getWinner()) ?? { name: "", short: ""}
         var player = await this.tipp.getTopscorer()
 
         this.view.header.name.innerText = user.name;

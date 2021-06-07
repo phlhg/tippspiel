@@ -18,8 +18,6 @@ export default class EventTipps extends Manager {
         })
         if(!(await r.run())){ return r; }
 
-        console.log(r);
-
         var id = parseInt(r.data.id);
         if(!App.client.eventTipps.includes(id)){ 
             var e = await App.model.events.get(data.event);
