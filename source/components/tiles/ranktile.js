@@ -22,7 +22,10 @@ export default class RankTile extends Tile {
         if(this.obj.id == App.client.id){ this.view.root.classList.add("self") }
         if(this.obj.banned){ this.view.root.classList.add("banned") } else { this.view.root.classList.remove("banned") }
         this.view.name.innerText = this.obj.name;
-        this.view.points.innerText = `+${this.obj.points}`
+    }
+
+    setPoints(p){
+        this.view.points.innerText = `+${p}`
     }
 
     setRank(r){

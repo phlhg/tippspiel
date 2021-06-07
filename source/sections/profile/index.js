@@ -12,7 +12,6 @@ export default class Profile extends Section {
         this.view.root.innerHTML = `<div class="tipp-profile-header">
             <span class="short"></span>
             <span class="name"></span>
-            <span class="points"></span>
         </div>
         <h3>${Lang.get("section/profile/tipps/heading")}</h3>
         <span class="tipp-game-list"></span>
@@ -25,7 +24,6 @@ export default class Profile extends Section {
         this.view.header = {};
         this.view.header.short = this.view.root.querySelector(".tipp-profile-header .short")
         this.view.header.name = this.view.root.querySelector(".tipp-profile-header .name")
-        this.view.header.points = this.view.root.querySelector(".tipp-profile-header .points")
 
         this.gamelist = new GameList(); 
         this.view.root.querySelector(".tipp-game-list").appendChild(this.gamelist.getHTML());
@@ -51,7 +49,6 @@ export default class Profile extends Section {
         // Header
         this.view.header.name.innerText = App.client.name;
         this.view.header.short.innerText = this.shortName(App.client.name);
-        this.view.header.points.innerText = `+${App.client.points}`
         
         // Tipps
         var tipps = (await Promise.all(App.model.gameTipps.getAll(App.client.gameTipps))).filter(t => t !== null);

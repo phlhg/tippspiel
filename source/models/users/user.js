@@ -11,9 +11,6 @@ export default class User extends Element {
 
         this.short = "A"
 
-        /** @property {number} points - Points of the user */
-        this.points = 0
-
         this.groups = [];
 
         this.banned = false;
@@ -27,7 +24,6 @@ export default class User extends Element {
      */
     set(data){
         this.name = data.name ?? this.name
-        this.points = parseInt(data.points ?? this.points)
         this.groups = Array.from(data.groups ?? this.groups).map(id => parseInt(id))
         this.banned = (data.banned ?? "false") == "true"
     }
