@@ -247,8 +247,9 @@ export default class GameIndex extends Section {
 
         this.view.mytipp.root.style.display = App.client.active || this.game.status == GameStatus.UPCOMING ? "block" : "none";
 
+        this.view.mytipp.tile.classList.remove("nobet");
+
         if(this.game.hasOwnTipp()){
-            this.view.mytipp.tile.classList.remove("nobet");
 
             var tipp = await this.game.getOwnTipp()
 

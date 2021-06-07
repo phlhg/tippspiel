@@ -98,6 +98,7 @@ export default class EventIndex extends Section {
             // Tipps are enabled
             this.view.myTip.root.style.display = "block"
             this.view.myTip.flag.setAttribute("data-t","");
+            this.view.myTip.root.classList.remove("nobet")
 
             if(this.event.hasOwnTipp()){
                 this.view.myTip.meta.innerText = Lang.get("general/loading") + " " + Lang.get("section/event/tipp/deadline",{d: deadline})
@@ -124,6 +125,7 @@ export default class EventIndex extends Section {
                 if(this.event.deadline.getTime() >= Date.now()){
                     this.view.myTip.meta.innerText = Lang.get("section/event/mytipp/notyet") + " " + Lang.get("section/event/tipp/deadline",{d: deadline})
                     this.view.myTip.root.setAttribute("href",`/event/${this.event.id}/tipp/`)
+                    if(App.client.active) this.view.myTip.root.classList.add("nobet")
                 } else {
                     this.view.myTip.root.style.display = App.client.active ? "block" : "none";
                     this.view.myTip.meta.innerText = Lang.get("section/event/mytipp/nobet")
