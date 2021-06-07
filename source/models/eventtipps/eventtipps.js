@@ -19,7 +19,13 @@ export default class EventTipp extends Element {
         this.topscorer = 0;
 
         /** @property {number} reward Received points for this tipp */
-        this.reward = 0;
+        this.reward = {
+            sum: 0,
+            team: false,
+            topscorer: false
+        };
+
+        this.processed = false;
 
         this.set(data);
     }
@@ -29,11 +35,30 @@ export default class EventTipp extends Element {
      * @param {object} data - Properties of to update
      */
     set(data){
-        this.game = parseInt(data.game ?? this.game);
+        this.event = parseInt(data.event ?? this.event);
         this.user = parseInt(data.user ?? this.user);
         this.winner = parseInt(data.winner ?? this.winner);
-        this.topscorer = parseInt(data.betPlayer ?? this.topscorer);
-        this.reward = parseInt(data.reward ?? this.reward);
+        this.topscorer = parseInt(data.topscorer ?? this.topscorer);
+
+        this.reward.sum = parseInt(data.reward?.sum ?? this.reward.sum)
+        this.reward.team = data.reward?.team ? data.reward?.team == "true" : this.reward.team
+        this.reward.topscorer = data.reward?.topscorer ? data.reward.topscorer == "true" : this.reward.topscorer
+
+        this.processed = data.processed ? data.processed == "true" : this.processed
+    }
+
+    async getTopscorer(){
+        if(this.topscorer == 0) return null;
+        return App.model.players.get(this.topscorer);
+    }
+
+    async getWinner(){
+        if(this.winner == 0) return null;
+        return App.model.teams.get(this.winner);
+    }
+
+    getUser(){
+        return App.model.users.get(this.user);
     }
 
 }

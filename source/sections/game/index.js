@@ -253,7 +253,7 @@ export default class GameIndex extends Section {
             var tipp = await this.game.getOwnTipp()
 
             if(this.game.status != GameStatus.UPCOMING){
-                this.view.mytipp.a.setAttribute("href","/tipp/"+tipp.id+"/");
+                this.view.mytipp.a.setAttribute("href","/tipp/g/"+tipp.id+"/");
             }
 
             var winner = await tipp.getWinner()

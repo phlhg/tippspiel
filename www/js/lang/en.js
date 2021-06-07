@@ -310,36 +310,11 @@ __LANG["en"] = {
                 desc: "Create a new game"
             },
             tipps: {
-                heading: "My bets"
+                heading: "Your bets"
             },
             nobets: {
                 title: "No bets yet",
                 meta: "Make your first bet now!"
-            }
-        }, 
-        tipp: {
-            team: {
-                name: "Correct team",
-                desc: "The betted team won the match."
-            },
-            diff: {
-                name: "Correct goal difference",
-                desc: "The difference between the goals (without penalty shootout) is the same as guessed."
-            },
-            exact: {
-                name: "Exact result",
-                desc: "The exact result of the match (without penalty shootout) was guessed."
-            },
-            scorer: {
-                name: "Scorer",
-                desc: "The selected scorer scored {n} goal(s)."
-            },
-            penalty: {
-                name: "Penalty bonus",
-                desc: "It was betted for a draw and the game ended with a penalty shootout, which the betted team won. "
-            },
-            total: {
-                name: "Total"
             }
         },
         groups: {
@@ -401,7 +376,26 @@ __LANG["en"] = {
                 single: "1 bet",
                 multi: "{n} bets",
                 your: "Your bet",
-                deadline: "Open until {d}"
+                deadline: "(Betting possible until {d})",
+                form: {
+                    winner: "Winner",
+                    phWinner: "Team: e.g. England",
+                    topscorer: "Topscorer",
+                    phTopscorer1: "Team: e.g. England",
+                    phTopscorer2: "Player: e.g. Harry Kane",
+                    action: "Bet"
+                },
+                message: {
+                    "noWinner": "Please select a winner",
+                }
+            },
+            tipps: {
+                name: "Bets",
+                desc: "All bets on this event",
+            },
+            mytipp: {
+                nobet: "You didn't bet",
+                notyet: "Click here to bet"
             },
             addgame: {
                 name: "Add Game",
@@ -411,7 +405,8 @@ __LANG["en"] = {
                 heading: "Games"
             },
             tile: {
-                desc: "Event"
+                desc: "Event",
+                and: "{team} & {player}"
             }
         },
         recover: {
@@ -445,6 +440,46 @@ __LANG["en"] = {
                 text: "Duplicate players can cause issues in the game evaluation! - Please only add players that are really missing (Pay attention to spelling, alternative names, ordering, team, etc.)",
                 confirm: "Add",
                 deny: "Cancel"
+            }
+        },
+        tipps: {
+            game: {
+                team: {
+                    name: "Correct team",
+                    desc: "The betted team won the match."
+                },
+                diff: {
+                    name: "Correct goal difference",
+                    desc: "The difference between the goals (without penalty shootout) is the same as guessed."
+                },
+                exact: {
+                    name: "Exact result",
+                    desc: "The exact result of the match (without penalty shootout) was guessed."
+                },
+                scorer: {
+                    name: "Scorer",
+                    desc: "The selected scorer scored {n} goal(s)."
+                },
+                penalty: {
+                    name: "Penalty bonus",
+                    desc: "It was betted for a draw and the game ended with a penalty shootout, which the betted team won. "
+                },
+                total: {
+                    name: "Total"
+                }
+            },
+            event: {
+                team: {
+                    name: "Correct team",
+                    desc: "The betted team won the event."
+                },
+                topscorer: {
+                    name: "Topscorer",
+                    desc: "The selected player scored the most goals during the event."
+                },
+                total: {
+                    name: "Total"
+                }
             }
         }
     },

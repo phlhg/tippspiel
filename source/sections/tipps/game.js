@@ -1,7 +1,7 @@
 import Debugger from '../../debugger';
 import Section from '../section';
 
-export default class TippDetail extends Section {
+export default class GameTippDetail extends Section {
 
     constructor(...args){
         super(...args)
@@ -18,31 +18,31 @@ export default class TippDetail extends Section {
         </div>
         <div class="tipp-box">
             <span class="icon">0</span>
-            <span class="title">${Lang.get("section/tipp/total/name")}</span>
+            <span class="title">${Lang.get("section/tipps/game/total/name")}</span>
         </div>
         <div class="tipp-box">
             <span class="icon">1</span>
-            <span class="title">${Lang.get("section/tipp/team/name")}</span>
-            <span class="meta">${Lang.get("section/tipp/team/desc")}</span>
+            <span class="title">${Lang.get("section/tipps/game/team/name")}</span>
+            <span class="meta">${Lang.get("section/tipps/game/team/desc")}</span>
         </div>
         <div class="tipp-box">
             <span class="icon">1</span>
-            <span class="title">${Lang.get("section/tipp/diff/name")}</span>
-            <span class="meta">${Lang.get("section/tipp/diff/desc")}</span>
+            <span class="title">${Lang.get("section/tipps/game/diff/name")}</span>
+            <span class="meta">${Lang.get("section/tipps/game/diff/desc")}</span>
         </div>
         <div class="tipp-box">
             <span class="icon">2</span>
-            <span class="title">${Lang.get("section/tipp/exact/name")}</span>
-            <span class="meta">${Lang.get("section/tipp/exact/desc")}</span>
+            <span class="title">${Lang.get("section/tipps/game/exact/name")}</span>
+            <span class="meta">${Lang.get("section/tipps/game/exact/desc")}</span>
         </div>
         <div class="tipp-box">
             <span class="icon">2</span>
-            <span class="title">${Lang.get("section/tipp/penalty/name")}</span>
-            <span class="meta">${Lang.get("section/tipp/penalty/desc")}</span>
+            <span class="title">${Lang.get("section/tipps/game/penalty/name")}</span>
+            <span class="meta">${Lang.get("section/tipps/game/penalty/desc")}</span>
         </div>
         <div class="tipp-box">
             <span class="icon">0</span>
-            <span class="title">${Lang.get("section/tipp/scorer/name")}</span>
+            <span class="title">${Lang.get("section/tipps/game/scorer/name")}</span>
             <span class="meta"></span>
         </div>`
 
@@ -111,7 +111,7 @@ export default class TippDetail extends Section {
 
         this.view.scorer.root.style.opacity = this.tipp.reward.scorer > 0 ? 1 : 0.25;
         this.view.scorer.icon.innerText = this.tipp.reward.scorer;
-        this.view.scorer.meta.innerText = Lang.get("section/tipp/scorer/desc",{n: this.tipp.reward.scorer})
+        this.view.scorer.meta.innerText = Lang.get("section/tipps/game/scorer/desc",{n: this.tipp.reward.scorer})
     }
 
 }

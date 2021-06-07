@@ -295,19 +295,6 @@ __LANG["de"] = {
                 deny: "Abbrechen"
             }
         },
-        profile: {
-            newgame: {
-                name: "Neues Spiel",
-                desc: "Erstelle ein neues Spiel"
-            },
-            tipps: {
-                heading: "Meine Tipps"
-            },
-            nobets: {
-                title: "Noch keine Tipps",
-                meta: "Mach jetzt deinen ersten Tipp!"
-            }
-        },
         stats: {
             tabs: {
                 all: "Alle",
@@ -318,29 +305,17 @@ __LANG["de"] = {
                 meta: "Wähle zuerst deine Gruppen aus"
             }
         },
-        tipp: {
-            team: {
-                name: "Richtiges Team",
-                desc: "Das getippte Team hat das Spiel gewonnen."
+        profile: {
+            newgame: {
+                name: "Neues Spiel",
+                desc: "Erstelle ein neues Spiel"
             },
-            diff: {
-                name: "Richtige Tordifferenz",
-                desc: "Die Differenz der Tore (ohne Penalyschiessen) ist gleich wie getippt."
+            tipps: {
+                heading: "Deine Tipps"
             },
-            exact: {
-                name: "Exaktes Resultat",
-                desc: "Es wurde das exakte Resultat des Spiels (ohne Penalyschiessen) getippt."
-            },
-            scorer: {
-                name: "Torschütze",
-                desc: "Der gewählte Torschütze hat {n} Tor(e) geschossen."
-            },
-            penalty: {
-                name: "Penalty-Bonus",
-                desc: "Es wurde Unentschieden getippt und das Spiel wurde mit einem Penaltyschiessen beendet, welches das getippte Team gewonnen hat."
-            },
-            total: {
-                name: "Total"
+            nobets: {
+                title: "Noch keine Tipps",
+                meta: "Mach jetzt deinen ersten Tipp!"
             }
         },
         groups: {
@@ -402,7 +377,26 @@ __LANG["de"] = {
                 single: "1 Tipp",
                 multi: "{n} Tipps",
                 your: "Dein Tipp",
-                deadline: "Offen bis {d}"
+                deadline: "(Tippen möglich bis {d})",
+                form: {
+                    winner: "Gewinner",
+                    phWinner: "Gewinner: z.B. Deutschland",
+                    topscorer: "Torschützenkönig",
+                    phTopscorer1: "Team: z.B. Deutschland",
+                    phTopscorer2: "Spieler: z.B. Manuel Neuer",
+                    action: "Tippen"
+                },
+                message: {
+                    "noWinner": "Bitte wähle einen Gewinner aus",
+                }
+            },
+            tipps: {
+                name: "Tipps",
+                desc: "Alle tipps auf dieses Event",
+            },
+            mytipp: {
+                nobet: "Du hast nicht getippt",
+                notyet: "Klicke hier um zu tippen"
             },
             addgame: {
                 name: "Spiel hinzufügen",
@@ -412,7 +406,8 @@ __LANG["de"] = {
                 heading: "Spiele"
             },
             tile: {
-                desc: "Event"
+                desc: "Event",
+                and: "{team} & {player}"
             }
         },
         recover: {
@@ -446,6 +441,46 @@ __LANG["de"] = {
                 text: "Doppelte Spieler können Probleme bei der Spielauswertung verursachen! - Bitte füge nur Spieler hinzu, welche wirklich fehlen (Achte auf die Schreibweise, Alternative Namen, Reihenfolge, Team, etc.)",
                 confirm: "Hinzufügen",
                 deny: "Abbrechen"
+            }
+        },
+        tipps: {
+            game: {
+                team: {
+                    name: "Richtiges Team",
+                    desc: "Das getippte Team hat das Spiel gewonnen."
+                },
+                diff: {
+                    name: "Richtige Tordifferenz",
+                    desc: "Die Differenz der Tore (ohne Penalyschiessen) ist gleich wie getippt."
+                },
+                exact: {
+                    name: "Exaktes Resultat",
+                    desc: "Es wurde das exakte Resultat des Spiels (ohne Penalyschiessen) getippt."
+                },
+                scorer: {
+                    name: "Torschütze",
+                    desc: "Der gewählte Torschütze hat {n} Tor(e) geschossen."
+                },
+                penalty: {
+                    name: "Penalty-Bonus",
+                    desc: "Es wurde Unentschieden getippt und das Spiel wurde mit einem Penaltyschiessen beendet, welches das getippte Team gewonnen hat."
+                },
+                total: {
+                    name: "Total"
+                }
+            },
+            event: {
+                team: {
+                    name: "Richtiges Team",
+                    desc: "Das getippte Team hat das Event gewonnen."
+                },
+                topscorer: {
+                    name: "Torschützenkönig",
+                    desc: "Der gewählte Spieler hat während des Events die meisten Tore geschossen"
+                },
+                total: {
+                    name: "Total"
+                }
             }
         }
     },
