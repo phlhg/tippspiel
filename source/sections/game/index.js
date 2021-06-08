@@ -286,7 +286,7 @@ export default class GameIndex extends Section {
         if(this.game.status != GameStatus.UPCOMING){ 
             this.view.tipps.root.classList.remove("hidden");
             var tipps = await Promise.all(this.game.getTipps());
-            tipps.sort((a,b) => b.reward - a.reward);
+            tipps.sort((a,b) => b.reward.sum - a.reward.sum);
 
             var countTeam1 = 0;
             var countTeam2 = 0;
