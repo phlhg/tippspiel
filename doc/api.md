@@ -188,12 +188,29 @@ socket.exec("reportGame",{
 ### nextPhase
 
 Updates the Phase of the game from NORMAL to OVERTIME and OVERTIME to PENALTY
+braucht `perm_liveReport`
 
 ```js
 socket.exec("nextPhase",{
     game: ID,
 });
 ```
+
+### goalObserve
+
+Live update von Torschüssen
+braucht `perm_liveReport`
+
+```js
+socket.exec("goalObserve",{
+    game: ID, player: ID, team: ID, penalty: bool
+});
+```
+
+`game` das betreffende spiel
+`player` der Torschütze
+`team` Das team, welches den Punkt erhält
+`penalty` Ob das Tor im Penaltyschiessen entstand 
 
 ### eventTipp
 
@@ -357,6 +374,16 @@ socket.listen("Update", (data, respond) => {
 
 socket.listen("HotGames", ()=>{
     ...
+});
+
+```
+
+### Rank
+
+```js
+
+socket.listen("RankUpdate", (data)=>{
+    console.log( data.event );
 });
 
 ```
