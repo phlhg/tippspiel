@@ -12,7 +12,6 @@ export default class Profile extends Section {
         this.view.root.innerHTML = `<div class="tipp-profile-header">
             <span class="short"></span>
             <span class="name"></span>
-            <span class="points"></span>
         </div>
         <h3>${Lang.get("section/profile/tipps/heading")}</h3>
         <span class="tipp-game-list"></span>
@@ -25,7 +24,6 @@ export default class Profile extends Section {
         this.view.header = {};
         this.view.header.short = this.view.root.querySelector(".tipp-profile-header .short")
         this.view.header.name = this.view.root.querySelector(".tipp-profile-header .name")
-        this.view.header.points = this.view.root.querySelector(".tipp-profile-header .points")
 
         this.gamelist = new GameList(); 
         this.view.root.querySelector(".tipp-game-list").appendChild(this.gamelist.getHTML());
@@ -51,28 +49,16 @@ export default class Profile extends Section {
         // Header
         this.view.header.name.innerText = App.client.name;
         this.view.header.short.innerText = this.shortName(App.client.name);
-        this.view.header.points.innerText = `+${App.client.points}`
         
         // Tipps
         var tipps = (await Promise.all(App.model.gameTipps.getAll(App.client.gameTipps))).filter(t => t !== null);
         var games = (await Promise.all(App.model.games.getAll(tipps.map(t => t.game)))).filter(t => t !== null);
-        var now = Date.now() - 1000 * 60 * 60 * 24
-        games.sort((a,b) => {
-            if(a.start > now){
-                if(b.start > now){
-                    return a.start - b.start;
-                } else {
-                    return b.start - a.start;
-                }
-            } else {
-                if(b.start > now){
-                    return b.start - a.start;
-                } else {
-                    return a.start - b.start;
-                }
-            }
-        })
-        this.gamelist.insert(games);
+        var now = Date.now() - 1000 * 60 * 60 * 24;
+        var passed = games.filter(g => g.start < now);
+        var upcoming = games.filter(g => g.start > now);
+        passed.sort((a,b) => b.start - a.start)
+        upcoming.sort((a,b) => a.start - b.start)
+        this.gamelist.insert([...upcoming,...passed]);
         this.view.nobets.style.display = games.length > 0 ? "none" : "block";
     }
 

@@ -295,7 +295,7 @@ __LANG["de-ch"] = {
                 desc: "Erstell es neus Spiil"
             },
             tipps: {
-                heading: "Mini Tipps"
+                heading: "Dini Tipps"
             },
             nobets: {
                 title: "No Kei Tipps",
@@ -310,31 +310,6 @@ __LANG["de-ch"] = {
             nogroups: {
                 title: "Kei Gruppe usgwählt",
                 meta: "Wähl zerst dini Gruppe us"
-            }
-        },
-        tipp: {
-            team: {
-                name: "Richtigs Team",
-                desc: "S'tippte Team het s'Spil gwunne."
-            },
-            diff: {
-                name: "Richtigi Tordifferenz",
-                desc: "Differenz vode Tor (ohni Penaltyschüsse) isch so wie tippt."
-            },
-            exact: {
-                name: "Exakts Resultat",
-                desc: "Es isch exkate Resultat vom Spiil (ohni Penaltyschüsse) tippt worde."
-            },
-            scorer: {
-                name: "Torschütz",
-                desc: "De gewählti Torschütz het {n} Tor gschosse."
-            },
-            penalty: {
-                name: "Penaltyschüsse",
-                desc: "Es isch es Unentschiede tipp worde und s'Spil het mit eme Penalyschüsse gendet, wo s'tippte Team gwunne het."
-            },
-            total: {
-                name: "Total"
             }
         },
         groups: {
@@ -396,7 +371,26 @@ __LANG["de-ch"] = {
                 single: "1 Tipp",
                 multi: "{n} Tipps",
                 your: "Diin Tipp",
-                deadline: "Offe bis {d}"
+                deadline: "(Tippe möglich bis {d})",
+                form: {
+                    winner: "Gwünner",
+                    phWinner: "Team: z.B Schwiiz",
+                    topscorer: "Torschützekönig",
+                    phTopscorer1: "Team: z.B. Schwiiz",
+                    phTopscorer2: "Spiler: z.B. Ricardo Rodríguez",
+                    action: "Tippe"
+                },
+                message: {
+                    "noWinner": "Bitte wähl en Gwünner us",
+                }
+            },
+            tipps: {
+                name: "Tipps",
+                desc: "Alli Tipps uf das Event",
+            },
+            mytipp: {
+                nobet: "Du hesch ned tippt",
+                notyet: "Klick da zum tippe"
             },
             addgame: {
                 name: "Spiil hinzuefüege",
@@ -406,7 +400,8 @@ __LANG["de-ch"] = {
                 heading: "Spiil"
             },
             tile: {
-                desc: "Event"
+                desc: "Event",
+                and: "{team} & {player}"
             }
         },
         recover: {
@@ -440,6 +435,46 @@ __LANG["de-ch"] = {
                 text: "Doppleti Spieler chend zu Problem bide Spiiluswertig führe! - Bitte füeg nur Spieler hinzue, wo wük fehled (Acht uf d'Schriibwiis, alternativi Näme, Reihefolg, Team, etc.)",
                 confirm: "Hinzuefüege",
                 deny: "Abbreche"
+            }
+        },
+        tipps: {
+            game: {
+                team: {
+                    name: "Richtigs Team",
+                    desc: "S'tippte Team het s'Spil gwunne."
+                },
+                diff: {
+                    name: "Richtigi Tordifferenz",
+                    desc: "Differenz vode Tor (ohni Penaltyschüsse) isch so wie tippt."
+                },
+                exuact: {
+                    name: "Exakts Resultat",
+                    desc: "Es isch exkate Resultat vom Spiil (ohni Penaltyschüsse) tippt worde."
+                },
+                scorer: {
+                    name: "Torschütz",
+                    desc: "De gewählti Torschütz het {n} Tor gschosse."
+                },
+                penalty: {
+                    name: "Penaltyschüsse",
+                    desc: "Es isch es Unentschiede tipp worde und s'Spil het mit eme Penalyschüsse gendet, wo s'tippte Team gwunne het."
+                },
+                total: {
+                    name: "Total"
+                }
+            },
+            event: {
+                team: {
+                    name: "Richtigs Team",
+                    desc: "S'tippte Team het s'Event gwunne."
+                },
+                topscorer: {
+                    name: "Torschützekönig",
+                    desc: "De gewählti Spiler het während em Event die meiste Tor geschosse"
+                },
+                total: {
+                    name: "Total"
+                }
             }
         }
     },

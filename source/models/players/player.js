@@ -34,6 +34,7 @@ export default class Player extends Element {
     }
 
     matchText(text){
+        text = text.replace(/^\s+/i,'').replace(/\s+$/i,'')
         return this.normalized.includes(text.toLowerCase()) || this.name.toLowerCase().includes(text.toLowerCase())
     }
 

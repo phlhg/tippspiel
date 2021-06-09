@@ -238,15 +238,15 @@ export default class GameTipp extends Section {
         }
     }
 
-    clear(){
+    async unload(){
         this.view.score.team1.value = 0 
         this.view.score.team2.value = 0
         this.view.winner.team1.disabled = false;
         this.view.winner.team2.disabled = false;
         this.view.winner.team1.checked = false;
         this.view.winner.team2.checked = false;
-        this.view.searchselect.reset();
-        this.view.player_suggestions = [];
+        this.searchselect.reset();
+        this.player_suggestions = [];
     }
 
 }

@@ -60,6 +60,29 @@ export default class Event extends Element {
         this.url = `/event/${this.id}/${this.short}/`;
     }
 
+    makeTipp(data){
+        return App.model.eventTipps.makeTipp({
+            event: this.id,
+            winner: data.winner,
+            topscorer: data.topscorer
+        })
+    }
+
+    hasOwnTipp(){
+        var id = this.tipps.filter(id => App.client.eventTipps.includes(id))
+        return id.length > 0
+    }
+
+    getOwnTipp(){
+        var id = this.tipps.filter(id => App.client.eventTipps.includes(id))
+        if(id.length > 0){ return App.model.eventTipps.get(id[0]); }
+        return new Promise(resolve => { resolve(false) })
+    }
+
+    getTipps(){
+        return App.model.eventTipps.getAll(this.tipps);
+    }
+
     getRanking(){
         return App.model.events.getRanking(this.id);
     }

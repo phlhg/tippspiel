@@ -21,11 +21,16 @@ import SignUpWelcome from './sections/account/signup/welcome'
 import Game from './sections/game/index'
 import GameReport from './sections/game/report'
 import GameTipp from './sections/game/tipp'
-import TippDetail from './sections/game/tippdetail'
 
 // Event
 import EventIndex from './sections/event/index'
 import EventGameAdd from './sections/event/add'
+import EventTipp from './sections/event/tipp'
+import EventTipps from './sections/event/tipps'
+
+// Tipps
+import GameTippDetail from './sections/tipps/game'
+import EventTippDetail from './sections/tipps/event'
 
 // Groups
 import GroupsIndex from './sections/groups/index'
@@ -85,11 +90,16 @@ window.addEventListener("DOMContentLoaded", function(){
     App.router.add("/game/{id}/{t1}-{t2}/",new Game).where({ id: 'NUMBER', t1: 'TEXT',t2: 'TEXT' })
     App.router.add("/game/{id}/tipp/",new GameTipp).where({ id: 'NUMBER' })
     App.router.add("/game/{id}/report/",new GameReport).where({ id: 'NUMBER' })
-    App.router.add("/tipp/{id}/",new TippDetail).where({id: 'NUMBER'})
 
     //Event
-    App.router.add("/event/{id}/add/",new EventGameAdd)
+    App.router.add("/event/{id}/add/",new EventGameAdd).where({ id: 'NUMBER'})
+    App.router.add("/event/{id}/tipp/",new EventTipp).where({ id: 'NUMBER'})
+    App.router.add("/event/{id}/tipps/",new EventTipps).where({ id: 'NUMBER'})
     App.router.add("/event/{id}/{name}/",new EventIndex).where({ id: 'NUMBER', name: 'TEXT' })
+
+    // Tipps
+    App.router.add("/tipp/g/{id}/",new GameTippDetail).where({ id: 'NUMBER'})
+    App.router.add("/tipp/e/{id}/",new EventTippDetail).where({ id: 'NUMBER'})
 
     // Groups
     App.router.add("/groups/",new GroupsIndex)

@@ -247,13 +247,14 @@ export default class GameIndex extends Section {
 
         this.view.mytipp.root.style.display = App.client.active || this.game.status == GameStatus.UPCOMING ? "block" : "none";
 
+        this.view.mytipp.tile.classList.remove("nobet");
+
         if(this.game.hasOwnTipp()){
-            this.view.mytipp.tile.classList.remove("nobet");
 
             var tipp = await this.game.getOwnTipp()
 
             if(this.game.status != GameStatus.UPCOMING){
-                this.view.mytipp.a.setAttribute("href","/tipp/"+tipp.id+"/");
+                this.view.mytipp.a.setAttribute("href","/tipp/g/"+tipp.id+"/");
             }
 
             var winner = await tipp.getWinner()
@@ -285,7 +286,7 @@ export default class GameIndex extends Section {
         if(this.game.status != GameStatus.UPCOMING){ 
             this.view.tipps.root.classList.remove("hidden");
             var tipps = await Promise.all(this.game.getTipps());
-            tipps.sort((a,b) => b.reward - a.reward);
+            tipps.sort((a,b) => b.reward.sum - a.reward.sum);
 
             var countTeam1 = 0;
             var countTeam2 = 0;

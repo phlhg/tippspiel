@@ -98,9 +98,11 @@ export default class Application {
             this.router.find(window.location.pathname,e.state);
         })
 
-        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",() => {
-            this.loadTheme();
-        })
+        if("addEventListener" in window.matchMedia("(prefers-color-scheme: dark)")){
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",() => {
+                this.loadTheme();
+            })
+        }
 
         document.addEventListener("DOMNodeRemoved", e => {
             e.target.dispatchEvent(new Event("removed"));

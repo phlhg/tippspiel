@@ -1,9 +1,9 @@
 import Tile from './tile';
 
-export default class TippTile extends Tile {
+export default class EventTippTile extends Tile {
     
     constructor(promise){
-        super("GameTipp","a", promise);
+        super("EventTipp","a", promise);
         this.init();
     }
 
@@ -23,15 +23,15 @@ export default class TippTile extends Tile {
 
     async update(){
 
-        this.view.root.setAttribute("href",`/tipp/g/${this.obj.id}/`);
+        this.view.root.setAttribute("href",`/tipp/e/${this.obj.id}/`);
 
-        var user = await this.obj.getUser()
-        var winner = await this.obj.getWinner()
-        var player = await (this.obj.topscorer > 0 ? this.obj.getPlayer() : { name: "" })
+        var user = (await this.obj.getUser()) ?? {name: ""}
+        var winner = (await this.obj.getWinner()) ?? {name: "", short: ""}
+        var player = await this.obj.getTopscorer()
 
         this.view.name.innerText = user.name;
         this.view.flag.setAttribute("data-t",winner.short.toLowerCase());
-        this.view.meta.innerText = this.obj.topscorer > 0 ? `${this.obj.bet1} : ${this.obj.bet2} /  ${player.name}` : `${this.obj.bet1} : ${this.obj.bet2}`;
+        this.view.meta.innerText = player != null ? Lang.get("section/event/tile/and",{team: winner.name, player: player.name}) : `${winner.name}`;
         this.view.reward.innerText = this.obj.reward.sum > 0 ? '+'+this.obj.reward.sum : '';
     }
 

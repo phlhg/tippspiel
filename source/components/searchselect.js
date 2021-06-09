@@ -1,6 +1,6 @@
 export default class SearchSelect {
 
-    constructor(name, placholder){
+    constructor(name, placeholder){
 
         this.selected = {
             value: -1,
@@ -12,7 +12,7 @@ export default class SearchSelect {
         this.root.classList.add("tipp-searchselect");
         this.root.innerHTML = 
             `<span class="icon"></span>
-            <input type="search" autocomplete="off" placeholder="${placholder}""/>
+            <input type="search" autocomplete="off" placeholder="${placeholder}" />
             <div class="suggestions"></div>
             <input type="hidden" name="${name}" value="-1" />`
 
@@ -84,6 +84,7 @@ export default class SearchSelect {
 
     reset(){
         this.selected = { value: -1, text: "", img: "" }
+        this.dom.input.value = -1;
         this.dom.search.value = "";
         this.dom.icon.style.backgroundImage = "";
         this.dom.suggestions.innerHTML = "";

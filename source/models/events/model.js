@@ -16,7 +16,8 @@ export default class Events extends Manager {
         return r.return(Array.from(r.data).map(u => {
             return {
                 user: parseInt(u.user),
-                rank: parseInt(u.points+1)
+                points: parseInt(u.points),
+                rank: parseInt(u.rank)
             }
         }))
     }
