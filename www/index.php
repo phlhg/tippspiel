@@ -30,7 +30,7 @@
         <meta http-equiv="language" content="deutsch, de">
         <meta name="revisit" content="After 10 days" />
         <meta name="robots" content="INDEX,FOLLOW" />
-        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=1">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
         <meta name="theme-color" content="#00315e" />
         <!--// WEBAPP //-->
         <link rel="manifest" href="/manifest.webmanifest">
