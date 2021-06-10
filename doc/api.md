@@ -284,6 +284,21 @@ socket.exec("group_delete",{group: id});
 {state, error, data:{ }}
 ```
 
+### push
+
+```js
+socket.exec("push_enable", {subscription: object});
+```
+
+```js
+socket.exec("push_disable", {endpoint: endpoint});
+```
+
+
+`subscription`: Das Subscription objekt, vom Browser generiert
+`endpoint`: subscription.endpoint
+
+
 ## Filter
 
 ### Suggestions
