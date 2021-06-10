@@ -54,6 +54,13 @@ export default class EventTipps extends Section {
 
         // GameList
         var tipps = (await Promise.all(this.event.getTipps())).filter(g => g !== null);
+
+        //Preload users, players and teams
+        await Promise.all(App.model.users.getAll(tipps.map(t => t.user)))
+        await Promise.all(App.model.players.getAll(tipps.map(t => t.topscorer).filter(t => t > 0)))
+        await Promise.all(App.model.teams.getAll(tipps.map(t => t.winner).filter(t => t > 0)))
+
+
         tipps.sort((a,b) => a.reward.sum - a.reward.sum);
         tipps.forEach(t => {
             this.view.tippList.appendChild(new EventTippTile(new Promise(r => r(t))).getHtml())
