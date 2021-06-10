@@ -276,14 +276,6 @@ socket.exec("group_reset_token",{group: id});
 {state, error, data: { }}
 ```
 
-### group_delete (TODO ?)
-```js
-socket.exec("group_delete",{group: id});
-```
-```js
-{state, error, data:{ }}
-```
-
 ### push
 
 ```js
