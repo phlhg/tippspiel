@@ -8,7 +8,7 @@ export default class TippPush {
         }
 
         if(this.isSupported()){ 
-            navigator.serviceWorker.register('dev-worker.js', {scope: "/"})
+            navigator.serviceWorker.register('worker.js', {scope: "/"})
         }
 
     }
@@ -18,7 +18,6 @@ export default class TippPush {
     }
 
     isAvailable(){
-        return false // Not enabled yet
         return this.isSupported() && App.client.active
     }
 
@@ -39,12 +38,11 @@ export default class TippPush {
         return navigator.serviceWorker.ready.then(registration => {
             return registration.pushManager.getSubscription().then(subscription => {
                 if(subscription !== null){ return true; }
-                console.log(registration, subscription)
                 return registration.pushManager.subscribe(this.options).then(subscription => {
-                    console.log(2, subscription)
                     if(subscription == null){ return false; }
-                    // Send to Server
-                    return true
+                    return App.socket.exec("push_enable", { subscription: subscription.toJSON() }).then(r => {
+                        return true;
+                    })
                 })
             })
         }).catch(e => {
@@ -58,9 +56,11 @@ export default class TippPush {
         return navigator.serviceWorker.ready.then(registration => {
             return registration.pushManager.getSubscription().then(subscription => {
                 if(subscription == null){ return true; }
-                return subscription.unsubscribe().then(() => {
-                    // Remove from Server
-                    return true;
+                return subscription.unsubscribe().then(success => {
+                    if(!success){ return false; }
+                    return App.socket.exec("push_disable", { endpoint: subscription.toJSON().endpoint }).then(r => {
+                        return true;
+                    })
                 })
             })
         }).catch(e => {
