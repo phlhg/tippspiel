@@ -38,7 +38,7 @@ __LANG["de-ch"] = {
         "ger": "Dütschland",
         "hun": "Ungarn",
         "ita": "Italie",
-        "mkd": "Normazedonie",
+        "mkd": "Nordmazedonie",
         "ned": "Holland",
         "pol": "Pole",
         "por": "Portugal",
