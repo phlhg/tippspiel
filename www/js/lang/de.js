@@ -253,7 +253,7 @@ __LANG["de"] = {
         settings: {
             push: {
                 title: "Benachrichtigungen",
-                desc: "Werde über Resultate informiert",
+                desc: "Werde über Spiele und Resultate informiert",
                 on: "An",
                 off: "Aus"
             },

@@ -252,7 +252,7 @@ __LANG["en"] = {
         settings: {
             push: {
                 title: "Notifications",
-                desc: "Get informed about results",
+                desc: "Get informed about matches and results",
                 on: "On",
                 off: "Off"
             },
