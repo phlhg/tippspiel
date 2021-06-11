@@ -35,9 +35,7 @@ export default class Home extends Section {
         
         // Events
         this.view.eventList.innerHTML = '';
-        App.model.events.getAll([1,2]).forEach(e => {
-            this.view.eventList.appendChild(new EventTile(e).getHtml())
-        })
+        this.view.eventList.appendChild(new EventTile(App.model.events.get(1)).getHtml())
 
         // Games
         await this.loadHotGames()
