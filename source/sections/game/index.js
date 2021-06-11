@@ -187,8 +187,8 @@ export default class GameIndex extends Section {
         } else {
             this.view.header.score.normal.innerText = this.game.team1.score + ":" + this.game.team2.score;
         }
-
-        this.view.header.meta.time.innerText = TippDate.toString(this.game.start);
+        
+        this.view.header.meta.time.innerText = this.game.status == GameStatus.RUNNING ? Lang.get("date/past_min", {m: this.game.getPlayedTime()}) : TippDate.toString(this.game.start);
         this.view.header.meta.location.innerText = this.game.location;
 
         if(this.game.phase == GamePhase.PENALTY){

@@ -75,7 +75,7 @@ __LANG["en"] = {
     date: {
         days: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
         past_sec: "Kickoff!",
-        past_min: "Since {m}'",
+        past_min: "Since ~{m}'",
         past_today: "Today {h}:{m}",
         past_yesterday: "Yesterday {h}:{m}",
         future_sec: "About to start",

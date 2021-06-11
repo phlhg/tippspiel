@@ -73,15 +73,9 @@ export default class GameTipp extends Section {
             }
 
             if(t == 0){
-                this.form.error("Bitte gib wähle ein Team für das Tor")
+                this.form.error("Bitte wähle ein Team für das Tor")
                 return;
             }
-
-            console.log({
-                player: p,
-                team: t,
-                penalty: penalty
-            })
 
             var r = await this.game.reportGoal({
                 player: p,

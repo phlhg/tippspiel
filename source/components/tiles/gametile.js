@@ -43,7 +43,7 @@ export default class GameTile extends Tile {
         this.view.short2.innerText = this.obj.team2.short.toUpperCase();
         this.view.flag1.setAttribute("data-t",this.obj.team1.short.toLowerCase());
         this.view.flag2.setAttribute("data-t",this.obj.team2.short.toLowerCase());
-        this.view.date.innerText = TippDate.toString(this.obj.start)
+        this.view.date.innerText = this.obj.status == GameStatus.RUNNING ? Lang.get("date/past_min", {m: this.obj.getPlayedTime()}) : TippDate.toString(this.obj.start)
         this.view.tipps.innerText = this.obj.tipps.length != 1 ? Lang.get("section/game/tipps/multi",{n: this.obj.tipps.length}) : Lang.get("section/game/tipps/single")
 
         if(this.obj.status != GameStatus.UPCOMING){

@@ -76,7 +76,7 @@ __LANG["de"] = {
     date: {
         days: ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"],
         past_sec: "Angespielt",
-        past_min: "Seit {m}'",
+        past_min: "Seit ~{m}'",
         past_today: "Heute {h}:{m}",
         past_yesterday: "Gestern {h}:{m}",
         future_sec: "In einigen Sekunden!",
