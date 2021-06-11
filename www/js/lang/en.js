@@ -276,7 +276,7 @@ __LANG["en"] = {
                 desc: "Show Tippspiel to your friends and colleagues"
             },
             report: {
-                title: "Report an error",
+                title: "Report an issue",
                 desc: "Something doesn't work? Report it to us!"
             },
             idea: {
@@ -286,6 +286,10 @@ __LANG["en"] = {
             console: {
                 title: "Console",
                 desc: "Access the Server"
+            },
+            reload: {
+                title: "Reload",
+                desc: "Can solve issues caused by cached content"
             },
             logout: {
                 name: "Sign out",

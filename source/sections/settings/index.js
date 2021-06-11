@@ -58,6 +58,11 @@ export default class Settings extends Section {
             <span class="icon"><span class="material-icons">code</span></span>
             <span class="title">${Lang.get("section/settings/console/title")}</span>
         </a>
+        <a class="tipp-box reload">
+            <span class="icon"><span class="material-icons">cached</span></span>
+            <span class="title">${Lang.get("section/settings/reload/title")}</span>
+            <span class="meta">${Lang.get("section/settings/reload/desc")}</span>
+        </a>
         <a class="tipp-box signout-button" style="background: #e00; border-color: #e00; color: #fff;" >
             <span class="icon"><span class="material-icons">logout</span></span>
             <span class="title">${Lang.get("section/settings/logout/name")}</span>
@@ -126,6 +131,15 @@ export default class Settings extends Section {
 
         this.view.consoleButton = this.view.root.querySelector(".console-button");
         this.view.consoleButton.onclick = () => { window.open ("/console/","Tippspiel-Console","resizable=1,width=720,height=450"); }
+
+
+        // Reload
+
+        this.view.reload = this.view.root.querySelector(".reload")
+        this.view.reload.onclick = () => {
+            document.body.classList.add("loading");
+            setTimeout(() => { window.location.reload(); },250)
+        }
 
         // Signout
 

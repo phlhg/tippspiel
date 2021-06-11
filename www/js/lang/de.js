@@ -277,7 +277,7 @@ __LANG["de"] = {
                 desc: "Zeige Tippspiel deinen Freunden & Bekannten",
             },
             report: {
-                title: "Fehler melden",
+                title: "Problem melden",
                 desc: "Etwas funktioniert nicht? Melde es uns"
             },
             idea: {
@@ -287,6 +287,10 @@ __LANG["de"] = {
             console: {
                 title: "Konsole",
                 desc: "Zugriff auf den Server"
+            },
+            reload: {
+                title: "Neu laden",
+                desc: "Kann Probleme beheben, welche durch im Cache zwischengespeicherte Inhalte entstehen"
             },
             logout: {
                 name: "Abmelden",
