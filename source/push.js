@@ -14,7 +14,7 @@ export default class TippPush {
     }
 
     isSupported(){
-        return 'serviceWorker' in navigator;
+        return 'serviceWorker' in navigator && 'PushManager' in window;
     }
 
     isAvailable(){
