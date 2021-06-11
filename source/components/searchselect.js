@@ -63,7 +63,7 @@ export default class SearchSelect {
 
     _select(element){
         this.selected = element;
-        this.dom.suggestions.innerHTML += "";
+        this.dom.suggestions.innerHTML = "";
         this._update();
         this.onchange();
     }

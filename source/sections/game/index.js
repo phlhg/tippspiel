@@ -214,7 +214,8 @@ export default class GameIndex extends Section {
                     var e = document.createElement("span");
                     var t1 = (s.team == this.game.team1.id)
                     e.classList.add(t1 ? "left" : "right");
-                    e.innerHTML = `<span class="tflag" data-t="${(t1 ? this.game.team1.short : this.game.team2.short).toLowerCase()}" ></span> ${s.name}`;
+                    e.innerHTML = `<span class="tflag" data-t="${(t1 ? this.game.team1.short : this.game.team2.short).toLowerCase()}" ></span><span class="text"></span>`;
+                    e.querySelector(".text").innerText = s.name;
                     this.view.timeline.root.appendChild(e);
                 })
             })
