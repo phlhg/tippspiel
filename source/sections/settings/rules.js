@@ -18,10 +18,10 @@ export default class Rules extends Section {
                 <ul>
                     <li>
                         <strong>Team ( +1 )</strong><br/>
-                        Dein getipptes Team hat das Spiel gewonnen.
+                        Dein getipptes Team hat gewonnen oder du hast ein korrektes Unentschieden getippt.
                     </li>
                     <li>
-                        <strong>Tor differenz ( +1 )</strong><br/>
+                        <strong>Tor-Differenz ( +1 )</strong><br/>
                         Die getippte Differenz und die tatsächliche Differenz der Tore (ohne Penaltyschiessen) ist gleich.</br/>
                     </li>
                     <li>
@@ -29,8 +29,8 @@ export default class Rules extends Section {
                         Du hast das exakte Resulat (ohne Penaltyschiessen) getippt.
                     </li>
                     <li>
-                        <strong>Penalty Bonus ( +2 )</strong><br/>
-                        Du hast Unentschieden getippt und das Spiel hat mit einem Penaltyschiessen geendet, welches dein getipptes Team gewonnen hat.
+                        <strong>Penalty-Bonus ( +2 )</strong><br/>
+                        Du hast ein exaktes Unentschieden getippt und dein getipptes Team hat das Penaltyschiessen gewonnen.
                     </li>
                     <li>
                         <strong>Torschütze</strong><br/>
@@ -61,7 +61,7 @@ export default class Rules extends Section {
                 <ul>
                     <li>
                         <strong>Team ( +1 )</strong><br/>
-                        Your guessed team won the match.
+                        Your guessed team won or you guessed a correct draw.
                     </li>
                     <li>
                         <strong>Goal difference ( +1 )</strong><br/>
@@ -73,7 +73,7 @@ export default class Rules extends Section {
                     </li>
                     <li>
                         <strong>Penalty Bonus ( +2 )</strong><br/>
-                        You've guessed a draw and the match ended with a penalty shootout, which your guessed team won.
+                        You've guessed an exact draw and your guessed team won the penalty shootout.
                     </li>
                     <li>
                         <strong>Scorer</strong><br/>

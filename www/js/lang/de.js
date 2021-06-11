@@ -447,7 +447,7 @@ __LANG["de"] = {
             game: {
                 team: {
                     name: "Richtiges Team",
-                    desc: "Das getippte Team hat das Spiel gewonnen."
+                    desc: "Das getippte Team hat gewonnen oder es wurde ein korrektes Unentschieden getippt."
                 },
                 diff: {
                     name: "Richtige Tordifferenz",
@@ -463,7 +463,7 @@ __LANG["de"] = {
                 },
                 penalty: {
                     name: "Penalty-Bonus",
-                    desc: "Es wurde Unentschieden getippt und das Spiel wurde mit einem Penaltyschiessen beendet, welches das getippte Team gewonnen hat."
+                    desc: "Es wurde ein exaktes Unentschieden getippt und das getippte Team hat das Penaltyschiessen gewonnen."
                 },
                 total: {
                     name: "Total"

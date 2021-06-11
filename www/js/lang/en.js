@@ -137,7 +137,7 @@ __LANG["en"] = {
                     result: "Result",
                     winner: "Winner",
                     winner_notice: "(in case of a penalty shootout)",
-                    topscorer: "Topscorer",
+                    topscorer: "Scorer",
                     search: "Search for a player",
                     submit: "Bet now"
                 }
@@ -445,11 +445,11 @@ __LANG["en"] = {
         tipps: {
             game: {
                 team: {
-                    name: "Correct team",
-                    desc: "The betted team won the match."
+                    name: "Team",
+                    desc: "The guessed team won or a correct draw was guessed"
                 },
                 diff: {
-                    name: "Correct goal difference",
+                    name: "Goal difference",
                     desc: "The difference between the goals (without penalty shootout) is the same as guessed."
                 },
                 exact: {
@@ -462,7 +462,7 @@ __LANG["en"] = {
                 },
                 penalty: {
                     name: "Penalty bonus",
-                    desc: "It was betted for a draw and the game ended with a penalty shootout, which the betted team won. "
+                    desc: "An exact draw was guessed and the guessed team won the penalty shootout."
                 },
                 total: {
                     name: "Total"
@@ -470,7 +470,7 @@ __LANG["en"] = {
             },
             event: {
                 team: {
-                    name: "Correct team",
+                    name: "Team",
                     desc: "The betted team won the event."
                 },
                 topscorer: {
