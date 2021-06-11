@@ -48,6 +48,11 @@ export default class GameIndex extends Section {
                 <span class="meta">${Lang.get("section/game/prompt/continues/penalty")}</span>
             </a>
         </div>
+        <a class="tipp-box reportGoal" href="/game/1/goal/" style="background-color: rgb(255,102,0); border-color: rgb(230,70,0);">
+            <span class="icon"><span class="material-icons">add</span></span>
+            <span class="title">Tor melden</span>
+            <span class="meta">Füge ein Tor hinzu</span>
+        </a>
         <div class="game-mytipp">
             <a class="tipp-tile fullwidth">
                 <span class="tflag" data-t=""></span>
@@ -125,6 +130,8 @@ export default class GameIndex extends Section {
         this.view.mytipp.flag = this.view.mytipp.root.querySelector(".tflag")
         this.view.mytipp.reward = this.view.mytipp.root.querySelector(".reward")
 
+        this.view.reportGoal = this.view.root.querySelector(".reportGoal");
+
         this.game = null;
 
         window.addEventListener("datachange",e => {
@@ -175,10 +182,10 @@ export default class GameIndex extends Section {
         this.view.header.team1.bg.src = '/img/flag/' + this.game.team1.short.toLowerCase() + '.png';
         this.view.header.team2.bg.src = '/img/flag/' + this.game.team2.short.toLowerCase() + '.png';
 
-        if(this.game.status == GameStatus.ENDED){
-            this.view.header.score.normal.innerText = this.game.team1.score + ":" + this.game.team2.score;
-        } else {
+        if(this.game.status == GameStatus.UPCOMING){
             this.view.header.score.normal.innerText = "- : -";
+        } else {
+            this.view.header.score.normal.innerText = this.game.team1.score + ":" + this.game.team2.score;
         }
 
         this.view.header.meta.time.innerText = TippDate.toString(this.game.start);
@@ -212,6 +219,10 @@ export default class GameIndex extends Section {
                 })
             })
         }
+
+        // Goal Report
+        this.view.reportGoal.setAttribute("href",`/game/${this.game.id}/goal/`)
+        this.view.reportGoal.style.display = (App.client.permission.console && (this.game.status == GameStatus.RUNNING || this.game.status == GameStatus.PENDING)) ? "block" : "none"
 
         // Game End Prompt
         if(this.game.status == GameStatus.PENDING && App.client.permission.gameReport){

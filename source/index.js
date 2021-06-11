@@ -21,6 +21,7 @@ import SignUpWelcome from './sections/account/signup/welcome'
 import Game from './sections/game/index'
 import GameReport from './sections/game/report'
 import GameTipp from './sections/game/tipp'
+import GameGoal from './sections/game/goal'
 
 // Event
 import EventIndex from './sections/event/index'
@@ -90,6 +91,7 @@ window.addEventListener("DOMContentLoaded", function(){
     App.router.add("/game/{id}/{t1}-{t2}/",new Game).where({ id: 'NUMBER', t1: 'TEXT',t2: 'TEXT' })
     App.router.add("/game/{id}/tipp/",new GameTipp).where({ id: 'NUMBER' })
     App.router.add("/game/{id}/report/",new GameReport).where({ id: 'NUMBER' })
+    App.router.add("/game/{id}/goal/",new GameGoal).where({ id: 'NUMBER' })
 
     //Event
     App.router.add("/event/{id}/add/",new EventGameAdd).where({ id: 'NUMBER'})

@@ -131,4 +131,8 @@ export default class Game extends Element {
         return true;
     }
 
+    reportGoal(data){
+        return App.model.games.reportGoal(this.id, data)
+    }
+
 }
