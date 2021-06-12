@@ -41,7 +41,7 @@ export default class Rules extends Section {
                 <p>Bei einigen Events kannst du ein Event-Gewinner und Torschützenkönig tippen. Für diese Tipps erhälst du Punkte in den folgenden Kategorieren:</p>
                 <ul>
                     <li>
-                        <strong>Team ( +2 )</strong><br/>
+                        <strong>Meister ( +2 )</strong><br/>
                         Dein getipptes Team hat das Event gewonnen.
                     </li>
                     <li>
@@ -84,7 +84,7 @@ export default class Rules extends Section {
                 <p>Some events allow betting on an event winner and a topscorer. For those bets you receive points in the following categories:</p>
                 <ul>
                     <li>
-                        <strong>Team ( +2 )</strong><br/>
+                        <strong>Champion ( +2 )</strong><br/>
                         Your guessed team won the event.
                     </li>
                     <li>

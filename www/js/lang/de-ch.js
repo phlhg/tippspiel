@@ -440,8 +440,8 @@ __LANG["de-ch"] = {
         tipps: {
             game: {
                 team: {
-                    name: "Richtigs Team",
-                    desc: "S'tippte Team het s'Spil gwunne."
+                    name: "Team",
+                    desc: "S'tippte Team het s'Spil gwunne oder es isch es richtigs Unentschiede tippt worde"
                 },
                 diff: {
                     name: "Richtigi Tordifferenz",
@@ -457,7 +457,7 @@ __LANG["de-ch"] = {
                 },
                 penalty: {
                     name: "Penaltyschüsse",
-                    desc: "Es isch es Unentschiede tipp worde und s'Spil het mit eme Penalyschüsse gendet, wo s'tippte Team gwunne het."
+                    desc: "Es isch es exakts Unentschiede tipp worde und s'tippte Team het s Penaltyschüsse gwunne."
                 },
                 total: {
                     name: "Total"
@@ -465,7 +465,7 @@ __LANG["de-ch"] = {
             },
             event: {
                 team: {
-                    name: "Richtigs Team",
+                    name: "Meister",
                     desc: "S'tippte Team het s'Event gwunne."
                 },
                 topscorer: {

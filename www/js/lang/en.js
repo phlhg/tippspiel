@@ -382,7 +382,7 @@ __LANG["en"] = {
                 your: "Your bet",
                 deadline: "(Betting possible until {d})",
                 form: {
-                    winner: "Winner",
+                    winner: "Champion",
                     phWinner: "Team: e.g. England",
                     topscorer: "Topscorer",
                     phTopscorer1: "Team: e.g. England",
@@ -390,7 +390,7 @@ __LANG["en"] = {
                     action: "Bet"
                 },
                 message: {
-                    "noWinner": "Please select a winner",
+                    "noWinner": "Please select a Champion",
                 }
             },
             tipps: {
@@ -474,7 +474,7 @@ __LANG["en"] = {
             },
             event: {
                 team: {
-                    name: "Team",
+                    name: "Champion",
                     desc: "The betted team won the event."
                 },
                 topscorer: {

@@ -383,15 +383,15 @@ __LANG["de"] = {
                 your: "Dein Tipp",
                 deadline: "(Tippen möglich bis {d})",
                 form: {
-                    winner: "Gewinner",
-                    phWinner: "Gewinner: z.B. Deutschland",
+                    winner: "Meister",
+                    phWinner: "Team: z.B. Deutschland",
                     topscorer: "Torschützenkönig",
                     phTopscorer1: "Team: z.B. Deutschland",
                     phTopscorer2: "Spieler: z.B. Manuel Neuer",
                     action: "Tippen"
                 },
                 message: {
-                    "noWinner": "Bitte wähle einen Gewinner aus",
+                    "noWinner": "Bitte wähle einen Meister aus",
                 }
             },
             tipps: {
@@ -450,11 +450,11 @@ __LANG["de"] = {
         tipps: {
             game: {
                 team: {
-                    name: "Richtiges Team",
+                    name: "Team",
                     desc: "Das getippte Team hat gewonnen oder es wurde ein korrektes Unentschieden getippt."
                 },
                 diff: {
-                    name: "Richtige Tordifferenz",
+                    name: "Tordifferenz",
                     desc: "Die Differenz der Tore (ohne Penalyschiessen) ist gleich wie getippt."
                 },
                 exact: {
@@ -475,7 +475,7 @@ __LANG["de"] = {
             },
             event: {
                 team: {
-                    name: "Richtiges Team",
+                    name: "Meister",
                     desc: "Das getippte Team hat das Event gewonnen."
                 },
                 topscorer: {
