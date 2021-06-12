@@ -40,7 +40,7 @@ export default class Stats extends Section {
             }
         })
 
-        App.socket.listen("ranking", () => { 
+        App.socket.listen("RankUpdate", () => { 
             if(this._active){
                 Debugger.log(this,"Section was updated remotely")()
                 this.update() 
