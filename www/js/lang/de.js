@@ -177,7 +177,7 @@ __LANG["de"] = {
                 },
                 continues: {
                     name: "Spiel geht weiter?",
-                    extension: "Spiel-Verlängerung melden",
+                    extension: "Spiel-Verlängerung melden (nicht Nachspielzeit!)",
                     penalty: "Penaltyschiessens melden"
                 },
                 extension: {
@@ -203,6 +203,24 @@ __LANG["de"] = {
                     select: "Wähle eine Spieler"
                 },
                 submit: "Spiel beenden"
+            },
+            goal: {
+                tile: {
+                    title: "Tor melden",
+                    text: "Melde ein neues / fehlendes Tor um das Spiel aktuell zu halten."
+                },
+                current: "Momentan gemeldete Tore",
+                team: "Neues Goal zählt für",
+                player: "Neues Tor wurde geschossen von *",
+                action: "Neues Tor melden",
+                ownGoalNotice: "* Bei Eigentoren ebenfalls den Spieler angeben.",
+                prompt: {
+                    text: "Bitte überprüfe in \"Momentan gemeldete Tore\", dass das neue Tor noch nicht gemeldet wurde.",
+                    confirm: "Melden",
+                    deny: "Abbrechen"
+                },
+                noPlayer: "Bitte gib einen Torschützen an",
+                noTeam: "Bitte gib ein Team für das Tor an"
             }
         },
         signUp: {

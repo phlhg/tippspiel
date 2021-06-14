@@ -50,8 +50,8 @@ export default class GameIndex extends Section {
         </div>
         <a class="tipp-box reportGoal" href="/game/1/goal/" style="background-color: rgb(255,102,0); border-color: rgb(230,70,0);">
             <span class="icon"><span class="material-icons">add</span></span>
-            <span class="title">Tor melden</span>
-            <span class="meta">Füge ein Tor hinzu</span>
+            <span class="title">${Lang.get("section/game/goal/tile/title")}</span>
+            <span class="meta">${Lang.get("section/game/goal/tile/text")}</span>
         </a>
         <div class="game-mytipp">
             <a class="tipp-tile fullwidth">
@@ -223,10 +223,10 @@ export default class GameIndex extends Section {
 
         // Goal Report
         this.view.reportGoal.setAttribute("href",`/game/${this.game.id}/goal/`)
-        this.view.reportGoal.style.display = (App.client.permission.console && (this.game.status == GameStatus.RUNNING || this.game.status == GameStatus.PENDING)) ? "block" : "none"
+        this.view.reportGoal.style.display = (App.client.permission.liveReport && (this.game.status == GameStatus.RUNNING || this.game.status == GameStatus.PENDING)) ? "block" : "none"
 
         // Game End Prompt
-        if(this.game.status == GameStatus.PENDING && App.client.permission.gameReport){
+        if(this.game.status == GameStatus.PENDING && App.client.permission.liveReport){
             if(this.game.phase == GamePhase.NORMAL){
                 this.view.prompt.penalty.style.display = "none";
                 this.view.prompt.extension.style.display = "block";

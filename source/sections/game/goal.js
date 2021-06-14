@@ -1,5 +1,6 @@
 import Form from '../../components/form'
 import SearchSelect from '../../components/searchselect'
+import TippPrompt from '../../helper/prompt';
 import { GamePhase, GameStatus } from '../../models/games/enums';
 import Section from '../section'
 
@@ -15,6 +16,9 @@ export default class GameTipp extends Section {
 
         this.view.root.innerHTML = `
         <form class="tipp-form">
+            <h4>${Lang.get("section/game/goal/current")}</h4>
+            <div class="game-timeline" style="display: block"></div>
+            <h4>${Lang.get("section/game/goal/team")}</h4>
             <div class="tipp-winner">
                 <div class="tipp-radio-select">
                     <input type="radio" id="tippgoalteam1" name="winner" required value=""/>
@@ -23,13 +27,20 @@ export default class GameTipp extends Section {
                     <label for="tippgoalteam2"></label>
                 </div>
             </div>
+            <h4>${Lang.get("section/game/goal/player")}</h4>
             <div class="tipp-player"></div>
-            <input type="submit" value="Tor melden"/>
+            <input type="submit" value="${Lang.get("section/game/goal/action")}"/>
         </form>
-        <span class="meta" style="margin: 15px 15px 200px 15px;" ><a href="/player/create/">${Lang.get("section/createPlayer/missingInfo")}</a></span>
-        `
+        <span class="meta" style="margin: 15px 15px 200px 15px;" >
+            ${Lang.get("section/game/goal/ownGoalNotice")}<br/>
+            <br/>
+            <a href="/player/create/">${Lang.get("section/createPlayer/missingInfo")}</a>
+        </span>`
 
         this.form = new Form(this.view.root.querySelector("form"));
+
+        this.view.timeline = {}
+        this.view.timeline.root = this.view.root.querySelector(".game-timeline");
 
         this.view.winner = {}
         this.view.winner.team1 = this.view.root.querySelector("form .tipp-winner #tippgoalteam1")
@@ -68,14 +79,20 @@ export default class GameTipp extends Section {
             var penalty = this.game.phase == GamePhase.PENALTY;
 
             if(p < 1){
-                this.form.error("Bitte gib einen Torschützen an")
+                this.form.error(Lang.get("section/game/goal/noPlayer"))
                 return;
             }
 
             if(t == 0){
-                this.form.error("Bitte wähle ein Team für das Tor")
+                this.form.error(Lang.get("section/game/goal/noTeam"))
                 return;
             }
+
+            if(!(await TippPrompt.make(
+                Lang.get("section/game/goal/prompt/text"),
+                Lang.get("section/game/goal/prompt/confirm"),
+                Lang.get("section/game/goal/prompt/deny")
+            ))){ return; }
 
             var r = await this.game.reportGoal({
                 player: p,
@@ -98,7 +115,7 @@ export default class GameTipp extends Section {
 
         this.game = await App.model.games.get(this._params.id);
         if(this.game === null){ return App.router.showError(); }
-        if(!App.client.permission.console){ return App.router.forward(this.game.url); }
+        if(!App.client.permission.liveReport){ return App.router.forward(this.game.url); }
         if(this.game.status != GameStatus.RUNNING && this.game.status != GameStatus.PENDING){ return App.router.forward(this.game.url); }
 
         await this.update()
@@ -123,6 +140,18 @@ export default class GameTipp extends Section {
             this.player_suggestions = players;
         })
 
+        this.view.timeline.root.innerHTML = "";
+
+        Promise.all(this.game.getScorers()).then(data => {
+            data.forEach(s => {
+                var e = document.createElement("span");
+                var t1 = (s.team == this.game.team1.id)
+                e.classList.add(t1 ? "left" : "right");
+                e.innerHTML = `<span class="tflag" data-t="${(t1 ? this.game.team1.short : this.game.team2.short).toLowerCase()}" ></span><span class="text"></span>`;
+                e.querySelector(".text").innerText = s.name;
+                this.view.timeline.root.appendChild(e);
+            })
+        })
 
     }
 

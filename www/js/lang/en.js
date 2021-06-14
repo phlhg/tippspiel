@@ -176,7 +176,7 @@ __LANG["en"] = {
                 },
                 continues: {
                     name: "Match continues?",
-                    extension: "Report match extension",
+                    extension: "Report match extension (Not playbacktime!)",
                     penalty: "Report penalty shootout"
                 },
                 extension: {
@@ -202,6 +202,24 @@ __LANG["en"] = {
                     select: "Select a player"
                 },
                 submit: "End game"
+            },
+            goal: {
+                tile: {
+                    title: "Report goal",
+                    text: "Report a new / missing goal to keep the game up to date"
+                },
+                current: "Currently reported goals",
+                team: "New goal counts for",
+                player: "New goal was scored by *",
+                action: "Report new goal",
+                ownGoalNotice: "* In case of an own goals, provide the player as usual.",
+                prompt: {
+                    text: "Please check in \"Currently reported goals\", that the new goal hasn't been reported already.",
+                    confirm: "Report",
+                    deny: "Cancel"
+                },
+                noPlayer: "Please provide a scorer for the new goal",
+                noTeam: "Please select a team for the new goal"
             }
         },
         signUp: {
