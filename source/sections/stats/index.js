@@ -1,5 +1,6 @@
 import Section from '../section'
 import RankTile from '../../components/tiles/ranktile'
+import Debugger from '../../debugger';
 
 export default class Stats extends Section {
 
