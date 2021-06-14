@@ -3,7 +3,7 @@ self.addEventListener('push', function(event){
     event.waitUntil(
         fetch('getnotify.php', {
             method: 'post',
-            body: JSON.stringify(Object.assign({},{lang: "en"},event.data.json()))
+            body: JSON.stringify(event.data.json())
         }).then(response => {
             return response.json()
         }).then(response => {
