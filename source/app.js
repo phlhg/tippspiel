@@ -114,6 +114,12 @@ export default class Application {
             e.preventDefault();
             setTimeout(() => { window.history.go(-1) },100); // weird behaviour of safari
         }
+        
+        // MetronomEvent for updateing times
+        setTimeout(() => {
+            window.dispatchEvent(new CustomEvent("metronom"))
+            setInterval(() => { window.dispatchEvent(new CustomEvent("metronom")) },1000*60)
+        },(60000 - Date.now()%60000) + 1000)
     }
 
     setEvents(root){

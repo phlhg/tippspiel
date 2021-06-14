@@ -141,6 +141,12 @@ export default class GameIndex extends Section {
             }
         });
 
+        window.addEventListener("metronom",() => {
+            if(this._active && this.game != null){
+                this.view.header.meta.time.innerText = this.game.status == GameStatus.RUNNING ? Lang.get("date/past_min", {m: this.game.getPlayedTime()}) : TippDate.toString(this.game.start);
+            }
+        })
+
     }
 
     async load(){

@@ -31,6 +31,19 @@ export default class GameTile extends Tile {
         this.view.result = this.view.root.querySelector(".result");
         this.view.date = this.view.root.querySelector(".date");
         this.view.tipps = this.view.root.querySelector(".tipps");
+
+
+        this._metronom = e => {
+            if(this.obj != null){
+                this.view.date.innerText = this.obj.status == GameStatus.RUNNING ? Lang.get("date/past_min", {m: this.obj.getPlayedTime()}) : TippDate.toString(this.obj.start)
+            }
+        }
+
+        window.addEventListener("metronom",this._metronom)
+
+        this.view.root.addEventListener("removed",() => {
+            window.removeEventListener("metronom",this._metronom);
+        })
     }
 
     update(){
