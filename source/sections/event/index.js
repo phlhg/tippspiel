@@ -152,13 +152,8 @@ export default class EventIndex extends Section {
 
         // GameList
         var games = (await Promise.all(this.event.getGames())).filter(g => g !== null);
-        //games.sort((a,b) => a.start - b.start);
-        var now = Date.now() - 1000 * 60 * 60 * 24;
-        var passed = games.filter(g => g.start < now);
-        var upcoming = games.filter(g => g.start > now);
-        passed.sort((a,b) => b.start - a.start)
-        upcoming.sort((a,b) => a.start - b.start)
-        this.gameList.insert([...passed,...upcoming]);
+        games.sort((a,b) => a.start - b.start);
+        this.gameList.insert(games);
     }
 
     async unload(){
