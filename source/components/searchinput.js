@@ -19,6 +19,7 @@ export default class SearchInput {
         this.dom.icon.style.backgroundImage = `url(${this.img})`
 
         this.getSuggestions = async (input) => [];
+        this.onchange = () => {}
 
         this._setEvents();
     }
@@ -26,33 +27,40 @@ export default class SearchInput {
     _setEvents(){
 
         this.dom.input.onkeyup = async e => {
-            this.dom.suggestions.innerHTML = "";
-            if(this.dom.input.value.replace(/ /ig,"") != ""){
-                (await this.getSuggestions(this.dom.input.value)).slice(0,4).forEach(value => {
-                    var s = document.createElement("span");
-                    s.innerHTML = `<span class="icon" style="background-image: url(${this.img});"></span>`
-
-                    // Prevent XSS in value
-                    var t = document.createElement("span");
-                    t.innerText = value;
-                    s.appendChild(t);
-
-                    s.onmousedown = () => { this._select(value); }
-                    s.ontouchstart = () => { this._select(value); }
-                    this.dom.suggestions.appendChild(s);
-                });
-            }
+            this._fillSuggestions(this.dom.input.value);
         }
 
         this.dom.input.onfocus = e => {
             this.dom.suggestions.innerHTML = "";
+            this._fillSuggestions("");
+        }
+
+        this.dom.input.onblur = e => {
+            setTimeout(() => { this.dom.suggestions.innerHTML = ""; }, 100);
         }
 
     }
 
     _select(value){
         this.dom.input.value = value;
+        this.onchange();
+        setTimeout(() => { this.dom.suggestions.innerHTML = ""; }, 100);
+    }
+
+    async _fillSuggestions(value){
         this.dom.suggestions.innerHTML = "";
+        (await this.getSuggestions(value)).forEach(v => {
+            var s = document.createElement("span");
+            s.innerHTML = `<span class="icon" style="background-image: url(${this.img});"></span>`
+
+            // Prevent XSS in value
+            var t = document.createElement("span");
+            t.innerText = v;
+            s.appendChild(t);
+
+            s.onclick = e => { e.preventDefault(); this._select(v); }
+            this.dom.suggestions.appendChild(s);
+        });
     }
 
     getValue(){
