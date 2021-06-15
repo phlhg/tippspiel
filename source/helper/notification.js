@@ -16,8 +16,7 @@ class TippNotification {
         this.dom.root = document.createElement("div");
         this.dom.root.classList.add("tipp-notification");
         if(this.type != ""){ this.dom.root.classList.add(this.type); }
-        this.dom.root.innerHTML = `<span class="material-icons icon">${this.icon}</span><span class="text"></span>`;
-        this.dom.root.querySelector(".text").innerText = this.text;
+        this.dom.root.innerHTML = `<span class="material-icons icon">${this.icon}</span><span class="text">${this.text}</span>`;
         document.body.appendChild(this.dom.root);
     }
 
