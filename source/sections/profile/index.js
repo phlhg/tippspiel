@@ -51,11 +51,19 @@ export default class Profile extends Section {
         this.view.header.short.innerText = this.shortName(App.client.name);
         
         // Tipps
-        var tipps = (await Promise.all(App.model.gameTipps.getAll(App.client.gameTipps))).filter(t => t !== null);
-        var games = (await Promise.all(App.model.games.getAll(tipps.map(t => t.game)))).filter(t => t !== null);
-        games.sort((a,b) => b.start - a.start)
-        this.gamelist.insert(games);
-        this.view.nobets.style.display = games.length > 0 ? "none" : "block";
+        this.gamelist.loading();
+        this.view.nobets.style.display = App.client.gameTipps.length > 0 ? "none" : "block";
+        Promise.all(App.model.gameTipps.getAll(App.client.gameTipps)).then(tipps => {
+            return tipps.filter(t => t !== null).map(t => t.game)
+        }).then(games => {
+            return Promise.all(App.model.games.getAll(games)).then(games => {
+                return games.filter(t => t !== null)
+            })
+        }).then(games => {
+            return games.sort((a,b) => b.start - a.start)
+        }).then(games => {
+            this.gamelist.insert(games);
+        })
     }
 
     shortName(name){

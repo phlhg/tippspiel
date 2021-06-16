@@ -151,9 +151,14 @@ export default class EventIndex extends Section {
         }
 
         // GameList
-        var games = (await Promise.all(this.event.getGames())).filter(g => g !== null);
-        games.sort((a,b) => a.start - b.start);
-        this.gameList.insert(games);
+        this.gameList.loading()
+        Promise.all(this.event.getGames()).then(games => {
+            return games.filter(g => g !== null);
+        }).then(games => {
+            return games.sort((a,b) => a.start - b.start);
+        }).then(games => {
+            this.gameList.insert(games);
+        })
     }
 
     async unload(){
