@@ -75,7 +75,7 @@ __LANG["en"] = {
     date: {
         days: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
         past_sec: "Kickoff!",
-        past_min: "Since {m}'",
+        past_min: "Since ~{m}'",
         past_today: "Today {h}:{m}",
         past_yesterday: "Yesterday {h}:{m}",
         future_sec: "About to start",
@@ -137,7 +137,7 @@ __LANG["en"] = {
                     result: "Result",
                     winner: "Winner",
                     winner_notice: "(in case of a penalty shootout)",
-                    topscorer: "Topscorer",
+                    topscorer: "Scorer",
                     search: "Search for a player",
                     submit: "Bet now"
                 }
@@ -176,7 +176,7 @@ __LANG["en"] = {
                 },
                 continues: {
                     name: "Match continues?",
-                    extension: "Report match extension",
+                    extension: "Report match extension (Not playbacktime!)",
                     penalty: "Report penalty shootout"
                 },
                 extension: {
@@ -202,6 +202,24 @@ __LANG["en"] = {
                     select: "Select a player"
                 },
                 submit: "End game"
+            },
+            goal: {
+                tile: {
+                    title: "Report goal",
+                    text: "Report a new / missing goal to keep the game up to date"
+                },
+                current: "Currently reported goals",
+                team: "New goal counts for",
+                player: "New goal was scored by *",
+                action: "Report new goal",
+                ownGoalNotice: "* In case of an own goals, provide the player as usual.",
+                prompt: {
+                    text: "Please check in \"Currently reported goals\", that the new goal hasn't been reported already.",
+                    confirm: "Report",
+                    deny: "Cancel"
+                },
+                noPlayer: "Please provide a scorer for the new goal",
+                noTeam: "Please select a team for the new goal"
             }
         },
         signUp: {
@@ -252,7 +270,7 @@ __LANG["en"] = {
         settings: {
             push: {
                 title: "Notifications",
-                desc: "Get informed about results",
+                desc: "Get informed about matches and results",
                 on: "On",
                 off: "Off"
             },
@@ -276,7 +294,7 @@ __LANG["en"] = {
                 desc: "Show Tippspiel to your friends and colleagues"
             },
             report: {
-                title: "Report an error",
+                title: "Report an issue",
                 desc: "Something doesn't work? Report it to us!"
             },
             idea: {
@@ -286,6 +304,10 @@ __LANG["en"] = {
             console: {
                 title: "Console",
                 desc: "Access the Server"
+            },
+            reload: {
+                title: "Reload",
+                desc: "Can solve issues caused by cached content"
             },
             logout: {
                 name: "Sign out",
@@ -378,7 +400,7 @@ __LANG["en"] = {
                 your: "Your bet",
                 deadline: "(Betting possible until {d})",
                 form: {
-                    winner: "Winner",
+                    winner: "Champion",
                     phWinner: "Team: e.g. England",
                     topscorer: "Topscorer",
                     phTopscorer1: "Team: e.g. England",
@@ -386,7 +408,7 @@ __LANG["en"] = {
                     action: "Bet"
                 },
                 message: {
-                    "noWinner": "Please select a winner",
+                    "noWinner": "Please select a Champion",
                 }
             },
             tipps: {
@@ -445,11 +467,11 @@ __LANG["en"] = {
         tipps: {
             game: {
                 team: {
-                    name: "Correct team",
-                    desc: "The betted team won the match."
+                    name: "Team",
+                    desc: "The guessed team won or a correct draw was guessed"
                 },
                 diff: {
-                    name: "Correct goal difference",
+                    name: "Goal difference",
                     desc: "The difference between the goals (without penalty shootout) is the same as guessed."
                 },
                 exact: {
@@ -462,7 +484,7 @@ __LANG["en"] = {
                 },
                 penalty: {
                     name: "Penalty bonus",
-                    desc: "It was betted for a draw and the game ended with a penalty shootout, which the betted team won. "
+                    desc: "An exact draw was guessed and the guessed team won the penalty shootout."
                 },
                 total: {
                     name: "Total"
@@ -470,7 +492,7 @@ __LANG["en"] = {
             },
             event: {
                 team: {
-                    name: "Correct team",
+                    name: "Champion",
                     desc: "The betted team won the event."
                 },
                 topscorer: {

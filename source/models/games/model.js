@@ -46,6 +46,17 @@ export default class Games extends Model {
         return r;
     }
 
+    async reportGoal(id, data){
+        var r = new Request("goalObserve", {
+            game: id,
+            player: data.player,
+            team: data.team,
+            penalty: data.penalty
+        })
+        if(!(await r.run())){ return r; }
+        return r;
+    }
+
     async nextPhase(id){
         var r = new Request("nextPhase", { game: id })
         if(!(await r.run())){ return r; }

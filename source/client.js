@@ -32,6 +32,7 @@ export default class Client {
             gameAnnounce: false,
             gameReport: false,
             groupCreate: false,
+            liveReport: false,
             console: false
         }
         
@@ -91,7 +92,6 @@ export default class Client {
     async signInAgain(){
         if(!this.active){ return true; }
         var r = await this._signIn(this.token,true);
-        console.log(r)
         if(!r.success){ return false; }
         return true;
     }

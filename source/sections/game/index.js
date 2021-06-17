@@ -4,6 +4,7 @@ import TippDate from '../../helper/date'
 import TippTile from '../../components/tiles/tipptile'
 import TippPrompt from '../../helper/prompt'
 import Debugger from '../../debugger'
+import TippList from '../../components/tipplist'
 
 export default class GameIndex extends Section {
 
@@ -48,6 +49,11 @@ export default class GameIndex extends Section {
                 <span class="meta">${Lang.get("section/game/prompt/continues/penalty")}</span>
             </a>
         </div>
+        <a class="tipp-box reportGoal" href="/game/1/goal/" style="background-color: rgb(255,102,0); border-color: rgb(230,70,0);">
+            <span class="icon"><span class="material-icons">add</span></span>
+            <span class="title">${Lang.get("section/game/goal/tile/title")}</span>
+            <span class="meta">${Lang.get("section/game/goal/tile/text")}</span>
+        </a>
         <div class="game-mytipp">
             <a class="tipp-tile fullwidth">
                 <span class="tflag" data-t=""></span>
@@ -65,7 +71,7 @@ export default class GameIndex extends Section {
                 <span class="avg">0:0</span>
                 <span class="flag2"><span class="tflag" data-t="" ></span></span>
             </div>
-            <div class="tipp-list"></div>
+            <div class="tipp-list-wrapper"></div>
         </div>`
 
         this.view.stream = {}
@@ -114,7 +120,8 @@ export default class GameIndex extends Section {
         this.view.tipps.stats.avg = this.view.root.querySelector(".game-tipp-stats .avg")
 
         this.view.tipps.root = this.view.root.querySelector(".game-tipps")
-        this.view.tipps.list = this.view.tipps.root.querySelector(".tipp-list")
+        this.view.tipps.list = new TippList()
+        this.view.tipps.root.querySelector(".tipp-list-wrapper").appendChild(this.view.tipps.list.getHTML())
 
         this.view.mytipp = {}
         this.view.mytipp.root = this.view.root.querySelector(".game-mytipp")
@@ -125,6 +132,8 @@ export default class GameIndex extends Section {
         this.view.mytipp.flag = this.view.mytipp.root.querySelector(".tflag")
         this.view.mytipp.reward = this.view.mytipp.root.querySelector(".reward")
 
+        this.view.reportGoal = this.view.root.querySelector(".reportGoal");
+
         this.game = null;
 
         window.addEventListener("datachange",e => {
@@ -133,6 +142,12 @@ export default class GameIndex extends Section {
                 this.update();
             }
         });
+
+        window.addEventListener("metronom",() => {
+            if(this._active && this.game != null){
+                this.view.header.meta.time.innerText = this.game.status == GameStatus.RUNNING ? Lang.get("date/past_min", {m: this.game.getPlayedTime()}) : TippDate.toString(this.game.start);
+            }
+        })
 
     }
 
@@ -175,13 +190,13 @@ export default class GameIndex extends Section {
         this.view.header.team1.bg.src = '/img/flag/' + this.game.team1.short.toLowerCase() + '.png';
         this.view.header.team2.bg.src = '/img/flag/' + this.game.team2.short.toLowerCase() + '.png';
 
-        if(this.game.status == GameStatus.ENDED){
-            this.view.header.score.normal.innerText = this.game.team1.score + ":" + this.game.team2.score;
-        } else {
+        if(this.game.status == GameStatus.UPCOMING){
             this.view.header.score.normal.innerText = "- : -";
+        } else {
+            this.view.header.score.normal.innerText = this.game.team1.score + ":" + this.game.team2.score;
         }
-
-        this.view.header.meta.time.innerText = TippDate.toString(this.game.start);
+        
+        this.view.header.meta.time.innerText = this.game.status == GameStatus.RUNNING ? Lang.get("date/past_min", {m: this.game.getPlayedTime()}) : TippDate.toString(this.game.start);
         this.view.header.meta.location.innerText = this.game.location;
 
         if(this.game.phase == GamePhase.PENALTY){
@@ -207,14 +222,19 @@ export default class GameIndex extends Section {
                     var e = document.createElement("span");
                     var t1 = (s.team == this.game.team1.id)
                     e.classList.add(t1 ? "left" : "right");
-                    e.innerHTML = `<span class="tflag" data-t="${(t1 ? this.game.team1.short : this.game.team2.short).toLowerCase()}" ></span> ${s.name}`;
+                    e.innerHTML = `<span class="tflag" data-t="${(t1 ? this.game.team1.short : this.game.team2.short).toLowerCase()}" ></span><span class="text"></span>`;
+                    e.querySelector(".text").innerText = s.name;
                     this.view.timeline.root.appendChild(e);
                 })
             })
         }
 
+        // Goal Report
+        this.view.reportGoal.setAttribute("href",`/game/${this.game.id}/goal/`)
+        this.view.reportGoal.style.display = (App.client.permission.liveReport && (this.game.status == GameStatus.RUNNING || this.game.status == GameStatus.PENDING)) ? "block" : "none"
+
         // Game End Prompt
-        if(this.game.status == GameStatus.PENDING && App.client.permission.gameReport){
+        if(this.game.status == GameStatus.PENDING && App.client.permission.liveReport){
             if(this.game.phase == GamePhase.NORMAL){
                 this.view.prompt.penalty.style.display = "none";
                 this.view.prompt.extension.style.display = "block";
@@ -278,47 +298,47 @@ export default class GameIndex extends Section {
 
         // Tipps
         this.view.tipps.root.classList.add("hidden");
-        this.view.tipps.list.innerHTML = "";
+        this.view.tipps.list.loading()
 
         this.view.tipps.stats.flag1.setAttribute("data-t",this.game.team1.short.toLowerCase())
         this.view.tipps.stats.flag2.setAttribute("data-t",this.game.team2.short.toLowerCase())
 
         if(this.game.status != GameStatus.UPCOMING){ 
             this.view.tipps.root.classList.remove("hidden");
-            var tipps = await Promise.all(this.game.getTipps());
-            tipps.sort((a,b) => b.reward.sum - a.reward.sum);
 
-            var countTeam1 = 0;
-            var countTeam2 = 0;
-            var sumTeam1 = 0;
-            var sumTeam2 = 0;
-            var count = 0;
+            this.view.tipps.stats.bar1.style.width = "0%";
+            this.view.tipps.stats.bar2.style.width = "0%";
+            this.view.tipps.stats.avg.innerText = "";
 
-            tipps.forEach(tipp => {
-                var t = new TippTile(new Promise(r => r(tipp)));
-                this.view.tipps.list.appendChild(t.getHtml())
+            Promise.all(this.game.getTipps()).then(async tipps => {
+                // Preload users and players for tipps
+                await Promise.all(App.model.users.getAll(tipps.map(t => t.user)))
+                await Promise.all(App.model.players.getAll(tipps.map(t => t.topscorer).filter(t => t > 0)))
+                return tipps.sort((a,b) => b.reward.sum - a.reward.sum);
+            }).then(tipps => {
+                this.view.tipps.list.insert(tipps);
 
-                countTeam1 += tipp.bet1 > tipp.bet2 ? 1 : 0;
-                countTeam2 += tipp.bet1 < tipp.bet2 ? 1 : 0;
-                sumTeam1 += tipp.bet1;
-                sumTeam2 += tipp.bet2;
-                count++;
+                if(tipps.length < 1) return;
 
-            })
+                var countTeam1 = 0;
+                var countTeam2 = 0;
+                var sumTeam1 = 0;
+                var sumTeam2 = 0;
+                var count = 0;
 
-            if(count > 0){
+                tipps.forEach(tipp => {
+                    countTeam1 += tipp.bet1 > tipp.bet2 ? 1 : 0;
+                    countTeam2 += tipp.bet1 < tipp.bet2 ? 1 : 0;
+                    sumTeam1 += tipp.bet1;
+                    sumTeam2 += tipp.bet2;
+                    count++;
+                })
 
                 this.view.tipps.stats.bar1.style.width = "calc("+((countTeam1 / count)*100)+"% - 7px)";
                 this.view.tipps.stats.bar2.style.width = "calc("+((countTeam2 / count)*100)+"% - 7px)";
                 this.view.tipps.stats.avg.innerText = (Math.round((sumTeam1 / count)*10)/10) + " : " + (Math.round((sumTeam2 / count)*10)/10);
 
-            } else {
-
-                this.view.tipps.stats.bar1.style.width = "0%";
-                this.view.tipps.stats.bar2.style.width = "0%";
-                this.view.tipps.stats.avg.innerText = "0 : 0";
-
-            }
+            })
 
         }
     }

@@ -76,7 +76,7 @@ __LANG["de"] = {
     date: {
         days: ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"],
         past_sec: "Angespielt",
-        past_min: "Seit {m}'",
+        past_min: "Seit ~{m}'",
         past_today: "Heute {h}:{m}",
         past_yesterday: "Gestern {h}:{m}",
         future_sec: "In einigen Sekunden!",
@@ -177,7 +177,7 @@ __LANG["de"] = {
                 },
                 continues: {
                     name: "Spiel geht weiter?",
-                    extension: "Spiel-Verlängerung melden",
+                    extension: "Spiel-Verlängerung melden (nicht Nachspielzeit!)",
                     penalty: "Penaltyschiessens melden"
                 },
                 extension: {
@@ -203,6 +203,24 @@ __LANG["de"] = {
                     select: "Wähle eine Spieler"
                 },
                 submit: "Spiel beenden"
+            },
+            goal: {
+                tile: {
+                    title: "Tor melden",
+                    text: "Melde ein neues / fehlendes Tor um das Spiel aktuell zu halten."
+                },
+                current: "Momentan gemeldete Tore",
+                team: "Neues Goal zählt für",
+                player: "Neues Tor wurde geschossen von *",
+                action: "Neues Tor melden",
+                ownGoalNotice: "* Bei Eigentoren ebenfalls den Spieler angeben.",
+                prompt: {
+                    text: "Bitte überprüfe in \"Momentan gemeldete Tore\", dass das neue Tor noch nicht gemeldet wurde.",
+                    confirm: "Melden",
+                    deny: "Abbrechen"
+                },
+                noPlayer: "Bitte gib einen Torschützen an",
+                noTeam: "Bitte gib ein Team für das Tor an"
             }
         },
         signUp: {
@@ -253,7 +271,7 @@ __LANG["de"] = {
         settings: {
             push: {
                 title: "Benachrichtigungen",
-                desc: "Werde über Resultate informiert",
+                desc: "Werde über Spiele und Resultate informiert",
                 on: "An",
                 off: "Aus"
             },
@@ -277,7 +295,7 @@ __LANG["de"] = {
                 desc: "Zeige Tippspiel deinen Freunden & Bekannten",
             },
             report: {
-                title: "Fehler melden",
+                title: "Problem melden",
                 desc: "Etwas funktioniert nicht? Melde es uns"
             },
             idea: {
@@ -287,6 +305,10 @@ __LANG["de"] = {
             console: {
                 title: "Konsole",
                 desc: "Zugriff auf den Server"
+            },
+            reload: {
+                title: "Neu laden",
+                desc: "Kann Probleme beheben, welche durch im Cache zwischengespeicherte Inhalte entstehen"
             },
             logout: {
                 name: "Abmelden",
@@ -379,15 +401,15 @@ __LANG["de"] = {
                 your: "Dein Tipp",
                 deadline: "(Tippen möglich bis {d})",
                 form: {
-                    winner: "Gewinner",
-                    phWinner: "Gewinner: z.B. Deutschland",
+                    winner: "Meister",
+                    phWinner: "Team: z.B. Deutschland",
                     topscorer: "Torschützenkönig",
                     phTopscorer1: "Team: z.B. Deutschland",
                     phTopscorer2: "Spieler: z.B. Manuel Neuer",
                     action: "Tippen"
                 },
                 message: {
-                    "noWinner": "Bitte wähle einen Gewinner aus",
+                    "noWinner": "Bitte wähle einen Meister aus",
                 }
             },
             tipps: {
@@ -446,11 +468,11 @@ __LANG["de"] = {
         tipps: {
             game: {
                 team: {
-                    name: "Richtiges Team",
-                    desc: "Das getippte Team hat das Spiel gewonnen."
+                    name: "Team",
+                    desc: "Das getippte Team hat gewonnen oder es wurde ein korrektes Unentschieden getippt."
                 },
                 diff: {
-                    name: "Richtige Tordifferenz",
+                    name: "Tordifferenz",
                     desc: "Die Differenz der Tore (ohne Penalyschiessen) ist gleich wie getippt."
                 },
                 exact: {
@@ -463,7 +485,7 @@ __LANG["de"] = {
                 },
                 penalty: {
                     name: "Penalty-Bonus",
-                    desc: "Es wurde Unentschieden getippt und das Spiel wurde mit einem Penaltyschiessen beendet, welches das getippte Team gewonnen hat."
+                    desc: "Es wurde ein exaktes Unentschieden getippt und das getippte Team hat das Penaltyschiessen gewonnen."
                 },
                 total: {
                     name: "Total"
@@ -471,7 +493,7 @@ __LANG["de"] = {
             },
             event: {
                 team: {
-                    name: "Richtiges Team",
+                    name: "Meister",
                     desc: "Das getippte Team hat das Event gewonnen."
                 },
                 topscorer: {

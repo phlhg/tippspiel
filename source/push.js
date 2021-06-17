@@ -1,3 +1,6 @@
+import Debugger from './debugger'
+import Request from './models/request';
+
 export default class TippPush {
 
     constructor(){
@@ -7,18 +10,17 @@ export default class TippPush {
             applicationServerKey: this._urlBase64ToUint8Array("BJq9JHonZAGTS_IYH0sfuEK0JNLJ576r7NOATOxaYvEXQgVJJjc3rhc-dkP-05YA_4Esc2X55DM21F-c-y4zY-w")
         }
 
-        if(this.isSupported()){ 
-            navigator.serviceWorker.register('dev-worker.js', {scope: "/"})
+        if('serviceWorker' in navigator){ 
+            navigator.serviceWorker.register('worker.js', {scope: "/"})
         }
 
     }
 
     isSupported(){
-        return 'serviceWorker' in navigator;
+        return 'serviceWorker' in navigator && 'PushManager' in window;
     }
 
     isAvailable(){
-        return false // Not enabled yet
         return this.isSupported() && App.client.active
     }
 
@@ -39,12 +41,22 @@ export default class TippPush {
         return navigator.serviceWorker.ready.then(registration => {
             return registration.pushManager.getSubscription().then(subscription => {
                 if(subscription !== null){ return true; }
-                console.log(registration, subscription)
                 return registration.pushManager.subscribe(this.options).then(subscription => {
-                    console.log(2, subscription)
-                    if(subscription == null){ return false; }
-                    // Send to Server
-                    return true
+
+                    if(subscription == null){
+                        Debugger.warn(this,"PushManager.subscribe() returned null - This is a known bug on android firefox")(); 
+                        return false; 
+                    }
+                    
+                    var r = new Request("push_enable", { subscription: subscription.toJSON() })
+                    return r.run().then(s => {
+                        if(s) return true;
+                        Debugger.warn(this,"Failed to store PushSubscription on server", r)();
+                        return subscription.unsubscribe().then(s => {
+                            return false;
+                        })
+                    })
+
                 })
             })
         }).catch(e => {
@@ -58,9 +70,10 @@ export default class TippPush {
         return navigator.serviceWorker.ready.then(registration => {
             return registration.pushManager.getSubscription().then(subscription => {
                 if(subscription == null){ return true; }
-                return subscription.unsubscribe().then(() => {
-                    // Remove from Server
-                    return true;
+                return subscription.unsubscribe().then(success => {
+                    if(!success){ return false; }
+                    var r = new Request("push_disable", { endpoint: subscription.endpoint })
+                    r.run().then(s => { return true; })
                 })
             })
         }).catch(e => {

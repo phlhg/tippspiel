@@ -31,41 +31,43 @@ export default class SearchSelect {
     _setEvents(){
 
         this.dom.search.onkeyup = async e => {
-            this.dom.suggestions.innerHTML = "";
-            if(this.dom.search.value.replace(/ /ig,"") != ""){
-                (await this.getSuggestions(this.dom.search.value)).slice(0,4).forEach(e => {
-                    var s = document.createElement("span");
-                    s.innerHTML = `<span class="icon" style="background-image: url(${e.img});"></span>`;
-
-                    // Prevent XSS in text
-                    var t = document.createElement("span");
-                    t.innerText = e.text;
-                    s.appendChild(t);
-
-                    s.onmousedown = () => { this._select(e); }
-                    s.ontouchstart = () => { this._select(e); }
-                    this.dom.suggestions.appendChild(s);
-                });
-            }
+            this._fillSuggestions(this.dom.search.value);
         }
 
         this.dom.search.onfocus = e => {
             this.dom.search.value = "";
             this.dom.icon.style.backgroundImage = "";
-            this.dom.suggestions.innerHTML = "";
+            this._fillSuggestions("");
         }
 
         this.dom.search.onblur = e => {
             this._update();
+            setTimeout(() => { this.dom.suggestions.innerHTML = ""; }, 100);
         }
 
     }
 
     _select(element){
         this.selected = element;
-        this.dom.suggestions.innerHTML += "";
         this._update();
         this.onchange();
+        setTimeout(() => { this.dom.suggestions.innerHTML = ""; }, 100);
+    }
+
+    async _fillSuggestions(value){
+        this.dom.suggestions.innerHTML = "";
+        (await this.getSuggestions(value)).forEach(e => {
+            var s = document.createElement("span");
+            s.innerHTML = `<span class="icon" style="background-image: url(${e.img});"></span>`;
+
+            // Prevent XSS in text
+            var t = document.createElement("span");
+            t.innerText = e.text;
+            s.appendChild(t);
+
+            s.onclick = event => { event.preventDefault(); this._select(e); }
+            this.dom.suggestions.appendChild(s);
+        });
     }
 
     _update(){

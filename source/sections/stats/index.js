@@ -1,5 +1,6 @@
 import Section from '../section'
 import RankTile from '../../components/tiles/ranktile'
+import Debugger from '../../debugger';
 
 export default class Stats extends Section {
 
@@ -12,11 +13,6 @@ export default class Stats extends Section {
         this.group_counter = 0;
 
         this.view.root.innerHTML = `
-            <div class="tipp-box tempRank" style="border-color: #0061d4; background: #0066de; color: #fff;">
-                <span class="icon"><span class="material-icons">info</span></span>
-                <span class="title">${["de","de-ch"].includes(Lang.id) ? "Temporäre Rangliste" : "Temporary ranking"}</span>
-                <span class="meta">${["de","de-ch"].includes(Lang.id) ? "Die Rangliste wird zu Beginn der EURO 2021 zurückgesetzt" : "The ranking will be reset at the beginning of the EURO 2021"}</span>
-            </div>
             <div class="tipp-radio-select">
                 <input type="radio" id="statsview_all" name="statsviewtype" required checked="" />
                 <label for="statsview_all">${Lang.get("section/stats/tabs/all")}</label>
@@ -33,8 +29,6 @@ export default class Stats extends Section {
         this.view.list_all = this.view.root.querySelector(".rank_all");
         this.view.list_group = this.view.root.querySelector(".rank_group");
 
-        this.view.tempRankNotice = this.view.root.querySelector(".tempRank");
-
         [this.view.radio.all, this.view.radio.group].forEach(i => {
             i.onchange = e => {
                 if(this.view.radio.all.checked){
@@ -47,7 +41,7 @@ export default class Stats extends Section {
             }
         })
 
-        App.socket.listen("ranking", () => { 
+        App.socket.listen("RankUpdate", () => { 
             if(this._active){
                 Debugger.log(this,"Section was updated remotely")()
                 this.update() 
@@ -66,16 +60,8 @@ export default class Stats extends Section {
     }
 
     async update(){
-
-        if(Date.now() < 1623427200000){
-            var eventid = 2
-            this.view.tempRankNotice.style.display = "block";
-        } else {
-            var eventid = 1
-            this.view.tempRankNotice.style.display = "none";
-        }
         
-        var r = await App.model.events.getRanking(eventid);
+        var r = await App.model.events.getRanking(1);
         if(!r.success){ return App.router.showError(); }
 
         this.view.list_all.innerHTML = ``

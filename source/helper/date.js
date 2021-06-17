@@ -10,7 +10,7 @@ TippDate.toString = function(date){
         // Past
         if(delta < 60){
             return Lang.get("date/past_sec")
-        } else if(delta < 60 * 60){
+        } else if(delta < 60 * 105){
             return Lang.get("date/past_min",{
                 m: Math.floor(delta/60)
             })

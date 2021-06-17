@@ -1,6 +1,6 @@
 import Form from '../../components/form'
 import SearchSelect from '../../components/searchselect'
-import { GameStatus } from '../../models/games/enums';
+import { GamePhase, GameStatus } from '../../models/games/enums';
 import Section from '../section'
 
 export default class GameReport extends Section {
@@ -172,6 +172,29 @@ export default class GameReport extends Section {
 
         this.view.result.phase.value = this.game.phase;
         this.view.penaltyWrapper.style.display = this.view.result.phase.value == 2 ? "block" : "none";
+
+        this.view.result.score1.value = this.game.team1.score
+        this.view.result.score2.value = this.game.team2.score
+
+        this.view.result.penalty1.value = this.game.team1.penalty
+        this.view.result.penalty2.value = this.game.team2.penalty
+        
+        this.view.penaltyWrapper.style.display = this.game.phase == GamePhase.PENALTY ? "block" : "none";
+
+        this.playerSelects.forEach(p => { p.root.remove() });
+        this.playerSelects = [];
+
+        (await Promise.all(this.game.getScorers())).forEach(async (p, i) => {
+            var team = await p.getTeam();
+            this.playerSelects[i] = new SearchSelect("",Lang.get("section/game/report/scorers/select"));
+            this.playerSelects[i].getSuggestions = this.playerSuggestion;
+            this.playerSelects[i]._select({
+                value: p.id,
+                text: p.name,
+                img: `/img/flag/${team.short.toLowerCase()}.png`
+            })
+            this.view.playerWrapper.appendChild(this.playerSelects[i].getHtml());
+        })
 
     }
 

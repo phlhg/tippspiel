@@ -88,6 +88,18 @@ export default class Game extends Element {
         return App.model.players.getAll(this.scorers)
     }
 
+    getPlayedTime(){
+        var delta = Math.floor((Date.now() - this.start.getTime())/60000) //minutes
+        if(delta < 45) return delta // 1. Halftime
+        if(delta < 60) return 45; 
+        if(delta < 105) return delta - 15; // 2. Halftime
+        if(delta < 110) return 90;
+        if(delta < 125) return delta - 20; // Extension 1. Half
+        if(delta < 130) return 105;
+        if(delta < 145) return delta - 25; // Extension 2. Half
+        if(delta < 150) return 120;
+        if(delta < 170) return delta - 30; // Penalty
+    }
 
     hasOwnTipp(){
         var id = this.tipps.filter(id => App.client.gameTipps.includes(id))
@@ -129,6 +141,10 @@ export default class Game extends Element {
         else if(this.phase == GamePhase.OVERTIME){ this.phase = GamePhase.PENALTY; }
         this.status = GameStatus.RUNNING;
         return true;
+    }
+
+    reportGoal(data){
+        return App.model.games.reportGoal(this.id, data)
     }
 
 }
