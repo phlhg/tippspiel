@@ -98,5 +98,8 @@ Diese Befehle können verwendet werden, ohne dass die Datenbank korrupt wird.
 ### gameval
 `mod gameval [id]` evaluiere spiel mit bestimmter id (Punkte auswerten)
 
+### eventeval
+`mod eventeval [id]` evaluiere Anlass mit bestimmter id (Punkte auswerten)
+
 ### erase
 `mod erase [Table] [id]` entfernt gewisse Datenbankeinträge. (Nur gewisse Tables sind unterstützt)

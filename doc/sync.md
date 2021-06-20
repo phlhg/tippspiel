@@ -16,6 +16,7 @@ User {
 
     eventTipps: [EventTipp, ...], // private
     gameTipps: [GameTipp, ...],   // "
+    lang: Sting,                  // "
     permission: {                 // "
        eventAnnounce: bool,       // "
        eventReport: bool,         // "

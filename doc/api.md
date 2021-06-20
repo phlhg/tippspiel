@@ -77,10 +77,20 @@ Erstellt ein Neues Token für einen Account
 
 ```js
 socket.exec("restoreToken",{ lang: String, email: String })
-socket.exec("restoreToken",{ lang: String })
+socket.exec("restoreToken",{ lang: String }) // falls eingeloggt
 ```
 
 `email` Email des betroffenen Accounts. Alternativ kann eine eingeloggte session verwendet werden
+
+`lang` Gewünschte Sprache des Benutzers (Wie `de`, `de-ch`, `en`, `fr`, ...)
+
+### setlang
+
+Definiert die bevorzugte Sprache des Nutzers
+
+```js
+socket.exec("setlang",{lang: String});
+```
 
 `lang` Gewünschte Sprache des Benutzers (Wie `de`, `de-ch`, `en`, `fr`, ...)
 
@@ -184,7 +194,6 @@ socket.exec("reportGame",{
 
 `phase` siehe enumeration in [Datenbank](database.md#Game)
 
-
 ### nextPhase
 
 Updates the Phase of the game from NORMAL to OVERTIME and OVERTIME to PENALTY
@@ -221,6 +230,14 @@ socket.exec("eventTipp",{event:ID,winner:ID,topscorer:ID})
 ```
 ```js
 {state, error, data:{ id: ID }}
+```
+
+### reportEvent
+
+report the results of an event.
+
+```js
+socket.exec("reportEvent", {event: EventID, winner: TeamID, topscorer: PlayerID});
 ```
 
 ### Console
