@@ -237,7 +237,7 @@ __LANG["en"] = {
             },
             welcome: {
                 title: "Welcome!",
-                desc: "You've successfully created an Account - Please check your inbox for an email by us.",
+                desc: "We've sent an email to {email} - Check your inbox.",
                 action: "Sign in",
                 meta: "If you didn't get an email please {a} with us.",
                 metaLink: "get in touch" 

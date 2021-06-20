@@ -223,7 +223,7 @@ __LANG["de-ch"] = {
             },
             welcome: {
                 title: "Willkomme!",
-                desc: "Du hesch erfolgriich en Account erstellt - Bitte lueg ih dinere Mailbox nachere E-Mail vo eus.",
+                desc: "Mer hend e E-Mail ah {email} gsendet - Überprüef din Postihgang.",
                 action: "Ahmelde",
                 meta: "Wenn du kei E-Mail becho hesch, nimm bitte {a}.",
                 metaLink: "Kontakt mit eus uuf" 

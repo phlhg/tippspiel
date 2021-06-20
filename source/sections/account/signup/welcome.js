@@ -11,7 +11,7 @@ export default class SignUpWelcome extends Section {
         this.view.root.classList.add("tipp-login-page");
         this.view.root.innerHTML = `<div class="inner">
             <h3>${Lang.get("section/signUp/welcome/title")}</h3>
-            <p>${Lang.get("section/signUp/welcome/desc")}</p>
+            <p class="emailConf"></p>
             <form>
                 <input type="submit" value="${Lang.get("section/signUp/welcome/action")}"/>
             </form>
@@ -23,11 +23,14 @@ export default class SignUpWelcome extends Section {
         this.form = new Form(this.view.root.querySelector("form"));
         this.form.onSubmit = async data => { await App.router.load("/signin/"); }
 
+        this.emailConf = this.view.root.querySelector(".emailConf")
+
     }
 
     async load(){
         if(!App.promptConnection()){ return false; }
-        if(!("forwarded" in this._params)){ App.router.forward("/signup/"); return false; }
+        if(!("forwarded" in this._params && "email" in this._params)){ App.router.forward("/signup/"); return false; }
+        this.emailConf.innerText = Lang.get("section/signUp/welcome/desc", { email: this._params.email })
     }
 
 }

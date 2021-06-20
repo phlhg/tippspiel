@@ -34,7 +34,7 @@ export default class SignUpName extends Section {
                 return false;
             }
 
-            var r = await App.client.singUp(data.name, this._params.email)
+            /*var r = await App.client.singUp(data.name, this._params.email)
 
             if(!r.success){
                 if(r._response.error == "2"){
@@ -50,8 +50,9 @@ export default class SignUpName extends Section {
                     return false;
                 }
             }
+            */
 
-            await App.router.load("/signup/3/", { forwarded: true });
+            await App.router.load("/signup/3/", { email: this._params.email, forwarded: true });
 
         }
     }
