@@ -48,7 +48,7 @@ input.inline { background: rgba(255,255,255,0.04); }
 .game-tipp-stats { background: #111; border-color: #1c1c1c; }
 .game-tipp-stats > .bar1, .game-tipp-stats > .bar2 { background: #222;  }
 
-.tipp-radio-select > input:checked + label { background-color: #1f1f1f; }
+.tipp-radio-select > input:checked + label { background-color: #2f2f2f; }
 
 .tipp-searchselect .icon { background-color: #1c1c1c; }
 .tipp-searchselect > .suggestions > span:hover { background-color: #1f1f1f; }
