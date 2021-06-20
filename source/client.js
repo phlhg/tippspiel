@@ -47,6 +47,8 @@ export default class Client {
 
         /** @type {array} GameTipps of the client */
         this.gameTipps = []
+
+        this.lang = "";
     }
 
     /**
@@ -177,6 +179,9 @@ export default class Client {
         this.gameTipps = Array.from(r.data.gameTipps).map(i => parseInt(i))
         this.eventTipps = Array.from(r.data.eventTipps).map(i => parseInt(i))
 
+        this.lang = r.data.lang;
+        if(!Lang.available.includes(this.lang)){ this.setLanguage(Lang.id); }
+
         if(localStorage.getItem("tipp-active-groups") === null){ localStorage.setItem("tipp-active-groups", JSON.stringify(this.groups)) }
         this.groupsActive = JSON.parse(localStorage.getItem("tipp-active-groups")).filter(g => this.groups.includes(g));
 
@@ -279,6 +284,15 @@ export default class Client {
 
         this.groupsActive = JSON.parse(localStorage.getItem("tipp-active-groups")).filter(g => this.groups.includes(g));
         window.dispatchEvent(new CustomEvent("datachange",{ detail: { type: "user", id: this.id } }))
+    }
+
+    // Language
+    async setLanguage(value){
+        if(!this.active || !Lang.available.includes(value)){ return false; }
+        var r = new Request("setlang", { lang: value });
+        if(!(await r.run())){ console.warn(r); return false; }
+        this.lang = value;
+        return true;
     }
 
     // GROUPS

@@ -28,7 +28,7 @@ export default class Language {
 
     }
 
-    setLanguage(id){
+    async setLanguage(id){
         if(!this.available.includes(id)) return false;
         this.id = id
         this.ref = this.load(this.id);

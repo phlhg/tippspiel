@@ -103,8 +103,9 @@ export default class Settings extends Section {
         });
 
         this.view.languageSelect.value = Lang.id
-        this.view.languageSelect.onchange = e => {
-            if(Lang.setLanguage(this.view.languageSelect.value)){
+        this.view.languageSelect.onchange = async e => {
+            if(await Lang.setLanguage(this.view.languageSelect.value)){
+                await App.client.setLanguage(this.view.languageSelect.value)
                 document.body.classList.add("loading");
                 setTimeout(() => window.location.reload(),500);
             }
