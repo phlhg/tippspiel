@@ -65,7 +65,7 @@ export default class SearchSelect {
             t.innerText = e.text;
             s.appendChild(t);
 
-            s.onclick = event => { event.preventDefault(); this._select(e); }
+            s.onclick = () => { this._select(e); }
             this.dom.suggestions.appendChild(s);
         });
     }

@@ -58,7 +58,7 @@ export default class SearchInput {
             t.innerText = v;
             s.appendChild(t);
 
-            s.onclick = e => { e.preventDefault(); this._select(v); }
+            s.onclick = () => { this._select(v); }
             this.dom.suggestions.appendChild(s);
         });
     }
