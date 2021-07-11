@@ -36,7 +36,7 @@ export default class SearchInput {
         }
 
         this.dom.input.onblur = e => {
-            setTimeout(() => { this.dom.suggestions.innerHTML = ""; }, 100);
+            setTimeout(() => { this.dom.suggestions.innerHTML = ""; }, 250);
         }
 
     }
@@ -44,7 +44,7 @@ export default class SearchInput {
     _select(value){
         this.dom.input.value = value;
         this.onchange();
-        setTimeout(() => { this.dom.suggestions.innerHTML = ""; }, 100);
+        setTimeout(() => { this.dom.suggestions.innerHTML = ""; }, 250);
     }
 
     async _fillSuggestions(value){

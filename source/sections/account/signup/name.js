@@ -51,7 +51,7 @@ export default class SignUpName extends Section {
                 }
             }
 
-            await App.router.load("/signup/3/", { forwarded: true });
+            await App.router.load("/signup/3/", { email: this._params.email, forwarded: true });
 
         }
     }

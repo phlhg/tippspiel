@@ -41,8 +41,10 @@ export default class SearchSelect {
         }
 
         this.dom.search.onblur = e => {
-            this._update();
-            setTimeout(() => { this.dom.suggestions.innerHTML = ""; }, 100);
+            setTimeout(() => { 
+                this._update();
+                this.dom.suggestions.innerHTML = "";
+            }, 250);
         }
 
     }
@@ -51,7 +53,7 @@ export default class SearchSelect {
         this.selected = element;
         this._update();
         this.onchange();
-        setTimeout(() => { this.dom.suggestions.innerHTML = ""; }, 100);
+        setTimeout(() => { this.dom.suggestions.innerHTML = ""; }, 250);
     }
 
     async _fillSuggestions(value){
@@ -65,7 +67,7 @@ export default class SearchSelect {
             t.innerText = e.text;
             s.appendChild(t);
 
-            s.onclick = event => { event.preventDefault(); this._select(e); }
+            s.onclick = ev => { ev.preventDefault(); this._select(e); }
             this.dom.suggestions.appendChild(s);
         });
     }

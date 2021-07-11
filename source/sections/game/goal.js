@@ -27,8 +27,10 @@ export default class GameTipp extends Section {
                     <label for="tippgoalteam2"></label>
                 </div>
             </div>
-            <h4>${Lang.get("section/game/goal/player")}</h4>
-            <div class="tipp-player"></div>
+            <div class="tipp-scorer">
+                <h4>${Lang.get("section/game/goal/player")}</h4>
+                <div class="tipp-player"></div>
+            </div>
             <input type="submit" value="${Lang.get("section/game/goal/action")}"/>
         </form>
         <span class="meta" style="margin: 15px 15px 200px 15px;" >
@@ -49,6 +51,7 @@ export default class GameTipp extends Section {
         this.view.winner.label2 = this.view.root.querySelector("form .tipp-winner label[for='tippgoalteam2']")
 
         this.view.player = this.view.root.querySelector(".tipp-player");
+        this.view.scorer = this.view.root.querySelector(".tipp-scorer");
         this.player_suggestions = [];
 
         // Player Select
@@ -78,7 +81,7 @@ export default class GameTipp extends Section {
 
             var penalty = this.game.phase == GamePhase.PENALTY;
 
-            if(p < 1){
+            if(p < 1 && !penalty){
                 this.form.error(Lang.get("section/game/goal/noPlayer"))
                 return;
             }
@@ -95,7 +98,7 @@ export default class GameTipp extends Section {
             ))){ return; }
 
             var r = await this.game.reportGoal({
-                player: p,
+                player: penalty ? 0 : p,
                 team: t,
                 penalty: penalty
             })
@@ -132,6 +135,8 @@ export default class GameTipp extends Section {
         this.view.winner.label1.innerHTML = `${this.game.team1.name} <span class="tflag" data-t="${this.game.team1.short.toLowerCase()}">`
         this.view.winner.team2.value = this.game.team2.id;
         this.view.winner.label2.innerHTML = `${this.game.team2.name} <span class="tflag" data-t="${this.game.team2.short.toLowerCase()}">`
+
+        this.view.scorer.style.display = this.game.phase != GamePhase.PENALTY ? "block" : "none";
 
         this.player_suggestions = []; 
         Promise.all(await this.game.getSuggestedPlayers()).then(players => {

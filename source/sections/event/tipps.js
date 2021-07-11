@@ -1,3 +1,4 @@
+import EventTippList from '../../components/eventtipplist';
 import EventTippTile from '../../components/tiles/eventtipptile';
 import Debugger from '../../debugger';
 import Section from '../section'
@@ -18,14 +19,14 @@ export default class EventTipps extends Section {
             <span class="title">Event-Name</span>
             <span class="meta">0 Tipps</span>
         </div>
-        <h3>Tipps</h3>
-        <div class="tipp-list"></div>`
+        <h3>Tipps</h3>`
 
         this.view.header = {}
         this.view.header.name = this.view.root.querySelector(".event-header .title");
         this.view.header.meta = this.view.root.querySelector(".event-header .meta");
 
-        this.view.tippList = this.view.root.querySelector(".tipp-list");
+        this.tippList = new EventTippList();
+        this.view.root.appendChild(this.tippList.getHTML())
 
         window.addEventListener("datachange",e => {
             if(this._active && this.event != null && e.detail.type == "event" && e.detail.id == this.event.id){
@@ -52,24 +53,25 @@ export default class EventTipps extends Section {
         this.view.header.name.innerText = this.event.name;
         this.view.header.meta.innerText = (this.event.tipps.length == 1 ? Lang.get("section/event/tipp/single") : Lang.get("section/event/tipp/multi",{n: this.event.tipps.length}));
 
-        // GameList
-        var tipps = (await Promise.all(this.event.getTipps())).filter(g => g !== null);
+        this.tippList.loading()
 
-        //Preload users, players and teams
-        await Promise.all(App.model.users.getAll(tipps.map(t => t.user)))
-        await Promise.all(App.model.players.getAll(tipps.map(t => t.topscorer).filter(t => t > 0)))
-        await Promise.all(App.model.teams.getAll(tipps.map(t => t.winner).filter(t => t > 0)))
-
-
-        tipps.sort((a,b) => a.reward.sum - a.reward.sum);
-        tipps.forEach(t => {
-            this.view.tippList.appendChild(new EventTippTile(new Promise(r => r(t))).getHtml())
+        Promise.all(this.event.getTipps()).then(tipps => {
+            return tipps.filter(t => t !== null);
+        }).then(async tipps => {
+            await Promise.all(App.model.users.getAll(tipps.map(t => t.user)))
+            await Promise.all(App.model.players.getAll(tipps.map(t => t.topscorer).filter(t => t > 0)))
+            await Promise.all(App.model.teams.getAll(tipps.map(t => t.winner).filter(t => t > 0)))
+            return tipps;
+        }).then(tipps => {
+            return tipps.sort((a,b) => a.reward.sum - a.reward.sum);
+        }).then(tipps => {
+            this.tippList.insert(tipps);
         })
 
     }
 
     async unload(){
-        this.view.tippList.innerHTML = "";
+        this.tippList.clear();
     }
 
 }

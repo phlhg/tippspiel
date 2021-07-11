@@ -180,8 +180,13 @@ export default class GameTipp extends Section {
         this.view.winner.team2.value = this.game.team2.id;
         this.view.winner.label2.innerHTML = `${this.game.team2.name} <span class="tflag" data-t="${this.game.team2.short.toLowerCase()}">`
 
-        this.player_suggestions = await Promise.all(await this.game.getSuggestedPlayers())
-        this.player_suggestions.sort((a,b) => a.name.localeCompare(b.name))
+        this.player_suggestions = []
+        
+        Promise.all(await this.game.getSuggestedPlayers()).then(players => {
+            return players.sort((a,b) => a.name.localeCompare(b.name))
+        }).then(players => {
+            this.player_suggestions = players;
+        })
 
         if(this.tipp != null){
 

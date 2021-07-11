@@ -49,7 +49,7 @@ export default class GameIndex extends Section {
                 <span class="meta">${Lang.get("section/game/prompt/continues/penalty")}</span>
             </a>
         </div>
-        <a class="tipp-box reportGoal" href="/game/1/goal/" style="background-color: rgb(255,102,0); border-color: rgb(230,70,0);">
+        <a class="tipp-box reportGoal" href="/game/1/goal/" style="background-color: rgb(255,102,0); border-color: rgb(230,70,0); color: #fff;">
             <span class="icon"><span class="material-icons">add</span></span>
             <span class="title">${Lang.get("section/game/goal/tile/title")}</span>
             <span class="meta">${Lang.get("section/game/goal/tile/text")}</span>
