@@ -232,12 +232,12 @@ socket.exec("eventTipp",{event:ID,winner:ID,topscorer:ID})
 {state, error, data:{ id: ID }}
 ```
 
-### reportEvent
+### eventReport
 
 report the results of an event.
 
 ```js
-socket.exec("reportEvent", {event: EventID, winner: TeamID, topscorer: PlayerID});
+socket.exec("eventReport", {event: EventID, winner: TeamID, topscorer: PlayerID});
 ```
 
 ### Console
