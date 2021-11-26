@@ -46,14 +46,14 @@ export default class Model {
             App.client.handleServerUpdate(); 
         }
 
-        this.events.update(Array.from(data.Event ?? []).map(i => parseInt(i)))
         this.eventTipps.update(Array.from(data.EventTipp ?? []).map(i => parseInt(i)))
-        this.games.update(Array.from(data.Game ?? []).map(i => parseInt(i)))
+        this.events.update(Array.from(data.Event ?? []).map(i => parseInt(i)))
         this.gameTipps.update(Array.from(data.GameTipp ?? []).map(i => parseInt(i)))
-        this.groups.update(Array.from(data.Group ?? []).map(i => parseInt(i)))
+        this.games.update(Array.from(data.Game ?? []).map(i => parseInt(i)))
         this.players.update(Array.from(data.Player ?? []).map(i => parseInt(i)))
         this.teams.update(Array.from(data.Team ?? []).map(i => parseInt(i)))
         this.users.update(Array.from(data.User ?? []).map(i => parseInt(i)))
+        this.groups.update(Array.from(data.Group ?? []).map(i => parseInt(i)))
 
     }
 

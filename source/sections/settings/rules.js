@@ -41,11 +41,11 @@ export default class Rules extends Section {
                 <p>Bei einigen Events kannst du ein Event-Gewinner und Torschützenkönig tippen. Für diese Tipps erhälst du Punkte in den folgenden Kategorieren:</p>
                 <ul>
                     <li>
-                        <strong>Meister ( +2 )</strong><br/>
+                        <strong>Meister ( +4 )</strong><br/>
                         Dein getipptes Team hat das Event gewonnen.
                     </li>
                     <li>
-                        <strong>Torschützenkönig ( +2 )</strong><br/>
+                        <strong>Torschützenkönig ( +4 )</strong><br/>
                         Dein getippter Torschützenkönig hat die meisten Tore im Event geschossen.
                     </li>
                 </ul>
@@ -84,11 +84,11 @@ export default class Rules extends Section {
                 <p>Some events allow betting on an event winner and a topscorer. For those bets you receive points in the following categories:</p>
                 <ul>
                     <li>
-                        <strong>Champion ( +2 )</strong><br/>
+                        <strong>Champion ( +4 )</strong><br/>
                         Your guessed team won the event.
                     </li>
                     <li>
-                        <strong>Topscorer ( +2 )</strong><br/>
+                        <strong>Topscorer ( +4 )</strong><br/>
                         Your guessed topscorer shot the most amount of goals at the event.
                     </li>
                 </ul>

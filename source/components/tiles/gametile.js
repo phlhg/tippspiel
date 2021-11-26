@@ -1,5 +1,5 @@
 import TippDate from '../../helper/date';
-import { GameStatus } from '../../models/games/enums';
+import { GamePhase, GameStatus } from '../../models/games/enums';
 import Tile from './tile';
 
 export default class GameTile extends Tile {
@@ -60,7 +60,11 @@ export default class GameTile extends Tile {
         this.view.tipps.innerText = this.obj.tipps.length != 1 ? Lang.get("section/game/tipps/multi",{n: this.obj.tipps.length}) : Lang.get("section/game/tipps/single")
 
         if(this.obj.status != GameStatus.UPCOMING){
-            this.view.result.innerText = `${this.obj.team1.score}:${this.obj.team2.score}`
+            if(this.obj.phase == GamePhase.PENALTY){
+                this.view.result.innerHTML = `<span style="font-weight: normal; font-size: 16px; vertical-align: top;">(${this.obj.team1.penalty})</span> ${this.obj.team1.score}:${this.obj.team2.score} <span style="font-weight: normal; font-size: 16px; vertical-align: top;">(${this.obj.team2.penalty})</span>`
+            } else {
+                this.view.result.innerText = `${this.obj.team1.score}:${this.obj.team2.score}`
+            }
         } else {
             this.view.result.innerText = ""
         }

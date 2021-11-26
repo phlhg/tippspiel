@@ -155,7 +155,7 @@ export default class EventIndex extends Section {
         Promise.all(this.event.getGames()).then(games => {
             return games.filter(g => g !== null);
         }).then(games => {
-            return games.sort((a,b) => a.start - b.start);
+            return games.sort((a,b) => b.start - a.start);
         }).then(games => {
             this.gameList.insert(games);
         })

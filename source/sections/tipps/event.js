@@ -21,12 +21,12 @@ export default class EventTippDetail extends Section {
             <span class="title">${Lang.get("section/tipps/event/total/name")}</span>
         </div>
         <div class="tipp-box">
-            <span class="icon">2</span>
+            <span class="icon">4</span>
             <span class="title">${Lang.get("section/tipps/event/team/name")}</span>
             <span class="meta">${Lang.get("section/tipps/event/team/desc")}</span>
         </div>
         <div class="tipp-box">
-            <span class="icon">2</span>
+            <span class="icon">4</span>
             <span class="title">${Lang.get("section/tipps/event/topscorer/name")}</span>
             <span class="meta">${Lang.get("section/tipps/event/topscorer/desc")}</span>
         </div>`
@@ -76,7 +76,7 @@ export default class EventTippDetail extends Section {
 
         this.view.total.icon.innerText = this.tipp.reward.sum;
 
-        this.view.team.style.opacity = this.tipp.reward.team ? 1 : 0.25;
+        this.view.team.style.opacity = this.tipp.reward.winner ? 1 : 0.25;
         this.view.topscorer.style.opacity = this.tipp.reward.topscorer ? 1 : 0.25;
         
     }

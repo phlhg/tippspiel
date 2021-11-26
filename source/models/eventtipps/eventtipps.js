@@ -21,7 +21,7 @@ export default class EventTipp extends Element {
         /** @property {number} reward Received points for this tipp */
         this.reward = {
             sum: 0,
-            team: false,
+            winner: false,
             topscorer: false
         };
 
@@ -35,13 +35,16 @@ export default class EventTipp extends Element {
      * @param {object} data - Properties of to update
      */
     set(data){
+
+        console.log(data);
+
         this.event = parseInt(data.event ?? this.event);
         this.user = parseInt(data.user ?? this.user);
         this.winner = parseInt(data.winner ?? this.winner);
         this.topscorer = parseInt(data.topscorer ?? this.topscorer);
 
         this.reward.sum = parseInt(data.reward?.sum ?? this.reward.sum)
-        this.reward.team = data.reward?.team ? data.reward?.team == "true" : this.reward.team
+        this.reward.winner = data.reward?.winner ? data.reward?.winner == "true" : this.reward.winner
         this.reward.topscorer = data.reward?.topscorer ? data.reward.topscorer == "true" : this.reward.topscorer
 
         this.processed = data.processed ? data.processed == "true" : this.processed
